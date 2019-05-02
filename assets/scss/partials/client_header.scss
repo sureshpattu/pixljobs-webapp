@@ -1,0 +1,147 @@
+.client_header_pg {
+    padding: 70px 0 0;
+    position: relative;
+    z-index: 200;
+
+    .navbar {
+        height: 70px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.06);
+        border-radius: 0;
+        margin: 0;
+        padding: 0 5px;
+    }
+
+    .navbar-toggle .icon-bar {
+        background-color: #a56ff8;
+    }
+
+    .navbar-brand {
+        img {
+            width: 160px;
+        }
+    }
+
+    .navbar-nav {
+        padding: 12px 0 0;
+
+        li > a {
+            font-size: 12px;
+            font-weight: 600;
+            color: #4e5c60;
+            position: relative;
+            padding: 12px 15px 11px;
+
+            &.active::after {
+                content: '';
+                background-color: #8e63e6;
+                width: 20px;
+                height: 2px;
+                position: absolute;
+                bottom: 2px;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+            }
+
+            .user_img {
+                width: 39px;
+                height: 39px;
+                margin: -9px 0 0;
+            }
+
+            &:hover, &:focus {
+                background-color: transparent;
+            }
+
+            &.login_link {
+                color: #5a61df;
+            }
+
+            &.book_appoint_link {
+                color: #5a61df;
+                border: solid 1px #5a61df;
+                border-radius: 3px;
+                width: 175px;
+                height: 38px;
+                padding: 8px 0 0;
+                text-align: center;
+                margin: 3px 0 0 10px;
+            }
+
+            &.download_app_link {
+                color: #5a61df;
+
+                .fa-caret-down {
+                    font-size: 14px;
+                    margin: 0 0 0 10px;
+                }
+            }
+        }
+    }
+
+    .navbar-nav li > a.save_btn {
+        border: 1px solid #8e63e6;
+        padding: 12px 45px;
+        border-radius: 22px;
+        font-size: 14px;
+        font-weight: 900;
+        color: #8e63e6;
+    }
+
+    .user_icon {
+        height: 44px;
+        margin-top: -12px;
+        margin-left: 20px;
+        margin-right: 10px;
+    }
+}
+
+@media all and (max-width: 991px) {
+    .client_header_pg {
+        .navbar-nav li > a {
+            font-size: 13px;
+            padding: 12px 15px 11px;
+        }
+
+        .navbar-brand img {
+            width: 160px;
+        }
+    }
+}
+
+@media all and (max-width: 767px) {
+    .client_header_pg {
+        padding: 60px 0 0;
+
+        .navbar {
+            height: 60px;
+            padding: 0;
+        }
+
+        .navbar-collapse {
+            position: relative;
+            background-color: #ffffff;
+            z-index: 1;
+        }
+
+        .navbar-brand img {
+            width: 120px;
+        }
+
+        .navbar-toggle {
+            margin-top: 13px;
+        }
+
+        .navbar-nav {
+            margin: 0;
+
+            li > a.active::after {
+                bottom: 6px;
+                left: 20px;
+                right: 0;
+                margin: 0;
+            }
+        }
+    }
+}

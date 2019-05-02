@@ -1,0 +1,96 @@
+.client_footer_sec {
+    background-color: transparent;
+    .bg_wrap {
+        padding: 398px 0 0;
+        background-position: left bottom;
+        background-repeat: no-repeat;
+        background-image: url(/img/footer_back_cover.png);
+    }
+
+    .links_wrap {
+        background-image: linear-gradient(-180deg, #717DF0 0%, #7348DB 96%);
+        padding: 80px 0 10px 0;
+        margin-top: -19px;
+    }
+
+    .title {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 2.57;
+        color: #f2fdff;
+    }
+    .bg_normal {
+        padding: 50px 0 0 !important;
+        background-color: #171827;
+    }
+    .cont_sec {
+        border-right: 1px solid rgba(151, 151, 151, 0.4);
+        padding: 0 0 0 10px;
+        min-height: 160px;
+
+        &.no_brd_right {
+            border-right: none;
+        }
+    }
+
+    .footer_links {
+        margin: 0;
+        padding: 0;
+        display: block;
+
+        li {
+            display: block;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 2.21;
+            color: #B9B8F7;
+
+            img {
+                width: 130px;
+            }
+        }
+    }
+    .copy_right_sec {
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 3;
+        color: #B9B8F7;
+        padding: 40px 15px 20px;
+        text-align: center;
+    }
+}
+
+@media all and (max-width: 991px) {
+    .client_footer_sec {
+        .bg_wrap {
+            padding: 210px 0 0;
+        }
+    }
+}
+
+@media all and (max-width: 767px) {
+    .client_footer_sec {
+        .cont_sec {
+            border: none;
+        }
+        .bg_wrap {
+            padding: 0;
+        }
+        .links_wrap {
+            padding: 30px 0 0;
+            background-color: #171827;
+        }
+        .title {
+            padding: 15px 0 0;
+        }
+        .footer_links a img {
+            width: 100px;
+        }
+    }
+}

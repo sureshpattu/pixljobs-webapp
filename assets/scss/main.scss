@@ -1,0 +1,16 @@
+//Utils
+@import "util/variables";
+@import "fonts/fonts";
+@import "util/mixins";
+@import "util/common";
+@import "util/pop_up";
+//Partials
+@import "partials/header";
+@import "partials/footer";
+@import "partials/menu";
+@import "partials/client_header";
+@import "partials/client_footer";
+//Views
+@import "views/view_user_profile";
+@import "views/edit_med_content";
+@import "views/add_new_content";
