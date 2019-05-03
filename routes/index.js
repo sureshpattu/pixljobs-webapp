@@ -18,4 +18,8 @@ router.get('/register', function(req, res) {
     res.render('register');
 });
 
+router.get('/search', function(req, res) {
+    res.render('search');
+});
+
 module.exports = router;
