@@ -18,4 +18,8 @@ router.get('/register', function(req, res) {
     res.render('register');
 });
 
+router.get('/fresher-account', function(req, res) {
+    res.render('fresher_account');
+});
+
 module.exports = router;
