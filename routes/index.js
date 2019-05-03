@@ -18,6 +18,10 @@ router.get('/register', function(req, res) {
     res.render('register');
 });
 
+router.get('/search', function(req, res) {
+    res.render('search');
+});
+
 router.get('/postjob_work', function(req, res) {
     res.render('postjob_work');
 });
