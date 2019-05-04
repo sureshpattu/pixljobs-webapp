@@ -1807,12 +1807,11 @@ body.popup-visible {
   color: #c7d3dd;
 }
 .postjob_work .hero_sec .form-group .large_box {
-  width: 392px;
-  height: 68px;
+  width: 392.4px;
+  height: 70.4px;
   box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
   background-color: #ffffff;
-  font-size: 14px;
-  color: #c7d3dd;
+  padding: 25px 0 24px 18px;
 }
 .postjob_work .hero_sec .cta_wrap {
   text-align: center;
