@@ -38,4 +38,8 @@ router.get('/signup-recruiter', function(req, res) {
     res.render('signup_recruiter');
 });
 
+router.get('/signup-fresh', function(req, res) {
+    res.render('signup_fresh');
+});
+
 module.exports = router;
