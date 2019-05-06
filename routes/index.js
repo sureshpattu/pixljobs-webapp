@@ -42,4 +42,8 @@ router.get('/signup-fresh', function(req, res) {
     res.render('signup_fresh');
 });
 
+router.get('/signup-exp', function(req, res) {
+    res.render('signup_exp');
+});
+
 module.exports = router;
