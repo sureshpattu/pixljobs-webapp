@@ -42,4 +42,9 @@ router.get('/exp-account', function(req, res) {
     res.render('experience_account');
 });
 
+
+router.get('/job-info', function(req, res) {
+    res.render('job_info');
+});
+
 module.exports = router;
