@@ -1,0 +1,59 @@
+.signup_rec_pg {
+  .signup_wrap {
+    margin-top: 47px;
+    box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
+    background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
+    padding: 69px 75px 78px 78px;
+
+
+    .btn_wrap {
+      text-align: center;
+      font-size: 12px;
+      padding: 27px 36px 27px 36px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+      background-color: #ffffff;
+    }
+
+    .active {
+      color: #25de8c !important;
+    }
+
+    .not_active {
+      color: #637282 !important;
+    }
+
+
+    .gl_input_label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #637282;
+    }
+
+    .gl_input_box {
+      font-size: 14px;
+      color: #c7d3dd;
+    }
+
+    .btn_preview {
+      border-radius: 5px;
+      background-color: #e2e6ea;
+      padding: 30px 68px;
+      font-weight: 600;
+      text-align: center;
+      color: #2e3d4e;
+    }
+
+    .btn_proceed {
+      padding: 30px 68px;
+      border-radius: 5px;
+      box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
+      background-color: #4a58ff;
+      font-size: 14px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+  }
+
+
+}

@@ -5,130 +5,135 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
-    {{>header_assets}}
+    {{>header_assets select2=true}}
 </head>
-<body class="view_user_profile_pg med_content_pg">
+<body class="view_user_profile_pg med_content_pg signup_rec_pg">
+{{>header}}
 <div class="hero_sec">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <form class="" id="">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="signup_wrap">
-                                    <div class="title">Signup to </div>
-                                    <div class="sub_title">Get started!</div>
-                                </div>
-                            </div>
-                            <div class="role_wrap">
+                <div class="signup_wrap">
+                    <form class="" id="">
+                        <div class="row">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="">Select role</label>
-                                    <div>
-                                        <button class="btn btn-default">Recruiter</button>
-                                        <button class="btn btn-default">Applicant</button>
+                                    <div class="">
+                                        <div class="title">Signup to </div>
+                                        <div class="sub_title">Get started!</div>
+                                    </div>
+                                </div>
+                                <div class="role_wrap">
+                                    <div class="form-group">
+                                        <label for="">Select role</label>
+                                        <div>
+                                            <a href="" class="btn btn_wrap active">Recruiter</a>
+                                            <a href="" class="btn btn_wrap not_active">Applicant</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="profile_img_wrap "
-                                 data-toggle="modal" data-backdrop="static">
-                                <img class="profile_img" src="">
-                                <div class="change_photo">
-                                    <i class="fa fa-camera"><span class="txt">Upload Photo</span></i>
+                            <div class="col-md-6">
+                                <div class="profile_img_wrap "
+                                     data-toggle="modal" data-backdrop="static">
+                                    <img class="profile_img" src="">
+                                    <div class="change_photo">
+                                        <i class="fa fa-camera"><span class="txt">Upload Photo</span></i>
+                                    </div>
+                                    <img src="" class="hide">
                                 </div>
-                                <img src="" class="hide">
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="">Full Name</label>
-                                <input type="text" class="form-control"
-                                       autocomplete="nope" placeholder="Enter your first name and last name">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="gl_input_label">Full Name</label>
+                                    <input type="text" class="form-control gl_input_box required"
+                                           autocomplete="nope" placeholder="Enter your first name and last name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="gl_input_label">Designation</label>
+                                    <input type="text" class="form-control gl_input_box required"
+                                           autocomplete="nope" placeholder="Mention about your role">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="">Designation</label>
-                                <input type="text" class="form-control"
-                                       autocomplete="nope" placeholder="Mention about your role">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="gl_input_label">Company Name</label>
+                                    <input type="text" class="form-control gl_input_box required"
+                                           autocomplete="nope" placeholder="Enter your company's name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="gl_input_label">Industry</label>
+                                    <select class="form-control gl_input_box required">
+                                        <option value="">Select a domain</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="">Company Name</label>
-                                <input type="text" class="form-control"
-                                       autocomplete="nope" placeholder="Enter your company's name">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="gl_input_label">Company Size</label>
+                                    <select class="form-control gl_input_box required">
+                                        <option value="">Select Range</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="gl_input_label">Company URL</label>
+                                    <input type="text" class="form-control gl_input_box required"
+                                           autocomplete="nope" placeholder="Your company's official website">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="">Industry</label>
-                                <input type="text" class="form-control"
-                                       autocomplete="nope" placeholder="Select a domain">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="gl_input_label">About Company</label>
+                                    <textarea rows="2" class="form-control gl_input_box required"
+                                              placeholder="Few words describing your company’s work culture, domain expertise, etc."
+                                              autocomplete="nope"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="">Company Size</label>
-                                <select class="form-control">
-                                    <option value="">Select Range</option>
-                                </select>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="gl_input_label">Company Benefits</label>
+                                    <textarea rows="2" class="form-control gl_input_box required"
+                                              placeholder=""
+                                              autocomplete="nope"></textarea>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="">Company URL</label>
-                                <input type="text" class="form-control"
-                                       autocomplete="nope" placeholder="Your company's official website">
+                        <div class="row">
+                            <div class="col-md-4 col-md-offset-2 text-center">
+                                <div class="form-group">
+                                        <a href="" class="btn_preview">Preview</a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="form-group">
+                                        <a href="" class="btn_proceed">Proceed</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="">About Company</label>
-                                <textarea rows="2" class="form-control"
-                                          placeholder="Few words describing your company’s work culture, domain expertise, etc."
-                                          autocomplete="nope"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="">Company Benefits</label>
-                                <textarea rows="2" class="form-control"
-                                          placeholder=""
-                                          autocomplete="nope"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-2 text-center">
-                            <div class="form-group">
-                                <button class="btn btn-primary">Preview</button>
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <div class="form-group">
-                                <button class="btn btn-primary">Proceed</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
 {{>footer_assets}}
+{{>footer}}
 </body>
 <script type="application/javascript">
     $(function () {
