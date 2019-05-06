@@ -38,4 +38,8 @@ router.get('/fresher-account', function(req, res) {
     res.render('fresher_account');
 });
 
+router.get('/exp-account', function(req, res) {
+    res.render('experience_account');
+});
+
 module.exports = router;
