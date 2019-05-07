@@ -13,7 +13,7 @@
 <div class="profile_sec">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="sidenav_wrap js_side_bar">
                     <ul class="sidenav">
                         <li><a class="active js_section_scroll_link" href="#basicDetailsForm">Profile</a></li>
@@ -22,7 +22,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="form_wrap">
                     <div class="name_info_sec">
                         <div class="row">
@@ -43,7 +43,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Full Name</label>
-                                        <input type="text" class="form-control js_email" placeholder="Rahul Redekar">
+                                        <input type="text" class="form-control" placeholder="Rahul Redekar">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -51,12 +51,21 @@
                                         <label>Experience</label>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control js_password"
-                                                       placeholder="0 years">
+                                                <div class="input_icon_wrap">
+                                                    <select class="form-control">
+                                                        <option>0 Years</option>
+                                                    </select>
+                                                    <span class="fa fa-angle-down icon_sec"></span>
+                                                </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control js_password"
-                                                       placeholder="0 months">
+                                                <div class="input_icon_wrap">
+                                                    <select class="form-control">
+                                                        <option value="">0 Month</option>
+                                                        <option value="">{{name}}</option>
+                                                    </select>
+                                                    <span class="fa fa-angle-down icon_sec"></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -66,15 +75,16 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Qualification</label>
-                                        <input type="text" class="form-control js_email"
-                                               placeholder="Your email address">
+                                        <input type="text" class="form-control"
+                                               placeholder="B.Tech in Computer Science">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Expected Annual Salary</label>
-                                        <input type="text" class="form-control js_email"
-                                               placeholder="Your email address">
+                                        <input type="text" class="form-control"
+                                               placeholder="360000">
+                                        <span class="inr_txt">INR</span>
                                     </div>
                                 </div>
                             </div>
@@ -83,8 +93,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Institution</label>
-                                        <input type="text" class="form-control js_email"
-                                               placeholder="Your email address">
+                                        <input type="text" class="form-control"
+                                               placeholder="Belgavi Engineering College, Bangalore">
                                     </div>
                                 </div>
                             </div>
@@ -92,15 +102,15 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Contact No.</label>
-                                        <input type="text" class="form-control js_email"
-                                               placeholder="Your email address">
+                                        <input type="text" class="form-control"
+                                               placeholder="9878123472">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Email ID</label>
-                                        <input type="text" class="form-control js_email"
-                                               placeholder="Your email address">
+                                        <input type="text" class="form-control"
+                                               placeholder="rahul17.rad@gmail.com">
                                     </div>
                                 </div>
                             </div>
@@ -108,8 +118,11 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Upload Resume</label>
-                                        <input type="text" class="form-control js_email"
-                                               placeholder="Your email address">
+                                       <div class="upload_resume">
+<div class="upload_txt">
+    
+</div>
+                                       </div>
                                     </div>
                                 </div>
                             </div>

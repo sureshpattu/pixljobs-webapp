@@ -773,6 +773,35 @@ select.select {
   -webkit-appearance: none;
 }
 
+.input_icon_wrap {
+  border-radius: 4px;
+  box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
+  background-color: #ffffff;
+  position: relative;
+}
+.input_icon_wrap .form-control {
+  height: 48px;
+  border-radius: 4px;
+  background-color: transparent !important;
+  padding-right: 40px;
+  box-shadow: none !important;
+  border: solid 1px transparent;
+  position: relative;
+  z-index: 1;
+}
+.input_icon_wrap select.form-control {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.input_icon_wrap .icon_sec {
+  position: absolute;
+  top: 16px;
+  right: 15px;
+  color: #dadee2;
+  font-size: 17px;
+  z-index: 0;
+}
+
 body.popup-visible {
   overflow: hidden;
 }
@@ -1974,38 +2003,34 @@ body.popup-visible {
 .profile_pg {
   background-color: #f8f8f9;
 }
-.profile_pg .form_wrap {
-  box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
-  background-image: linear-gradient(208deg, #ffffff, #f7f7f7);
-}
-.profile_pg .form_wrap .sidenav {
+.profile_pg .sidenav {
   padding: 0;
   margin: 30px 0 0 0;
 }
-.profile_pg .form_wrap .sidenav li {
+.profile_pg .sidenav li {
   list-style: none;
   display: block;
   padding-bottom: 10px;
 }
-.profile_pg .form_wrap .sidenav a {
+.profile_pg .sidenav a {
   padding: 10px 8px;
   text-decoration: none;
   display: block;
   width: 100%;
   cursor: pointer;
   outline: none;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   line-height: normal;
   text-align: left;
   color: #637282;
 }
-.profile_pg .form_wrap .sidenav .active {
+.profile_pg .sidenav .active {
   font-weight: 900;
   position: relative;
   color: #46525f;
 }
-.profile_pg .form_wrap .sidenav .active:before {
+.profile_pg .sidenav .active:before {
   content: ' \25B6';
   width: 8px;
   font-size: 12px;
@@ -2013,8 +2038,15 @@ body.popup-visible {
   left: -10px;
   top: 13px;
 }
+.profile_pg .form_wrap {
+  box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(208deg, #ffffff, #f7f7f7);
+  padding: 20px;
+}
 .profile_pg .form_wrap .name_info_sec {
   border-bottom: solid 2px #eaedf0;
+  padding: 20px 0 30px 30px;
+  margin-bottom: 30px;
 }
 .profile_pg .form_wrap .name_info_sec .user_prof_pic_link {
   padding: 2px 0 0 !important;
@@ -2023,7 +2055,6 @@ body.popup-visible {
   position: relative;
   background-color: #e3e3e3;
   border-radius: 100%;
-  margin: 26px 0 0;
   text-align: center;
   display: block;
 }
@@ -2036,4 +2067,29 @@ body.popup-visible {
   border-radius: 100%;
   border: 2px solid #ffffff;
   background: #fff;
+}
+.profile_pg .form_wrap .name_info_sec .name_txt {
+  font-size: 19px;
+  font-weight: 600;
+  color: #4e5862;
+  padding-top: 27px;
+}
+.profile_pg .form_wrap .name_info_sec .qualification_txt {
+  font-size: 14px;
+  font-weight: 300;
+  color: #637282;
+}
+.profile_pg .form_wrap .inr_txt {
+  position: absolute;
+  top: 42px;
+  right: 24px;
+  color: #637282;
+  font-size: 12px;
+  z-index: 0;
+}
+.profile_pg .form_wrap .upload_resume {
+  height: 60px;
+  border-radius: 5px;
+  border: dashed 2px #dadada;
+  background-color: rgba(255, 255, 255, 0);
 }

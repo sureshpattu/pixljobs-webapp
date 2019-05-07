@@ -882,3 +882,35 @@ select.select {
     -moz-appearance: none;
     -webkit-appearance: none;
 }
+
+.input_icon_wrap {
+    border-radius: 4px;
+    box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
+    background-color: #ffffff;
+    position: relative;
+
+    .form-control {
+        height: 48px;
+        border-radius: 4px;
+        background-color: transparent !important;
+        padding-right: 40px;
+        box-shadow: none !important;
+        border: solid 1px transparent;
+        position: relative;
+        z-index: 1;
+    }
+
+    select.form-control {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+    }
+
+    .icon_sec {
+        position: absolute;
+        top: 16px;
+        right: 15px;
+        color: #dadee2;
+        font-size: 17px;
+        z-index: 0;
+    }
+}
