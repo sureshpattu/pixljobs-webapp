@@ -752,6 +752,50 @@ select.select {
   z-index: 0;
 }
 
+.pixl_form_group {
+  position: relative;
+}
+.pixl_form_group .form-control {
+  height: 64px;
+  border: none;
+  position: relative;
+  font-weight: 400;
+  z-index: 1;
+  font-size: 14px;
+  padding-right: 40px;
+  box-shadow: 0 2px 4px 0 rgba(213, 213, 214, 0.8);
+  background-color: #ffffff;
+}
+.pixl_form_group .control-label {
+  font-size: 14px;
+  color: #637282;
+  font-weight: 600;
+  margin: 0;
+  padding: 0 0 7px;
+}
+.pixl_form_group select.form-control {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.pixl_form_group .icon_wrap {
+  position: absolute;
+  width: 40px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+  padding: 23px 0 0;
+  text-align: center;
+}
+.pixl_form_group .icon_wrap .icon_sec {
+  opacity: 0.44;
+  color: #697585;
+  font-size: 18px;
+}
+.pixl_form_group .icon_wrap img {
+  width: 18px;
+}
+
 body.popup-visible {
   overflow: hidden;
 }
@@ -2401,12 +2445,6 @@ body.popup-visible {
   font-size: 14px;
   font-weight: 600;
   color: #637282;
-}
-.signup_rec_pg .signup_wrap .gl_input_text {
-  opacity: 0.56;
-  font-size: 11px;
-  color: #637282;
-  margin: 0 0 0 16px;
 }
 .signup_rec_pg .signup_wrap .gl_input_box {
   font-size: 14px;
