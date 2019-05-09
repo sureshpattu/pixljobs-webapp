@@ -1,7 +1,7 @@
 .postjob_work {
     .hero_sec {
         width: 833px;
-        height: 1100px;
+        height: 1350px;
         margin: 47px 304px 0 303px;
         box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
         background-image: linear-gradient(207deg, #ffffff, #f7f7f7);
@@ -57,11 +57,22 @@
                 background-color: #ffffff;
                 font-size: 14px;
                 color: #c7d3dd;
+                padding: 0 0 0 70px;
+            }
+            .small_box_right {
+                width: 197.9px;
+                height: 67.4px;
+                box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
+                background-color: #ffffff;
+                font-size: 14px;
+                color: #c7d3dd;
+                padding: 0 0 0 70px;
+                margin: 0 0 0 -95px;
             }
 
             .large_box {
                 width: 392.4px;
-                height: 70.4px;
+                height: 68px;
                 box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
                 background-color: #ffffff;
                 padding: 25px 0 24px 18px;
