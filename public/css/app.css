@@ -2567,3 +2567,106 @@ body.popup-visible {
   text-align: center;
   vertical-align: middle;
 }
+
+.job_applicant_pg .form_sec {
+  box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(208deg, #ffffff, #f7f7f7);
+  margin: 90px 0 0;
+}
+.job_applicant_pg .user_wrap {
+  box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(208deg, #ffffff, #f7f7f7);
+  padding: 35px 40px;
+  border-bottom: solid 2px #eaedf0;
+}
+.job_applicant_pg .user_wrap .name {
+  font-size: 19px;
+  font-weight: 600;
+  color: #4e5862;
+}
+.job_applicant_pg .user_wrap .designation {
+  font-size: 14px;
+  color: #637282;
+}
+.job_applicant_pg .user_wrap .details_sec {
+  padding: 32px 0 0 40px;
+}
+.job_applicant_pg .profile_img_wrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+}
+.job_applicant_pg .profile_img_wrap .icon_wrap {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.19);
+  background-color: #fc7968;
+  position: absolute;
+  bottom: 10px;
+  right: 0;
+  padding: 3px 0 0;
+  text-align: center;
+}
+.job_applicant_pg .profile_img_wrap .fa {
+  color: #ffffff;
+  font-size: 9px;
+}
+.job_applicant_pg .profile_img_wrap .img_sec {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
+}
+.job_applicant_pg .cards_wrap {
+  padding: 5px 6px;
+}
+.job_applicant_pg .cards_wrap .panel-group {
+  margin-bottom: 8px;
+}
+.job_applicant_pg .cards_wrap .panel-heading {
+  padding: 0;
+}
+.job_applicant_pg .cards_wrap .panel-body {
+  border: none !important;
+}
+.job_applicant_pg .cards_wrap .panel-title {
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 1.67;
+  color: #2e3d4e;
+  padding: 18px 40px 18px;
+}
+.job_applicant_pg .cards_wrap .panel-title .highlights {
+  font-size: 18px;
+  font-weight: 600;
+}
+.job_applicant_pg .cards_wrap .panel-title .small_txt {
+  margin: 0 20px 0 0;
+}
+.job_applicant_pg .cards_wrap .panel-title.collapsed .fa-angle-down {
+  transform: rotate(-90deg);
+}
+.job_applicant_pg .cards_wrap .close_btn_link {
+  width: 95px;
+  height: 34px;
+  border-radius: 3px;
+  background-color: #fbf2f1;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  color: #fc7968;
+  display: block;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 17px 15px 10px auto;
+  padding: 10px 0 0;
+}
+.job_applicant_pg .cards_wrap .close_btn_link .fa {
+  position: relative;
+  left: -2px;
+  font-size: 13px;
+}
