@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Account Fresher</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    {{>header_assets select2=true}}
+</head>
+<body class="view_user_profile_pg med_content_pg profile_pg">
+{{>header}}
+
+<div class="profile_sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <div class="sidenav_wrap js_side_bar">
+                    <ul class="sidenav">
+                        <li><a class="active js_section_scroll_link" href="#basicDetailsForm">Profile</a></li>
+                        <li><a class="js_section_scroll_link" href="#aboutMeForm">Application Status</a></li>
+                        <li><a class="js_section_scroll_link" href="#whyHereForm">Preferences</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form_wrap">
+                    <div class="name_info_sec">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a class="user_prof_pic_link" data-toggle="dropdown">
+                                    <img class="user_img" src="/img/user_icon.svg">
+                                </a>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="name_txt">Rahul Redekar</div>
+                                <div class="qualification_txt">Fresher - B.Tech in Computer Science</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="detail_sec">
+                        <form class="" id="jsLoginForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Full Name</label>
+                                        <input type="text" class="form-control" placeholder="Rahul Redekar">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Experience</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="input_icon_wrap">
+                                                    <select class="form-control">
+                                                        <option>0 Years</option>
+                                                    </select>
+                                                    <span class="fa fa-angle-down icon_sec"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input_icon_wrap">
+                                                    <select class="form-control">
+                                                        <option value="">0 Month</option>
+                                                        <option value="">{{name}}</option>
+                                                    </select>
+                                                    <span class="fa fa-angle-down icon_sec"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Qualification</label>
+                                        <input type="text" class="form-control"
+                                               placeholder="B.Tech in Computer Science">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Expected Annual Salary</label>
+                                        <input type="text" class="form-control"
+                                               placeholder="360000">
+                                        <span class="inr_txt">INR</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Institution</label>
+                                        <input type="text" class="form-control"
+                                               placeholder="Belgavi Engineering College, Bangalore">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Contact No.</label>
+                                        <input type="text" class="form-control"
+                                               placeholder="9878123472">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Email ID</label>
+                                        <input type="text" class="form-control"
+                                               placeholder="rahul17.rad@gmail.com">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Upload Resume</label>
+                                        <div class="upload_resume">
+                                            <div class="upload_txt">
+                                                RahCV122019.pdf
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <button type="submit"
+                                                        class="submit_btn btn btn-default btn-lg btn-block">Preview
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <button type="submit"
+                                                        class="submit_btn btn btn-primary btn-lg btn-block">Save
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
+{{>footer}}
+</body>
+<script type="application/javascript">
+    $(function() {
+
+    });
+</script>
+</html>
