@@ -34,4 +34,8 @@ router.get('/postjob_info', function(req, res) {
     res.render('postjob_info');
 });
 
+router.get('/job-applicant', function(req, res) {
+    res.render('job_applicant');
+});
+
 module.exports = router;

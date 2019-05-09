@@ -8,9 +8,6 @@ body {
     font-family: $body_txt_font;
 }
 
-.main_cont_sec {
-    margin-bottom: 150px;
-}
 
 .text_black {
     color: #000;
@@ -140,6 +137,7 @@ a:active {
             left: auto;
             right: 0;
         }
+
         .checkmark {
             left: auto;
             right: 0;
@@ -164,7 +162,7 @@ body {
 }
 
 .main_cont_sec {
-    margin-bottom: 150px;
+    background-color: #f8f8f9;
 }
 
 .text_black {
