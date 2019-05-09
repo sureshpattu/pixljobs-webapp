@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Account Fresher</title>
+    <title>Account Experience</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
     {{>header_assets select2=true}}
 </head>
-<body class="view_user_profile_pg med_content_pg">
+<body class="profile_pg">
 {{>header}}
 
 <div class="profile_sec">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="sidenav_wrap js_side_bar">
                     <ul class="sidenav">
                         <li><a class="active js_section_scroll_link" href="#basicDetailsForm">Profile</a></li>
@@ -22,114 +22,127 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-7">
-                <div class="name_info_sec">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <img src="/img/Medinin-Logo.png" alt="" style="width: 60px;height: 60px">
-                        </div>
-                        <div class="col-md-9">
-                            <div class="name_txt">Sunil Suresh Patil</div>
-                            <div class="qualification_txt">Full Stack Developer, 5yrs Exp.</div>
+            <div class="col-md-8">
+                <div class="form_wrap">
+                    <div class="name_info_sec">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a class="user_prof_pic_link" data-toggle="dropdown">
+                                    <img class="user_img" src="/img/user_icon.svg">
+                                </a>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="name_txt">Sunil Suresh Patil</div>
+                                <div class="qualification_txt">Full Stack Developer, 5yrs Exp.</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="detail_sec">
-                    <form class="" id="jsLoginForm">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Full Name</label>
-                                    <input type="text" class="form-control js_email" placeholder="Rahul Redekar">
+                    <div class="detail_sec">
+                        <form class="" id="jsLoginForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Full Name</label>
+                                        <input type="text" class="form-control" placeholder="Sunil Suresh Patil">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Experience</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control "
+                                                       placeholder="0 years">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control "
+                                                       placeholder="0 months">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Experience</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Designation</label>
+                                        <input type="text" class="form-control" placeholder="Full Stack Developer">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Company Name</label>
+                                        <input type="text" class="form-control" placeholder="Pattu Technologies Pvt. Ltd.">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Current Annual Salary</label>
+                                        <input type="text" class="form-control" placeholder="2000000">
+                                        <span class="inr_txt">INR</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Expected Annual Salary</label>
+                                        <input type="text" class="form-control" placeholder="2200000">
+                                        <span class="inr_txt">INR</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Contact No.</label><span class="verify_txt">Verify</span>
+                                        <input type="text" class="form-control" placeholder="9878655672">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Email ID</label>
+                                        <input type="text" class="form-control" placeholder="sunil.patil88@gmail.com">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group pixl_form_group ">
+                                        <label class="control-label">Upload Resume <span class="updated_txt">updated 2 days ago</span></label>
+                                        <div class="upload_resume">
+                                            <div class="upload_txt">
+                                                <span class="fa fa-cloud-upload"></span>
+                                                RahCV122019.pdf
+                                                <a href="#" class="cta_link">Re-Upload</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control js_password"
-                                                   placeholder="0 years">
+                                            <div class="form-group pixl_form_group">
+                                                <button type="submit" class="preview_btn btn btn-default btn-lg btn-block">Preview</button>
+                                            </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control js_password"
-                                                   placeholder="0 months">
+                                            <div class="form-group pixl_form_group">
+                                                <button type="submit" class="submit_btn btn btn-primary btn-lg btn-block">Save</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Designation</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Company Name</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Current Annual Salary</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Expected Annual Salary</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Contact No.</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Email ID</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Upload Resume</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <button type="submit" class="submit_btn btn btn-default btn-lg btn-block">Preview</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <button type="submit" class="submit_btn btn btn-primary btn-lg btn-block">Save</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        </form>
 
-                        </div>
-                    </form>
-
+                    </div>
                 </div>
+
             </div>
             <div class="col-md-2"></div>
         </div>

@@ -113,6 +113,40 @@
         .verify_txt{
             text-align: center;
             color: #ffffff;
+            border-radius: 3px;
+            background-color: #f5a623;
+            margin-left: 10px;
+            padding: 3px 3px 3px 3px;
+        }
+        .cta_link{
+            text-decoration: none;
+            cursor: pointer;
+            text-underline: #2e3d4e;
+        }
+        .updated_txt{
+            opacity: 0.56;
+            font-size: 11px;
+            text-align: right;
+            color: #637282;
+        }
+        .submit_btn{
+            height: 60px;
+            border-radius: 5px;
+            box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
+            background-color: #4a58ff;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            color: #ffffff;
+        }
+        .preview_btn{
+            height: 60px;
+            border-radius: 5px;
+            background-color: #e2e6ea;
+            color: #2e3d4e;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
         }
 
 
