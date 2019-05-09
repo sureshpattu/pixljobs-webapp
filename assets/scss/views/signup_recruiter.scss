@@ -35,6 +35,7 @@
     }
 
     .btn_preview {
+      display: inline-block;
       border-radius: 5px;
       background-color: #e2e6ea;
       padding: 30px 68px;
@@ -44,6 +45,7 @@
     }
 
     .btn_proceed {
+      display: inline-block;
       padding: 30px 68px;
       border-radius: 5px;
       box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
