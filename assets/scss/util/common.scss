@@ -77,18 +77,21 @@ a:active {
     padding-left: 35px;
     margin-bottom: 12px;
     cursor: pointer;
-    font-size: 12px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    font-weight: 300;
-    color: rgba(40, 47, 63, 0.9);
+    font-size: 13px;
+    color: #637282;
+    opacity: 0.8;
+    font-weight: 400;
 
     input {
         position: absolute;
         opacity: 0;
         cursor: pointer;
+        top: 0;
+        left: 0;
     }
 
     .checkmark {
@@ -97,12 +100,12 @@ a:active {
         left: 0;
         height: 18px;
         width: 18px;
-        border: 1px solid #aaa;
+        border: 1px solid #dee1e7;
         border-radius: 2px;
     }
 
     input:checked ~ .checkmark {
-        background-color: #3188d1;
+        background-color: #fc7968;
         border: 1px solid transparent;
         border-radius: 2px;
     }
@@ -127,6 +130,20 @@ a:active {
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
+    }
+
+    &.right {
+        padding-left: 0;
+        padding-right: 25px;
+
+        input {
+            left: auto;
+            right: 0;
+        }
+        .checkmark {
+            left: auto;
+            right: 0;
+        }
     }
 }
 
@@ -262,73 +279,6 @@ textarea.form-control.input_new {
     top: -5px;
     padding-right: 10px;
     cursor: pointer;
-}
-
-.check_box {
-    position: absolute;
-    top: 15px;
-    right: 10px;
-    display: block;
-    padding-left: 25px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 12px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    font-weight: 300;
-    color: rgba(40, 47, 63, 0.9);
-    text-align: left;
-
-    input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        left: 0;
-        height: 18px;
-        width: 18px;
-        top: 0;
-        margin: 0;
-    }
-
-    .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 18px;
-        width: 18px;
-        border: 1px solid #aaa;
-        border-radius: 2px;
-    }
-
-    input:checked ~ .checkmark {
-        background-color: #3188d1;
-        border: 1px solid transparent;
-        border-radius: 2px;
-    }
-
-    .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-    }
-
-    input:checked ~ .checkmark:after {
-        display: block;
-    }
-
-    .checkmark:after {
-        left: 6px;
-        top: 3px;
-        width: 5px;
-        height: 10px;
-        border: solid white;
-        border-width: 0 3px 3px 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
-    }
 }
 
 
