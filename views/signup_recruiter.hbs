@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
     {{>header_assets select2=true}}
 </head>
-<body class="view_user_profile_pg med_content_pg signup_rec_pg">
 {{>header}}
+<body class="view_user_profile_pg med_content_pg signup_rec_pg">
 <div class="hero_sec">
     <div class="container">
         <div class="row">
@@ -71,7 +71,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="gl_input_label">Industry</label>
-                                    <select class="form-control gl_input_box required">
+                                    <select class="form-control required">
                                         <option value="">Select a domain</option>
                                     </select>
                                 </div>
@@ -81,7 +81,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="gl_input_label">Company Size</label>
-                                    <select class="form-control gl_input_box required">
+                                    <select class="form-control required">
                                         <option value="">Select Range</option>
                                     </select>
                                 </div>
@@ -97,7 +97,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="gl_input_label">About Company</label>
+                                    <label class="gl_input_label">About Company</label><span class="gl_input_text">in 200 words or less</span>
                                     <textarea rows="2" class="form-control gl_input_box required"
                                               placeholder="Few words describing your company’s work culture, domain expertise, etc."
                                               autocomplete="nope"></textarea>
@@ -117,12 +117,12 @@
                         <div class="row">
                             <div class="col-md-4 col-md-offset-2 text-center">
                                 <div class="form-group">
-                                        <a href="" class="btn_preview">Preview</a>
+                                    <a href="" class="btn_preview">Preview</a>
                                 </div>
                             </div>
                             <div class="col-md-4 text-center">
                                 <div class="form-group">
-                                        <a href="" class="btn_proceed">Proceed</a>
+                                    <a href="" class="btn_proceed">Proceed</a>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +137,7 @@
 </body>
 <script type="application/javascript">
     $(function () {
-
+        RegistrationHandler.init();
     });
 </script>
 </html>
