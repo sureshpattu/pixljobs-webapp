@@ -1754,8 +1754,6 @@ body.popup-visible {
 }
 
 .postjob_work .hero_sec {
-  width: 833px;
-  height: 1350px;
   margin: 47px 304px 0 303px;
   box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
   background-image: linear-gradient(207deg, #ffffff, #f7f7f7);
@@ -1782,8 +1780,8 @@ body.popup-visible {
 }
 .postjob_work .hero_sec .progress {
   position: relative;
-  right: 290px;
-  width: 160%;
+  right: 230px;
+  width: 78%;
   height: 6px;
   margin-bottom: 30px;
   overflow: hidden;
@@ -1798,37 +1796,39 @@ body.popup-visible {
   color: #637282;
   padding: 32px 0 9px;
 }
-.postjob_work .hero_sec .form-group .small_box {
-  width: 197.9px;
-  height: 68.4px;
+.postjob_work .hero_sec .form-group .small_box_left {
+  width: 198px;
+  height: 68px;
   box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
   background-color: #ffffff;
-  font-size: 14px;
-  color: #c7d3dd;
-  padding: 0 0 0 70px;
+  padding: 20px 0 0 60px;
+  color: #637282;
 }
 .postjob_work .hero_sec .form-group .small_box_right {
-  width: 197.9px;
+  width: 198px;
   height: 67.4px;
   box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
   background-color: #ffffff;
   font-size: 14px;
-  color: #c7d3dd;
-  padding: 0 0 0 70px;
-  margin: 0 0 0 -95px;
+  color: #00c87a;
+  padding: 20px 0 0 60px;
+  margin: 0 0 0 -370px;
+}
+.postjob_work .hero_sec .form-group .radio_txt {
+  padding: 0 0 0 10px;
+}
+.postjob_work .hero_sec .form-group .green {
+  color: #00c87a;
 }
 .postjob_work .hero_sec .form-group .large_box {
-  width: 392.4px;
+  width: 392px;
   height: 68px;
   box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
   background-color: #ffffff;
   padding: 25px 0 24px 18px;
+  color: #000000;
 }
-.postjob_work .hero_sec .cta_wrap {
-  text-align: center;
-  margin: 71px 150px 0 0;
-}
-.postjob_work .hero_sec .cta_wrap .blue_btn {
+.postjob_work .hero_sec .blue_btn {
   width: 196px;
   height: 81px;
   border-radius: 5px;
@@ -1839,32 +1839,32 @@ body.popup-visible {
   font-size: 14px;
   font-weight: bold;
   color: #ffffff;
+  margin: 71px 0 0 90px;
 }
-.postjob_work .hero_sec .cta_wrap .fa-arrow-right {
+.postjob_work .hero_sec .fa-arrow-right {
   opacity: 0.9;
   color: #adb3fc;
   padding: 0 0 0 24px;
 }
 
 .postjob_work .hero_sec {
-  width: 833px;
   height: 1550px;
   margin: 47px 304px 0 303px;
   box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
   background-image: linear-gradient(207deg, #ffffff, #f7f7f7);
 }
-.postjob_work .hero_sec .title_wrap {
+.postjob_work .hero_sec .form-horizontal .title_wrap {
   max-width: 325px;
   padding: 30px 0 35px;
 }
-.postjob_work .hero_sec .title_wrap .title {
+.postjob_work .hero_sec .form-horizontal .title_wrap .title {
   font-size: 19px;
   line-height: 1.28;
   letter-spacing: 0.4px;
   text-align: center;
   color: #4e5862;
 }
-.postjob_work .hero_sec .title_wrap .sub_title {
+.postjob_work .hero_sec .form-horizontal .title_wrap .sub_title {
   font-size: 32px;
   font-weight: 500;
   line-height: 1.28;
@@ -1873,7 +1873,7 @@ body.popup-visible {
   color: #4e5862;
   text-transform: capitalize;
 }
-.postjob_work .hero_sec .progress {
+.postjob_work .hero_sec .form-horizontal .progress {
   position: relative;
   right: 290px;
   width: 160%;
@@ -1885,42 +1885,43 @@ body.popup-visible {
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-.postjob_work .hero_sec .form-group .control-label {
+.postjob_work .hero_sec .form-horizontal .form-group .control-label {
   font-size: 14px;
   font-weight: 600;
   color: #637282;
   padding: 32px 0 9px;
 }
-.postjob_work .hero_sec .form-group .small_box {
+.postjob_work .hero_sec .form-horizontal .form-group .small_box {
   width: 392px;
   height: 68px;
   box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
   background-color: #ffffff;
   padding: 0 0 0 18px;
-  color: #c7d3dd;
+  color: #000000;
 }
-.postjob_work .hero_sec .form-group .large_box {
+.postjob_work .hero_sec .form-horizontal .form-group .large_box {
   width: 392.4px;
   height: 110.4px;
   box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
   background-color: #ffffff;
   padding: 10px 0 80px 18px;
+  color: #000000;
 }
-.postjob_work .hero_sec .form-group .fade_txt {
+.postjob_work .hero_sec .form-horizontal .form-group .fade_txt {
   opacity: 0.56;
   font-size: 11px;
   color: #637282;
 }
-.postjob_work .hero_sec .cta_wrap {
+.postjob_work .hero_sec .form-horizontal .cta_wrap {
   text-align: center;
-  margin: 71px 150px 0 -20px;
+  margin: 71px 125px 0 -30px;
 }
-.postjob_work .hero_sec .cta_wrap .fa-arrow-left {
+.postjob_work .hero_sec .form-horizontal .cta_wrap .fa-arrow-left {
   opacity: 0.42;
   color: #2e3d4e;
   padding: 0 24px 0 0;
 }
-.postjob_work .hero_sec .cta_wrap .white_btn {
+.postjob_work .hero_sec .form-horizontal .cta_wrap .white_btn {
   width: 196px;
   height: 81px;
   border-radius: 5px;
@@ -1932,7 +1933,7 @@ body.popup-visible {
   font-weight: bold;
   color: #2e3d4e;
 }
-.postjob_work .hero_sec .cta_wrap .blue_btn {
+.postjob_work .hero_sec .form-horizontal .cta_wrap .blue_btn {
   width: 196px;
   height: 81px;
   border-radius: 5px;
@@ -1944,15 +1945,40 @@ body.popup-visible {
   font-weight: bold;
   color: #ffffff;
 }
-.postjob_work .hero_sec .cta_wrap .fa-arrow-right {
+.postjob_work .hero_sec .form-horizontal .cta_wrap .fa-arrow-right {
   opacity: 0.9;
   color: #adb3fc;
   padding: 0 0 0 24px;
 }
 
+@media all and (max-width: 767px) {
+  .postjob_work .hero_sec {
+    width: 833px;
+    height: 1550px;
+    margin: 47px 0 0 0;
+  }
+  .postjob_work .hero_sec .title_wrap {
+    max-width: 295px;
+    padding: 30px 0 35px;
+  }
+  .postjob_work .hero_sec .progress {
+    right: 16px;
+    width: 40%;
+  }
+  .postjob_work .hero_sec .form-group .control-label {
+    padding: 32px 20px 9px;
+  }
+  .postjob_work .hero_sec .form-group .small_box {
+    width: 280px;
+    height: 68px;
+    margin: 0 0 0 20px;
+  }
+  .postjob_work .hero_sec .form-group .large_box {
+    width: 280px;
+    margin: 0 0 0 20px;
+  }
+}
 .postjob_info .hero_sec {
-  width: 833px;
-  height: 1100px;
   margin: 47px 304px 0 303px;
   box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
   background-image: linear-gradient(207deg, #ffffff, #f7f7f7);
@@ -2001,7 +2027,7 @@ body.popup-visible {
   box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
   background-color: #ffffff;
   font-size: 14px;
-  color: #c7d3dd;
+  color: #000000;
 }
 .postjob_info .hero_sec .form-group .large_box {
   width: 392.4px;
@@ -2009,7 +2035,8 @@ body.popup-visible {
   box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
   background-color: #ffffff;
   font-size: 14px;
-  color: #c7d3dd;
+  color: #000000;
+  padding: 0 0 70px 20px;
 }
 .postjob_info .hero_sec .form-group .fade_txt {
   opacity: 0.56;
@@ -2018,7 +2045,7 @@ body.popup-visible {
 }
 .postjob_info .hero_sec .cta_wrap {
   text-align: center;
-  margin: 71px 150px 0 -20px;
+  margin: 71px 0 203px 0;
 }
 .postjob_info .hero_sec .cta_wrap .fa-arrow-left {
   opacity: 0.42;
@@ -2036,6 +2063,7 @@ body.popup-visible {
   font-size: 14px;
   font-weight: bold;
   color: #2e3d4e;
+  margin: 0 0 0 -25px;
 }
 .postjob_info .hero_sec .cta_wrap .blue_btn {
   width: 196px;
@@ -2048,9 +2076,37 @@ body.popup-visible {
   font-size: 14px;
   font-weight: bold;
   color: #ffffff;
+  margin: 0 0 0 10px;
 }
 .postjob_info .hero_sec .cta_wrap .fa-arrow-right {
   opacity: 0.9;
   color: #adb3fc;
   padding: 0 0 0 24px;
+}
+
+@media all and (max-width: 767px) {
+  .postjob_info .hero_sec {
+    margin: 47px 0 0 0;
+  }
+  .postjob_info .hero_sec .title_wrap {
+    max-width: 302px;
+  }
+  .postjob_info .hero_sec .progress {
+    right: 15px;
+    width: 40%;
+  }
+  .postjob_info .hero_sec .form-group .control-label {
+    padding: 32px 15px 9px;
+  }
+  .postjob_info .hero_sec .form-group .small_box {
+    width: 290px;
+    height: 68px;
+    margin: 0 0 0 15px;
+  }
+  .postjob_info .hero_sec .form-group .large_box {
+    width: 290px;
+    height: 110.4px;
+    margin: 0 0 0 15px;
+    padding: 0 0 70px 20px;
+  }
 }

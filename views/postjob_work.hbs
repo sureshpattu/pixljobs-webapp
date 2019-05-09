@@ -10,10 +10,10 @@
 {{>header}}
 <body class="view_user_profile_pg med_content_pg search_pg postjob_work">
 <div class="hero_sec">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
-                <form class="form-horizontal">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3">
+            <form class="form-horizontal">
+                <div class="container">
                     <div class="title_wrap">
                         <div class="title">Post job</div>
                         <div class="sub_title">About Work (1/3)</div>
@@ -33,10 +33,14 @@
                         <label class="control-label">Location</label>
                         <div class="row">
                             <div class="col-lg-6">
-                                <input type="password" class="form-control small_box" placeholder="Remote">
+                                <div class="form-control small_box_left">
+                                    <input type="radio" name="optradio" checked><span class="radio_txt">Remote</span>
+                                </div>
                             </div>
                             <div class="col-lg-6">
-                                <input type="password" class="form-control small_box_right" placeholder="On Site">
+                                <div class="form-control small_box_right">
+                                    <input type="radio" name="optradio" checked><span class="radio_txt">On Site</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -52,11 +56,9 @@
                         <label class="control-label">Salary - Annual INR</label>
                         <input type="password" class="form-control large_box" placeholder="Select Range">
                     </div>
-                    <div class="cta_wrap">
-                        <button class="blue_btn">proceed <span class="fa fa-arrow-right"></span></button>
-                    </div>
-                </form>
-            </div>
+                    <button class="blue_btn">proceed <span class="fa fa-arrow-right"></span></button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
