@@ -1,9 +1,65 @@
 .job_applicant_pg {
 
+    .hero_sec {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 350px;
+    }
+
+    .tab_links_wrap {
+        position: relative;
+
+        ul {
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 180px;
+
+            li {
+                list-style: none;
+                padding: 0;
+            }
+        ;
+        }
+
+        .cta_link {
+            display: block;
+            cursor: pointer;
+            text-decoration: none;
+            position: relative;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.56;
+            color: #637282;
+            padding: 12px 0;
+
+            &:before {
+                content: '‣';
+                display: none;
+                position: absolute;
+                top: 10px;
+                left: -30px;
+                font-size: 32px;
+                line-height: 1;
+            }
+
+            &.active {
+                font-weight: 600;
+
+                &:before {
+                    display: block;
+                }
+            }
+        }
+    }
+
     .form_sec {
         box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
         background-image: linear-gradient(208deg, #ffffff, #f7f7f7);
-        margin: 90px 0 0;
+        margin: -240px 0 0;
     }
 
     .user_wrap {
@@ -62,10 +118,10 @@
     }
 
     .cards_wrap {
-        padding: 5px 6px;
+        padding: 5px 6px 300px;
 
 
-        .panel-group {
+        .panel {
             margin-bottom: 8px;
         }
 
@@ -75,6 +131,7 @@
 
         .panel-body {
             border: none !important;
+            padding: 0;
         }
 
         .panel-title {
@@ -122,6 +179,242 @@
                 left: -2px;
                 font-size: 13px;
             }
+        }
+
+        .card_status_one_wrap, .card_status_two_wrap {
+            display: table;
+            width: 100%;
+            height: 90px;
+            overflow: hidden;
+
+            .card_cell {
+                display: table-cell;
+                vertical-align: middle;
+                text-align: center;
+                background-color: #efefef;
+                width: 33.33%;
+                position: relative;
+
+                .fa-check-circle {
+                    color: #d3dae0;
+                    font-size: 22px;
+                    display: inline-block;
+                    position: relative;
+                    z-index: 5;
+                    top: 2.5px;
+                    margin: 0 5px 0 0;
+                }
+
+                .c_name {
+                    opacity: 0.5;
+                    font-size: 12px;
+                    font-weight: 600;
+                    line-height: 2.08;
+                    color: #637282;
+                    display: inline-block;
+                    text-transform: uppercase;
+                    padding: 0 6px 0 0;
+                    position: relative;
+                    z-index: 5;
+                }
+
+                .time_date_txt {
+                    opacity: 0.52;
+                    font-size: 11px;
+                    color: #637282;
+                    display: inline-block;
+                    position: relative;
+                    z-index: 5;
+                }
+
+                &:after {
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    position: absolute;
+                    top: -5px;
+                    right: -6px;
+                    z-index: 3;
+                    border-top: 50px solid transparent;
+                    border-left: 30px solid #efefef;
+                    border-bottom: 50px solid transparent;
+                }
+
+                &:before {
+                    content: '';
+                    width: 0;
+                    height: 0;
+                    position: absolute;
+                    top: -13px;
+                    right: -11px;
+                    z-index: 2;
+                    border-top: 58px solid transparent;
+                    border-left: 35px solid #ffffff;
+                    border-bottom: 58px solid transparent;
+                }
+
+                .bg_shape {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: -20px;
+                    width: 30px;
+                    background-color: #ffffff;
+                    z-index: 1;
+
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        background-color: #efefef;
+                        z-index: 1;
+                    }
+                }
+
+                &:last-child {
+                    &:after, &:before {
+                        display: none;
+                    }
+                }
+            }
+
+            %active-shared {
+                background-color: rgba(230, 247, 240, 0.42);
+
+                &:after {
+                    border-left-color: rgba(230, 247, 240, 0.42);
+                }
+
+                .fa-check-circle {
+                    color: #3fdfa1;
+                }
+
+                .c_name {
+                    opacity: 1;
+                    color: #00c87a;
+                }
+
+                .bg_shape:before {
+                    background-color: rgba(230, 247, 240, 0.42);
+                }
+            }
+
+            &.viewed {
+                .viewed_sec {
+                    @extend %active-shared;
+                }
+            }
+
+            &.downloaded {
+                .downloaded_sec {
+                    @extend %active-shared;
+                }
+            }
+
+            &.shortlisted {
+                .shortlisted_sec {
+                    @extend %active-shared;
+                }
+            }
+        }
+
+        .card_status_two_wrap {
+            padding: 0 30px 20px;
+            position: relative;
+
+            .card_cell {
+                background-color: transparent;
+
+                &:after, &:before {
+                    content: none;
+                }
+
+                .fa-check-circle {
+                    margin: 0;
+                }
+
+                .c_name {
+                    display: block;
+                    padding: 0;
+                }
+
+                .time_date_txt {
+                    display: block;
+                }
+            }
+
+
+            .viewed_sec {
+                text-align: left;
+            }
+
+            .downloaded_sec {
+                text-align: center;
+            }
+
+            .shortlisted_sec {
+                text-align: right;
+            }
+
+            .c_cont_sec {
+                display: inline-block;
+                text-align: center;
+            }
+
+            &:after, &:before {
+                content: '';
+                position: absolute;
+                top: 14px;
+                left: 0;
+                right: 0;
+                border-top: 5px dashed #f6f7f8;
+                z-index: 0;
+            }
+
+            &:before {
+                right: 53%;
+                left: 11%;
+            }
+
+            &:after {
+                left: 53%;
+                right: 13%;
+            }
+
+            %active-shared {
+                background-color: transparent;
+
+                .fa-check-circle {
+                    color: #3fdfa1;
+                }
+
+                .c_name {
+                    color: #00c87a;
+                }
+            }
+
+            &.viewed {
+
+            }
+
+            &.downloaded {
+                &:before {
+                    border-top: 5px dashed #baead5;
+                }
+            }
+
+            &.shortlisted {
+                &:after {
+                    border-top: 5px dashed #baead5;
+                }
+                &:before {
+                    border-top: 5px dashed #baead5;
+                }
+            }
+
         }
 
     }

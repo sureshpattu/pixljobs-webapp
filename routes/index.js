@@ -34,8 +34,16 @@ router.get('/postjob_info', function(req, res) {
     res.render('postjob_info');
 });
 
-router.get('/job-applicant', function(req, res) {
-    res.render('job_applicant');
+router.get('/job-applicant-one', function(req, res) {
+    res.render('job_applicant_one');
+});
+
+router.get('/job-applicant-two', function(req, res) {
+    res.render('job_applicant_two');
+});
+
+router.get('/job-recruiter', function(req, res) {
+    res.render('job_recruiter');
 });
 
 router.get('/signup-recruiter', function(req, res) {
