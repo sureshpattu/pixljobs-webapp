@@ -43,6 +43,23 @@
             }
         }
 
+        .signup_title_wrap {
+            .title {
+                background-color: #ffed06;
+                display: inline-block;
+                font-size: 18px;
+            }
+
+            .sub_title {
+                display: inline-block;
+                font-size: 32px;
+                font-weight: 400;
+                letter-spacing: 0.4px;
+                color: #4e5862;
+                text-transform: uppercase;
+            }
+        }
+
         .btn_wrap {
             text-align: center;
             font-size: 12px;
@@ -80,6 +97,15 @@
         .gl_input_box {
             font-size: 14px;
             color: #c7d3dd;
+        }
+
+        .inr_txt {
+            position: absolute;
+            top: 50px;
+            z-index: 1;
+            right: 20px;
+            color: #637282;
+            font-size: 12px;
         }
 
         .draggable_box {
