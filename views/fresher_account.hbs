@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
     {{>header_assets select2=true}}
 </head>
-<body class="view_user_profile_pg med_content_pg profile_pg">
+<body class="profile_pg">
 {{>header}}
 
 <div class="profile_sec">
@@ -27,9 +27,12 @@
                     <div class="name_info_sec">
                         <div class="row">
                             <div class="col-md-3">
-                                <a class="user_prof_pic_link" data-toggle="dropdown">
-                                    <img class="user_img" src="/img/user_icon.svg">
-                                </a>
+                                <div class="profile_img_wrap">
+                                    <img src="https://via.placeholder.com/150" class="img_sec">
+                                    <div class="icon_wrap">
+                                        <span class="fa fa-pencil"></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-9">
                                 <div class="name_txt">Rahul Redekar</div>
@@ -41,14 +44,14 @@
                         <form class="" id="jsLoginForm">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Full Name</label>
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Full Name</label>
                                         <input type="text" class="form-control" placeholder="Rahul Redekar">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Experience</label>
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Experience</label>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="input_icon_wrap">
@@ -73,15 +76,15 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Qualification</label>
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Qualification</label>
                                         <input type="text" class="form-control"
                                                placeholder="B.Tech in Computer Science">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Expected Annual Salary</label>
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Expected Annual Salary</label>
                                         <input type="text" class="form-control"
                                                placeholder="360000">
                                         <span class="inr_txt">INR</span>
@@ -91,8 +94,8 @@
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Institution</label>
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Institution</label>
                                         <input type="text" class="form-control"
                                                placeholder="Belgavi Engineering College, Bangalore">
                                     </div>
@@ -100,27 +103,32 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Contact No.</label>
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Contact No.</label><span
+                                            class="verify_txt">Verify</span>
                                         <input type="text" class="form-control"
                                                placeholder="9878123472">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Email ID</label>
-                                        <input type="text" class="form-control"
+                                    <div class="form-group pixl_form_group ">
+                                        <label class="control-label">Email ID</label>
+                                        <span class="checked_icon fa fa-check-circle"></span>
+                                        <span class="verified_txt">Verified</span>
+                                        <input type="text" class="form-control "
                                                placeholder="rahul17.rad@gmail.com">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Upload Resume</label>
+                                    <div class="form-group pixl_form_group ">
+                                        <label class="control-label">Upload Resume</label>
                                         <div class="upload_resume">
                                             <div class="upload_txt">
+                                                <span class="fa fa-cloud-upload"></span>
                                                 RahCV122019.pdf
+                                                <a href="#" class="cta_link">Re-Upload</a>
                                             </div>
                                         </div>
                                     </div>
@@ -130,16 +138,16 @@
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="form-group pixl_form_group ">
                                                 <button type="submit"
-                                                        class="submit_btn btn btn-default btn-lg btn-block">Preview
+                                                        class="preview_btn btn btn-default btn-lg btn-block">Preview
                                                 </button>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group">
+                                            <div class="form-group pixl_form_group ">
                                                 <button type="submit"
-                                                        class="submit_btn btn btn-primary btn-lg btn-block">Save
+                                                        class="submit_btn btn btn-primary btn-lg btn-block"><span class="fa fa-check"></span> Save
                                                 </button>
                                             </div>
                                         </div>
