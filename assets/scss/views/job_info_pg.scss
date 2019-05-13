@@ -1,10 +1,46 @@
-.job_info_pg{
-    .about_job_card{
+.job_info_pg {
+    background-color: #f8f8f9;
+
+    .about_job_card {
         border-radius: 4px;
         box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.13);
         background-color: #ffffff;
+        padding: 20px;
+
+        .job_card_title {
+            font-size: 34px;
+            font-weight: 600;
+            color: #2e3d4e;
+            padding: 10px 0 0 10px;
+            display: inline-block;
+
+        }
+
+        .company_logo {
+            display: inline-block;
+
+
+        }
+
+        .salary_range {
+
+        }
+
+        .post_time {
+
+        }
+
+        .place {
+        }
+
+        .openin_type {
+        }
+
+        .post_tag {
+        }
     }
-    .about_company_card{
+
+    .about_company_card {
         border-radius: 4px;
         box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.13);
         background-color: #ffffff;
