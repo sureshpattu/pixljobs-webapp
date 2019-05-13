@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
     {{>header_assets select2=true}}
 </head>
-<body class="view_user_profile_pg med_content_pg signup_rec_pg">
 {{>header}}
+<body class="view_user_profile_pg med_content_pg signup_rec_pg">
 <div class="hero_sec">
     <div class="container">
         <div class="row">
@@ -17,15 +17,15 @@
                     <form class="" id="">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <div class="">
+                                <div class="form-group pixl_form_group">
+                                    <div class="signup_title_wrap">
                                         <div class="title">Signup to </div>
                                         <div class="sub_title">Get started!</div>
                                     </div>
                                 </div>
                                 <div class="role_wrap">
-                                    <div class="form-group">
-                                        <label for="">Select role</label>
+                                    <div class="form-group pixl_form_group">
+                                        <label for="" class="control-label">Select role</label>
                                         <div>
                                             <a href="" class="btn btn_wrap active">Recruiter</a>
                                             <a href="" class="btn btn_wrap not_active">Applicant</a>
@@ -34,27 +34,26 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="profile_img_wrap "
-                                     data-toggle="modal" data-backdrop="static">
-                                    <img class="profile_img" src="">
-                                    <div class="change_photo">
-                                        <i class="fa fa-camera"><span class="txt">Upload Photo</span></i>
+                                <div class="upload_photo_wrap">
+                                    <img src="" alt="" class="img_sec">
+                                    <div class="icon_wrap">
+                                        <i class="fa fa-camera"></i>
+                                        <div class="upload_txt">Upload Photo</div>
                                     </div>
-                                    <img src="" class="hide">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="gl_input_label">Full Name</label>
+                                <div class="form-group pixl_form_group">
+                                    <label class="control-label">Full Name</label>
                                     <input type="text" class="form-control gl_input_box required"
                                            autocomplete="nope" placeholder="Enter your first name and last name">
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="gl_input_label">Designation</label>
+                                <div class="form-group pixl_form_group">
+                                    <label class="control-label">Designation</label>
                                     <input type="text" class="form-control gl_input_box required"
                                            autocomplete="nope" placeholder="Mention about your role">
                                 </div>
@@ -62,16 +61,16 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="gl_input_label">Company Name</label>
+                                <div class="form-group pixl_form_group">
+                                    <label class="control-label">Company Name</label>
                                     <input type="text" class="form-control gl_input_box required"
                                            autocomplete="nope" placeholder="Enter your company's name">
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="gl_input_label">Industry</label>
-                                    <select class="form-control gl_input_box required">
+                                <div class="form-group pixl_form_group">
+                                    <label class="control-label">Industry</label>
+                                    <select class="form-control required">
                                         <option value="">Select a domain</option>
                                     </select>
                                 </div>
@@ -79,16 +78,16 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="gl_input_label">Company Size</label>
-                                    <select class="form-control gl_input_box required">
+                                <div class="form-group pixl_form_group">
+                                    <label class="control-label">Company Size</label>
+                                    <select class="form-control required">
                                         <option value="">Select Range</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="gl_input_label">Company URL</label>
+                                <div class="form-group pixl_form_group">
+                                    <label class="control-label">Company URL</label>
                                     <input type="text" class="form-control gl_input_box required"
                                            autocomplete="nope" placeholder="Your company's official website">
                                 </div>
@@ -96,8 +95,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="gl_input_label">About Company</label>
+                                <div class="form-group pixl_form_group">
+                                    <label class="control-label">About Company</label><span class="gl_input_text">in 200 words or less</span>
                                     <textarea rows="2" class="form-control gl_input_box required"
                                               placeholder="Few words describing your company’s work culture, domain expertise, etc."
                                               autocomplete="nope"></textarea>
@@ -106,8 +105,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="gl_input_label">Company Benefits</label>
+                                <div class="form-group pixl_form_group">
+                                    <label class="control-label">Company Benefits</label>
                                     <textarea rows="2" class="form-control gl_input_box required"
                                               placeholder=""
                                               autocomplete="nope"></textarea>
@@ -116,13 +115,13 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-md-offset-2 text-center">
-                                <div class="form-group">
-                                        <a href="" class="btn_preview">Preview</a>
+                                <div class="form-group pixl_form_group">
+                                    <a href="" class="btn_preview">Preview</a>
                                 </div>
                             </div>
                             <div class="col-md-4 text-center">
-                                <div class="form-group">
-                                        <a href="" class="btn_proceed">Proceed</a>
+                                <div class="form-group pixl_form_group">
+                                    <a href="" class="btn_proceed">Proceed</a>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +136,7 @@
 </body>
 <script type="application/javascript">
     $(function () {
-
+        RegistrationHandler.init();
     });
 </script>
 </html>

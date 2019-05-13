@@ -2429,6 +2429,52 @@ body.popup-visible {
   background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
   padding: 69px 75px 78px 78px;
 }
+.signup_rec_pg .signup_wrap .upload_photo_wrap {
+  width: 236px;
+  height: 236px;
+  border: solid 1px #dce0e3;
+  border-radius: 161px;
+  background-color: #ffffff;
+  position: relative;
+}
+.signup_rec_pg .signup_wrap .upload_photo_wrap .img_sec {
+  width: 226px;
+  height: 226px;
+  border-radius: 153.5px;
+  border: dotted 2px #d3dae0;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+.signup_rec_pg .signup_wrap .upload_photo_wrap .icon_wrap {
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  top: 104px;
+  left: 80px;
+}
+.signup_rec_pg .signup_wrap .upload_photo_wrap .icon_wrap .fa-camera {
+  opacity: 0.19;
+}
+.signup_rec_pg .signup_wrap .upload_photo_wrap .icon_wrap .upload_txt {
+  font-size: 12px;
+  font-weight: 500;
+  opacity: 0.43;
+  color: #637282;
+}
+.signup_rec_pg .signup_wrap .signup_title_wrap .title {
+  background-color: #ffed06;
+  display: inline-block;
+  font-size: 18px;
+}
+.signup_rec_pg .signup_wrap .signup_title_wrap .sub_title {
+  display: inline-block;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 0.4px;
+  color: #4e5862;
+  text-transform: uppercase;
+}
 .signup_rec_pg .signup_wrap .btn_wrap {
   text-align: center;
   font-size: 12px;
@@ -2442,14 +2488,47 @@ body.popup-visible {
 .signup_rec_pg .signup_wrap .not_active {
   color: #637282 !important;
 }
-.signup_rec_pg .signup_wrap .gl_input_label {
-  font-size: 14px;
-  font-weight: 600;
+.signup_rec_pg .signup_wrap .gl_input_text {
+  opacity: 0.56;
+  font-size: 11px;
   color: #637282;
+  margin: 0 0 0 16px;
+}
+.signup_rec_pg .signup_wrap .verify_link {
+  font-size: 11px;
+  font-weight: bold;
+  color: #ffffff;
+  border-radius: 3px;
+  background-color: #f5a623;
+  padding: 3px 5px 2px 5px;
+  margin: 0 0 0 4px;
 }
 .signup_rec_pg .signup_wrap .gl_input_box {
   font-size: 14px;
   color: #c7d3dd;
+}
+.signup_rec_pg .signup_wrap .inr_txt {
+  position: absolute;
+  top: 50px;
+  z-index: 1;
+  right: 20px;
+  color: #637282;
+  font-size: 12px;
+}
+.signup_rec_pg .signup_wrap .draggable_box {
+  border-radius: 5px;
+  border: dotted 2px #dadada;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 30px 0 30px 0;
+  text-align: center;
+  color: #2e3d4e;
+  font-size: 14px;
+}
+.signup_rec_pg .signup_wrap .draggable_box .upload_link {
+  font-weight: 400;
+  color: #637282;
+  cursor: pointer;
+  text-decoration: underline;
 }
 .signup_rec_pg .signup_wrap .btn_preview {
   display: inline-block;
