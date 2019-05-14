@@ -2426,6 +2426,107 @@ body.popup-visible {
   font-weight: bold;
   color: #ffffff;
 }
+@media (max-width: 767px) {
+  .signup_rec_pg .form_wrap {
+    margin-top: 10px;
+    box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
+    background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
+    padding: 15px 12px 10px 12px;
+  }
+  .signup_rec_pg .form_wrap .signup_title_wrap .title {
+    background-color: #ffed06;
+    display: inline-block;
+    font-size: 12px;
+  }
+  .signup_rec_pg .form_wrap .btn_wrap {
+    padding: 5px;
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+    background-color: #fff;
+  }
+  .signup_rec_pg .form_wrap .signup_title_wrap .sub_title {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    color: #4e5862;
+    text-transform: uppercase;
+  }
+  .signup_rec_pg .form_wrap .upload_photo_wrap {
+    width: 200px;
+    height: 200px;
+    border: solid 1px #dce0e3;
+    border-radius: 161px;
+    background-color: #ffffff;
+    position: relative;
+    margin: 0 0px 0px 33px;
+  }
+  .signup_rec_pg .form_wrap .upload_photo_wrap .img_sec {
+    width: 192px;
+    height: 192px;
+    border-radius: 153.5px;
+    border: dotted 2px #d3dae0;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+  }
+  .signup_rec_pg .form_wrap .upload_photo_wrap .icon_wrap {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    top: 80px;
+    left: 60px;
+  }
+  .signup_rec_pg .form_wrap .btn_preview {
+    padding: 10px 20px 10px 20px;
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #e2e6ea;
+    font-weight: 600;
+    text-align: center;
+    color: #2e3d4e;
+  }
+  .signup_rec_pg .form_wrap .btn_proceed {
+    padding: 10px 20px 10px 20px;
+    display: inline-block;
+    border-radius: 5px;
+    box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
+    background-color: #4a58ff;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .signup_rec_pg .form_wrap .btn_wrap {
+    text-align: center;
+    font-size: 12px;
+    padding: 20px 20px 20px 20px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+    background-color: #ffffff;
+  }
+  .signup_rec_pg .form_wrap .btn_preview {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #e2e6ea;
+    padding: 30px 50px;
+    font-weight: 600;
+    text-align: center;
+    color: #2e3d4e;
+  }
+  .signup_rec_pg .form_wrap .btn_proceed {
+    display: inline-block;
+    padding: 30px 50px;
+    border-radius: 5px;
+    box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
+    background-color: #4a58ff;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+}
 
 .profile_pg {
   background-color: #f8f8f9;
