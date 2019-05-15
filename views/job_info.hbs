@@ -1,144 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Account Fresher</title>
+    <title>Job Information</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
     {{>header_assets select2=true}}
 </head>
-<body class="view_user_profile_pg med_content_pg">
+<body class="job_info_pg">
 {{>header}}
-
 <div class="profile_sec">
     <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="sidenav_wrap js_side_bar">
-                    <ul class="sidenav">
-                        <li><a class="active js_section_scroll_link" href="#basicDetailsForm">Profile</a></li>
-                        <li><a class="js_section_scroll_link" href="#aboutMeForm">Application Status</a></li>
-                        <li><a class="js_section_scroll_link" href="#whyHereForm">Preferences</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-7">
-                <div class="name_info_sec">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <img src="/img/Medinin-Logo.png" alt="" style="width: 60px;height: 60px">
+        <div class="job_detail_sec">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="about_job_card">
+                        <div class="job_card_title">Front end Developer</div>
+                        <div class="company_logo right">
+                            Squarespace
                         </div>
-                        <div class="col-md-9">
-                            <div class="name_txt">Sunil Suresh Patil</div>
-                            <div class="qualification_txt">Full Stack Developer, 5yrs Exp.</div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="salary_range">
+                                    2000 - 4000
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="post_time">
+                                    2 days ago
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="place">
+                                    Krakow, PL
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="openin_type">
+                                    Remote
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="post_tag">
+                                    Frontend
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="job_type">type:Internship</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="worktime">
+                                    Workweek:40 hours
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="holiday_txt">
+                                    Holiday:20 days
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job_desc">
+                            <div class="desc_title">
+                                About the work
+                            </div>
+                            <div class="desc">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut
+                                labore et dolore magna aliqua. At elementum eu facilisis sed odio morbi. Auctor eu augue
+                                ut
+                                lectus. Lacus vestibulum sed arcu non. Leo in vitae turpis massa sed elementum tempus
+                                egestas. Vitae congue eu.
+                            </div>
+
+                            <div class="desc_title">
+                                Requirements
+                            </div>
+                            <div class="desc">
+                                <ul>
+                                    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</li>
+                                    <li>ed do eiusmod tempor</li>
+                                    <li>incididunt ut labore et dolore magna aliquaelementum eu facilisis sed</li>
+                                    <li>odio morbi. Auctor eu augue ut lectus. Lacus vestibulum sed arcu non. Leo in
+                                        vitae
+                                        turpis massa sed elementum tempus egestas. Vitae congue eu.
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                            <div class="desc_title">
+                                Technologies
+                            </div>
+                            <div class="desc">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="tech_name">Angular 2
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="tech_name">Css/CSS3
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="tech_name">Html/html5
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                            <span class="fa fa-star"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about_company_card">
+                        <div class="desc_title">
+                            About Company
+                        </div>
+                        <div class="desc">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. At elementum eu facilisis sed odio morbi. Auctor eu augue ut
+                            lectus. Lacus vestibulum sed arcu non. Leo in vitae turpis massa sed elementum tempus
+                            egestas. Vitae congue eu.
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="company_size">
+                                    Company Size:50-100
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="industry">
+                                    Industry:Internet
+                                </div>
+                            </div>
+                        </div>
+                        <div class="desc_title">
+                            Benefits
+                        </div>
+                        <div class="desc">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <span class="fa fa-check-circle"></span>Free Lunch
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="fa fa-check-circle"></span>Private health care
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="fa fa-check-circle"></span>Free snacks
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="fa fa-check-circle"></span>Macbook Pro
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="detail_sec">
-                    <form class="" id="jsLoginForm">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Full Name</label>
-                                    <input type="text" class="form-control js_email" placeholder="Rahul Redekar">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Experience</label>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control js_password"
-                                                   placeholder="0 years">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control js_password"
-                                                   placeholder="0 months">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="col-md-3">
+                    <div class="apply_sec">
+                        <button type="submit"
+                                class="submit_btn btn btn-primary btn-lg btn-block"><span class="fa fa-check"></span>
+                            Save
+                        </button>
+                        <div class="link_txt">
+                            or
+                            copy and apply by email
+                        </div>
+                        <div class="link_sec">
+                            <a href="">career@squarespace.io</a>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Designation</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
+                            <div class="col-md-4">
+                                Share
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Company Name</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
+                            <div class="col-md-4">
+                                Tweet
+                            </div>
+                            <div class="col-md-4">
+                                Save
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Current Annual Salary</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Expected Annual Salary</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
-                            </div>
+                        <div class="tags_sec">
+                            <div class="tech_tg">Web development</div>
+                            <div class="tech_tg">Angular</div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Contact No.</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Email ID</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
-                            </div>
+                        <div class="views_sec">
+                            Pageviews: 49
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Upload Resume</label>
-                                    <input type="text" class="form-control js_email" placeholder="Your email address">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <button type="submit" class="submit_btn btn btn-default btn-lg btn-block">Preview</button>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <button type="submit" class="submit_btn btn btn-primary btn-lg btn-block">Save</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </form>
-
+                    </div>
                 </div>
             </div>
-            <div class="col-md-2"></div>
+
+        </div>
+
+        <div class="similar_sec">
+            <div class="title">
+                Similar positions
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="similar_post_card">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="profile_img_wrap">
+                                    <img src="https://via.placeholder.com/80" class="img_sec">
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="post_title">Product Designer</div>
+                                <div class="company">Google</div>
+                                <div class="place">Los Angeles, US</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="similar_post_card">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="profile_img_wrap">
+                                    <img src="https://via.placeholder.com/80" class="img_sec">
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="post_title">Product Designer</div>
+                                <div class="company">Google</div>
+                                <div class="place">Los Angeles, US</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="similar_post_card">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="profile_img_wrap">
+                                    <img src="https://via.placeholder.com/80" class="img_sec">
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="post_title">Product Designer</div>
+                                <div class="company">Google</div>
+                                <div class="place">Los Angeles, US</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 {{>footer}}
 </body>
 <script type="application/javascript">
-    $(function () {
+    $(function() {
 
     });
 </script>

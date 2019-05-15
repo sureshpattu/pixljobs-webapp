@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{>header_assets}}
+</head>
+<body class="job_applicant_pg">
+{{>header}}
+<section class="hero_sec">
+    <div class="container">
+
+    </div>
+</section>
+<section class="main_cont_sec">
+    <div class="container">
+        <div class="tab_links_wrap">
+            <ul>
+                <li><a class="cta_link">Profile</a></li>
+                <li><a class="cta_link active">Application Status</a></li>
+                <li><a class="cta_link">Preferences</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form_sec">
+                    <div class="user_wrap">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="profile_img_wrap">
+                                    <img src="https://via.placeholder.com/150" class="img_sec">
+                                    <div class="icon_wrap">
+                                        <span class="fa fa-pencil"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="details_sec">
+                                    <div class="name">
+                                        Sunil Suresh Patil
+                                    </div>
+                                    <div class="designation">
+                                        Full Stack Developer, 5yrs Exp.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cards_wrap">
+                        <div class="panel card_sec js_card_sec">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <a data-toggle="collapse" class="panel-title collapsed js_panel_title"
+                                           data-parent="#accordion"
+                                           href="#collapse1">
+                                            <span class="highlights">Technology Lead</span>
+                                            <span class="small_txt">– WebLogic Admin(Hadoop)</span>
+                                            <span class="fa fa-angle-down"></span>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="close_btn_link js_close_btn_link hide">
+                                            <span class="fa fa-times"></span>
+                                            <span>CLOSE JOB</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="card_status_one_wrap viewed">
+                                        <div class="viewed_sec card_cell">
+                                            <span class="fa fa-check-circle"></span>
+                                            <span class="c_name">Viewed</span>
+                                            <span class="time_date_txt">1day ago</span>
+                                        </div>
+                                        <div class="downloaded_sec card_cell">
+                                            <span class="fa fa-check-circle"></span>
+                                            <span class="c_name">Downloaded</span>
+                                            <span class="time_date_txt">2hrs ago</span>
+                                            <div class="bg_shape"></div>
+                                        </div>
+                                        <div class="shortlisted_sec card_cell">
+                                            <span class="fa fa-check-circle"></span>
+                                            <span class="c_name">Shortlisted</span>
+                                            <span class="time_date_txt">0hrs ago</span>
+                                            <div class="bg_shape"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel card_sec js_card_sec">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <a data-toggle="collapse" class="panel-title collapsed js_panel_title"
+                                           data-parent="#accordion"
+                                           href="#collapse2">
+                                            <span class="highlights">Technology Lead</span>
+                                            <span class="small_txt">– WebLogic Admin(Hadoop)</span>
+                                            <span class="fa fa-angle-down"></span>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="close_btn_link js_close_btn_link hide">
+                                            <span class="fa fa-times"></span>
+                                            <span>CLOSE JOB</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="card_status_one_wrap viewed">
+                                        <div class="viewed_sec card_cell">
+                                            <span class="fa fa-check-circle"></span>
+                                            <span class="c_name">Viewed</span>
+                                            <span class="time_date_txt">1day ago</span>
+                                        </div>
+                                        <div class="downloaded_sec card_cell">
+                                            <span class="fa fa-check-circle"></span>
+                                            <span class="c_name">Downloaded</span>
+                                            <span class="time_date_txt">2hrs ago</span>
+                                            <div class="bg_shape"></div>
+                                        </div>
+                                        <div class="shortlisted_sec card_cell">
+                                            <span class="fa fa-check-circle"></span>
+                                            <span class="c_name">Shortlisted</span>
+                                            <span class="time_date_txt">0hrs ago</span>
+                                            <div class="bg_shape"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{>footer}}
+</body>
+<script type="application/javascript">
+    $(function() {
+
+        $('.js_close_btn_link').click(function() {
+            var _this   = $(this);
+            var _parent = $(this).closest('.js_card_sec');
+            _parent.find('.js_panel_title').trigger('click');
+            if(_this.hasClass('collapsed')) {
+                _this.removeClass('hide');
+            } else {
+                _this.addClass('hide');
+            }
+        });
+        $('.js_panel_title').click(function() {
+            var _this   = $(this);
+            var _parent = $(this).closest('.js_card_sec');
+            if(!_this.hasClass('collapsed')) {
+                _parent.find('.js_close_btn_link').addClass('hide');
+            } else {
+                _parent.find('.js_close_btn_link').removeClass('hide');
+            }
+        });
+    });
+</script>
+</html>

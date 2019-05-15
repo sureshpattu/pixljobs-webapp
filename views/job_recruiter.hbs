@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{>header_assets}}
+</head>
+<body class="job_recruiter_pg">
+{{>header}}
+<section class="hero_sec">
+    <div class="container">
+
+    </div>
+</section>
+<section class="main_cont_sec">
+    <div class="container">
+        <div class="tab_links_wrap">
+            <ul>
+                <li><a class="cta_link">Profile</a></li>
+                <li><a class="cta_link active">Application Status</a></li>
+                <li><a class="cta_link">Preferences</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="form_sec">
+                    <div class="user_wrap">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="profile_img_wrap">
+                                    <img src="https://via.placeholder.com/150" class="img_sec">
+                                    <div class="icon_wrap">
+                                        <span class="fa fa-pencil"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="details_sec">
+                                    <div class="name">
+                                        Pattu Technologies
+                                    </div>
+                                    <div class="designation">
+                                        Bangalore, www.pixlcoders.com
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cards_wrap">
+                        <div class="panel card_sec js_card_sec">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <a data-toggle="collapse" class="panel-title collapsed js_panel_title"
+                                           data-parent="#accordion"
+                                           href="#collapse1">
+                                            <div class="title_sec">
+                                                <span class="highlights">Technology Lead,</span>
+                                                <span class="small_txt">5+ years</span>
+                                                <span class="fa fa-angle-down"></span>
+                                            </div>
+                                            <div class="sub_title_sec">
+                                                <span class="small_txt">12 applications</span>
+                                                <span class="small_txt">3 new</span>
+                                                <span class="small_txt">5 shortlisted</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a class="close_btn_link js_close_btn_link hide">
+                                            <span class="fa fa-times"></span>
+                                            <span>MORE</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="card_sec">
+                                        <div class="c_user_wrap">
+                                            <a class="u_img_wrap">
+                                                <img src="https://via.placeholder.com/150" class="img_sec">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{>footer}}
+</body>
+<script type="application/javascript">
+    $(function() {
+
+        $('.js_close_btn_link').click(function() {
+            var _this   = $(this);
+            var _parent = $(this).closest('.js_card_sec');
+            _parent.find('.js_panel_title').trigger('click');
+            if(_this.hasClass('collapsed')) {
+                _this.removeClass('hide');
+            } else {
+                _this.addClass('hide');
+            }
+        });
+        $('.js_panel_title').click(function() {
+            var _this   = $(this);
+            var _parent = $(this).closest('.js_card_sec');
+            if(!_this.hasClass('collapsed')) {
+                _parent.find('.js_close_btn_link').addClass('hide');
+            } else {
+                _parent.find('.js_close_btn_link').removeClass('hide');
+            }
+        });
+    });
+</script>
+</html>

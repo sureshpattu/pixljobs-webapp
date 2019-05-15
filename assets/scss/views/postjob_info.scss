@@ -87,3 +87,36 @@
         }
     }
 }
+
+@media all and (max-width: 767px) {
+    .postjob_info {
+        .hero_sec {
+            margin: 47px 10px 0 10px;
+
+             .progress {
+                right: 0;
+                width: 100%;
+            }
+
+            .pixl_form_group {
+                .control-label {
+                    padding: 0 10px 7px;
+                }
+                .box_sec{
+                    width: 92%;
+                    margin: 0 0 0 12px;
+                }
+            }
+            .cta_wrap{
+                .white_btn{
+                    width: 125px;
+                    height: 70px;
+                }
+                .blue_btn{
+                    width: 130px;
+                    height: 70px;
+                }
+            }
+        }
+    }
+}

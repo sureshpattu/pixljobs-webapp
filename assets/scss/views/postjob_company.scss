@@ -43,7 +43,7 @@
 
         .cta_wrap {
             text-align: center;
-            margin: 71px 0 110px -10px;
+            margin: 71px -35px 203px 0;
 
             .fa-arrow-left {
                 opacity: 0.42;
@@ -62,7 +62,7 @@
                 font-size: 14px;
                 font-weight: bold;
                 color: #2e3d4e;
-                margin: 0 10px 0;
+                margin: 0 0 0 -15px;
             }
 
             .blue_btn {
@@ -76,6 +76,7 @@
                 font-size: 14px;
                 font-weight: bold;
                 color: #ffffff;
+                margin: 0 0 0 -55px;
             }
 
             .fa-arrow-right {
@@ -85,22 +86,41 @@
             }
         }
     }
+}
 
-    @media all and (max-width: 767px) {
-        .postjob_work {
-            .hero_sec {
-                width: 833px;
-                height: 1550px;
-                margin: 47px 0 0 0;
+@media all and (max-width: 767px) {
+    .postjob_company {
+        .hero_sec {
+            margin: 47px 10px 0 10px;
 
-                .title_wrap {
-                    max-width: 295px;
-                    padding: 30px 0 35px;
+            .progress {
+                right: 0;
+                width: 100%;
+            }
+
+            .pixl_form_group {
+                .control-label {
+                    padding: 0 10px 7px;
                 }
 
-                .progress {
-                    right: 16px;
-                    width: 40%;
+                .box_sec {
+                    width: 93%;
+                    margin: 0 0 0 10px;
+                }
+            }
+
+            .cta_wrap {
+                margin: 71px -15px 203px 0;
+
+                .white_btn {
+                    width: 125px;
+                    height: 70px;
+                }
+
+                .blue_btn {
+                    width: 125px;
+                    height: 70px;
+                    margin: 0 0 0 20px;
                 }
             }
         }

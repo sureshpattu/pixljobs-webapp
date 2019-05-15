@@ -55,28 +55,37 @@
             margin-bottom: 30px;
 
 
-            .user_prof_pic_link {
-                padding: 2px 0 0 !important;
+            .profile_img_wrap {
+                position: relative;
                 width: 110px;
                 height: 110px;
-                position: relative;
-                background-color: #e3e3e3;
-                border-radius: 100%;
-                text-align: center;
-                display: block;
 
-                &:hover {
-                    background-color: #e3e3e3;
-                }
 
-                .user_img {
-                    width: 105px;
-                    height: 105px;
+                .icon_wrap {
+                    width: 25px;
+                    height: 25px;
                     border-radius: 100%;
-                    border: 2px solid #ffffff;
-                    background: #fff;
+                    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.19);
+                    background-color: #fc7968;
+                    position: absolute;
+                    bottom: 10px;
+                    right: 0;
+                    padding: 3px 0 0;
+                    text-align: center;
                 }
 
+                .fa {
+                    color: #ffffff;
+                    font-size: 9px;
+                }
+
+                .img_sec {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 100%;
+                    border: 2px solid #FFFFFF;
+                    box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
+                }
             }
             .name_txt{
                 font-size: 19px;
@@ -103,11 +112,63 @@
             border-radius: 5px;
             border: dashed 2px #dadada;
             background-color: rgba(255, 255, 255, 0);
+            padding-top: 17px;
 
             .upload_txt{
                 text-align: center;
                 vertical-align: middle;
             }
+        }
+        .verify_txt{
+            text-align: center;
+            color: #ffffff;
+            border-radius: 3px;
+            background-color: #f5a623;
+            margin-left: 10px;
+            padding: 3px 3px 3px 3px;
+        }
+        .checked_icon{
+            border-radius: 9.5px;
+            background-color: #d4f9e8;
+            .fa-check-circle{
+                background-color: #d4f9e8;
+            }
+        }
+        .verified_txt{
+            font-size: 11px;
+            font-weight: 600;
+            text-align: center;
+            color: #04b972;
+        }
+        .cta_link{
+            text-decoration: none;
+            cursor: pointer;
+            text-underline: #2e3d4e;
+        }
+        .updated_txt{
+            opacity: 0.56;
+            font-size: 11px;
+            text-align: right;
+            color: #637282;
+        }
+        .submit_btn{
+            height: 60px;
+            border-radius: 5px;
+            box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
+            background-color: #4a58ff;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            color: #ffffff;
+        }
+        .preview_btn{
+            height: 60px;
+            border-radius: 5px;
+            background-color: #e2e6ea;
+            color: #2e3d4e;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
         }
 
 
