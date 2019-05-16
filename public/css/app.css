@@ -2205,7 +2205,7 @@ body.popup-visible {
   font-size: 14px;
   font-weight: bold;
   color: #2e3d4e;
-  margin: 0 0 0 -15px;
+  margin: 0 0 0 -18px;
 }
 .postjob_company .hero_sec .cta_wrap .blue_btn {
   width: 196px;
@@ -2218,7 +2218,7 @@ body.popup-visible {
   font-size: 14px;
   font-weight: bold;
   color: #ffffff;
-  margin: 0 0 0 -55px;
+  margin: 0 10px 0;
 }
 .postjob_company .hero_sec .cta_wrap .fa-arrow-right {
   opacity: 0.9;
