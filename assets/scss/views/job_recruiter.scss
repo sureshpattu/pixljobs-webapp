@@ -213,6 +213,70 @@
             }
         }
 
+        .card_sec {
+            .c_user_wrap {
+                position: relative;
+                padding: 0 0 0 80px;
+            }
+
+            .u_img_wrap {
+                display: block;
+                cursor: pointer;
+                text-decoration: none;
+                width: 61px;
+                height: 61px;
+                border-radius: 100%;
+                overflow: hidden;
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .u_name {
+
+            }
+
+            .designation {
+
+            }
+
+            .ex_cta_wrap {
+                .cta_link {
+                    display: inline-block;
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+
+                .fresher {
+
+                }
+            }
+
+            .basic_cont_sec {
+
+            }
+
+            .label_txt {
+
+            }
+
+            .label_val {
+
+            }
+
+            .resume_cta_wrap {
+                .cta_link {
+                    display: inline-block;
+                    cursor: pointer;
+                    text-decoration: none;
+                }
+            }
+        }
 
     }
 }
