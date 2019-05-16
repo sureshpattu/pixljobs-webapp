@@ -3294,17 +3294,34 @@ body.popup-visible {
   font-weight: 600;
   color: #21aeff;
 }
-.job_info_pg .apply_sec .col_tags {
+.job_info_pg .apply_sec .communication_tags {
   border-radius: 4px;
   background-color: #e2e6ea;
-  padding: 10px 10px 10px 10px;
-  margin: 10px 10px 10px 10px;
-}
-.job_info_pg .apply_sec .col_tags .tag_txt {
+  padding: 10px 15px;
+  margin: 10px 7px;
   font-size: 14px;
   font-weight: 600;
   text-align: center;
   color: #2e3d4e;
+  display: inline-block;
+}
+.job_info_pg .apply_sec .tags_sec {
+  text-align: center;
+  padding-top: 20px;
+}
+.job_info_pg .apply_sec .tags_sec .tech_tg {
+  border-radius: 4px;
+  background-color: #e2e6ea;
+  display: inline-block;
+  padding: 7px 7px 7px 7px;
+  margin: 0 5px 0 5px;
+}
+.job_info_pg .apply_sec .views_sec {
+  font-size: 13px;
+  font-weight: 300;
+  text-align: center;
+  color: #9aa2a9;
+  padding-top: 20px;
 }
 .job_info_pg .similar_sec {
   padding-top: 20px;
