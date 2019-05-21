@@ -64,6 +64,49 @@
             }
         }
 
+        .role_wrap {
+            display: table;
+
+            .role_row {
+                display: table-row;
+
+                .role_recruit {
+                    display: table-cell;
+                    border-radius: 6px;
+                    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+                    background-color: #ffffff;
+                    padding: 35px 30px;
+                    font-size: 12px;
+                    letter-spacing: 0.6px;
+                    opacity: 0.54;
+                    font-weight: 600;
+                    text-align: center;
+                    color: #637282;
+
+                    .fa {
+                        padding-right: 10px;
+                    }
+                }
+
+                .role_applicant {
+                    display: table-cell;
+                    border-radius: 6px;
+                    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+                    background-color: #ffffff;
+                    padding: 35px 30px;
+                    font-size: 12px;
+                    font-weight: bold;
+                    letter-spacing: 0.6px;
+                    text-align: center;
+                    color: #25de8c;
+
+                    .fa {
+                        padding-right: 10px;
+                    }
+                }
+            }
+        }
+
         .btn_wrap {
             text-align: center;
             font-size: 12px;
@@ -212,33 +255,14 @@
             }
 
             .upload_photo_wrap {
-                width: 160px;
-                height: 160px;
+                width: 226px;
+                height: 226px;
                 border: solid 1px #dce0e3;
                 border-radius: 161px;
                 background-color: #ffffff;
                 position: relative;
-                top: 20px;
-                left: 0px;
-            }
-
-
-            .upload_photo_wrap .img_sec {
-                width: 152px;
-                height: 152px;
-                border-radius: 153.5px;
-                border: dotted 2px #d3dae0;
-                position: absolute;
-                top: 3px;
-                left: 3px;
-            }
-
-            .upload_photo_wrap .icon_wrap {
-                display: inline-block;
-                text-align: center;
-                position: relative;
-                top: 60px;
-                left: 44px;
+                top: 0px;
+                left: 32px;
             }
 
             .btn_preview {
