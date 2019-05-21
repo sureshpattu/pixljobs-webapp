@@ -131,7 +131,7 @@
 
         .panel-body {
             border: none !important;
-            padding: 0;
+            padding: 0 0 40px 40px;
         }
 
         .panel-title {
@@ -188,10 +188,26 @@
                         }
                     }
                 }
+
+                .application {
+                    color: #fc7968;
+                    opacity: 1;
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        height: 2px;
+                        background-color: #fc7968;
+                    }
+                }
             }
+
         }
 
-        .close_btn_link {
+        .c_cta_btn {
             width: 95px;
             height: 34px;
             border-radius: 3px;
@@ -205,18 +221,32 @@
             text-decoration: none;
             margin: 17px 15px 10px auto;
             padding: 10px 0 0;
+        }
 
+        .reopen_btn_link {
+            background-color: rgba(211, 218, 224, 0.37);;
+            color: #b1bdca;
+        }
+
+        .more_btn_link {
             .fa {
                 position: relative;
-                left: -2px;
-                font-size: 13px;
+                right: -7px;
+                top: -1px;
+                font-size: 15px;
+                vertical-align: top;
             }
         }
 
+
         .card_sec {
+            border-radius: 3px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
+            border: solid 1px rgba(211, 218, 224, 0.56);
+
             .c_user_wrap {
                 position: relative;
-                padding: 0 0 0 80px;
+                padding: 20px 20px 20px 95px;
             }
 
             .u_img_wrap {
@@ -228,8 +258,8 @@
                 border-radius: 100%;
                 overflow: hidden;
                 position: absolute;
-                top: 0;
-                left: 0;
+                top: 20px;
+                left: 15px;
 
                 img {
                     width: 100%;
@@ -238,11 +268,17 @@
             }
 
             .u_name {
-
+                font-size: 16px;
+                font-weight: bold;
+                line-height: 1.56;
+                color: #637282;
             }
 
             .designation {
-
+                font-size: 12px;
+                font-weight: normal;
+                color: #637282;
+                padding: 0 0 3px;
             }
 
             .ex_cta_wrap {
@@ -250,33 +286,80 @@
                     display: inline-block;
                     cursor: pointer;
                     text-decoration: none;
+                    font-size: 12px;
+                    color: #ffffff;
+                    border-radius: 3px;
+                    padding: 0 5px;
+                    background-color: #f5a623;
                 }
 
                 .fresher {
-
+                    background-color: #70b3ec;
                 }
             }
 
             .basic_cont_sec {
-
+                border-top: 1px solid rgba(211, 218, 224, 0.56);
+                padding: 0 15px;
             }
 
             .label_txt {
-
+                opacity: 0.54;
+                font-size: 12px;
+                color: #637282;
+                padding: 22px 0 0;
             }
 
             .label_val {
+                font-size: 15px;
+                font-weight: 600;
+                line-height: 1.67;
+                color: #637282;
+                padding: 0 0 21px;
+            }
 
+            .no_pad {
+                padding: 0;
             }
 
             .resume_cta_wrap {
+                border-top: 1px solid rgba(211, 218, 224, 0.56);
+
                 .cta_link {
-                    display: inline-block;
+                    display: block;
                     cursor: pointer;
                     text-decoration: none;
+                    font-size: 15px;
+                    font-weight: bold;
+                    line-height: 1.67;
+                    text-align: center;
+                    color: #4a58ff;
+                    padding: 21px 20px;
                 }
             }
         }
 
+        .swiper-button-next, .swiper-button-prev {
+            //background-image: none;
+            //height: auto;
+        }
+
+        .swiper-button-disabled {
+            opacity: 0;
+        }
+
+        .swiper-slide-next {
+            position: relative;
+
+            &:after {
+                content: '';
+                background-image: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 182px;
+            }
+        }
     }
 }
