@@ -2300,6 +2300,9 @@ body.popup-visible {
   padding: 0 0 0 24px;
 }
 
+.signup_rec_pg {
+  background-color: #f8f8f9;
+}
 .signup_rec_pg .form_wrap {
   margin-top: 47px;
   box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
@@ -2470,6 +2473,7 @@ body.popup-visible {
     background-color: #ffffff;
     position: relative;
     top: 20px;
+    left: 0px;
   }
   .signup_rec_pg .form_wrap .upload_photo_wrap .img_sec {
     width: 152px;

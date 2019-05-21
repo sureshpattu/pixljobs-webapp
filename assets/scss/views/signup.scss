@@ -1,4 +1,6 @@
 .signup_rec_pg {
+    background-color: #f8f8f9;
+
     .form_wrap {
         margin-top: 47px;
         box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
@@ -164,88 +166,90 @@
             box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
             background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
             padding: 15px 12px 10px 12px;
-        }
-
-        .form_wrap .signup_title_wrap .title {
-            background-color: #ffed06;
-            display: inline-block;
-            font-size: 12px;
-        }
-
-        .form_wrap .btn_wrap {
-            padding: 5px;
-            display: inline-block;
-            text-align: center;
-            font-size: 12px;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13);
-            background-color: #fff;
-        }
-
-        .form_wrap .signup_title_wrap .sub_title {
-            display: inline-block;
-            font-size: 16px;
-            font-weight: 400;
-            letter-spacing: 0.4px;
-            color: #4e5862;
-            text-transform: uppercase;
-        }
-
-        .form_wrap .upload_photo_wrap {
-            width: 160px;
-            height: 160px;
-            border: solid 1px #dce0e3;
-            border-radius: 161px;
-            background-color: #ffffff;
-            position: relative;
-            top: 20px;
-        }
 
 
-        .form_wrap .upload_photo_wrap .img_sec {
-            width: 152px;
-            height: 152px;
-            border-radius: 153.5px;
-            border: dotted 2px #d3dae0;
-            position: absolute;
-            top: 3px;
-            left: 3px;
-        }
+            .signup_title_wrap .title {
+                background-color: #ffed06;
+                display: inline-block;
+                font-size: 12px;
+            }
 
-        .form_wrap .upload_photo_wrap .icon_wrap {
-            display: inline-block;
-            text-align: center;
-            position: relative;
-            top: 60px;
-            left: 44px;
-        }
+            .btn_wrap {
+                padding: 5px;
+                display: inline-block;
+                text-align: center;
+                font-size: 12px;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13);
+                background-color: #fff;
+            }
 
-        .form_wrap .btn_preview {
-            padding: 10px 20px 10px 20px;
-            display: inline-block;
-            border-radius: 5px;
-            background-color: #e2e6ea;
-            font-weight: 600;
-            text-align: center;
-            color: #2e3d4e;
-        }
+            .signup_title_wrap .sub_title {
+                display: inline-block;
+                font-size: 16px;
+                font-weight: 400;
+                letter-spacing: 0.4px;
+                color: #4e5862;
+                text-transform: uppercase;
+            }
 
-        .form_wrap .btn_proceed {
-            padding: 10px 20px 10px 20px;
-            display: inline-block;
-            border-radius: 5px;
-            box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
-            background-color: #4a58ff;
-            font-size: 14px;
-            font-weight: bold;
-            color: #ffffff;
-        }
+            .upload_photo_wrap {
+                width: 160px;
+                height: 160px;
+                border: solid 1px #dce0e3;
+                border-radius: 161px;
+                background-color: #ffffff;
+                position: relative;
+                top: 20px;
+                left: 0px;
+            }
 
-        .form_wrap .fa-arrow-right {
-            position: absolute;
-            top: 14px;
-            left: 88px;
-            color: #ffffff;
-            font-size: 10px;
+
+            .upload_photo_wrap .img_sec {
+                width: 152px;
+                height: 152px;
+                border-radius: 153.5px;
+                border: dotted 2px #d3dae0;
+                position: absolute;
+                top: 3px;
+                left: 3px;
+            }
+
+            .upload_photo_wrap .icon_wrap {
+                display: inline-block;
+                text-align: center;
+                position: relative;
+                top: 60px;
+                left: 44px;
+            }
+
+            .btn_preview {
+                padding: 10px 20px 10px 20px;
+                display: inline-block;
+                border-radius: 5px;
+                background-color: #e2e6ea;
+                font-weight: 600;
+                text-align: center;
+                color: #2e3d4e;
+            }
+
+            .btn_proceed {
+                padding: 10px 20px 10px 20px;
+                display: inline-block;
+                border-radius: 5px;
+                box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
+                background-color: #4a58ff;
+                font-size: 14px;
+                font-weight: bold;
+                color: #ffffff;
+            }
+
+            .fa-arrow-right {
+                position: absolute;
+                top: 14px;
+                left: 88px;
+                color: #ffffff;
+                font-size: 10px;
+            }
         }
     }
 
@@ -260,41 +264,44 @@
     }
 
     @media (min-width: 992px) and (max-width: 1199px) {
-        .form_wrap .btn_wrap {
-            text-align: center;
-            font-size: 12px;
-            padding: 20px 20px 20px 20px;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
-            background-color: #ffffff;
-        }
+        .form_wrap {
 
-        .form_wrap .btn_preview {
-            display: inline-block;
-            border-radius: 5px;
-            background-color: #e2e6ea;
-            padding: 30px 50px;
-            font-weight: 600;
-            text-align: center;
-            color: #2e3d4e;
-        }
+            .btn_wrap {
+                text-align: center;
+                font-size: 12px;
+                padding: 20px 20px 20px 20px;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+                background-color: #ffffff;
+            }
 
-        .form_wrap .btn_proceed {
-            display: inline-block;
-            padding: 30px 50px;
-            border-radius: 5px;
-            box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
-            background-color: #4a58ff;
-            font-size: 14px;
-            font-weight: bold;
-            color: #ffffff;
-        }
+            .btn_preview {
+                display: inline-block;
+                border-radius: 5px;
+                background-color: #e2e6ea;
+                padding: 30px 50px;
+                font-weight: 600;
+                text-align: center;
+                color: #2e3d4e;
+            }
 
-        .form_wrap .fa-arrow-right {
-            position: absolute;
-            top: 34px;
-            left: 110px;
-            color: #ffffff;
-            font-size: 12px;
+            .btn_proceed {
+                display: inline-block;
+                padding: 30px 50px;
+                border-radius: 5px;
+                box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
+                background-color: #4a58ff;
+                font-size: 14px;
+                font-weight: bold;
+                color: #ffffff;
+            }
+
+            .fa-arrow-right {
+                position: absolute;
+                top: 34px;
+                left: 110px;
+                color: #ffffff;
+                font-size: 12px;
+            }
         }
 
     }
