@@ -27,11 +27,13 @@
                 text-transform: capitalize;
             }
         }
-        .radio_link{
+
+        .radio_link {
             padding: 20px 0 0;
             text-align: center;
         }
-        .radio_txt{
+
+        .radio_txt {
             padding: 0 0 0 10px;
         }
 
@@ -64,6 +66,34 @@
             opacity: 0.9;
             color: #adb3fc;
             padding: 0 0 0 24px;
+        }
+    }
+}
+
+@media all and (max-width: 767px) {
+    .postjob_work {
+        .hero_sec {
+            margin: 47px 10px 0 10px;
+
+            .progress {
+                right: 0;
+                width: 100%;
+            }
+
+            .pixl_form_group {
+                .control-label {
+                    padding: 0 10px 7px;
+                }
+
+                .box_sec {
+                    width: 92%;
+                    margin: 0 0 0 12px;
+                }
+            }
+
+            .blue_btn {
+                margin: 71px 0 114px 50px;
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Account Fresher</title>
+    <title>Account Experience</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
@@ -16,8 +16,8 @@
             <div class="col-md-2">
                 <div class="sidenav_wrap js_side_bar">
                     <ul class="sidenav">
-                        <li><a class="active js_section_scroll_link" href="#basicDetailsForm">Profile</a></li>
-                        <li><a class="js_section_scroll_link" href="#aboutMeForm">Application Status</a></li>
+                        <li><a class="active js_section_scroll_link" href="/recruiter-profile">Profile</a></li>
+                        <li><a class="js_section_scroll_link" href="/job-recruiter">Applications</a></li>
                         <li><a class="js_section_scroll_link" href="#whyHereForm">Preferences</a></li>
                     </ul>
                 </div>
@@ -35,95 +35,87 @@
                                 </div>
                             </div>
                             <div class="col-md-9">
-                                <div class="name_txt">Rahul Redekar</div>
-                                <div class="qualification_txt">Fresher - B.Tech in Computer Science</div>
+                                <div class="name_txt">Sunil Suresh Patil</div>
+                                <div class="qualification_txt">Full Stack Developer, 5yrs Exp.</div>
                             </div>
                         </div>
                     </div>
                     <div class="detail_sec">
-                        <form class="" id="jsLoginForm">
+                        <form class="" id="jsLoginForm" action="/search">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Full Name</label>
-                                        <input type="text" class="form-control" placeholder="Rahul Redekar">
+                                        <input type="text" class="form-control gl_input_box required"
+                                               autocomplete="nope" placeholder="Enter your first name and last name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Experience</label>
-                                        <div class="row">
-                                            <div class="col-md-6 col-xs-6">
-                                                <div class="input_icon_wrap">
-                                                    <select class="form-control">
-                                                        <option>0 Years</option>
-                                                    </select>
-                                                    <span class="fa fa-angle-down icon_sec"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 col-xs-6">
-                                                <div class="input_icon_wrap">
-                                                    <select class="form-control">
-                                                        <option value="">0 Month</option>
-                                                        <option value="">{{name}}</option>
-                                                    </select>
-                                                    <span class="fa fa-angle-down icon_sec"></span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <label class="control-label">Designation</label>
+                                        <input type="text" class="form-control gl_input_box required"
+                                               autocomplete="nope" placeholder="Mention about your role">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Qualification</label>
-                                        <input type="text" class="form-control"
-                                               placeholder="B.Tech in Computer Science">
+                                        <label class="control-label">Company Name</label>
+                                        <input type="text" class="form-control gl_input_box required"
+                                               autocomplete="nope" placeholder="Enter your company's name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Expected Annual Salary</label>
-                                        <input type="text" class="form-control"
-                                               placeholder="360000">
-                                        <span class="inr_txt">INR</span>
+                                        <label class="control-label">Industry</label>
+                                        <select class="form-control required">
+                                            <option value="">Select a domain</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Company Size</label>
+                                        <select class="form-control required">
+                                            <option value="">Select Range</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Company URL</label>
+                                        <input type="text" class="form-control gl_input_box required"
+                                               autocomplete="nope" placeholder="Your company's official website">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Institution</label>
-                                        <input type="text" class="form-control"
-                                               placeholder="Belgavi Engineering College, Bangalore">
+                                        <label class="control-label">About Company</label><span class="gl_input_text">in 200 words or less</span>
+                                        <textarea rows="2" class="form-control gl_input_box required"
+                                                  placeholder="Few words describing your company’s work culture, domain expertise, etc."
+                                                  autocomplete="nope"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Contact No.</label><span
-                                            class="verify_txt">Verify</span>
-                                        <input type="text" class="form-control"
-                                               placeholder="9878123472">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group ">
-                                        <label class="control-label">Email ID</label>
-                                        <span class="checked_icon fa fa-check-circle"></span>
-                                        <span class="verified_txt">Verified</span>
-                                        <input type="text" class="form-control "
-                                               placeholder="rahul17.rad@gmail.com">
+                                        <label class="control-label">Company Benefits</label>
+                                        <textarea rows="2" class="form-control gl_input_box required"
+                                                  placeholder=""
+                                                  autocomplete="nope"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group pixl_form_group ">
-                                        <label class="control-label">Upload Resume</label>
+                                        <label class="control-label">Upload Resume <span class="updated_txt">updated 2 days ago</span></label>
                                         <div class="upload_resume">
                                             <div class="upload_txt">
                                                 <span class="fa fa-cloud-upload"></span>
@@ -138,17 +130,13 @@
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group pixl_form_group ">
-                                                <button type="submit"
-                                                        class="preview_btn btn btn-default btn-lg btn-block">Preview
-                                                </button>
+                                            <div class="form-group pixl_form_group">
+                                                <button type="submit" class="preview_btn btn btn-default btn-lg btn-block">Preview</button>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group pixl_form_group ">
-                                                <button type="submit"
-                                                        class="submit_btn btn btn-primary btn-lg btn-block"><span class="fa fa-check"></span> Save
-                                                </button>
+                                            <div class="form-group pixl_form_group">
+                                                <button type="submit" class="submit_btn btn btn-primary btn-lg btn-block"><span class="fa fa-check"></span> Save</button>
                                             </div>
                                         </div>
                                     </div>
@@ -168,7 +156,7 @@
 {{>footer}}
 </body>
 <script type="application/javascript">
-    $(function() {
+    $(function () {
 
     });
 </script>
