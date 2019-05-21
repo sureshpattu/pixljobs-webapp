@@ -6,16 +6,18 @@
         padding: 69px 75px 78px 78px;
 
         .upload_photo_wrap {
-            width: 236px;
-            height: 236px;
+            width: 226px;
+            height: 226px;
             border: solid 1px #dce0e3;
             border-radius: 161px;
             background-color: #ffffff;
             position: relative;
+            top: -30px;
+            left: 20px;
 
             .img_sec {
-                width: 226px;
-                height: 226px;
+                width: 216px;
+                height: 216px;
                 border-radius: 153.5px;
                 border: dotted 2px #d3dae0;
                 position: absolute;
@@ -27,8 +29,8 @@
                 display: inline-block;
                 text-align: center;
                 position: relative;
-                top: 104px;
-                left: 80px;
+                top: 96px;
+                left: 73px;
 
                 .fa-camera {
                     opacity: 0.19;
@@ -146,6 +148,12 @@
             color: #ffffff;
         }
 
+        .fa-arrow-right {
+            position: absolute;
+            top: 33px;
+            left: 127px;
+            color: #ffffff;
+        }
     }
 
 
@@ -183,19 +191,19 @@
         }
 
         .form_wrap .upload_photo_wrap {
-            width: 200px;
-            height: 200px;
+            width: 160px;
+            height: 160px;
             border: solid 1px #dce0e3;
             border-radius: 161px;
             background-color: #ffffff;
             position: relative;
-            margin: 0 0px 0px 33px;
+            top: 20px;
         }
 
 
         .form_wrap .upload_photo_wrap .img_sec {
-            width: 192px;
-            height: 192px;
+            width: 152px;
+            height: 152px;
             border-radius: 153.5px;
             border: dotted 2px #d3dae0;
             position: absolute;
@@ -207,8 +215,8 @@
             display: inline-block;
             text-align: center;
             position: relative;
-            top: 80px;
-            left: 60px;
+            top: 60px;
+            left: 44px;
         }
 
         .form_wrap .btn_preview {
@@ -230,6 +238,24 @@
             font-size: 14px;
             font-weight: bold;
             color: #ffffff;
+        }
+
+        .form_wrap .fa-arrow-right {
+            position: absolute;
+            top: 14px;
+            left: 88px;
+            color: #ffffff;
+            font-size: 10px;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        .form_wrap .fa-arrow-right {
+            position: absolute;
+            top: 34px;
+            left: 168px;
+            color: #ffffff;
+            font-size: 12px;
         }
     }
 
@@ -262,6 +288,15 @@
             font-weight: bold;
             color: #ffffff;
         }
+
+        .form_wrap .fa-arrow-right {
+            position: absolute;
+            top: 34px;
+            left: 110px;
+            color: #ffffff;
+            font-size: 12px;
+        }
+
     }
 
 }
