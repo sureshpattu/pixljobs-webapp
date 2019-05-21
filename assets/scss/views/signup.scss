@@ -74,12 +74,21 @@
 
         .active {
             color: #25de8c !important;
+            position: relative;
+
+            .fa {
+                margin-right: 8px;
+            }
         }
 
         .not_active {
             color: #637282 !important;
-        }
+            position: absolute;
 
+            .fa {
+                margin-right: 8px;
+            }
+        }
 
         .gl_input_text {
             opacity: 0.56;
@@ -110,7 +119,7 @@
 
         .gl_input_box {
             font-size: 14px;
-            color: #c7d3dd;
+            color: #333;
         }
 
         .inr_txt {
