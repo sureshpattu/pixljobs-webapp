@@ -43,7 +43,9 @@ router.get('/job-applicant-two', function(req, res) {
 });
 
 router.get('/job-recruiter', function(req, res) {
-    res.render('job_recruiter');
+    res.render('job_recruiter', {
+        data:[{}, {}, {}, {}]
+    });
 });
 
 router.get('/signup-recruiter', function(req, res) {

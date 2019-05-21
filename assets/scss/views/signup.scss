@@ -1,0 +1,328 @@
+.signup_rec_pg {
+    background-color: #f8f8f9;
+
+    .form_wrap {
+        margin-top: 47px;
+        box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
+        background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
+        padding: 69px 75px 78px 78px;
+
+        .upload_photo_wrap {
+            width: 226px;
+            height: 226px;
+            border: solid 1px #dce0e3;
+            border-radius: 161px;
+            background-color: #ffffff;
+            position: relative;
+            top: -30px;
+            left: 20px;
+
+            .img_sec {
+                width: 216px;
+                height: 216px;
+                border-radius: 153.5px;
+                border: dotted 2px #d3dae0;
+                position: absolute;
+                top: 4px;
+                left: 4px;
+            }
+
+            .icon_wrap {
+                display: inline-block;
+                text-align: center;
+                position: relative;
+                top: 96px;
+                left: 73px;
+
+                .fa-camera {
+                    opacity: 0.19;
+                }
+
+                .upload_txt {
+                    font-size: 12px;
+                    font-weight: 500;
+                    opacity: 0.43;
+                    color: #637282;
+                }
+            }
+        }
+
+        .signup_title_wrap {
+            .title {
+                background-color: #ffed06;
+                display: inline-block;
+                font-size: 18px;
+            }
+
+            .sub_title {
+                display: inline-block;
+                font-size: 32px;
+                font-weight: 400;
+                letter-spacing: 0.4px;
+                color: #4e5862;
+                text-transform: uppercase;
+            }
+        }
+
+        .btn_wrap {
+            text-align: center;
+            font-size: 12px;
+            padding: 27px 36px 27px 36px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+            background-color: #ffffff;
+        }
+
+        .active {
+            color: #25de8c !important;
+            position: relative;
+
+            .fa {
+                margin-right: 8px;
+            }
+        }
+
+        .not_active {
+            color: #637282 !important;
+            position: absolute;
+
+            .fa {
+                margin-right: 8px;
+            }
+        }
+
+        .gl_input_text {
+            opacity: 0.56;
+            font-size: 11px;
+            color: #637282;
+            margin: 0 0 0 16px;
+        }
+
+        .verify_link {
+            font-size: 11px;
+            font-weight: bold;
+            color: #ffffff;
+            border-radius: 3px;
+            background-color: #f5a623;
+            padding: 3px 5px 2px 5px;
+            margin: 0 0 0 4px;
+        }
+
+        .non_verify_link {
+            font-size: 11px;
+            font-weight: 700;
+            color: #b7b7b7;
+            border-radius: 3px;
+            background-color: #ececec;
+            padding: 3px 5px 2px 5px;
+            margin: 0 0 0 4px;
+        }
+
+        .gl_input_box {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .inr_txt {
+            position: absolute;
+            top: 50px;
+            z-index: 1;
+            right: 20px;
+            color: #637282;
+            font-size: 12px;
+        }
+
+        .draggable_box {
+            border-radius: 5px;
+            border: dotted 2px #dadada;
+            background-color: rgba(255, 255, 255, 0);
+            padding: 30px 0 30px 0;
+            text-align: center;
+            color: #2e3d4e;
+            font-size: 14px;
+        }
+
+        .draggable_box .upload_link {
+            font-weight: 400;
+            color: #637282;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .btn_preview {
+            display: inline-block;
+            border-radius: 5px;
+            background-color: #e2e6ea;
+            padding: 30px 68px;
+            font-weight: 600;
+            text-align: center;
+            color: #2e3d4e;
+        }
+
+        .btn_proceed {
+            display: inline-block;
+            padding: 30px 68px;
+            border-radius: 5px;
+            box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
+            background-color: #4a58ff;
+            font-size: 14px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .fa-arrow-right {
+            position: absolute;
+            top: 33px;
+            left: 127px;
+            color: #ffffff;
+        }
+    }
+
+
+    @media (max-width: 767px) {
+
+        .form_wrap {
+            margin-top: 10px;
+            box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
+            background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
+            padding: 15px 12px 10px 12px;
+
+
+            .signup_title_wrap .title {
+                background-color: #ffed06;
+                display: inline-block;
+                font-size: 12px;
+            }
+
+            .btn_wrap {
+                padding: 5px;
+                display: inline-block;
+                text-align: center;
+                font-size: 12px;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13);
+                background-color: #fff;
+            }
+
+            .signup_title_wrap .sub_title {
+                display: inline-block;
+                font-size: 16px;
+                font-weight: 400;
+                letter-spacing: 0.4px;
+                color: #4e5862;
+                text-transform: uppercase;
+            }
+
+            .upload_photo_wrap {
+                width: 160px;
+                height: 160px;
+                border: solid 1px #dce0e3;
+                border-radius: 161px;
+                background-color: #ffffff;
+                position: relative;
+                top: 20px;
+                left: 0px;
+            }
+
+
+            .upload_photo_wrap .img_sec {
+                width: 152px;
+                height: 152px;
+                border-radius: 153.5px;
+                border: dotted 2px #d3dae0;
+                position: absolute;
+                top: 3px;
+                left: 3px;
+            }
+
+            .upload_photo_wrap .icon_wrap {
+                display: inline-block;
+                text-align: center;
+                position: relative;
+                top: 60px;
+                left: 44px;
+            }
+
+            .btn_preview {
+                padding: 10px 20px 10px 20px;
+                display: inline-block;
+                border-radius: 5px;
+                background-color: #e2e6ea;
+                font-weight: 600;
+                text-align: center;
+                color: #2e3d4e;
+            }
+
+            .btn_proceed {
+                padding: 10px 20px 10px 20px;
+                display: inline-block;
+                border-radius: 5px;
+                box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
+                background-color: #4a58ff;
+                font-size: 14px;
+                font-weight: bold;
+                color: #ffffff;
+            }
+
+            .fa-arrow-right {
+                position: absolute;
+                top: 14px;
+                left: 88px;
+                color: #ffffff;
+                font-size: 10px;
+            }
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        .form_wrap .fa-arrow-right {
+            position: absolute;
+            top: 34px;
+            left: 168px;
+            color: #ffffff;
+            font-size: 12px;
+        }
+    }
+
+    @media (min-width: 992px) and (max-width: 1199px) {
+        .form_wrap {
+
+            .btn_wrap {
+                text-align: center;
+                font-size: 12px;
+                padding: 20px 20px 20px 20px;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+                background-color: #ffffff;
+            }
+
+            .btn_preview {
+                display: inline-block;
+                border-radius: 5px;
+                background-color: #e2e6ea;
+                padding: 30px 50px;
+                font-weight: 600;
+                text-align: center;
+                color: #2e3d4e;
+            }
+
+            .btn_proceed {
+                display: inline-block;
+                padding: 30px 50px;
+                border-radius: 5px;
+                box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
+                background-color: #4a58ff;
+                font-size: 14px;
+                font-weight: bold;
+                color: #ffffff;
+            }
+
+            .fa-arrow-right {
+                position: absolute;
+                top: 34px;
+                left: 110px;
+                color: #ffffff;
+                font-size: 12px;
+            }
+        }
+
+    }
+
+}
