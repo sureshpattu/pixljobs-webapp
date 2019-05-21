@@ -2456,7 +2456,7 @@ body.popup-visible {
 }
 @media (max-width: 767px) {
   .signup_rec_pg .form_wrap {
-    margin-top: 10px;
+    margin: 0px -15px;
     box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
     background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
     padding: 15px 12px 10px 12px;
