@@ -2648,6 +2648,7 @@ body.popup-visible {
   font-weight: 600;
   text-align: center;
   color: #637282;
+  opacity: 0.54;
   text-transform: uppercase;
 }
 .signup_pg .signup_wrap .role_wrap .role_row .role .fa {
