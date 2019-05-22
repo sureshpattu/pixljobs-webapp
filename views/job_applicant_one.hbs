@@ -1,30 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Search</title>
+    <title>Applicant</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{>header_assets}}
+    {{>header_assets  select2=true}}
 </head>
 <body class="job_applicant_pg">
 {{>header}}
-<section class="hero_sec">
+<section class="common_main_sec">
+    {{>common_hero_sec}}
     <div class="container">
-
-    </div>
-</section>
-<section class="main_cont_sec">
-    <div class="container">
-        <div class="tab_links_wrap">
+        <div class="common_tab_links_wrap">
             <ul>
-                <li><a class="cta_link">Profile</a></li>
-                <li><a class="cta_link active">Application Status</a></li>
-                <li><a class="cta_link">Preferences</a></li>
+                <li><a class="cta_link " href="#">Profile</a></li>
+                <li><a class="cta_link active" href="#">Applications</a></li>
+                <li><a class="cta_link" href="#">Preferences</a></li>
             </ul>
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="form_sec">
+                <div class="common_form_sec">
                     <div class="user_wrap">
                         <div class="row">
                             <div class="col-md-2">
@@ -142,7 +138,7 @@
         </div>
     </div>
 </section>
-{{>footer}}
+{{>footer select2=true}}
 </body>
 <script type="application/javascript">
     $(function() {
