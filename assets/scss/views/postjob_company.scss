@@ -1,8 +1,5 @@
 .postjob_company {
     .hero_sec {
-        margin: 47px 304px 0 303px;
-        box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
-        background-image: linear-gradient(207deg, #ffffff, #f7f7f7);
 
         .title_wrap {
             max-width: 510px;
@@ -35,7 +32,7 @@
 
         .progress {
             position: relative;
-            right: 215px;
+            right: 180px;
             width: 207%;
             height: 6px;
             margin-bottom: 30px;
@@ -47,8 +44,7 @@
         }
 
         .cta_wrap {
-            text-align: center;
-            margin: 71px -35px 203px 0;
+            margin: 71px -65px 203px 0;
 
             .fa-arrow-left {
                 opacity: 0.42;
