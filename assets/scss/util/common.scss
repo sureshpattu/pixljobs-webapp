@@ -812,6 +812,7 @@ input.form-control, select.form-control, textarea.form-control {
             font-size: 18px;
         }
 
+
         img {
             width: 18px;
         }
@@ -830,7 +831,6 @@ select.select {
     -moz-appearance: none;
     -webkit-appearance: none;
 }
-
 
 
 .input_icon_wrap {
@@ -877,7 +877,7 @@ select.select {
         font-size: 14px;
         padding-right: 40px;
         box-shadow: 0 2px 4px 0 rgba(213, 213, 214, 0.8);
-        background-color: #ffffff;
+        //  background-color: #ffffff;
     }
 
     .control-label {
