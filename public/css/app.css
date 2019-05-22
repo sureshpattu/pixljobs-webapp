@@ -2608,6 +2608,16 @@ body.popup-visible {
   opacity: 0.43;
   color: #637282;
 }
+.signup_pg .signup_wrap .upload_photo_wrap .input_file {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+}
 .signup_pg .signup_wrap .signup_title_wrap .title {
   background-color: #ffed06;
   display: inline-block;
