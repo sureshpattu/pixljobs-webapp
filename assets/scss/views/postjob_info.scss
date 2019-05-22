@@ -93,7 +93,7 @@
         .hero_sec {
             margin: 47px 10px 0 10px;
 
-             .progress {
+            .progress {
                 right: 0;
                 width: 100%;
             }
@@ -102,21 +102,36 @@
                 .control-label {
                     padding: 0 10px 7px;
                 }
-                .box_sec{
+
+                .box_sec {
                     width: 92%;
                     margin: 0 0 0 12px;
                 }
             }
-            .cta_wrap{
-                .white_btn{
+
+            .cta_wrap {
+                .white_btn {
                     width: 125px;
                     height: 70px;
                 }
-                .blue_btn{
+
+                .fa-arrow-left {
+                    padding: 0 15px 0 0;
+                }
+
+                .blue_btn {
                     width: 130px;
                     height: 70px;
                 }
+
+                .fa-arrow-right {
+                    padding: 0 0 0 15px;
+                }
             }
+        }
+
+        .navbar-header {
+            margin-left: 20px;
         }
     }
 }

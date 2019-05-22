@@ -87,13 +87,25 @@
 
                 .box_sec {
                     width: 92%;
-                    margin: 0 0 0 12px;
+                    margin: 15px 0 0 12px;
+                }
+                .icon_wrap{
+                    z-index: 1;
+                    padding: 65px 30px 0 0;
                 }
             }
 
             .blue_btn {
                 margin: 71px 0 114px 50px;
             }
+
+            .fa-arrow-right {
+                padding: 0 0 0 15px;
+            }
+        }
+
+        .navbar-header {
+            margin-left: 20px;
         }
     }
 }
