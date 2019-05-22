@@ -804,7 +804,7 @@ select.select {
   padding: 0;
   margin: 0;
   position: absolute;
-  top: 20px;
+  top: 380px;
   left: 0;
   width: 180px;
 }
@@ -838,9 +838,15 @@ select.select {
 .common_tab_links_wrap .cta_link.active:before {
   display: block;
 }
+@media all and (max-width: 767px) {
+  .common_tab_links_wrap ul {
+    display: none;
+  }
+}
 
 .common_main_sec {
   background-color: #f8f8f9;
+  position: relative;
 }
 
 .common_hero_sec {
@@ -848,13 +854,21 @@ select.select {
   background-position: center;
   background-repeat: no-repeat;
   height: 350px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
 }
 
 .common_form_sec {
   box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
   background-image: linear-gradient(208deg, #ffffff, #f7f7f7);
-  margin: -240px 0 0;
-  padding: 0 0 240px;
+  position: relative;
+  z-index: 1;
+  min-height: 500px;
+  margin: 90px 0 0;
 }
 
 body.popup-visible {
@@ -970,6 +984,10 @@ body.popup-visible {
     top: -8px;
     right: 8px;
   }
+}
+.header_pg {
+  position: relative;
+  z-index: 1;
 }
 .header_pg .navbar-brand {
   padding: 0;
