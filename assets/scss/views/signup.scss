@@ -1,10 +1,7 @@
 .signup_pg {
     background-color: #f8f8f9;
 
-    .form_wrap {
-        margin-top: 47px;
-        box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
-        background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
+    .signup_wrap {
         padding: 69px 75px 78px 78px;
 
         .upload_photo_wrap {
@@ -82,6 +79,7 @@
                     font-weight: 600;
                     text-align: center;
                     color: #637282;
+                    text-transform: uppercase;
 
                     .fa {
                         padding-right: 10px;
@@ -99,6 +97,7 @@
                     letter-spacing: 0.6px;
                     text-align: center;
                     color: #25de8c;
+                    text-transform: uppercase;
 
                     .fa {
                         padding-right: 10px;
@@ -223,7 +222,7 @@
 
     @media (max-width: 767px) {
 
-        .form_wrap {
+        .signup_wrap {
             margin: 0px -15px;
             box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
             background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
@@ -297,7 +296,7 @@
     }
 
     @media (min-width: 768px) and (max-width: 991px) {
-        .form_wrap .fa-arrow-right {
+        .signup_wrap .fa-arrow-right {
             position: absolute;
             top: 34px;
             left: 168px;
@@ -307,7 +306,7 @@
     }
 
     @media (min-width: 992px) and (max-width: 1199px) {
-        .form_wrap {
+        .signup_wrap {
 
             .btn_wrap {
                 text-align: center;
