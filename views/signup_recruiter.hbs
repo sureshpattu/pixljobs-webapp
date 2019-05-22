@@ -8,7 +8,7 @@
     {{>header_assets select2=true}}
 </head>
 {{>header}}
-<body class="view_user_profile_pg med_content_pg signup_rec_pg">
+<body class="signup_pg">
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -25,14 +25,23 @@
                             <div class="role_wrap">
                                 <div class="form-group pixl_form_group">
                                     <label for="" class="control-label">Select a role</label>
-                                    <div>
-                                        <a class="btn btn_wrap active"><i class="fa fa-bars"></i>Recruiter</a>
-                                        <a class="btn btn_wrap not_active"><i class="fa fa-bars"></i>Applicant</a>
+                                    <div class="role_row">
+                                        <a class="btn role_recruit"><i class="fa fa-user" aria-hidden="true"></i>Recruiter</a>
+                                        <a class="btn role_applicant"><i class="fa fa-user" aria-hidden="true"></i>Applicant</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-8 col-sm-6 col-md-6">
+                        <div class="col-xs-8 col-sm-6 col-md-6 hidden-xs">
+                            <div class="upload_photo_wrap">
+                                <img src="" alt="" class="img_sec">
+                                <div class="icon_wrap">
+                                    <i class="fa fa-camera"></i>
+                                    <div class="upload_txt">Upload Photo</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 visible-xs">
                             <div class="upload_photo_wrap">
                                 <img src="" alt="" class="img_sec">
                                 <div class="icon_wrap">
