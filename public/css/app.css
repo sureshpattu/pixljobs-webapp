@@ -2522,13 +2522,10 @@ body.popup-visible {
 .signup_pg {
   background-color: #f8f8f9;
 }
-.signup_pg .form_wrap {
-  margin-top: 47px;
-  box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
-  background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
+.signup_pg .signup_wrap {
   padding: 69px 75px 78px 78px;
 }
-.signup_pg .form_wrap .upload_photo_wrap {
+.signup_pg .signup_wrap .upload_photo_wrap {
   width: 226px;
   height: 226px;
   border: solid 1px #dce0e3;
@@ -2538,7 +2535,7 @@ body.popup-visible {
   top: -30px;
   left: 20px;
 }
-.signup_pg .form_wrap .upload_photo_wrap .img_sec {
+.signup_pg .signup_wrap .upload_photo_wrap .img_sec {
   width: 216px;
   height: 216px;
   border-radius: 153.5px;
@@ -2547,28 +2544,28 @@ body.popup-visible {
   top: 4px;
   left: 4px;
 }
-.signup_pg .form_wrap .upload_photo_wrap .icon_wrap {
+.signup_pg .signup_wrap .upload_photo_wrap .icon_wrap {
   display: inline-block;
   text-align: center;
   position: relative;
   top: 96px;
   left: 73px;
 }
-.signup_pg .form_wrap .upload_photo_wrap .icon_wrap .fa-camera {
+.signup_pg .signup_wrap .upload_photo_wrap .icon_wrap .fa-camera {
   opacity: 0.19;
 }
-.signup_pg .form_wrap .upload_photo_wrap .icon_wrap .upload_txt {
+.signup_pg .signup_wrap .upload_photo_wrap .icon_wrap .upload_txt {
   font-size: 12px;
   font-weight: 500;
   opacity: 0.43;
   color: #637282;
 }
-.signup_pg .form_wrap .signup_title_wrap .title {
+.signup_pg .signup_wrap .signup_title_wrap .title {
   background-color: #ffed06;
   display: inline-block;
   font-size: 18px;
 }
-.signup_pg .form_wrap .signup_title_wrap .sub_title {
+.signup_pg .signup_wrap .signup_title_wrap .sub_title {
   display: inline-block;
   font-size: 32px;
   font-weight: 400;
@@ -2576,13 +2573,13 @@ body.popup-visible {
   color: #4e5862;
   text-transform: uppercase;
 }
-.signup_pg .form_wrap .role_wrap {
+.signup_pg .signup_wrap .role_wrap {
   display: table;
 }
-.signup_pg .form_wrap .role_wrap .role_row {
+.signup_pg .signup_wrap .role_wrap .role_row {
   display: table-row;
 }
-.signup_pg .form_wrap .role_wrap .role_row .role_recruit {
+.signup_pg .signup_wrap .role_wrap .role_row .role_recruit {
   display: table-cell;
   border-radius: 6px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
@@ -2594,11 +2591,12 @@ body.popup-visible {
   font-weight: 600;
   text-align: center;
   color: #637282;
+  text-transform: uppercase;
 }
-.signup_pg .form_wrap .role_wrap .role_row .role_recruit .fa {
+.signup_pg .signup_wrap .role_wrap .role_row .role_recruit .fa {
   padding-right: 10px;
 }
-.signup_pg .form_wrap .role_wrap .role_row .role_applicant {
+.signup_pg .signup_wrap .role_wrap .role_row .role_applicant {
   display: table-cell;
   border-radius: 6px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
@@ -2609,38 +2607,39 @@ body.popup-visible {
   letter-spacing: 0.6px;
   text-align: center;
   color: #25de8c;
+  text-transform: uppercase;
 }
-.signup_pg .form_wrap .role_wrap .role_row .role_applicant .fa {
+.signup_pg .signup_wrap .role_wrap .role_row .role_applicant .fa {
   padding-right: 10px;
 }
-.signup_pg .form_wrap .btn_wrap {
+.signup_pg .signup_wrap .btn_wrap {
   text-align: center;
   font-size: 12px;
   padding: 27px 36px 27px 36px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
   background-color: #ffffff;
 }
-.signup_pg .form_wrap .active {
+.signup_pg .signup_wrap .active {
   color: #25de8c !important;
   position: relative;
 }
-.signup_pg .form_wrap .active .fa {
+.signup_pg .signup_wrap .active .fa {
   margin-right: 8px;
 }
-.signup_pg .form_wrap .not_active {
+.signup_pg .signup_wrap .not_active {
   color: #637282 !important;
   position: absolute;
 }
-.signup_pg .form_wrap .not_active .fa {
+.signup_pg .signup_wrap .not_active .fa {
   margin-right: 8px;
 }
-.signup_pg .form_wrap .gl_input_text {
+.signup_pg .signup_wrap .gl_input_text {
   opacity: 0.56;
   font-size: 11px;
   color: #637282;
   margin: 0 0 0 16px;
 }
-.signup_pg .form_wrap .verify_link {
+.signup_pg .signup_wrap .verify_link {
   font-size: 11px;
   font-weight: bold;
   color: #ffffff;
@@ -2649,7 +2648,7 @@ body.popup-visible {
   padding: 3px 5px 2px 5px;
   margin: 0 0 0 4px;
 }
-.signup_pg .form_wrap .non_verify_link {
+.signup_pg .signup_wrap .non_verify_link {
   font-size: 11px;
   font-weight: 700;
   color: #b7b7b7;
@@ -2658,11 +2657,11 @@ body.popup-visible {
   padding: 3px 5px 2px 5px;
   margin: 0 0 0 4px;
 }
-.signup_pg .form_wrap .gl_input_box {
+.signup_pg .signup_wrap .gl_input_box {
   font-size: 14px;
   color: #333;
 }
-.signup_pg .form_wrap .inr_txt {
+.signup_pg .signup_wrap .inr_txt {
   position: absolute;
   top: 50px;
   z-index: 1;
@@ -2670,7 +2669,7 @@ body.popup-visible {
   color: #637282;
   font-size: 12px;
 }
-.signup_pg .form_wrap .draggable_box {
+.signup_pg .signup_wrap .draggable_box {
   border-radius: 5px;
   border: dotted 2px #dadada;
   background-color: rgba(255, 255, 255, 0);
@@ -2679,13 +2678,13 @@ body.popup-visible {
   color: #2e3d4e;
   font-size: 14px;
 }
-.signup_pg .form_wrap .draggable_box .upload_link {
+.signup_pg .signup_wrap .draggable_box .upload_link {
   font-weight: 400;
   color: #637282;
   cursor: pointer;
   text-decoration: underline;
 }
-.signup_pg .form_wrap .btn_preview {
+.signup_pg .signup_wrap .btn_preview {
   display: inline-block;
   border-radius: 5px;
   background-color: #e2e6ea;
@@ -2694,7 +2693,7 @@ body.popup-visible {
   text-align: center;
   color: #2e3d4e;
 }
-.signup_pg .form_wrap .btn_proceed {
+.signup_pg .signup_wrap .btn_proceed {
   display: inline-block;
   padding: 30px 68px;
   border-radius: 5px;
@@ -2704,25 +2703,19 @@ body.popup-visible {
   font-weight: bold;
   color: #ffffff;
 }
-.signup_pg .form_wrap .fa-arrow-right {
-  position: absolute;
-  top: 33px;
-  left: 127px;
-  color: #ffffff;
-}
 @media (max-width: 767px) {
-  .signup_pg .form_wrap {
+  .signup_pg .signup_wrap {
     margin: 0px -15px;
     box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
     background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
     padding: 15px 12px 10px 12px;
   }
-  .signup_pg .form_wrap .signup_title_wrap .title {
+  .signup_pg .signup_wrap .signup_title_wrap .title {
     background-color: #ffed06;
     display: inline-block;
     font-size: 12px;
   }
-  .signup_pg .form_wrap .btn_wrap {
+  .signup_pg .signup_wrap .btn_wrap {
     padding: 5px;
     display: inline-block;
     text-align: center;
@@ -2730,7 +2723,7 @@ body.popup-visible {
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
     background-color: #fff;
   }
-  .signup_pg .form_wrap .signup_title_wrap .sub_title {
+  .signup_pg .signup_wrap .signup_title_wrap .sub_title {
     display: inline-block;
     font-size: 16px;
     font-weight: 400;
@@ -2738,7 +2731,7 @@ body.popup-visible {
     color: #4e5862;
     text-transform: uppercase;
   }
-  .signup_pg .form_wrap .upload_photo_wrap {
+  .signup_pg .signup_wrap .upload_photo_wrap {
     width: 226px;
     height: 226px;
     border: solid 1px #dce0e3;
@@ -2748,7 +2741,7 @@ body.popup-visible {
     top: 0px;
     left: 32px;
   }
-  .signup_pg .form_wrap .btn_preview {
+  .signup_pg .signup_wrap .btn_preview {
     padding: 10px 20px 10px 20px;
     display: inline-block;
     border-radius: 5px;
@@ -2757,7 +2750,7 @@ body.popup-visible {
     text-align: center;
     color: #2e3d4e;
   }
-  .signup_pg .form_wrap .btn_proceed {
+  .signup_pg .signup_wrap .btn_proceed {
     padding: 10px 20px 10px 20px;
     display: inline-block;
     border-radius: 5px;
@@ -2767,32 +2760,16 @@ body.popup-visible {
     font-weight: bold;
     color: #ffffff;
   }
-  .signup_pg .form_wrap .fa-arrow-right {
-    position: absolute;
-    top: 15px;
-    left: 98px;
-    color: #fff;
-    font-size: 10px;
-  }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .signup_pg .form_wrap .fa-arrow-right {
-    position: absolute;
-    top: 34px;
-    left: 168px;
-    color: #ffffff;
-    font-size: 12px;
-  }
 }
 @media (min-width: 992px) and (max-width: 1199px) {
-  .signup_pg .form_wrap .btn_wrap {
+  .signup_pg .signup_wrap .btn_wrap {
     text-align: center;
     font-size: 12px;
     padding: 20px 20px 20px 20px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
     background-color: #ffffff;
   }
-  .signup_pg .form_wrap .btn_preview {
+  .signup_pg .signup_wrap .btn_preview {
     display: inline-block;
     border-radius: 5px;
     background-color: #e2e6ea;
@@ -2801,7 +2778,7 @@ body.popup-visible {
     text-align: center;
     color: #2e3d4e;
   }
-  .signup_pg .form_wrap .btn_proceed {
+  .signup_pg .signup_wrap .btn_proceed {
     display: inline-block;
     padding: 30px 50px;
     border-radius: 5px;
@@ -2810,13 +2787,6 @@ body.popup-visible {
     font-size: 14px;
     font-weight: bold;
     color: #ffffff;
-  }
-  .signup_pg .form_wrap .fa-arrow-right {
-    position: absolute;
-    top: 34px;
-    left: 110px;
-    color: #ffffff;
-    font-size: 12px;
   }
 }
 

@@ -210,13 +210,6 @@
             font-weight: bold;
             color: #ffffff;
         }
-
-        .fa-arrow-right {
-            position: absolute;
-            top: 33px;
-            left: 127px;
-            color: #ffffff;
-        }
     }
 
 
@@ -284,26 +277,9 @@
                 font-weight: bold;
                 color: #ffffff;
             }
-
-            .fa-arrow-right {
-                position: absolute;
-                top: 15px;
-                left: 98px;
-                color: #fff;
-                font-size: 10px;
-            }
         }
     }
-
-    @media (min-width: 768px) and (max-width: 991px) {
-        .signup_wrap .fa-arrow-right {
-            position: absolute;
-            top: 34px;
-            left: 168px;
-            color: #ffffff;
-            font-size: 12px;
-        }
-    }
+    
 
     @media (min-width: 992px) and (max-width: 1199px) {
         .signup_wrap {
@@ -337,13 +313,6 @@
                 color: #ffffff;
             }
 
-            .fa-arrow-right {
-                position: absolute;
-                top: 34px;
-                left: 110px;
-                color: #ffffff;
-                font-size: 12px;
-            }
         }
 
     }
