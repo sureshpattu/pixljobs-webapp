@@ -4,7 +4,7 @@
     <title>Search</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{>header_assets}}
+    {{>header_assets swiper=true  select2=true}}
 </head>
 <body class="job_recruiter_pg">
 {{>header}}
@@ -17,8 +17,8 @@
     <div class="container">
         <div class="tab_links_wrap">
             <ul>
-                <li><a class="cta_link">Profile</a></li>
-                <li><a class="cta_link active">Application Status</a></li>
+                <li><a class="cta_link" href="/recruiter-profile">Profile</a></li>
+                <li><a class="cta_link active" href="/job-recruiter">Applications</a></li>
                 <li><a class="cta_link">Preferences</a></li>
             </ul>
         </div>
@@ -47,60 +47,24 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cards_wrap">
-                        <div class="panel card_sec js_card_sec">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-md-9">
-                                        <a data-toggle="collapse" class="panel-title collapsed js_panel_title"
-                                           data-parent="#accordion"
-                                           href="#collapse1">
-                                            <div class="title_sec">
-                                                <span class="highlights">Technology Lead,</span>
-                                                <span class="small_txt">5+ years</span>
-                                                <span class="fa fa-angle-down"></span>
-                                            </div>
-                                            <div class="sub_title_sec">
-                                                <span class="small_txt">12 applications</span>
-                                                <span class="small_txt">3 new</span>
-                                                <span class="small_txt">5 shortlisted</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a class="close_btn_link js_close_btn_link hide">
-                                            <span class="fa fa-times"></span>
-                                            <span>MORE</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="collapse1" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div class="card_sec">
-                                        <div class="c_user_wrap">
-                                            <a class="u_img_wrap">
-                                                <img src="https://via.placeholder.com/150" class="img_sec">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="cards_wrap js_cards_wrap">
+                        {{#each data}}
+                            {{>client/applicant_card_row}}
+                        {{/each}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-{{>footer}}
+{{>footer swiper=true select2=true}}
 </body>
 <script type="application/javascript">
     $(function() {
 
-        $('.js_close_btn_link').click(function() {
+        $('.js_more_btn_link').click(function() {
             var _this   = $(this);
-            var _parent = $(this).closest('.js_card_sec');
+            var _parent = $(this).closest('.js_main_card_sec');
             _parent.find('.js_panel_title').trigger('click');
             if(_this.hasClass('collapsed')) {
                 _this.removeClass('hide');
@@ -108,15 +72,45 @@
                 _this.addClass('hide');
             }
         });
+
         $('.js_panel_title').click(function() {
             var _this   = $(this);
-            var _parent = $(this).closest('.js_card_sec');
+            var _parent = $(this).closest('.js_main_card_sec');
             if(!_this.hasClass('collapsed')) {
-                _parent.find('.js_close_btn_link').addClass('hide');
+                _parent.find('.js_more_btn_link').addClass('hide');
+                _parent.find('.js_reopen_card').removeClass('hide');
+                _parent.find('.js_total_application_txt').removeClass('application');
             } else {
-                _parent.find('.js_close_btn_link').removeClass('hide');
+                _parent.find('.js_more_btn_link').removeClass('hide');
+                _parent.find('.js_open_card').addClass('hide');
+                _parent.find('.js_reopen_card').addClass('hide');
+                _parent.find('.js_total_application_txt').addClass('application');
             }
         });
+
+        $('.js_open_card').click(function() {
+            var _this   = $(this);
+            var _parent = $(this).closest('.js_main_card_sec');
+            _parent.find('.js_panel_title').trigger('click');
+        });
+
+        $('.js_reopen_card').click(function() {
+            var _this   = $(this);
+            var _parent = $(this).closest('.js_main_card_sec');
+            _parent.find('.js_panel_title').trigger('click');
+        });
+
+        $('.js_main_card_sec').each(function(i) {
+            new Swiper('.js_applicant_card_swiper_' + i, {
+                slidesPerView:2,
+                spaceBetween :18,
+                navigation   :{
+                    nextEl:'.js_applicant_card_swiper_next_' + i,
+                    prevEl:'.js_applicant_card_swiper_prev_' + i
+                }
+            });
+        });
+
     });
 </script>
 </html>

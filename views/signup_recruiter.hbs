@@ -8,125 +8,133 @@
     {{>header_assets select2=true}}
 </head>
 {{>header}}
-<body class="view_user_profile_pg med_content_pg signup_rec_pg">
-<div class="hero_sec">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="signup_wrap">
-                    <form class="" id="">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group pixl_form_group">
-                                    <div class="signup_title_wrap">
-                                        <div class="title">Signup to </div>
-                                        <div class="sub_title">Get started!</div>
-                                    </div>
-                                </div>
-                                <div class="role_wrap">
-                                    <div class="form-group pixl_form_group">
-                                        <label for="" class="control-label">Select role</label>
-                                        <div>
-                                            <a href="" class="btn btn_wrap active">Recruiter</a>
-                                            <a href="" class="btn btn_wrap not_active">Applicant</a>
-                                        </div>
-                                    </div>
+<body class="signup_pg">
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="form_wrap">
+                <form class="" id="">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-6 col-md-6">
+                            <div class="form-group pixl_form_group">
+                                <div class="signup_title_wrap">
+                                    <div class="title">Signup to </div>
+                                    <div class="sub_title">Get started!</div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="upload_photo_wrap">
-                                    <img src="" alt="" class="img_sec">
-                                    <div class="icon_wrap">
-                                        <i class="fa fa-camera"></i>
-                                        <div class="upload_txt">Upload Photo</div>
+                            <div class="role_wrap">
+                                <div class="form-group pixl_form_group">
+                                    <label for="" class="control-label">Select a role</label>
+                                    <div class="role_row">
+                                        <a class="btn role_recruit"><i class="fa fa-user" aria-hidden="true"></i>Recruiter</a>
+                                        <a class="btn role_applicant"><i class="fa fa-user" aria-hidden="true"></i>Applicant</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group pixl_form_group">
-                                    <label class="control-label">Full Name</label>
-                                    <input type="text" class="form-control gl_input_box required"
-                                           autocomplete="nope" placeholder="Enter your first name and last name">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group pixl_form_group">
-                                    <label class="control-label">Designation</label>
-                                    <input type="text" class="form-control gl_input_box required"
-                                           autocomplete="nope" placeholder="Mention about your role">
+                        <div class="col-xs-8 col-sm-6 col-md-6 hidden-xs">
+                            <div class="upload_photo_wrap">
+                                <img src="" alt="" class="img_sec">
+                                <div class="icon_wrap">
+                                    <i class="fa fa-camera"></i>
+                                    <div class="upload_txt">Upload Photo</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group pixl_form_group">
-                                    <label class="control-label">Company Name</label>
-                                    <input type="text" class="form-control gl_input_box required"
-                                           autocomplete="nope" placeholder="Enter your company's name">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group pixl_form_group">
-                                    <label class="control-label">Industry</label>
-                                    <select class="form-control required">
-                                        <option value="">Select a domain</option>
-                                    </select>
+                        <div class="col-xs-12 visible-xs">
+                            <div class="upload_photo_wrap">
+                                <img src="" alt="" class="img_sec">
+                                <div class="icon_wrap">
+                                    <i class="fa fa-camera"></i>
+                                    <div class="upload_txt">Upload Photo</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group pixl_form_group">
-                                    <label class="control-label">Company Size</label>
-                                    <select class="form-control required">
-                                        <option value="">Select Range</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group pixl_form_group">
-                                    <label class="control-label">Company URL</label>
-                                    <input type="text" class="form-control gl_input_box required"
-                                           autocomplete="nope" placeholder="Your company's official website">
-                                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group pixl_form_group">
+                                <label class="control-label">Full Name</label>
+                                <input type="text" class="form-control gl_input_box required"
+                                       autocomplete="nope" placeholder="Enter your first name and last name">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group pixl_form_group">
-                                    <label class="control-label">About Company</label><span class="gl_input_text">in 200 words or less</span>
-                                    <textarea rows="2" class="form-control gl_input_box required"
-                                              placeholder="Few words describing your company’s work culture, domain expertise, etc."
-                                              autocomplete="nope"></textarea>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="form-group pixl_form_group">
+                                <label class="control-label">Designation</label>
+                                <input type="text" class="form-control gl_input_box required"
+                                       autocomplete="nope" placeholder="Mention about your role">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group pixl_form_group">
-                                    <label class="control-label">Company Benefits</label>
-                                    <textarea rows="2" class="form-control gl_input_box required"
-                                              placeholder=""
-                                              autocomplete="nope"></textarea>
-                                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group pixl_form_group">
+                                <label class="control-label">Company Name</label>
+                                <input type="text" class="form-control gl_input_box required"
+                                       autocomplete="nope" placeholder="Enter your company's name">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4 col-md-offset-2 text-center">
-                                <div class="form-group pixl_form_group">
-                                    <a href="" class="btn_preview">Preview</a>
-                                </div>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <div class="form-group pixl_form_group">
-                                    <a href="" class="btn_proceed">Proceed</a>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="form-group pixl_form_group">
+                                <label class="control-label">Industry</label>
+                                <select class="form-control required">
+                                    <option value="">Select a domain</option>
+                                </select>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group pixl_form_group">
+                                <label class="control-label">Company Size</label>
+                                <select class="form-control required">
+                                    <option value="">Select Range</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group pixl_form_group">
+                                <label class="control-label">Company URL</label>
+                                <input type="text" class="form-control gl_input_box required"
+                                       autocomplete="nope" placeholder="Your company's official website">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group pixl_form_group">
+                                <label class="control-label">About Company</label><span class="gl_input_text">in 200 words or less</span>
+                                <textarea rows="2" class="form-control gl_input_box required"
+                                          placeholder="Few words describing your company’s work culture, domain expertise, etc."
+                                          autocomplete="nope"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group pixl_form_group">
+                                <label class="control-label">Company Benefits</label>
+                                <textarea rows="2" class="form-control gl_input_box required"
+                                          placeholder=""
+                                          autocomplete="nope"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-md-4 col-md-offset-2 text-center">
+                            <div class="form-group pixl_form_group">
+                                <a href="" class="btn_preview">Preview</a>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-md-4 text-center">
+                            <div class="form-group pixl_form_group">
+                                <a href="/job-recruiter" class="btn_proceed">Proceed</a>
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -135,7 +143,7 @@
 {{>footer}}
 </body>
 <script type="application/javascript">
-    $(function () {
+    $(function() {
         RegistrationHandler.init();
     });
 </script>

@@ -43,7 +43,9 @@ router.get('/job-applicant-two', function(req, res) {
 });
 
 router.get('/job-recruiter', function(req, res) {
-    res.render('job_recruiter');
+    res.render('job_recruiter', {
+        data:[{}, {}, {}, {}]
+    });
 });
 
 router.get('/signup-recruiter', function(req, res) {
@@ -66,8 +68,16 @@ router.get('/exp-account', function(req, res) {
     res.render('experience_account');
 });
 
+router.get('/recruiter-profile', function(req, res) {
+    res.render('recruiter_profile');
+});
+
 router.get('/job-info', function(req, res) {
     res.render('job_info');
+});
+
+router.get('/form-template', function(req, res) {
+    res.render('form_template');
 });
 
 module.exports = router;

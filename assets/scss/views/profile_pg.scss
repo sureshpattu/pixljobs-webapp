@@ -87,19 +87,22 @@
                     box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
                 }
             }
-            .name_txt{
+
+            .name_txt {
                 font-size: 19px;
                 font-weight: 600;
                 color: #4e5862;
                 padding-top: 27px;
             }
-            .qualification_txt{
+
+            .qualification_txt {
                 font-size: 14px;
                 font-weight: 300;
                 color: #637282;
             }
         }
-        .inr_txt{
+
+        .inr_txt {
             position: absolute;
             top: 42px;
             right: 24px;
@@ -107,19 +110,21 @@
             font-size: 12px;
             z-index: 0;
         }
-        .upload_resume{
+
+        .upload_resume {
             height: 60px;
             border-radius: 5px;
             border: dashed 2px #dadada;
             background-color: rgba(255, 255, 255, 0);
             padding-top: 17px;
 
-            .upload_txt{
+            .upload_txt {
                 text-align: center;
                 vertical-align: middle;
             }
         }
-        .verify_txt{
+
+        .verify_txt {
             text-align: center;
             color: #ffffff;
             border-radius: 3px;
@@ -127,31 +132,37 @@
             margin-left: 10px;
             padding: 3px 3px 3px 3px;
         }
-        .checked_icon{
+
+        .checked_icon {
             border-radius: 9.5px;
             background-color: #d4f9e8;
-            .fa-check-circle{
+
+            .fa-check-circle {
                 background-color: #d4f9e8;
             }
         }
-        .verified_txt{
+
+        .verified_txt {
             font-size: 11px;
             font-weight: 600;
             text-align: center;
             color: #04b972;
         }
-        .cta_link{
+
+        .cta_link {
             text-decoration: none;
             cursor: pointer;
             text-underline: #2e3d4e;
         }
-        .updated_txt{
+
+        .updated_txt {
             opacity: 0.56;
             font-size: 11px;
             text-align: right;
             color: #637282;
         }
-        .submit_btn{
+
+        .submit_btn {
             height: 60px;
             border-radius: 5px;
             box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
@@ -161,7 +172,8 @@
             text-align: center;
             color: #ffffff;
         }
-        .preview_btn{
+
+        .preview_btn {
             height: 60px;
             border-radius: 5px;
             background-color: #e2e6ea;
@@ -175,4 +187,27 @@
     }
 
 
+}
+
+@media all and (max-width: 767px) {
+    .profile_pg {
+        .profile_img_wrap {
+            margin-left: 70px;
+        }
+
+        .form_wrap {
+            .name_info_sec {
+                padding: 0px;
+                .name_txt {
+                    text-align: center;
+                }
+
+                .qualification_txt {
+                    text-align: center;
+                }
+
+            }
+
+        }
+    }
 }
