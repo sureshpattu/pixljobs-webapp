@@ -870,6 +870,59 @@ select.select {
   margin: 90px 0 0;
 }
 
+.btn {
+  background-color: #e2e6ea;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+  color: #2e3d4e;
+  border-radius: 3px;
+  position: relative;
+}
+.btn:focus {
+  outline: none !important;
+}
+.btn:active {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.btn.btn_big {
+  border-radius: 5px;
+  width: 201px;
+  height: 81px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.btn.btn_blue {
+  background-color: #4a58ff;
+  color: #ffffff;
+}
+.btn:hover {
+  box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
+}
+.btn .left_icon {
+  position: absolute;
+  left: 44px;
+  top: 28px;
+  font-size: 18px;
+}
+.btn .right_icon {
+  position: absolute;
+  right: 24px;
+  top: 27px;
+  font-size: 17px;
+  color: #adb3fc;
+}
+
+a.btn {
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+a.btn.btn_big {
+  padding: 27px 0 0;
+}
+
 body.popup-visible {
   overflow: hidden;
 }
@@ -2181,18 +2234,8 @@ body.popup-visible {
   -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
-.postjob_work .hero_sec .blue_btn {
-  width: 196px;
-  height: 81px;
-  border-radius: 5px;
-  box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
-  background-color: #4a58ff;
-  border-color: #4a58ff;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: bold;
-  color: #ffffff;
-  margin: 71px 0 114px 80px;
+.postjob_work .hero_sec .btn_blue {
+  margin: 61px 0 114px 70px;
 }
 .postjob_work .hero_sec .fa-arrow-right {
   opacity: 0.9;
@@ -2205,8 +2248,8 @@ body.popup-visible {
     margin: 47px 10px 0 10px;
   }
   .postjob_work .hero_sec .progress {
-    right: 0;
-    width: 100%;
+    right: 10px;
+    width: 108%;
   }
   .postjob_work .hero_sec .pixl_form_group .control-label {
     padding: 0 10px 7px;
@@ -2217,10 +2260,10 @@ body.popup-visible {
   }
   .postjob_work .hero_sec .pixl_form_group .icon_wrap {
     z-index: 1;
-    padding: 65px 30px 0 0;
+    padding: 25px 30px 0 0;
   }
-  .postjob_work .hero_sec .blue_btn {
-    margin: 71px 0 114px 50px;
+  .postjob_work .hero_sec .btn_blue {
+    margin: 61px 0 114px 40px;
   }
   .postjob_work .hero_sec .fa-arrow-right {
     padding: 0 0 0 15px;
@@ -2256,8 +2299,8 @@ body.popup-visible {
 }
 .postjob_company .hero_sec .progress {
   position: relative;
-  right: 180px;
-  width: 207%;
+  right: 123px;
+  width: 154%;
   height: 6px;
   margin-bottom: 30px;
   overflow: hidden;
@@ -2267,38 +2310,16 @@ body.popup-visible {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 .postjob_company .hero_sec .cta_wrap {
-  margin: 71px -65px 203px 0;
+  margin: 71px 0 203px 0;
+  text-align: center;
+}
+.postjob_company .hero_sec .cta_wrap .second_btn {
+  margin: 0 10px 0;
 }
 .postjob_company .hero_sec .cta_wrap .fa-arrow-left {
   opacity: 0.42;
   color: #2e3d4e;
   padding: 0 24px 0 0;
-}
-.postjob_company .hero_sec .cta_wrap .white_btn {
-  width: 196px;
-  height: 81px;
-  border-radius: 5px;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
-  background-color: #e2e6ea;
-  border-color: #e2e6ea;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: bold;
-  color: #2e3d4e;
-  margin: 0 0 0 -18px;
-}
-.postjob_company .hero_sec .cta_wrap .blue_btn {
-  width: 196px;
-  height: 81px;
-  border-radius: 5px;
-  box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
-  background-color: #4a58ff;
-  border-color: #4a58ff;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: bold;
-  color: #ffffff;
-  margin: 0 10px 0;
 }
 .postjob_company .hero_sec .cta_wrap .fa-arrow-right {
   opacity: 0.9;
@@ -2311,8 +2332,8 @@ body.popup-visible {
     margin: 47px 10px 0 10px;
   }
   .postjob_company .hero_sec .progress {
-    right: 0;
-    width: 100%;
+    right: 10px;
+    width: 108%;
   }
   .postjob_company .hero_sec .pixl_form_group .control-label {
     padding: 0 10px 7px;
@@ -2324,17 +2345,11 @@ body.popup-visible {
   .postjob_company .hero_sec .cta_wrap {
     margin: 71px -15px 203px 0;
   }
-  .postjob_company .hero_sec .cta_wrap .white_btn {
-    width: 125px;
-    height: 70px;
+  .postjob_company .hero_sec .cta_wrap .second_btn {
+    margin: 0 10px 20px;
   }
   .postjob_company .hero_sec .cta_wrap .fa-arrow-left {
     padding: 0 15px 0 0;
-  }
-  .postjob_company .hero_sec .cta_wrap .blue_btn {
-    width: 125px;
-    height: 70px;
-    margin: 0 0 0 20px;
   }
   .postjob_company .hero_sec .cta_wrap .fa-arrow-right {
     padding: 0 0 0 15px;
@@ -2366,8 +2381,8 @@ body.popup-visible {
 }
 .postjob_info .hero_sec .progress {
   position: relative;
-  right: 182px;
-  width: 207%;
+  right: 123px;
+  width: 154%;
   height: 6px;
   margin-bottom: 30px;
   overflow: hidden;
@@ -2377,38 +2392,16 @@ body.popup-visible {
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 .postjob_info .hero_sec .cta_wrap {
-  margin: 71px -45px 203px 0;
+  margin: 71px 0 203px 0;
+  text-align: center;
+}
+.postjob_info .hero_sec .cta_wrap .second_btn {
+  margin: 0 10px 0;
 }
 .postjob_info .hero_sec .cta_wrap .fa-arrow-left {
   opacity: 0.42;
   color: #2e3d4e;
   padding: 0 24px 0 0;
-}
-.postjob_info .hero_sec .cta_wrap .white_btn {
-  width: 196px;
-  height: 81px;
-  border-radius: 5px;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
-  background-color: #e2e6ea;
-  border-color: #e2e6ea;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: bold;
-  color: #2e3d4e;
-  margin: 0 0 0 -25px;
-}
-.postjob_info .hero_sec .cta_wrap .blue_btn {
-  width: 196px;
-  height: 81px;
-  border-radius: 5px;
-  box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
-  background-color: #4a58ff;
-  border-color: #4a58ff;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: bold;
-  color: #ffffff;
-  margin: 0 0 0 10px;
 }
 .postjob_info .hero_sec .cta_wrap .fa-arrow-right {
   opacity: 0.9;
@@ -2421,8 +2414,8 @@ body.popup-visible {
     margin: 47px 10px 0 10px;
   }
   .postjob_info .hero_sec .progress {
-    right: 0;
-    width: 100%;
+    right: 10px;
+    width: 108%;
   }
   .postjob_info .hero_sec .pixl_form_group .control-label {
     padding: 0 10px 7px;
@@ -2431,16 +2424,14 @@ body.popup-visible {
     width: 92%;
     margin: 0 0 0 12px;
   }
-  .postjob_info .hero_sec .cta_wrap .white_btn {
-    width: 125px;
-    height: 70px;
+  .postjob_info .hero_sec .cta_wrap {
+    margin: 71px -15px 203px 0;
+  }
+  .postjob_info .hero_sec .cta_wrap .second_btn {
+    margin: 0 10px 20px;
   }
   .postjob_info .hero_sec .cta_wrap .fa-arrow-left {
     padding: 0 15px 0 0;
-  }
-  .postjob_info .hero_sec .cta_wrap .blue_btn {
-    width: 130px;
-    height: 70px;
   }
   .postjob_info .hero_sec .cta_wrap .fa-arrow-right {
     padding: 0 0 0 15px;
@@ -2969,11 +2960,6 @@ body.popup-visible {
 .job_applicant_pg .tab_links_wrap .cta_link.active:before {
   display: block;
 }
-.job_applicant_pg .form_sec {
-  box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
-  background-image: linear-gradient(208deg, #ffffff, #f7f7f7);
-  margin: -240px 0 0;
-}
 .job_applicant_pg .user_wrap {
   box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
   background-image: linear-gradient(208deg, #ffffff, #f7f7f7);
@@ -3292,11 +3278,6 @@ body.popup-visible {
 }
 .job_recruiter_pg .tab_links_wrap .cta_link.active:before {
   display: block;
-}
-.job_recruiter_pg .form_sec {
-  box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
-  background-image: linear-gradient(208deg, #ffffff, #f7f7f7);
-  margin: -240px 0 0;
 }
 .job_recruiter_pg .user_wrap {
   box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);

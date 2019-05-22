@@ -32,8 +32,8 @@
 
         .progress {
             position: relative;
-            right: 180px;
-            width: 207%;
+            right: 123px;
+            width: 154%;
             height: 6px;
             margin-bottom: 30px;
             overflow: hidden;
@@ -44,40 +44,17 @@
         }
 
         .cta_wrap {
-            margin: 71px -65px 203px 0;
+            margin: 71px 0 203px 0;
+            text-align: center;
+
+            .second_btn {
+                margin: 0 10px 0;
+            }
 
             .fa-arrow-left {
                 opacity: 0.42;
                 color: #2e3d4e;
                 padding: 0 24px 0 0;
-            }
-
-            .white_btn {
-                width: 196px;
-                height: 81px;
-                border-radius: 5px;
-                box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.25);
-                background-color: #e2e6ea;
-                border-color: #e2e6ea;
-                text-transform: uppercase;
-                font-size: 14px;
-                font-weight: bold;
-                color: #2e3d4e;
-                margin: 0 0 0 -18px;
-            }
-
-            .blue_btn {
-                width: 196px;
-                height: 81px;
-                border-radius: 5px;
-                box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
-                background-color: #4a58ff;
-                border-color: #4a58ff;
-                text-transform: uppercase;
-                font-size: 14px;
-                font-weight: bold;
-                color: #ffffff;
-                margin: 0 10px 0;
             }
 
             .fa-arrow-right {
@@ -95,8 +72,8 @@
             margin: 47px 10px 0 10px;
 
             .progress {
-                right: 0;
-                width: 100%;
+                right: 10px;
+                width: 108%;
             }
 
             .pixl_form_group {
@@ -114,19 +91,12 @@
             .cta_wrap {
                 margin: 71px -15px 203px 0;
 
-                .white_btn {
-                    width: 125px;
-                    height: 70px;
+                .second_btn {
+                    margin: 0 10px 20px;
                 }
 
                 .fa-arrow-left {
                     padding: 0 15px 0 0;
-                }
-
-                .blue_btn {
-                    width: 125px;
-                    height: 70px;
-                    margin: 0 0 0 20px;
                 }
 
                 .fa-arrow-right {
