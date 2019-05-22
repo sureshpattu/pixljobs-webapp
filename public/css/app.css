@@ -2637,7 +2637,7 @@ body.popup-visible {
 .signup_pg .signup_wrap .role_wrap .role_row {
   display: table-row;
 }
-.signup_pg .signup_wrap .role_wrap .role_row .role_recruit {
+.signup_pg .signup_wrap .role_wrap .role_row .role {
   display: table-cell;
   border-radius: 6px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
@@ -2645,14 +2645,17 @@ body.popup-visible {
   padding: 35px 30px;
   font-size: 12px;
   letter-spacing: 0.6px;
-  opacity: 0.54;
   font-weight: 600;
   text-align: center;
   color: #637282;
   text-transform: uppercase;
 }
-.signup_pg .signup_wrap .role_wrap .role_row .role_recruit .fa {
+.signup_pg .signup_wrap .role_wrap .role_row .role .fa {
   padding-right: 10px;
+}
+.signup_pg .signup_wrap .role_wrap .role_row .active {
+  color: #25de8c !important;
+  opacity: 1;
 }
 .signup_pg .signup_wrap .role_wrap .role_row .role_applicant {
   display: table-cell;
@@ -2669,20 +2672,6 @@ body.popup-visible {
 }
 .signup_pg .signup_wrap .role_wrap .role_row .role_applicant .fa {
   padding-right: 10px;
-}
-.signup_pg .signup_wrap .active {
-  color: #25de8c !important;
-  position: relative;
-}
-.signup_pg .signup_wrap .active .fa {
-  margin-right: 8px;
-}
-.signup_pg .signup_wrap .not_active {
-  color: #637282 !important;
-  position: absolute;
-}
-.signup_pg .signup_wrap .not_active .fa {
-  margin-right: 8px;
 }
 .signup_pg .signup_wrap .gl_input_text {
   opacity: 0.56;
