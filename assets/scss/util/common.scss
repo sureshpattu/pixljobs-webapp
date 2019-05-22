@@ -996,3 +996,64 @@ select.select {
     min-height: 500px;
     margin: 90px 0 0;
 }
+
+.btn {
+    background-color: #e2e6ea;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    color: #2e3d4e;
+    border-radius: 3px;
+    position: relative;
+
+    &:focus {
+        outline: none !important;
+    }
+
+    &:active {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    &.btn_big {
+        border-radius: 5px;
+        width: 201px;
+        height: 81px;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    &.btn_blue {
+        background-color: #4a58ff;
+        color: #ffffff;
+    }
+
+    &:hover {
+        box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    .left_icon {
+        position: absolute;
+        left: 44px;
+        top: 28px;
+        font-size: 18px;
+    }
+
+    .right_icon {
+        position: absolute;
+        right: 24px;
+        top: 27px;
+        font-size: 17px;
+        color: #adb3fc;
+    }
+}
+
+a.btn {
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-block;
+
+    &.btn_big {
+        padding: 27px 0 0;
+    }
+}
