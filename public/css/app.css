@@ -650,7 +650,8 @@ textarea.form-control.input_new {
 
 .select2-container--default .select2-selection--single {
   box-shadow: none;
-  height: 42px;
+  height: 64px;
+  font-size: 14px;
   background-color: #ffffff;
   border-radius: 4px;
   border: none;
@@ -659,6 +660,17 @@ textarea.form-control.input_new {
 .select2-container--default .select2-selection--single:focus {
   outline: 0;
   border: none !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  padding-top: 22px;
+  font-size: 14px;
+  color: #637282;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  top: 18px;
+  right: 5px;
 }
 
 ol, ul {
@@ -682,12 +694,15 @@ input.form-control:focus, select.form-control:focus, textarea.form-control:focus
   box-shadow: 0 2px 4px 0 rgba(213, 213, 214, 0.8);
   background-color: #ffffff;
   position: relative;
+  border-radius: 4px;
 }
 .box_sec .form-control {
   background-color: transparent;
   height: 64px;
   border: none;
   position: relative;
+  font-size: 14px;
+  color: #637282;
   font-weight: 200;
   z-index: 1;
   padding-right: 40px;
@@ -811,6 +826,7 @@ select.select {
   font-weight: 400;
   z-index: 1;
   font-size: 14px;
+  color: #637282;
   padding-right: 40px;
   box-shadow: 0 2px 4px 0 rgba(213, 213, 214, 0.8);
 }
@@ -1122,6 +1138,21 @@ body.popup-visible {
   margin: 0 0 0 15px;
 }
 
+@media all and (max-width: 767px) {
+  .header_pg .navbar-toggle .icon-bar {
+    background-color: #ddd;
+  }
+  .header_pg .navbar-brand {
+    margin: 9px 0 0 15px;
+  }
+  .header_pg .navbar-brand img {
+    height: 30px;
+  }
+  .header_pg .navbar {
+    min-height: 70px;
+    padding: 10px 0 0;
+  }
+}
 .footer_pg .navbar-brand {
   padding: 0;
   height: auto;
@@ -1198,6 +1229,30 @@ body.popup-visible {
   color: #ffffff;
 }
 
+@media all and (max-width: 767px) {
+  .footer_pg .find_job_sec .title {
+    font-size: 24px;
+    padding: 0 0 20px;
+  }
+  .footer_pg .navbar {
+    height: auto;
+    padding: 50px 0 30px;
+  }
+  .footer_pg .navbar-collapse {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .footer_pg .nav li a {
+    text-align: center;
+  }
+  .footer_pg .navbar-brand {
+    float: none;
+    display: inline-block;
+  }
+  .footer_pg .navbar-header {
+    text-align: center;
+  }
+}
 .menu_wrapper {
   position: fixed;
   bottom: 0;
@@ -2022,7 +2077,7 @@ body.popup-visible {
 }
 .search_pg .hero_sec .search_input_wrap {
   position: relative;
-  width: 551px;
+  max-width: 551px;
   margin: 0 auto 22px;
 }
 .search_pg .hero_sec .search_input {
@@ -2102,7 +2157,6 @@ body.popup-visible {
   display: block;
 }
 .search_pg .main_cont_sec .bottom_cta_wrap {
-  text-align: center;
   padding: 42px 0 0;
 }
 .search_pg .main_cont_sec .bottom_cta_wrap .cta_load_more_link {
@@ -2110,22 +2164,23 @@ body.popup-visible {
   font-weight: 400;
   text-align: center;
   color: #637282;
-  display: inline-block;
+  display: block;
   cursor: pointer;
   text-decoration: none;
-  width: 300px;
+  max-width: 300px;
   height: 50px;
-  opacity: 0.23;
   border-radius: 24px;
-  border: solid 1px #979797;
+  border: solid 1px rgba(151, 151, 151, 0.24);
   background-color: rgba(23, 170, 255, 0);
   padding: 13px 0 0;
+  margin: 0 auto;
 }
 .search_pg .main_cont_sec .bottom_cta_wrap .fa {
   font-size: 18px;
   position: relative;
   left: 14px;
   top: 1px;
+  color: rgba(99, 114, 130, 0.36);
 }
 .search_pg .main_cont_sec .title {
   font-size: 23px;
@@ -2150,7 +2205,7 @@ body.popup-visible {
   border-radius: 3px;
   background-color: #f4f7fc;
   padding: 5px 6px;
-  margin: 0 8px 0 0;
+  margin: 0 8px 6px 0;
 }
 .search_pg .main_cont_sec .tags_wrap span:last-child {
   margin: 0;
@@ -2244,6 +2299,41 @@ body.popup-visible {
   right: 0;
 }
 
+@media all and (max-width: 767px) {
+  .search_pg .hero_sec .title {
+    font-size: 30px;
+    padding: 45px 0 20px;
+  }
+  .search_pg .hero_sec .job_found_txt {
+    font-size: 18px;
+  }
+  .search_pg .main_cont_sec .card_sec {
+    padding: 16px 15px;
+  }
+  .search_pg .main_cont_sec .card_sec .c_logo {
+    width: 30px;
+    top: 20px;
+    left: 15px;
+  }
+  .search_pg .main_cont_sec .title {
+    font-size: 18px;
+    padding: 0 0 0 40px;
+  }
+  .search_pg .main_cont_sec .sub_title {
+    font-size: 13px;
+    padding: 0 0 9px 40px;
+  }
+  .search_pg .main_cont_sec .cta_wrap {
+    text-align: left;
+    padding: 8px 0 0;
+  }
+  .search_pg .main_cont_sec .job_details_wrap {
+    text-align: left;
+  }
+  .search_pg .main_cont_sec .bottom_cta_wrap {
+    padding: 22px 0 50px;
+  }
+}
 .postjob_work .hero_sec {
   margin: 47px 304px 0 303px;
   box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
