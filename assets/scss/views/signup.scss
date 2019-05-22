@@ -106,13 +106,6 @@
             }
         }
 
-        .btn_wrap {
-            text-align: center;
-            font-size: 12px;
-            padding: 27px 36px 27px 36px;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
-            background-color: #ffffff;
-        }
 
         .active {
             color: #25de8c !important;
@@ -159,58 +152,22 @@
             margin: 0 0 0 4px;
         }
 
-        .gl_input_box {
-            font-size: 14px;
-            color: #333;
-        }
-
         .inr_txt {
             position: absolute;
-            top: 50px;
+            top: 25px;
             z-index: 1;
             right: 20px;
             color: #637282;
             font-size: 12px;
         }
 
-        .draggable_box {
-            border-radius: 5px;
-            border: dotted 2px #dadada;
-            background-color: rgba(255, 255, 255, 0);
-            padding: 30px 0 30px 0;
+        .cta_wrap{
             text-align: center;
-            color: #2e3d4e;
-            font-size: 14px;
-        }
-
-        .draggable_box .upload_link {
-            font-weight: 400;
-            color: #637282;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        .btn_preview {
-            display: inline-block;
-            border-radius: 5px;
-            background-color: #e2e6ea;
-            padding: 30px 68px;
-            font-weight: 600;
-            text-align: center;
-            color: #2e3d4e;
-        }
-
-        .btn_proceed {
-            display: inline-block;
-            padding: 30px 68px;
-            border-radius: 5px;
-            box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
-            background-color: #4a58ff;
-            font-size: 14px;
-            font-weight: bold;
-            color: #ffffff;
+            margin: 60px 0 0 0;
         }
     }
+
+
 
 
     @media (max-width: 767px) {
@@ -226,15 +183,6 @@
                 background-color: #ffed06;
                 display: inline-block;
                 font-size: 12px;
-            }
-
-            .btn_wrap {
-                padding: 5px;
-                display: inline-block;
-                text-align: center;
-                font-size: 12px;
-                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13);
-                background-color: #fff;
             }
 
             .signup_title_wrap .sub_title {
@@ -257,64 +205,16 @@
                 left: 32px;
             }
 
-            .btn_preview {
-                padding: 10px 20px 10px 20px;
-                display: inline-block;
-                border-radius: 5px;
-                background-color: #e2e6ea;
-                font-weight: 600;
+            .cta_wrap{
                 text-align: center;
-                color: #2e3d4e;
-            }
+                margin: 30px 0 0 0;
 
-            .btn_proceed {
-                padding: 10px 20px 10px 20px;
-                display: inline-block;
-                border-radius: 5px;
-                box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
-                background-color: #4a58ff;
-                font-size: 14px;
-                font-weight: bold;
-                color: #ffffff;
-            }
-        }
-    }
-    
-
-    @media (min-width: 992px) and (max-width: 1199px) {
-        .signup_wrap {
-
-            .btn_wrap {
-                text-align: center;
-                font-size: 12px;
-                padding: 20px 20px 20px 20px;
-                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
-                background-color: #ffffff;
-            }
-
-            .btn_preview {
-                display: inline-block;
-                border-radius: 5px;
-                background-color: #e2e6ea;
-                padding: 30px 50px;
-                font-weight: 600;
-                text-align: center;
-                color: #2e3d4e;
-            }
-
-            .btn_proceed {
-                display: inline-block;
-                padding: 30px 50px;
-                border-radius: 5px;
-                box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
-                background-color: #4a58ff;
-                font-size: 14px;
-                font-weight: bold;
-                color: #ffffff;
+                .btn_preview{
+                    margin: 0 0 14px 0;
+                }
             }
 
         }
-
     }
 
 }
