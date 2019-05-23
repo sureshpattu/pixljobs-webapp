@@ -22,15 +22,15 @@ router.get('/search', function(req, res) {
     res.render('search');
 });
 
-router.get('/postjob_work', function(req, res) {
+router.get('/post/job_work', function(req, res) {
     res.render('postjob_work');
 });
 
-router.get('/postjob_company', function(req, res) {
+router.get('/post/job_company', function(req, res) {
     res.render('postjob_company');
 });
 
-router.get('/postjob_info', function(req, res) {
+router.get('/post/job_info', function(req, res) {
     res.render('postjob_info');
 });
 
