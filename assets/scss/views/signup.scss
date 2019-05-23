@@ -11,8 +11,7 @@
             border-radius: 161px;
             background-color: #ffffff;
             position: relative;
-            top: -30px;
-            left: 20px;
+            margin: 0 auto;
 
             .img_sec {
                 width: 216px;
@@ -64,7 +63,7 @@
             }
 
             .sub_title {
-                display: inline-block;
+                //display: inline-block;
                 font-size: 32px;
                 font-weight: 400;
                 letter-spacing: 0.4px;
@@ -75,6 +74,7 @@
 
         .role_wrap {
             display: table;
+            width: 100%;
 
             .role_row {
                 display: table-row;
@@ -92,6 +92,7 @@
                     color: #637282;
                     opacity: 0.54;
                     text-transform: uppercase;
+                    width: 180px;
 
                     .fa {
                         padding-right: 10px;
@@ -183,7 +184,7 @@
             }
 
             .signup_title_wrap .sub_title {
-                display: inline-block;
+                //display: inline-block;
                 font-size: 16px;
                 font-weight: 400;
                 letter-spacing: 0.4px;
@@ -198,8 +199,7 @@
                 border-radius: 161px;
                 background-color: #ffffff;
                 position: relative;
-                top: 0px;
-                left: 32px;
+                margin: 0 auto;
             }
 
             .cta_wrap {
