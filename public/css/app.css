@@ -2581,6 +2581,7 @@ body.popup-visible {
   background-color: #ffffff;
   position: relative;
   margin: 0 auto;
+  top: -28px;
 }
 .signup_pg .signup_wrap .upload_photo_wrap .img_sec {
   width: 216px;
@@ -2744,6 +2745,21 @@ body.popup-visible {
   }
   .signup_pg .signup_wrap .cta_wrap .btn_preview {
     margin: 0 0 14px 0;
+  }
+  .signup_pg .signup_wrap .role_wrap .role_row .role {
+    display: table-cell;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+    background-color: #fff;
+    padding: 20px 27px;
+    font-size: 12px;
+    letter-spacing: .6px;
+    font-weight: 600;
+    text-align: center;
+    color: #637282;
+    opacity: .54;
+    text-transform: uppercase;
+    /* width: 149px; */
   }
 }
 
