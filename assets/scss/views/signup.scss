@@ -4,6 +4,14 @@
     .signup_wrap {
         padding: 69px 75px 78px 78px;
 
+        .pixl_form_group {
+            margin-bottom: 35px;
+
+            .text_area{
+                height: 95px;
+            }
+        }
+
         .upload_photo_wrap {
             width: 226px;
             height: 226px;
