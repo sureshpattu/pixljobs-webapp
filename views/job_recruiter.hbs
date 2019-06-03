@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Search</title>
+    <title>Recruiter</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{>header_assets swiper=true  select2=true}}
@@ -70,8 +70,11 @@
         });
 
         $('.js_panel_title').click(function() {
-            var _this   = $(this);
-            var _parent = $(this).closest('.js_main_card_sec');
+            var _this            = $(this);
+            var _parent          = $(this).closest('.js_main_card_sec');
+            var _swiperContainer = _parent.find('.swiper-container');
+            var _swiperData      = _swiperContainer.data('swiper');
+
             if(!_this.hasClass('collapsed')) {
                 _parent.find('.js_more_btn_link').addClass('hide');
                 _parent.find('.js_reopen_card').removeClass('hide');
@@ -82,6 +85,7 @@
                 _parent.find('.js_reopen_card').addClass('hide');
                 _parent.find('.js_total_application_txt').addClass('application');
             }
+            _swiperData.update();
         });
 
         $('.js_open_card').click(function() {
@@ -97,7 +101,7 @@
         });
 
         $('.js_main_card_sec').each(function(i) {
-            new Swiper('.js_applicant_card_swiper_' + i, {
+            var _swiper = new Swiper('.js_applicant_card_swiper_' + i, {
                 slidesPerView:2,
                 spaceBetween :18,
                 navigation   :{
@@ -105,8 +109,8 @@
                     prevEl:'.js_applicant_card_swiper_prev_' + i
                 }
             });
+            $('.js_applicant_card_swiper_' + i).data('swiper', _swiper);
         });
-
     });
 </script>
 </html>

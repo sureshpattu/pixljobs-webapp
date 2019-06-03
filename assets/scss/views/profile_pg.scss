@@ -44,9 +44,6 @@
     }
 
     .form_wrap {
-        box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
-        background-image: linear-gradient(208deg, #ffffff, #f7f7f7);
-
         padding: 20px;
 
         .name_info_sec {
@@ -198,6 +195,7 @@
         .form_wrap {
             .name_info_sec {
                 padding: 0px;
+
                 .name_txt {
                     text-align: center;
                 }

@@ -9,151 +9,157 @@
 </head>
 <body class="profile_pg">
 {{>header}}
-
-<div class="profile_sec">
+<section class="common_main_sec">
+    {{>common_hero_sec}}
     <div class="container">
+        <div class="common_tab_links_wrap">
+            <ul>
+                <li><a class="cta_link active" href="#">Profile</a></li>
+                <li><a class="cta_link" href="#">Applications</a></li>
+                <li><a class="cta_link" href="#">Preferences</a></li>
+            </ul>
+        </div>
         <div class="row">
-            <div class="col-md-2">
-                <div class="sidenav_wrap js_side_bar">
-                    <ul class="sidenav">
-                        <li><a class="active js_section_scroll_link" href="#basicDetailsForm">Profile</a></li>
-                        <li><a class="js_section_scroll_link" href="#aboutMeForm">Application Status</a></li>
-                        <li><a class="js_section_scroll_link" href="#whyHereForm">Preferences</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="form_wrap">
-                    <div class="name_info_sec">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="profile_img_wrap">
-                                    <img src="https://via.placeholder.com/150" class="img_sec">
-                                    <div class="icon_wrap">
-                                        <span class="fa fa-pencil"></span>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="common_form_sec">
+                    <div class="form_wrap">
+                        <div class="name_info_sec">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="profile_img_wrap">
+                                        <img src="https://via.placeholder.com/150" class="img_sec">
+                                        <div class="icon_wrap">
+                                            <span class="fa fa-pencil"></span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="name_txt">Sunil Suresh Patil</div>
-                                <div class="qualification_txt">Full Stack Developer, 5yrs Exp.</div>
+                                <div class="col-md-9">
+                                    <div class="name_txt">Sunil Suresh Patil</div>
+                                    <div class="qualification_txt">Full Stack Developer, 5yrs Exp.</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="detail_sec">
-                        <form class="" id="jsLoginForm" action="/search">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Full Name</label>
-                                        <input type="text" class="form-control" placeholder="Sunil Suresh Patil">
+                        <div class="detail_sec">
+                            <form class="" id="jsLoginForm" action="/search">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Full Name</label>
+                                            <input type="text" class="form-control" placeholder="Sunil Suresh Patil">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Experience</label>
-                                        <div class="row">
-                                            <div class="col-md-6 col-xs-6">
-                                                <input type="text" class="form-control "
-                                                       placeholder="0 years">
-                                            </div>
-                                            <div class="col-md-6 col-xs-6">
-                                                <input type="text" class="form-control "
-                                                       placeholder="0 months">
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Experience</label>
+                                            <div class="row">
+                                                <div class="col-md-6 col-xs-6">
+                                                    <input type="text" class="form-control "
+                                                           placeholder="0 years">
+                                                </div>
+                                                <div class="col-md-6 col-xs-6">
+                                                    <input type="text" class="form-control "
+                                                           placeholder="0 months">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Designation</label>
-                                        <input type="text" class="form-control" placeholder="Full Stack Developer">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Designation</label>
+                                            <input type="text" class="form-control" placeholder="Full Stack Developer">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Company Name</label>
+                                            <input type="text" class="form-control"
+                                                   placeholder="Pattu Technologies Pvt. Ltd.">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Company Name</label>
-                                        <input type="text" class="form-control" placeholder="Pattu Technologies Pvt. Ltd.">
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Current Annual Salary</label>
-                                        <input type="text" class="form-control" placeholder="2000000">
-                                        <span class="inr_txt">INR</span>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Current Annual Salary</label>
+                                            <input type="text" class="form-control" placeholder="2000000">
+                                            <span class="inr_txt">INR</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Expected Annual Salary</label>
+                                            <input type="text" class="form-control" placeholder="2200000">
+                                            <span class="inr_txt">INR</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Expected Annual Salary</label>
-                                        <input type="text" class="form-control" placeholder="2200000">
-                                        <span class="inr_txt">INR</span>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Contact No.</label><span class="verify_txt">Verify</span>
+                                            <input type="text" class="form-control" placeholder="9878655672">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Email ID</label>
+                                            <span class="checked_icon fa fa-check-circle"></span>
+                                            <span class="verified_txt">Verified</span>
+                                            <input type="text" class="form-control"
+                                                   placeholder="sunil.patil88@gmail.com">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Contact No.</label><span class="verify_txt">Verify</span>
-                                        <input type="text" class="form-control" placeholder="9878655672">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Email ID</label>
-                                        <span class="checked_icon fa fa-check-circle"></span>
-                                        <span class="verified_txt">Verified</span>
-                                        <input type="text" class="form-control" placeholder="sunil.patil88@gmail.com">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group pixl_form_group ">
-                                        <label class="control-label">Upload Resume <span class="updated_txt">updated 2 days ago</span></label>
-                                        <div class="upload_resume">
-                                            <div class="upload_txt">
-                                                <span class="fa fa-cloud-upload"></span>
-                                                RahCV122019.pdf
-                                                <a href="#" class="cta_link">Re-Upload</a>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group pixl_form_group ">
+                                            <label class="control-label">Upload Resume <span class="updated_txt">updated 2 days ago</span></label>
+                                            <div class="box_sec upload_sec">
+                                                <span class="fa fa-file-text-o icon_sec">
+                                                <span class="fa fa-arrow-circle-o-up sub_icon_sec"></span>
+                                                </span>
+                                                <span>Drag & drop Image or </span>
+                                                <a class="upload_txt">Upload file</a>
+                                                <input type="file" class="input_file">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group pixl_form_group">
-                                                <button type="submit" class="preview_btn btn btn-default btn-lg btn-block">Preview</button>
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <button class="btn btn_big">PREVIEW</button>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group pixl_form_group">
-                                                <button type="submit" class="submit_btn btn btn-primary btn-lg btn-block"><span class="fa fa-check"></span> Save</button>
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <button class="btn btn_big btn_blue" type="submit">
+                                                        <span class="fa fa-check left_icon"></span>
+                                                        SAVE
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
+
                 </div>
             </div>
-            <div class="col-md-2"></div>
         </div>
     </div>
-</div>
+</section>
 {{>footer}}
 </body>
 <script type="application/javascript">
-    $(function () {
+    $(function() {
 
     });
 </script>

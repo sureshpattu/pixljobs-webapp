@@ -18,7 +18,7 @@ router.get('/register', function(req, res) {
     res.render('register');
 });
 
-router.get('/search', function(req, res) {
+router.get('/', function(req, res) {
     res.render('search');
 });
 

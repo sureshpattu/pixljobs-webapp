@@ -1,6 +1,7 @@
 .header_pg {
     position: relative;
     z-index: 1;
+
     .navbar-brand {
         padding: 0;
         height: auto;
@@ -26,7 +27,7 @@
                 font-weight: 500;
                 color: #4a4a4a;
 
-                &:focus,&:hover{
+                &:focus, &:hover {
                     background: transparent;
                 }
             }
@@ -40,6 +41,26 @@
                 padding: 12px 0 0;
                 margin: 0 0 0 15px;
             }
+        }
+    }
+}
+
+@media all and (max-width: 767px) {
+    .header_pg {
+        .navbar-toggle .icon-bar {
+            background-color: #ddd;
+        }
+
+        .navbar-brand {
+            margin: 9px 0 0 15px;
+            img {
+                height: 30px;
+            }
+        }
+
+        .navbar {
+            min-height: 70px;
+            padding: 10px 0 0;
         }
     }
 }
