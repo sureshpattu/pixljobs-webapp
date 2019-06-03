@@ -1046,11 +1046,9 @@ select.select {
 }
 
 .common_hero_sec {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     height: 350px;
-    background-color: #ffffff;
+    background: #ffffff url(/img/cover-img.jpg) no-repeat left bottom;
+    background-size: cover !important;
     position: absolute;
     top: 0;
     left: 0;
