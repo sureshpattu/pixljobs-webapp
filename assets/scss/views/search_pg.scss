@@ -1,8 +1,7 @@
 .search_pg {
     .hero_sec {
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        background: url(/img/cover-img.jpg) no-repeat left bottom;
+        background-size: cover !important;
 
         .title {
             font-size: 34px;
