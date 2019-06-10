@@ -19,7 +19,7 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="common_form_sec">
                     <div class="signup_wrap">
-                        <form class="" id="">
+                        <form class="" id="jsSignUpRecruitForm">
                             <div class="row">
                                 <div class="col-xs-4 col-sm-6 col-md-6">
                                     <div class="form-group pixl_form_group">
@@ -70,7 +70,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Full Name</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required"
+                                            <input type="text" class="form-control js_name required"
                                                    autocomplete="nope"
                                                    placeholder="Enter your first name and last name">
                                         </div>
@@ -80,7 +80,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Designation</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required"
+                                            <input type="text" class="form-control js_designation required"
                                                    autocomplete="nope" placeholder="Mention about your role">
                                         </div>
                                     </div>
@@ -91,7 +91,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Company Name</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required"
+                                            <input type="text" class="form-control required js_company_name"
                                                    autocomplete="nope" placeholder="Enter your company's name">
                                         </div>
                                     </div>
@@ -100,8 +100,9 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Industry</label>
                                         <div class="box_sec">
-                                            <select class="form-control required">
+                                            <select class="form-control required js_industry">
                                                 <option value="">Select a domain</option>
+                                                <option value="1">1</option>
                                             </select>
                                         </div>
                                     </div>
@@ -112,8 +113,9 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Company Size</label>
                                         <div class="box_sec">
-                                            <select class="form-control required">
-                                                <option value="">Select Range</option>
+                                            <select class="form-control required js_company_size">
+                                                <option value="select">Select Range</option>
+                                                <option value="1">Select Range</option>
                                             </select>
                                         </div>
                                     </div>
@@ -122,7 +124,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Company URL</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required"
+                                            <input type="text" class="form-control required js_company_url"
                                                    autocomplete="nope" placeholder="Your company's official website">
                                         </div>
                                     </div>
@@ -133,7 +135,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">About Company</label><span class="gl_input_text">in 200 words or less</span>
                                         <div class="box_sec">
-                                        <textarea rows="2" class="form-control text_area required"
+                                        <textarea rows="2" class="form-control text_area required js_about_company"
                                                   placeholder="Few words describing your company’s work culture, domain expertise, etc."
                                                   autocomplete="nope"></textarea>
                                         </div>
@@ -145,7 +147,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Company Benefits</label>
                                         <div class="box_sec">
-                                            <div id="textarea" class="form-control text_area required">
+                                            <div id="textarea" class="form-control text_area  js_company_benefit">
                                                 <input type="text">
                                             </div>
                                         </div>
@@ -169,8 +171,9 @@
 {{>footer swiper=true select2=true}}
 </body>
 <script type="application/javascript">
-    $(function() {
 
+    $(function() {
+        RecruiterHandler.init();
     });
 
     $('#textarea input').on('keyup', function(e) {
