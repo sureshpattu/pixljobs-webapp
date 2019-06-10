@@ -19,7 +19,7 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="common_form_sec">
                     <div class="signup_wrap">
-                        <form class="" id="">
+                        <form class="" id="jsSignUpApplicantForm">
                             <div class="row">
                                 <div class="col-xs-4 col-sm-6 col-md-6">
                                     <div class="form-group pixl_form_group">
@@ -68,7 +68,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Full Name</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required"
+                                            <input type="text" class="form-control required js_name"
                                                    autocomplete="nope"
                                                    placeholder="Enter your first name and last name">
                                         </div>
@@ -80,14 +80,14 @@
                                         <div class="row">
                                             <div class="col-md-6 col-xs-6">
                                                 <div class="box_sec">
-                                                    <select class="form-control required">
+                                                    <select class="form-control required js_experience">
                                                         <option value="">0 Years</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xs-6">
                                                 <div class="box_sec">
-                                                    <select class="form-control required">
+                                                    <select class="form-control required js_experience">
                                                         <option value="">0 Months</option>
                                                     </select>
                                                 </div>
@@ -101,7 +101,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Designation</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required"
+                                            <input type="text" class="form-control required js_designation"
                                                    autocomplete="nope" placeholder="Mention about your role">
                                         </div>
                                     </div>
@@ -110,7 +110,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Company Name</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required"
+                                            <input type="text" class="form-control required js_company"
                                                    autocomplete="nope" placeholder="Enter your company's name">
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Current Annual Salary</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required"
+                                            <input type="text" class="form-control required js_cur_salary"
                                                    autocomplete="nope" placeholder="Enter Amt in No.s only">
                                             <span class="inr_txt">INR</span>
                                         </div>
@@ -131,7 +131,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Expected Annual Salary</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required"
+                                            <input type="text" class="form-control required js_anual_salary"
                                                    autocomplete="nope" placeholder="Enter Amt in No.s only">
                                             <span class="inr_txt">INR</span>
                                         </div>
@@ -144,7 +144,7 @@
                                         <label class="control-label">Contact No.</label>
                                         <a href="" class="non_verify_link">VERIFY</a>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required"
+                                            <input type="text" class="form-control required js_mobile"
                                                    autocomplete="nope" placeholder="Your 10 digit mobile No.">
                                         </div>
                                     </div>
@@ -153,7 +153,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Email ID</label><a href="" class="verify_link">VERIFY</a>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required"
+                                            <input type="text" class="form-control required js_email"
                                                    autocomplete="nope" placeholder="Your current Email ID">
                                         </div>
                                     </div>
@@ -192,7 +192,7 @@
 </body>
 <script type="application/javascript">
     $(function() {
-
+        ApplicantSignUpHandler.init();
     });
 
     $('.signup-recruit').on('click', function(event) {
