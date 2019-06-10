@@ -22,6 +22,7 @@ function LoginHandler() {
             }
             return false;
         });
+
     }
 
     return {

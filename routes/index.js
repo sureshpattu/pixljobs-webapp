@@ -19,6 +19,7 @@ router.get('/register', function(req, res) {
 });
 
 router.get('/', function(req, res) {
+    console.log(req);
     res.render('search');
 });
 
