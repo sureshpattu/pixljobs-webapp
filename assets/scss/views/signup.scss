@@ -1,11 +1,51 @@
 .signup_pg {
     background-color: #f8f8f9;
 
-    .form_wrap {
-        margin-top: 47px;
-        box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
-        background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
+    .signup_wrap {
         padding: 69px 75px 78px 78px;
+
+        .pixl_form_group {
+            margin-bottom: 35px;
+
+            .text_area {
+                overflow: auto !important;
+                height: 95px;
+
+                input {
+                    border: none;
+                    background: none;
+                    font-weight: 400;
+                    z-index: 1;
+                    font-size: 14px;
+                    color: #637282;
+                    padding: 4px 12px;
+                }
+
+                input:focus {
+                    outline: none;
+                }
+
+                button {
+                    margin: 4px;
+                    cursor: pointer;
+                    border-radius: 5px;
+                    border: solid 1px #d3dae0;
+                    box-shadow: 0 1px 2px 0 rgba(195, 195, 195, 0.8);
+                    background-color: #ffffff;
+                    font-size: 14px;
+                    color: #637282;
+                }
+
+                button:after {
+                    content: "\d7";
+                    color: #637282;
+                    margin-left: 16px;
+                    opacity: .46;
+                    font-size: 18px;
+                    font-weight: lighter;
+                }
+            }
+        }
 
         .upload_photo_wrap {
             width: 226px;
@@ -14,8 +54,9 @@
             border-radius: 161px;
             background-color: #ffffff;
             position: relative;
-            top: -30px;
-            left: 20px;
+            margin: 0 auto;
+            box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.12);
+            background-color: #ffffff;
 
             .img_sec {
                 width: 216px;
@@ -31,11 +72,14 @@
                 display: inline-block;
                 text-align: center;
                 position: relative;
-                top: 96px;
-                left: 73px;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0.77;
 
                 .fa-camera {
                     opacity: 0.19;
+                    margin-bottom: 8px;
                 }
 
                 .upload_txt {
@@ -44,6 +88,18 @@
                     opacity: 0.43;
                     color: #637282;
                 }
+
+            }
+
+            .input_file {
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1;
+                width: 100%;
             }
         }
 
@@ -55,7 +111,7 @@
             }
 
             .sub_title {
-                display: inline-block;
+                //display: inline-block;
                 font-size: 32px;
                 font-weight: 400;
                 letter-spacing: 0.4px;
@@ -66,11 +122,12 @@
 
         .role_wrap {
             display: table;
+            width: 100%;
 
             .role_row {
                 display: table-row;
 
-                .role_recruit {
+                .role {
                     display: table-cell;
                     border-radius: 6px;
                     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
@@ -78,15 +135,23 @@
                     padding: 35px 30px;
                     font-size: 12px;
                     letter-spacing: 0.6px;
-                    opacity: 0.54;
                     font-weight: 600;
                     text-align: center;
                     color: #637282;
+                    opacity: 0.54;
+                    text-transform: uppercase;
+                    width: 180px;
 
                     .fa {
                         padding-right: 10px;
                     }
                 }
+
+                .active {
+                    color: #25de8c !important;
+                    opacity: 1;
+                }
+
 
                 .role_applicant {
                     display: table-cell;
@@ -99,6 +164,7 @@
                     letter-spacing: 0.6px;
                     text-align: center;
                     color: #25de8c;
+                    text-transform: uppercase;
 
                     .fa {
                         padding-right: 10px;
@@ -107,123 +173,60 @@
             }
         }
 
-        .btn_wrap {
-            text-align: center;
-            font-size: 12px;
-            padding: 27px 36px 27px 36px;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
-            background-color: #ffffff;
-        }
-
-        .active {
-            color: #25de8c !important;
-            position: relative;
-
-            .fa {
-                margin-right: 8px;
-            }
-        }
-
-        .not_active {
-            color: #637282 !important;
-            position: absolute;
-
-            .fa {
-                margin-right: 8px;
-            }
-        }
-
         .gl_input_text {
-            opacity: 0.56;
-            font-size: 11px;
+            opacity: .56;
+            font-size: 12px;
             color: #637282;
-            margin: 0 0 0 16px;
+            margin-left: 16px;
         }
 
         .verify_link {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: bold;
             color: #ffffff;
             border-radius: 3px;
             background-color: #f5a623;
             padding: 3px 5px 2px 5px;
-            margin: 0 0 0 4px;
+            margin-left: 4px;
         }
 
         .non_verify_link {
-            font-size: 11px;
+            font-size: 12px;
             font-weight: 700;
             color: #b7b7b7;
             border-radius: 3px;
             background-color: #ececec;
             padding: 3px 5px 2px 5px;
-            margin: 0 0 0 4px;
-        }
-
-        .gl_input_box {
-            font-size: 14px;
-            color: #333;
+            margin-left: 4px;
         }
 
         .inr_txt {
             position: absolute;
-            top: 50px;
+            top: 25px;
             z-index: 1;
             right: 20px;
             color: #637282;
             font-size: 12px;
         }
 
-        .draggable_box {
-            border-radius: 5px;
-            border: dotted 2px #dadada;
-            background-color: rgba(255, 255, 255, 0);
-            padding: 30px 0 30px 0;
+        .cta_wrap {
             text-align: center;
-            color: #2e3d4e;
-            font-size: 14px;
-        }
+            margin-top: 60px;
 
-        .draggable_box .upload_link {
-            font-weight: 400;
-            color: #637282;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        .btn_preview {
-            display: inline-block;
-            border-radius: 5px;
-            background-color: #e2e6ea;
-            padding: 30px 68px;
-            font-weight: 600;
-            text-align: center;
-            color: #2e3d4e;
-        }
-
-        .btn_proceed {
-            display: inline-block;
-            padding: 30px 68px;
-            border-radius: 5px;
-            box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
-            background-color: #4a58ff;
-            font-size: 14px;
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-        .fa-arrow-right {
-            position: absolute;
-            top: 33px;
-            left: 127px;
-            color: #ffffff;
+            .btn_big {
+                margin-left: 14px;
+            }
         }
     }
 
 
     @media (max-width: 767px) {
 
-        .form_wrap {
+        .common_hero_sec {
+            height: 92px;
+        }
+
+        .signup_wrap {
             margin: 0px -15px;
             box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
             background-image: linear-gradient(209deg, #ffffff, #f7f7f7);
@@ -236,17 +239,8 @@
                 font-size: 12px;
             }
 
-            .btn_wrap {
-                padding: 5px;
-                display: inline-block;
-                text-align: center;
-                font-size: 12px;
-                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13);
-                background-color: #fff;
-            }
-
             .signup_title_wrap .sub_title {
-                display: inline-block;
+                //display: inline-block;
                 font-size: 16px;
                 font-weight: 400;
                 letter-spacing: 0.4px;
@@ -261,92 +255,41 @@
                 border-radius: 161px;
                 background-color: #ffffff;
                 position: relative;
-                top: 0px;
-                left: 32px;
-            }
-
-            .btn_preview {
-                padding: 10px 20px 10px 20px;
-                display: inline-block;
-                border-radius: 5px;
-                background-color: #e2e6ea;
-                font-weight: 600;
-                text-align: center;
-                color: #2e3d4e;
-            }
-
-            .btn_proceed {
-                padding: 10px 20px 10px 20px;
-                display: inline-block;
-                border-radius: 5px;
-                box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
-                background-color: #4a58ff;
-                font-size: 14px;
-                font-weight: bold;
-                color: #ffffff;
-            }
-
-            .fa-arrow-right {
-                position: absolute;
-                top: 15px;
-                left: 98px;
-                color: #fff;
-                font-size: 10px;
-            }
-        }
-    }
-
-    @media (min-width: 768px) and (max-width: 991px) {
-        .form_wrap .fa-arrow-right {
-            position: absolute;
-            top: 34px;
-            left: 168px;
-            color: #ffffff;
-            font-size: 12px;
-        }
-    }
-
-    @media (min-width: 992px) and (max-width: 1199px) {
-        .form_wrap {
-
-            .btn_wrap {
-                text-align: center;
-                font-size: 12px;
-                padding: 20px 20px 20px 20px;
-                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
+                margin: 0 auto;
+                box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.12);
                 background-color: #ffffff;
             }
 
-            .btn_preview {
-                display: inline-block;
-                border-radius: 5px;
-                background-color: #e2e6ea;
-                padding: 30px 50px;
+            .cta_wrap {
+                text-align: center;
+                margin: 30px 0 0 0;
+
+                .btn_preview {
+                    margin: 0 0 14px 0;
+                }
+
+                .btn_big {
+                    margin-left: 0px;
+                }
+            }
+
+            .role_wrap .role_row .role {
+                display: table-cell;
+                border-radius: 6px;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13);
+                background-color: #fff;
+                padding: 20px 27px;
+                font-size: 12px;
+                letter-spacing: .6px;
                 font-weight: 600;
                 text-align: center;
-                color: #2e3d4e;
+                color: #637282;
+                opacity: .54;
+                text-transform: uppercase;
+                /* width: 149px; */
             }
 
-            .btn_proceed {
-                display: inline-block;
-                padding: 30px 50px;
-                border-radius: 5px;
-                box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
-                background-color: #4a58ff;
-                font-size: 14px;
-                font-weight: bold;
-                color: #ffffff;
-            }
-
-            .fa-arrow-right {
-                position: absolute;
-                top: 34px;
-                left: 110px;
-                color: #ffffff;
-                font-size: 12px;
-            }
         }
-
     }
 
 }
