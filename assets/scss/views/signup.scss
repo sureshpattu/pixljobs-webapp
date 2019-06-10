@@ -212,11 +212,19 @@
         .cta_wrap {
             text-align: center;
             margin-top: 60px;
+
+            .btn_big {
+                margin-left: 14px;
+            }
         }
     }
 
 
     @media (max-width: 767px) {
+
+        .common_hero_sec {
+            height: 92px;
+        }
 
         .signup_wrap {
             margin: 0px -15px;
@@ -258,6 +266,10 @@
 
                 .btn_preview {
                     margin: 0 0 14px 0;
+                }
+
+                .btn_big {
+                    margin-left: 0px;
                 }
             }
 

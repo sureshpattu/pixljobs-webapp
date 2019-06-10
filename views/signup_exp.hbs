@@ -32,10 +32,12 @@
                                         <div class="form-group pixl_form_group">
                                             <label for="" class="control-label">Select a role</label>
                                             <div class="role_row">
-                                                <a class="btn role"><i class="fa fa-user"
-                                                                       aria-hidden="true"></i>Recruiter</a>
-                                                <a class="btn role active"><i class="fa fa-user"
-                                                                              aria-hidden="true"></i>Applicant</a>
+                                                <a class="btn signup-recruit role" type="submit"
+                                                   data-target="/signup-recruiter"><i class="fa fa-user"
+                                                                                      aria-hidden="true"></i>Recruiter</a>
+                                                <a class="btn signup-applicant role active" type="submit"
+                                                   data-target="/signup-fresh"><i class="fa fa-user"
+                                                                                  aria-hidden="true"></i>Applicant</a>
                                             </div>
                                         </div>
                                     </div>
@@ -191,6 +193,18 @@
 <script type="application/javascript">
     $(function() {
         ApplicantSignUpHandler.init();
+    });
+
+    $('.signup-recruit').on('click', function(event) {
+        event.preventDefault();
+        var url = $(this).data('target');
+        location.replace(url);
+    });
+
+    $('.signup-applicant').on('click', function(event) {
+        event.preventDefault();
+        var url = $(this).data('target');
+        location.replace(url);
     });
 </script>
 </html>
