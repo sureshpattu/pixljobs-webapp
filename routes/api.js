@@ -27,6 +27,12 @@ module.exports = function(router) {
         });
     });
 
+    router.post('/api/user', function(req, res, next) {
+        helper_utils.makeApiRequest(req, 'POST', '/user', function(_response) {
+            setUserCookies(_response, res);
+        });
+    });
+
     router.post('/api/conditions-file/image-upload/:id', function(req, res, next) {
         helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/conditions-file/image-upload/' + req.params.id,
             function(_response) {

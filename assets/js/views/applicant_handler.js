@@ -28,7 +28,7 @@ function ApplicantSignUpHandler() {
                         alert(_res.message || 'Something went wrong!');
                     }
                 };
-                ApiUtil.makeAjaxRequest('/api/job-applications', '', 'POST', '', obj, callback);
+                ApiUtil.makeAjaxRequest('/api/user', '', 'POST', '', obj, callback);
             }
         });
     }
