@@ -28,8 +28,8 @@ router.post('/applicant-auth/login', function(req, res, next) {
     });
 });
 
-router.post('/recruiter-auth/login', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/login', function(_response) {
+router.post('/recruiter-auth/register', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/register', function(_response) {
         setUserCookies(_response, res);
     });
 });
