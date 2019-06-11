@@ -19,9 +19,12 @@ function RecruiterHandler() {
                     company_size   :_form.find('.js_company_size').val(),
                     company_url    :_form.find('.js_company_url').val(),
                     about_company  :_form.find('.js_about_company').val(),
-                    company_benefit:_form.find('.js_company_benefit').val()
+                    company_benefit:_form.find('.js_company_benefit').val(),
+                    email          :_form.find('.js_email').val(),
+                    password       :_form.find('.js_password').val(),
+                    gender         :_form.find('.js_gender').val()
                 };
-
+                console.log(obj);
                 var callback = function(_res) {
                     if(!_res.error) {
                         window.location.href = '/'
