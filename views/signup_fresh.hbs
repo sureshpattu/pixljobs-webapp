@@ -283,18 +283,18 @@
         location.replace(url);
     });
 
-    $('.js_select').on('click', function(event) {
-        event.preventDefault();
-        var exp = $('.js_select').valueOf(':selected').val();
-        if(exp >= 0) {
-            $('.fresh_details_sec').hide();
-            $('.exp_detail_sec').hide();
-        } else {
-            $('.fresh_details_sec').show();
-            $('.exp_detail_sec').hide();
-
-        }
-    });
+    //$('.js_select').on('click', function(event) {
+    //    event.preventDefault();
+    //    var exp = $('.js_select').valueOf(':selected').val();
+    //    if(exp >= 0) {
+    //        $('.fresh_details_sec').hide();
+    //        $('.exp_detail_sec').hide();
+    //    } else {
+    //        $('.fresh_details_sec').show();
+    //        $('.exp_detail_sec').hide();
+    //
+    //    }
+    //});
 
     var $dropdown1 = $('select[name=\'exp_select\']');
 

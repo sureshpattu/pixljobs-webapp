@@ -22,8 +22,20 @@ router.post('/applicant-auth/register', function(req, res, next) {
     });
 });
 
+router.post('/applicant-auth/login', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/register', function(_response) {
+        setUserCookies(_response, res);
+    });
+});
+
 router.post('/recruiter-auth/login', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/login', function(_response) {
+        setUserCookies(_response, res);
+    });
+});
+
+router.post('/applicant', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant', function(_response) {
         setUserCookies(_response, res);
     });
 });
