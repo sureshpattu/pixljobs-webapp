@@ -29,7 +29,7 @@ function RecruiterHandler() {
                         alert(_res.message || 'Something went wrong!');
                     }
                 };
-                ApiUtil.makeAjaxRequest('/api/recruit', '', 'POST', '', obj, callback);
+                ApiUtil.makeAjaxRequest('/api/recruiter-auth/register', '', 'POST', '', obj, callback);
             }
         });
     }
