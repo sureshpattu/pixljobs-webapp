@@ -77,16 +77,18 @@
                                         <div class="row">
                                             <div class="col-md-6 col-xs-6">
                                                 <div class="box_sec">
-                                                    <select name="exp_select" class="form-control required js_select">
+                                                    <select id="selectExpYear"
+                                                            class="form-control required js_select">
                                                         <option value="0">0 Years</option>
-                                                        <option value="1">1 Months</option>
-                                                        <option value="2">2 Months</option>
+                                                        <option value="1">1 Years</option>
+                                                        <option value="2">2 Years</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xs-6">
                                                 <div class="box_sec">
-                                                    <select class="form-control required">
+                                                    <select id="selectExpMonth"
+                                                            class="form-control required">
                                                         <option value="0">0 Months</option>
                                                         <option value="1">1 Months</option>
                                                         <option value="2">2 Months</option>
@@ -97,7 +99,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="fresh_detils_sec">
+                            <div class="fresh_detils_sec" id="freshDetails">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group pixl_form_group">
@@ -169,7 +171,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="exp_detail_sec hide">
+                            <div class="exp_detail_sec hide" id="expDetails">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group pixl_form_group">
@@ -283,31 +285,33 @@
         location.replace(url);
     });
 
-    //$('.js_select').on('click', function(event) {
-    //    event.preventDefault();
-    //    var exp = $('.js_select').valueOf(':selected').val();
-    //    if(exp >= 0) {
-    //        $('.fresh_details_sec').hide();
-    //        $('.exp_detail_sec').hide();
-    //    } else {
-    //        $('.fresh_details_sec').show();
-    //        $('.exp_detail_sec').hide();
-    //
-    //    }
+    $(function() {
+        $('#selectExpYear').change(function() {
+            var selectedItem = $(this).val();
+            if(selectedItem.valueOf() > 0) {
+                $('#freshDetails').hide();
+                $('#expDetails').show();
+            } else {
+                $('#freshDetails').show();
+                $('#expDetails').hide();
+            }
+        });
+    });
+
+    //$(function() {
+    //    $('#selectExpMonth').change(function() {
+    //        var selectedItem = $(this).val();
+    //        if(selectedItem > 0) {
+    //            $('#freshDetails').hide();
+    //            $('#expDetails').show();
+    //        }
+    //        else {
+    //            $('#freshDetails').show();
+    //            $('#expDetails').hide();
+    //        }
+    //    });
     //});
 
-    var $dropdown1 = $('select[name=\'exp_select\']');
 
-    $dropdown1.change(function() {
-        var selectedItem = $(this).val();
-        console.log('selectedItem', selectedItem.valueOf());
-        if(selectedItem.valueOf() >= 0) {
-            $('.fresh_details_sec').hide();
-            $('.exp_detail_sec').hide();
-        } else {
-            $('.fresh_details_sec').show();
-            $('.exp_detail_sec').hide();
-        }
-    });
 </script>
 </html>
