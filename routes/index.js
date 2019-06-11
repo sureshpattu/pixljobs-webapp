@@ -53,7 +53,9 @@ router.get('/signup-recruiter', function(req, res) {
 });
 
 router.get('/signup-fresh', function(req, res) {
-    res.render('signup_fresh');
+    res.render('signup_fresh', {
+        data:[{}, {}, {}, {}]
+    });
 });
 
 router.get('/signup-exp', function(req, res) {

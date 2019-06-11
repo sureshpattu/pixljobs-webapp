@@ -136,6 +136,15 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group pixl_form_group">
+                                            <label class="control-label">Gender</label>
+                                            <div class="box_sec">
+                                                <input type="text" class="form-control required js_mobile"
+                                                       autocomplete="nope" placeholder="Gender">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
                                             <label class="control-label">Contact No.</label><a href=""
                                                                                                class="non_verify_link">VERIFY</a>
                                             <div class="box_sec">
@@ -151,6 +160,15 @@
                                             <div class="box_sec">
                                                 <input type="text" class="form-control required js_email"
                                                        autocomplete="nope" placeholder="Your current Email ID">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Password</label>
+                                            <div class="box_sec">
+                                                <input type="text" class="form-control required js_email"
+                                                       autocomplete="nope" placeholder="Your password">
                                             </div>
                                         </div>
                                     </div>
@@ -171,7 +189,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="exp_detail_sec hide" id="expDetails">
+                            <div class="exp_detail_sec" id="expDetails">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group pixl_form_group">
@@ -217,6 +235,15 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group pixl_form_group">
+                                            <label class="control-label">Gender</label>
+                                            <div class="box_sec">
+                                                <input type="text" class="form-control required js_mobile"
+                                                       autocomplete="nope" placeholder="Gender">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
                                             <label class="control-label">Contact No.</label>
                                             <a href="" class="non_verify_link">VERIFY</a>
                                             <div class="box_sec">
@@ -231,6 +258,15 @@
                                             <div class="box_sec">
                                                 <input type="text" class="form-control required js_email"
                                                        autocomplete="nope" placeholder="Your current Email ID">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Password</label>
+                                            <div class="box_sec">
+                                                <input type="text" class="form-control required js_email"
+                                                       autocomplete="nope" placeholder="Your password">
                                             </div>
                                         </div>
                                     </div>
@@ -254,7 +290,7 @@
                             </div>
                             <div class="cta_wrap">
                                 <button class="btn btn_big btn_preview">PREVIEW</button>
-                                <button class="btn btn_big btn_blue">
+                                <button class="btn btn_big btn_blue js_submit">
                                     PROCEED
                                     <span class="fa fa-arrow-right right_icon"></span>
                                 </button>
@@ -298,19 +334,19 @@
         });
     });
 
-    //$(function() {
-    //    $('#selectExpMonth').change(function() {
-    //        var selectedItem = $(this).val();
-    //        if(selectedItem > 0) {
-    //            $('#freshDetails').hide();
-    //            $('#expDetails').show();
-    //        }
-    //        else {
-    //            $('#freshDetails').show();
-    //            $('#expDetails').hide();
-    //        }
-    //    });
-    //});
+    $(function() {
+        $('#selectExpMonth').change(function() {
+            var selectedItem = $(this).val();
+            if(selectedItem > 0) {
+                $('#freshDetails').hide();
+                $('#expDetails').show();
+            }
+            else {
+                $('#freshDetails').show();
+                $('#expDetails').hide();
+            }
+        });
+    });
 
 
 </script>
