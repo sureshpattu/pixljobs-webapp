@@ -985,6 +985,32 @@ a.btn.btn_big {
   padding: 27px 0 0;
 }
 
+.imageUploadPopup .modal-header .close {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 4px;
+  top: 8px;
+  font-size: 30px;
+}
+.imageUploadPopup .modal-dialog .modal-content {
+  border-radius: 5px;
+}
+.imageUploadPopup .form-group {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+.imageUploadPopup .img-container {
+  margin-bottom: 0;
+}
+.imageUploadPopup .modal-footer button {
+  color: #fff !important;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
 body.popup-visible {
   overflow: hidden;
 }

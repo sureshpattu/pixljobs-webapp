@@ -4,7 +4,7 @@
     <title>Pixlcoders</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{>header_assets swiper=true  select2=true}}
+    {{>header_assets swiper=true  select2=true cropper=true}}
 </head>
 <body class="signup_pg">
 {{>header}}
@@ -39,13 +39,13 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-8 col-sm-6 col-md-6 hidden-xs">
-                                    <div class="upload_photo_wrap">
-                                        <img src="" alt="" class="img_sec">
+                                    <div class="upload_photo_wrap js_profile_img_wrap" data-target="#profileImageCropperModal"
+                                         data-toggle="modal" data-backdrop="static">
+                                        <img src="" alt="" class="img_sec js_img_pre_holder">
                                         <div class="icon_wrap">
                                             <i class="fa fa-camera"></i>
                                             <div class="upload_txt">Upload Photo</div>
                                         </div>
-                                        <input type="file" class="input_file">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 visible-xs">
@@ -305,7 +305,7 @@
         </div>
     </div>
 </section>
-{{>footer swiper=true select2=true}}
+{{>footer swiper=true select2=true cropper=true}}
 </body>
 <script type="application/javascript">
     $(function() {
