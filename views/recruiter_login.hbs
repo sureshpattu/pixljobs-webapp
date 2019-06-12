@@ -12,8 +12,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <h1 class="title">Applicant Login</h1>
-                <form class="" id="jsLoginForm">
+                <h1 class="title">Recruiter Login</h1>
+                <form class="" id="jsRecruiterLoginForm">
                     <div class="form-group pixl_form_group">
                         <label class="control-label">Email</label>
                         <div class="box_sec">
@@ -32,7 +32,7 @@
                                 <button type="submit" class="btn btn_big">LOGIN</button>
                             </div>
                             <div class="col-md-4">
-                                <a href="/recruiter-login" class="other_login_link">Recruiter Login</a>
+                                <a href="/login" class="other_login_link">Applicant Login</a>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
 </body>
 <script type="application/javascript">
     $(function() {
-        LoginHandler.init();
+        LoginHandler.initRecruiterLogin();
     });
 </script>
 </html>

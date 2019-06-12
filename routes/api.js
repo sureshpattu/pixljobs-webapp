@@ -16,6 +16,7 @@ function setUserCookies(_response, res) {
     }
 }
 
+//applicants APIs
 router.post('/applicant-auth/register', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/register', function(_response) {
         setUserCookies(_response, res);
@@ -23,26 +24,33 @@ router.post('/applicant-auth/register', function(req, res, next) {
 });
 
 router.post('/applicant-auth/login', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/register', function(_response) {
-        setUserCookies(_response, res);
-    });
-});
-
-router.post('/recruiter-auth/register', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/register', function(_response) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/login', function(_response) {
         setUserCookies(_response, res);
     });
 });
 
 router.post('/applicant', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/applicant', function(_response) {
+        res.json(_response);
+    });
+});
+
+//Recruiters APIs
+router.post('/recruiter-auth/register', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/register', function(_response) {
+        setUserCookies(_response, res);
+    });
+});
+
+router.post('/recruiter-auth/login', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/login', function(_response) {
         setUserCookies(_response, res);
     });
 });
 
 router.post('/recruit', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/recruit', function(_response) {
-        setUserCookies(_response, res);
+        res.json(_response);
     });
 });
 
