@@ -46,4 +46,11 @@ router.post('/recruit', function(req, res, next) {
     });
 });
 
+
+router.post('/applicant', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant', function(_response) {
+        setUserCookies(_response, res);
+    });
+});
+
 module.exports = router;

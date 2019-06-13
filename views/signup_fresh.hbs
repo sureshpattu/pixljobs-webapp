@@ -49,13 +49,15 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-12 visible-xs">
-                                    <div class="upload_photo_wrap">
-                                        <img src="" alt="" class="img_sec">
-                                        <div class="icon_wrap">
-                                            <i class="fa fa-camera"></i>
-                                            <div class="upload_txt">Upload Photo</div>
+                                    <div class="profile_img_wrap js_profile_img_wrap" data-target="#profileImageCropperModal"
+                                         data-toggle="modal" data-backdrop="static">
+                                        {{#if user.links.avatar_url}}
+                                            <img class="profile_img js_img_pre_holder" src="/cdn/img{{user.links.avatar_url}}">
+                                        {{/if}}
+                                        <div class="change_photo">
+                                            <i class="fa fa-camera"><span class="txt">Change Photo</span></i>
                                         </div>
-                                        <input type="file" class="input_file">
+                                        <img src="/img/loading.gif" class="loader_img js_prof_pic_load_img hide">
                                     </div>
                                 </div>
                             </div>
@@ -305,11 +307,13 @@
         </div>
     </div>
 </section>
+{{>popup/profile_photo_upload}}
 {{>footer swiper=true select2=true cropper=true}}
 </body>
 <script type="application/javascript">
     $(function() {
         ApplicantSignUpHandler.init();
+        ApplicantSignUpHandler.initView();
     });
 
     $('.signup-recruit').on('click', function(event) {
