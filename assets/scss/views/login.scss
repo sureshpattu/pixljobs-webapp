@@ -1,0 +1,29 @@
+.login_pg {
+    background-color: #f8f8f9;
+
+    .cont_sec {
+        padding: 100px 0 0;
+
+        .btn.btn_big {
+            height: 60px;
+            margin: 20px 0 0;
+        }
+
+        .other_login_link {
+            font-size: 14px;
+            font-weight: 300;
+            margin: 30px 0 0;
+            padding: 10px;
+            display: inline-block;
+            cursor: pointer;
+            color: #4a58ff;
+        }
+
+        .title {
+            font-size: 26px;
+            font-weight: 400;
+            color: #2e3d4e;
+            margin: 0 0 30px;
+        }
+    }
+}
