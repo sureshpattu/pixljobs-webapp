@@ -41,6 +41,19 @@ function RecruiterHandler() {
     return {
         init:function() {
             bindRecruiterEvent();
+        },
+        initView:function(_land_ids) {
+            _lang_ids_arr = _land_ids;
+            utils.initProfileImageCropper('#profileImageCropperModal', '.js_profile_img_wrap', 'userPicPreviewImage',
+                function() {
+                    $('.js_prof_pic_load_img').removeClass('hide');
+                    ApiUtil.makeAjaxRequest('/api/avatar/upload', '', 'POST', '',
+                        {src:$('.js_img_pre_holder').attr('src')}, function(_res) {
+                            $('.js_prof_pic_load_img').addClass('hide');
+
+                        });
+                });
+
         }
     }
 }
