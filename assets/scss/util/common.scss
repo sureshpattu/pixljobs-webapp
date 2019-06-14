@@ -1124,3 +1124,37 @@ a.btn {
         padding: 27px 0 0;
     }
 }
+
+.imageUploadPopup {
+    .modal-header .close {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        right: 4px;
+        top: 8px;
+        font-size: 30px;
+    }
+
+    .modal-dialog .modal-content {
+        border-radius: 5px;
+    }
+
+    .form-group {
+        font-size: 14px;
+        color: #333;
+        font-weight: 500;
+    }
+
+    .img-container {
+        margin-bottom: 0;
+    }
+
+    .modal-footer {
+        button {
+            color: #fff !important;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+}

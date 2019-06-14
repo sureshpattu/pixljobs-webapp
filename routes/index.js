@@ -7,6 +7,9 @@ const helper_utils = require('./util/common');
 router.get('/login', function(req, res) {
     res.render('login');
 });
+router.get('/recruiter-login', function(req, res) {
+    res.render('recruiter_login');
+});
 
 router.get('/logout', function(req, res) {
     res.clearCookie('med_cond_user_token');
@@ -53,7 +56,9 @@ router.get('/signup-recruiter', function(req, res) {
 });
 
 router.get('/signup-fresh', function(req, res) {
-    res.render('signup_fresh');
+    res.render('signup_fresh', {
+        data:[{}, {}, {}, {}]
+    });
 });
 
 router.get('/signup-exp', function(req, res) {
