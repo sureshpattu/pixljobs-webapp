@@ -29,6 +29,19 @@ function RecruiterHandler() {
                 var callback = function(_res) {
                     if(!_res.error) {
                         //window.location.href = '/'
+                        var applicant_id = _res.data.id;
+                        console.log(applicant_id);
+
+                        ApiUtil.makeAjaxRequest('/api/companies/add/problems/' + applicant_id, '', 'POST',
+                            '',
+                            {}, function(_res) {
+                                if(!_res.error) {
+                                    window.location.href = '/';
+                                } else {
+                                    alert(
+                                        _res.message || 'Something went wrong!');
+                                }
+                            });
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
@@ -39,7 +52,7 @@ function RecruiterHandler() {
     }
 
     return {
-        init:function() {
+        init    :function() {
             bindRecruiterEvent();
         },
         initView:function(_land_ids) {
