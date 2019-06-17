@@ -25,7 +25,7 @@ router.get('/', function(req, res) {
     res.render('search');
 });
 
-router.get('/postjob-work', function(req, res) {
+router.get('/postjob-work',verify.isRecruiterLoggedIn, function(req, res) {
     res.render('postjob_work');
 });
 
