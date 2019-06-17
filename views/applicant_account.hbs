@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Account Fresher</title>
+    <title>Applicant Account</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
@@ -34,8 +34,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-9">
-                                    <div class="name_txt">Rahul Redekar</div>
-                                    <div class="qualification_txt">Fresher - B.Tech in Computer Science</div>
+                                    <div class="name_txt">{{data.name}}</div>
+                                    <div class="qualification_txt">{{data.qualifiction}}</div>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,8 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Full Name</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control" placeholder="Rahul Redekar">
+                                                <input type="text" class="form-control" placeholder="Rahul Redekar"
+                                                       value="{{data.name}}">
                                             </div>
                                         </div>
                                     </div>
@@ -58,6 +59,8 @@
                                                     <div class="input_icon_wrap">
                                                         <select class="form-control">
                                                             <option>0 Years</option>
+                                                            <option>0 Years</option>
+                                                            <option>0 Years</option>
                                                         </select>
                                                         <span class="fa fa-angle-down icon_sec"></span>
                                                     </div>
@@ -66,7 +69,7 @@
                                                     <div class="input_icon_wrap">
                                                         <select class="form-control">
                                                             <option value="">0 Month</option>
-                                                            <option value="">{{name}}</option>
+                                                            <option value="">{{data.exp_month}}</option>
                                                         </select>
                                                         <span class="fa fa-angle-down icon_sec"></span>
                                                     </div>
@@ -75,35 +78,82 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Qualification</label>
-                                            <div class="box_sec">
-                                                <input type="text" class="form-control"
-                                                       placeholder="B.Tech in Computer Science">
+                                <div class="fresh_detils_sec" id="freshDetails">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Qualification</label>
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="B.Tech in Computer Science"
+                                                           value="{{data.qualification}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Expected Annual Salary</label>
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="360000" value="{{data.expected_salary}}">
+                                                    <span class="inr_txt">INR</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Expected Annual Salary</label>
-                                            <div class="box_sec">
-                                                <input type="text" class="form-control"
-                                                       placeholder="360000">
-                                                <span class="inr_txt">INR</span>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Institution</label>
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Belgavi Engineering College, Bangalore"
+                                                           value="{{data.institution}}">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="exp_detail_sec" id="expDetails">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Designation</label>
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control" placeholder="Full Stack Developer">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Company Name</label>
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Pattu Technologies Pvt. Ltd.">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Institution</label>
-                                            <div class="box_sec">
-                                                <input type="text" class="form-control"
-                                                       placeholder="Belgavi Engineering College, Bangalore">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Current Annual Salary</label>
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control" placeholder="2000000">
+                                                    <span class="inr_txt">INR</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Expected Annual Salary</label>
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control" placeholder="2200000">
+                                                    <span class="inr_txt">INR</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +165,7 @@
                                                 class="verify_txt">Verify</span>
                                             <div class="box_sec">
                                                 <input type="text" class="form-control"
-                                                       placeholder="9878123472">
+                                                       placeholder="9878123472" value="{{data.mobile}}">
                                             </div>
                                         </div>
                                     </div>
@@ -126,7 +176,7 @@
                                             <span class="verified_txt">Verified</span>
                                             <div class="box_sec">
                                                 <input type="text" class="form-control "
-                                                       placeholder="rahul17.rad@gmail.com">
+                                                       placeholder="rahul17.rad@gmail.com" value="{{data.email}}">
                                             </div>
                                         </div>
                                     </div>

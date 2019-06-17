@@ -30,7 +30,7 @@ function ApplicantSignUpHandler() {
                 console.log(obj);
                 var callback = function(_res) {
                     if(!_res.error) {
-                        window.location.href = '/'
+                        window.location.href = '/applicant-account'
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }

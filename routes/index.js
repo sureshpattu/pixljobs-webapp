@@ -55,18 +55,22 @@ router.get('/signup-recruiter', function(req, res) {
     res.render('signup_recruiter');
 });
 
-router.get('/signup-fresh', function(req, res) {
-    res.render('signup_fresh', {
+router.get('/signup-applicant', function(req, res) {
+    res.render('signup_applicant', {
         data:[{}, {}, {}, {}]
+    });
+});
+
+router.get('/applicant-account', function(req, res) {
+    helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
+        res.render('applicant_account', {
+            data:_response.data
+        });
     });
 });
 
 router.get('/signup-exp', function(req, res) {
     res.render('signup_exp');
-});
-
-router.get('/fresher-account', function(req, res) {
-    res.render('fresher_account');
 });
 
 router.get('/exp-account', function(req, res) {
