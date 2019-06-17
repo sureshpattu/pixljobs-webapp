@@ -1,7 +1,7 @@
 'use strict';
 
-const express      = require('express');
-const router       = express.Router();
+const express = require('express');
+const router = express.Router();
 const helper_utils = require('./util/common');
 
 function setUserCookies(_response, res) {
@@ -59,5 +59,6 @@ router.post('/applicant', function(req, res, next) {
         setUserCookies(_response, res);
     });
 });
+
 
 module.exports = router;
