@@ -25,7 +25,9 @@ function ApplicantSignUpHandler() {
                     mobile         :_form.find('.js_mobile').val() || '0',
                     email          :_form.find('.js_email').val(),
                     password       :_form.find('.js_password').val(),
-                    gender         :_form.find('.js_gender').val()
+                    gender         :_form.find('.js_gender').val(),
+                    exp_month      :_form.find('.js_exp_month').val(),
+                    exp_year       :_form.find('.js_exp_year').val()
                 };
                 console.log(obj);
                 var callback = function(_res) {

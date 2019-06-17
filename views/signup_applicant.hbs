@@ -83,7 +83,7 @@
                                             <div class="col-md-6 col-xs-6">
                                                 <div class="box_sec">
                                                     <select id="selectExpYear"
-                                                            class="form-control js_select required">
+                                                            class="form-control js_select js_exp_year">
                                                         <option value="0">0 Years</option>
                                                         <option value="1">1 Years</option>
                                                         <option value="2">2 Years</option>
@@ -93,7 +93,7 @@
                                             <div class="col-md-6 col-xs-6">
                                                 <div class="box_sec">
                                                     <select id="selectExpMonth"
-                                                            class="form-control required">
+                                                            class="form-control js_exp_month ">
                                                         <option value="0">0 Months</option>
                                                         <option value="1">1 Months</option>
                                                         <option value="2">2 Months</option>
@@ -139,7 +139,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="exp_detail_sec" id="expDetails">
+                            <div class="exp_detail_sec hide" id="expDetails">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group pixl_form_group">
@@ -281,11 +281,11 @@
         $('#selectExpYear').change(function() {
             var selectedItem = $(this).val();
             if(selectedItem.valueOf() > 0) {
-                $('#freshDetails').hide();
-                $('#expDetails').show();
+                $('#freshDetails').addClass('hide');
+                $('#expDetails').removeClass('hide');
             } else {
-                $('#freshDetails').show();
-                $('#expDetails').hide();
+                $('#freshDetails').removeClass('hide');
+                $('#expDetails').addClass('hide');
             }
         });
     });
@@ -294,11 +294,11 @@
         $('#selectExpMonth').change(function() {
             var selectedItem = $(this).val();
             if(selectedItem > 0) {
-                $('#freshDetails').hide();
-                $('#expDetails').show();
+                $('#freshDetails').addClass('hide');
+                $('#expDetails').removeClass('hide');
             } else {
-                $('#freshDetails').show();
-                $('#expDetails').hide();
+                $('#freshDetails').removeClass('hide');
+                $('#expDetails').addClass('hide');
             }
         });
     });

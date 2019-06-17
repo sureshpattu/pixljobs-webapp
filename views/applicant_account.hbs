@@ -35,7 +35,11 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="name_txt">{{data.name}}</div>
-                                    <div class="qualification_txt">{{data.qualifiction}}</div>
+                                    {{#if exp}}
+                                        <div class="qualification_txt">{{data.designation}}</div>
+                                    {{else}}
+                                        <div class="qualification_txt">{{data.qualifiction}}</div>
+                                    {{/if}}
                                 </div>
                             </div>
                         </div>
@@ -58,7 +62,7 @@
                                                 <div class="col-md-6 col-xs-6">
                                                     <div class="input_icon_wrap">
                                                         <select class="form-control">
-                                                            <option>0 Years</option>
+                                                            <option value="">{{data.exp_year}}</option>
                                                             <option>0 Years</option>
                                                             <option>0 Years</option>
                                                         </select>
@@ -68,7 +72,6 @@
                                                 <div class="col-md-6 col-xs-6">
                                                     <div class="input_icon_wrap">
                                                         <select class="form-control">
-                                                            <option value="">0 Month</option>
                                                             <option value="">{{data.exp_month}}</option>
                                                         </select>
                                                         <span class="fa fa-angle-down icon_sec"></span>
@@ -78,86 +81,95 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="fresh_detils_sec" id="freshDetails">
+                                {{#if exp}}
+                                    <div class="exp_detail_sec" id="expDetails">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Designation</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control"
+                                                               placeholder="Full Stack Developer"
+                                                               value="{{data.designation}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Company Name</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control"
+                                                               placeholder="Pattu Technologies Pvt. Ltd."
+                                                               value="{{data.company}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Qualification</label>
-                                                <div class="box_sec">
-                                                    <input type="text" class="form-control"
-                                                           placeholder="B.Tech in Computer Science"
-                                                           value="{{data.qualification}}">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Current Annual Salary</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control" placeholder="2000000"
+                                                               value="{{data.current_salary}}">
+                                                        <span class="inr_txt">INR</span>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Expected Annual Salary</label>
-                                                <div class="box_sec">
-                                                    <input type="text" class="form-control"
-                                                           placeholder="360000" value="{{data.expected_salary}}">
-                                                    <span class="inr_txt">INR</span>
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Expected Annual Salary</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control" placeholder="2200000"
+                                                               value="{{data.expected_salary}}">
+                                                        <span class="inr_txt">INR</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                {{else}}
+                                    <div class="fresh_detils_sec" id="freshDetails">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Qualification</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control"
+                                                               placeholder="B.Tech in Computer Science"
+                                                               value="{{data.qualification}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Expected Annual Salary</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control"
+                                                               placeholder="360000" value="{{data.expected_salary}}">
+                                                        <span class="inr_txt">INR</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Institution</label>
-                                                <div class="box_sec">
-                                                    <input type="text" class="form-control"
-                                                           placeholder="Belgavi Engineering College, Bangalore"
-                                                           value="{{data.institution}}">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Institution</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control"
+                                                               placeholder="Belgavi Engineering College, Bangalore"
+                                                               value="{{data.institution}}">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="exp_detail_sec" id="expDetails">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Designation</label>
-                                                <div class="box_sec">
-                                                    <input type="text" class="form-control" placeholder="Full Stack Developer">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Company Name</label>
-                                                <div class="box_sec">
-                                                    <input type="text" class="form-control"
-                                                           placeholder="Pattu Technologies Pvt. Ltd.">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                {{/if}}
 
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Current Annual Salary</label>
-                                                <div class="box_sec">
-                                                    <input type="text" class="form-control" placeholder="2000000">
-                                                    <span class="inr_txt">INR</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Expected Annual Salary</label>
-                                                <div class="box_sec">
-                                                    <input type="text" class="form-control" placeholder="2200000">
-                                                    <span class="inr_txt">INR</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group pixl_form_group">
