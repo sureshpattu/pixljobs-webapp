@@ -41,4 +41,18 @@
             text-align: right;
         }
     }
+
+    @media (max-width: 768px) {
+        .cont_sec {
+            .login_form_sec {
+                box-shadow: none;
+
+            }
+
+            .btn.btn_big {
+                margin: 0 0 18px 0;
+                width: 100%;
+            }
+        }
+    }
 }

@@ -3974,3 +3974,12 @@ body.popup-visible {
   opacity: .8;
   text-align: right;
 }
+@media (max-width: 768px) {
+  .login_pg .cont_sec .login_form_sec {
+    box-shadow: none;
+  }
+  .login_pg .cont_sec .btn.btn_big {
+    margin: 0 0 18px 0;
+    width: 100%;
+  }
+}
