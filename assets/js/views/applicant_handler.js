@@ -27,7 +27,8 @@ function ApplicantSignUpHandler() {
                     password       :_form.find('.js_password').val(),
                     gender         :_form.find('.js_gender').val(),
                     exp_month      :_form.find('.js_exp_month').val(),
-                    exp_year       :_form.find('.js_exp_year').val()
+                    exp_year       :_form.find('.js_exp_year').val(),
+                    resume         :_form.find('.js_input_file').val()
                 };
                 console.log(obj);
                 var callback = function(_res) {
@@ -85,7 +86,7 @@ function ApplicantSignUpHandler() {
         init    :function() {
             bindApplicantSignUpEvent();
         },
-        initEdit    :function() {
+        initEdit:function() {
             bindApplicantEditEvent();
         },
         initView:function(_land_ids) {

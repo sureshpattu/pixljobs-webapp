@@ -14,8 +14,8 @@
     <div class="container">
         <div class="common_tab_links_wrap">
             <ul>
-                <li><a class="cta_link active" href="#">Profile</a></li>
-                <li><a class="cta_link" href="#">Applications</a></li>
+                <li><a class="cta_link active" href="/applicant-account">Profile</a></li>
+                <li><a class="cta_link" href="/job-applicant-two">Applications</a></li>
                 <li><a class="cta_link" href="#">Preferences</a></li>
             </ul>
         </div>
@@ -50,7 +50,7 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Full Name</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control" placeholder="Rahul Redekar"
+                                                <input type="text" class="form-control"
                                                        value="{{data.name}}">
                                             </div>
                                         </div>
@@ -60,21 +60,21 @@
                                             <label class="control-label">Experience</label>
                                             <div class="row">
                                                 <div class="col-md-6 col-xs-6">
-                                                    <div class="input_icon_wrap">
-                                                        <select class="form-control">
+                                                    <div class="box_sec">
+                                                        <select class="form-control js_select2 js_exp_year">
                                                             <option value="">{{data.exp_year}}</option>
                                                             <option>0 Years</option>
                                                             <option>0 Years</option>
                                                         </select>
-                                                        <span class="fa fa-angle-down icon_sec"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-xs-6">
-                                                    <div class="input_icon_wrap">
-                                                        <select class="form-control">
+                                                    <div class="box_sec">
+                                                        <select class="form-control js_select2 js_exp_month">
                                                             <option value="">{{data.exp_month}}</option>
+                                                            <option>0 Month</option>
+                                                            <option>0 Month</option>
                                                         </select>
-                                                        <span class="fa fa-angle-down icon_sec"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,7 +89,6 @@
                                                     <label class="control-label">Designation</label>
                                                     <div class="box_sec">
                                                         <input type="text" class="form-control"
-                                                               placeholder="Full Stack Developer"
                                                                value="{{data.designation}}">
                                                     </div>
                                                 </div>
@@ -99,7 +98,6 @@
                                                     <label class="control-label">Company Name</label>
                                                     <div class="box_sec">
                                                         <input type="text" class="form-control"
-                                                               placeholder="Pattu Technologies Pvt. Ltd."
                                                                value="{{data.company}}">
                                                     </div>
                                                 </div>
@@ -111,7 +109,7 @@
                                                 <div class="form-group pixl_form_group">
                                                     <label class="control-label">Current Annual Salary</label>
                                                     <div class="box_sec">
-                                                        <input type="text" class="form-control" placeholder="2000000"
+                                                        <input type="text" class="form-control"
                                                                value="{{data.current_salary}}">
                                                         <span class="inr_txt">INR</span>
                                                     </div>
@@ -121,7 +119,7 @@
                                                 <div class="form-group pixl_form_group">
                                                     <label class="control-label">Expected Annual Salary</label>
                                                     <div class="box_sec">
-                                                        <input type="text" class="form-control" placeholder="2200000"
+                                                        <input type="text" class="form-control"
                                                                value="{{data.expected_salary}}">
                                                         <span class="inr_txt">INR</span>
                                                     </div>
@@ -137,7 +135,6 @@
                                                     <label class="control-label">Qualification</label>
                                                     <div class="box_sec">
                                                         <input type="text" class="form-control"
-                                                               placeholder="B.Tech in Computer Science"
                                                                value="{{data.qualification}}">
                                                     </div>
                                                 </div>
@@ -147,7 +144,7 @@
                                                     <label class="control-label">Expected Annual Salary</label>
                                                     <div class="box_sec">
                                                         <input type="text" class="form-control"
-                                                               placeholder="360000" value="{{data.expected_salary}}">
+                                                               value="{{data.expected_salary}}">
                                                         <span class="inr_txt">INR</span>
                                                     </div>
                                                 </div>
@@ -160,7 +157,6 @@
                                                     <label class="control-label">Institution</label>
                                                     <div class="box_sec">
                                                         <input type="text" class="form-control"
-                                                               placeholder="Belgavi Engineering College, Bangalore"
                                                                value="{{data.institution}}">
                                                     </div>
                                                 </div>
@@ -168,8 +164,6 @@
                                         </div>
                                     </div>
                                 {{/if}}
-
-
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group pixl_form_group">
@@ -177,7 +171,7 @@
                                                 class="verify_txt">Verify</span>
                                             <div class="box_sec">
                                                 <input type="text" class="form-control"
-                                                       placeholder="9878123472" value="{{data.mobile}}">
+                                                       value="{{data.mobile}}">
                                             </div>
                                         </div>
                                     </div>
@@ -188,7 +182,7 @@
                                             <span class="verified_txt">Verified</span>
                                             <div class="box_sec">
                                                 <input type="text" class="form-control "
-                                                       placeholder="rahul17.rad@gmail.com" value="{{data.email}}">
+                                                       value="{{data.email}}">
                                             </div>
                                         </div>
                                     </div>
@@ -238,7 +232,7 @@
         </div>
     </div>
 </section>
-{{>footer}}
+{{>footer select2=true}}
 </body>
 <script type="application/javascript">
     $(function() {
