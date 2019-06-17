@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Applicant Account</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    {{>header_assets select2=true}}
+</head>
+<body class="profile_pg">
+{{>header}}
+<section class="common_main_sec">
+    {{>common_hero_sec}}
+    <div class="container">
+        <div class="common_tab_links_wrap">
+            <ul>
+                <li><a class="cta_link active" href="#">Profile</a></li>
+                <li><a class="cta_link" href="#">Applications</a></li>
+                <li><a class="cta_link" href="#">Preferences</a></li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="common_form_sec">
+                    <div class="form_wrap">
+                        <div class="name_info_sec">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="profile_img_wrap">
+                                        <img src="https://via.placeholder.com/150" class="img_sec">
+                                        <div class="icon_wrap">
+                                            <span class="fa fa-pencil"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="name_txt">{{data.name}}</div>
+                                    {{#if exp}}
+                                        <div class="qualification_txt">{{data.designation}}</div>
+                                    {{else}}
+                                        <div class="qualification_txt">{{data.qualifiction}}</div>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail_sec">
+                            <form class="" id="jsLoginForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Full Name</label>
+                                            <div class="box_sec">
+                                                <input type="text" class="form-control" placeholder="Rahul Redekar"
+                                                       value="{{data.name}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Experience</label>
+                                            <div class="row">
+                                                <div class="col-md-6 col-xs-6">
+                                                    <div class="input_icon_wrap">
+                                                        <select class="form-control">
+                                                            <option value="">{{data.exp_year}}</option>
+                                                            <option>0 Years</option>
+                                                            <option>0 Years</option>
+                                                        </select>
+                                                        <span class="fa fa-angle-down icon_sec"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-xs-6">
+                                                    <div class="input_icon_wrap">
+                                                        <select class="form-control">
+                                                            <option value="">{{data.exp_month}}</option>
+                                                        </select>
+                                                        <span class="fa fa-angle-down icon_sec"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{#if exp}}
+                                    <div class="exp_detail_sec" id="expDetails">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Designation</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control"
+                                                               placeholder="Full Stack Developer"
+                                                               value="{{data.designation}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Company Name</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control"
+                                                               placeholder="Pattu Technologies Pvt. Ltd."
+                                                               value="{{data.company}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Current Annual Salary</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control" placeholder="2000000"
+                                                               value="{{data.current_salary}}">
+                                                        <span class="inr_txt">INR</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Expected Annual Salary</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control" placeholder="2200000"
+                                                               value="{{data.expected_salary}}">
+                                                        <span class="inr_txt">INR</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{else}}
+                                    <div class="fresh_detils_sec" id="freshDetails">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Qualification</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control"
+                                                               placeholder="B.Tech in Computer Science"
+                                                               value="{{data.qualification}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Expected Annual Salary</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control"
+                                                               placeholder="360000" value="{{data.expected_salary}}">
+                                                        <span class="inr_txt">INR</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group pixl_form_group">
+                                                    <label class="control-label">Institution</label>
+                                                    <div class="box_sec">
+                                                        <input type="text" class="form-control"
+                                                               placeholder="Belgavi Engineering College, Bangalore"
+                                                               value="{{data.institution}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {{/if}}
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group">
+                                            <label class="control-label">Contact No.</label><span
+                                                class="verify_txt">Verify</span>
+                                            <div class="box_sec">
+                                                <input type="text" class="form-control"
+                                                       placeholder="9878123472" value="{{data.mobile}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group pixl_form_group ">
+                                            <label class="control-label">Email ID</label>
+                                            <span class="checked_icon fa fa-check-circle"></span>
+                                            <span class="verified_txt">Verified</span>
+                                            <div class="box_sec">
+                                                <input type="text" class="form-control "
+                                                       placeholder="rahul17.rad@gmail.com" value="{{data.email}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group pixl_form_group ">
+                                            <label class="control-label">Upload Resume</label>
+                                            <div class="box_sec upload_sec">
+                                                <span class="fa fa-file-text-o icon_sec">
+                                                <span class="fa fa-arrow-circle-o-up sub_icon_sec"></span>
+                                                </span>
+                                                <span>Drag & drop Image or </span>
+                                                <a class="upload_txt">Upload file</a>
+                                                <input type="file" class="input_file">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2">
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-12">
+                                                <div class="form-group pixl_form_group ">
+                                                    <button class="btn btn_big">PREVIEW</button>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-12">
+                                                <div class="form-group pixl_form_group ">
+                                                    <button class="btn btn_big btn_blue" type="submit">
+                                                        <span class="fa fa-check left_icon"></span>
+                                                        SAVE
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{>footer}}
+</body>
+<script type="application/javascript">
+    $(function() {
+        ApplicantSignUpHandler.initEdit();
+    });
+</script>
+</html>

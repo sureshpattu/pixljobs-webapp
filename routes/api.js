@@ -1,5 +1,7 @@
 'use strict';
 
+const express = require('express');
+const router = express.Router();
 const helper_utils = require('./util/common');
 
 function setUserCookies(_response, res) {
@@ -14,27 +16,51 @@ function setUserCookies(_response, res) {
     }
 }
 
-module.exports = function(router) {
-    router.post('/api/auth/register', function(req, res, next) {
-        helper_utils.makeApiRequest(req, 'POST', '/auth/register', function(_response) {
-            setUserCookies(_response, res);
-        });
+//applicants APIs
+router.post('/applicant-auth/register', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/register', function(_response) {
+        setUserCookies(_response, res);
     });
+});
 
-    router.post('/api/auth/login', function(req, res, next) {
-        helper_utils.makeApiRequest(req, 'POST', '/auth/login', function(_response) {
-            setUserCookies(_response, res);
-        });
+router.post('/applicant-auth/login', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/login', function(_response) {
+        setUserCookies(_response, res);
     });
+});
 
-    router.post('/api/conditions-file/image-upload/:id', function(req, res, next) {
-        helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/conditions-file/image-upload/' + req.params.id,
-            function(_response) {
-                res.json(_response);
-            });
+router.post('/applicant', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant' + req.cookies.pixljob_user_id, function(_response) {
+        res.json(_response);
     });
+});
 
-    router.get('/cdn/img/conditions/photo/:image', function(req, res, next) {
-        helper_utils.makeApiRequest(req, 'IMAGE', '/conditions-file/photo/' + req.params.image, '', res);
+router.post('/applicant/avatar/upload', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/avatar/upload', function(_response) {
+        setUserCookies(_response, res);
     });
-};
+});
+
+//Recruiters APIs
+router.post('/recruiter-auth/register', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/register', function(_response) {
+        setUserCookies(_response, res);
+    });
+});
+
+router.post('/recruiter-auth/login', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/login', function(_response) {
+        setUserCookies(_response, res);
+    });
+});
+
+router.post('/recruit', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/recruit', function(_response) {
+        res.json(_response);
+    });
+});
+
+
+
+
+module.exports = router;

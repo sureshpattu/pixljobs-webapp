@@ -7,6 +7,9 @@ const helper_utils = require('./util/common');
 router.get('/login', function(req, res) {
     res.render('login');
 });
+router.get('/recruiter-login', function(req, res) {
+    res.render('recruiter_login');
+});
 
 router.get('/logout', function(req, res) {
     res.clearCookie('med_cond_user_token');
@@ -22,7 +25,7 @@ router.get('/', function(req, res) {
     res.render('search');
 });
 
-router.get('/postjob-work', function(req, res) {
+router.get('/postjob-work',verify.isRecruiterLoggedIn, function(req, res) {
     res.render('postjob_work');
 });
 
@@ -52,24 +55,39 @@ router.get('/signup-recruiter', function(req, res) {
     res.render('signup_recruiter');
 });
 
-router.get('/signup-fresh', function(req, res) {
-    res.render('signup_fresh');
+router.get('/signup-applicant', function(req, res) {
+    res.render('signup_applicant', {
+        data:[{}, {}, {}, {}]
+    });
+});
+
+router.get('/applicant-account', function(req, res) {
+    helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
+        let is_experience = false;
+        if(_response.data.exp_year > 0 || _response.data.exp_month > 0) {
+            is_experience = true;
+        }
+        res.render('applicant_account', {
+            data:_response.data,
+            exp:is_experience
+        });
+    });
 });
 
 router.get('/signup-exp', function(req, res) {
     res.render('signup_exp');
 });
 
-router.get('/fresher-account', function(req, res) {
-    res.render('fresher_account');
-});
-
 router.get('/exp-account', function(req, res) {
     res.render('experience_account');
 });
 
-router.get('/recruiter-profile', function(req, res) {
-    res.render('recruiter_profile');
+router.get('/recruiter', function(req, res) {
+    helper_utils.makeApiRequest(req, 'GET', '/recruiter/' + req.cookies.pixljob_user_id, function(_response) {
+        res.render('recruiter_profile', {
+            data:_response.data
+        });
+    });
 });
 
 router.get('/job-info', function(req, res) {
