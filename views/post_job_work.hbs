@@ -4,7 +4,7 @@
     <title>Search</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{>header_assets swiper=true  select2=true}}
+    {{>header_assets swiper=true  select2=true ranger=true}}
 </head>
 <body class="postjob_work">
 {{>header}}
@@ -40,18 +40,18 @@
                                         <label class="control-label">Location</label>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="box_sec">
-                                                    <div class="form-control radio_link">
-                                                        <input type="radio" name="optradio" checked><span
-                                                            class="radio_txt">Remote</span>
+                                                <div class="box_sec radio_box">
+                                                    <div class="form-control radio">
+                                                        <input id="radio-1" name="radio" type="radio" checked>
+                                                        <label for="radio-1" class="radio-label">Remote</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="box_sec">
-                                                    <div class="form-control radio_link">
-                                                        <input type="radio" name="optradio" checked><span
-                                                            class="radio_txt">On Site</span>
+                                                <div class="box_sec radio_box">
+                                                    <div class="form-control radio">
+                                                        <input id="radio-2" name="radio" type="radio">
+                                                        <label  for="radio-2" class="radio-label">On Site</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,9 +78,17 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Salary - Annual INR</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control" placeholder="Select Range">
-                                            <div class="icon_wrap">
-                                                <span class="fa fa-angle-down icon_sec"></span>
+                                            <div class="wrapper" style="padding:20px;">
+                                                <div class="range-slider">
+                                                    <input type="text" class="js-range-slider" value="" />
+                                                </div>
+                                                <hr>
+                                                <div class="extra-controls form-inline">
+                                                    <div class="form-group">
+                                                        <input type="hidden" class="js-input-from form-control" value="0" />
+                                                        <input type="hidden" class="js-input-to form-control" value="0" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -95,10 +103,83 @@
         </div>
     </div>
 </section>
-{{>footer swiper=true select2=true}}
+{{>footer swiper=true select2=true ranger=true}}
 </body>
 <script type="application/javascript">
     $(function() {
+
+    });
+
+    // Trigger
+
+    $(function () {
+
+        var $range = $(".js-range-slider"),
+            $inputFrom = $(".js-input-from"),
+            $inputTo = $(".js-input-to"),
+            instance,
+            min = 0,
+            max = 3000000,
+            from = 0,
+            to = 0;
+
+        $range.ionRangeSlider({
+            type: "double",
+            min: min,
+            max: max,
+            from: 0,
+            to: 500000,
+            prefix: 'Rp. ',
+            onStart: updateInputs,
+            onChange: updateInputs,
+            step: 50000,
+            prettify_enabled: true,
+            prettify_separator: ".",
+            values_separator: " - ",
+            force_edges: true
+
+
+        });
+
+        instance = $range.data("ionRangeSlider");
+
+        function updateInputs (data) {
+            from = data.from;
+            to = data.to;
+
+            $inputFrom.prop("value", from);
+            $inputTo.prop("value", to);
+        }
+
+        $inputFrom.on("input", function () {
+            var val = $(this).prop("value");
+
+            // validate
+            if (val < min) {
+                val = min;
+            } else if (val > to) {
+                val = to;
+            }
+
+            instance.update({
+                from: val
+            });
+        });
+
+        $inputTo.on("input", function () {
+            var val = $(this).prop("value");
+
+            // validate
+            if (val < from) {
+                val = from;
+            } else if (val > max) {
+                val = max;
+            }
+
+            instance.update({
+                to: val
+            });
+        });
 
     });
 </script>
