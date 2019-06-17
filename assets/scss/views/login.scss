@@ -44,9 +44,20 @@
 
     @media (max-width: 768px) {
         .cont_sec {
+            .common_hero_sec {
+                height: 350px;
+                background: #ffffff url(/img/cover-img.jpg) no-repeat left bottom;
+                background-size: cover !important;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 0;
+            }
+
             .login_form_sec {
                 box-shadow: none;
-
+                min-height: auto;
             }
 
             .btn.btn_big {
