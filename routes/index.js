@@ -82,8 +82,12 @@ router.get('/exp-account', function(req, res) {
     res.render('experience_account');
 });
 
-router.get('/recruiter-profile', function(req, res) {
-    res.render('recruiter_profile');
+router.get('/recruiter', function(req, res) {
+    helper_utils.makeApiRequest(req, 'GET', '/recruiter/' + req.cookies.pixljob_user_id, function(_response) {
+        res.render('recruiter_profile', {
+            data:_response.data
+        });
+    });
 });
 
 router.get('/job-info', function(req, res) {
