@@ -25,16 +25,16 @@ router.get('/', function(req, res) {
     res.render('search');
 });
 
-router.get('/postjob-work',verify.isRecruiterLoggedIn, function(req, res) {
-    res.render('postjob_work');
+router.get('/post-job', verify.isRecruiterLoggedIn, function(req, res) {
+    res.render('post_job_work');
 });
 
-router.get('/postjob-company', function(req, res) {
-    res.render('postjob_company');
+router.get('/post-job/company', function(req, res) {
+    res.render('post_job_company');
 });
 
-router.get('/postjob-info', function(req, res) {
-    res.render('postjob_info');
+router.get('/post-job/info', function(req, res) {
+    res.render('post_job_info');
 });
 
 router.get('/job-applicant-one', function(req, res) {
@@ -51,12 +51,12 @@ router.get('/job-recruiter', function(req, res) {
     });
 });
 
-router.get('/signup-recruiter', function(req, res) {
-    res.render('signup_recruiter');
+router.get('/sign-up/recruiter', function(req, res) {
+    res.render('sign_up_recruiter');
 });
 
-router.get('/signup-applicant', function(req, res) {
-    res.render('signup_applicant', {
+router.get('/sign-up/applicant', function(req, res) {
+    res.render('sign_up_applicant', {
         data:[{}, {}, {}, {}]
     });
 });
@@ -69,13 +69,9 @@ router.get('/applicant-account', function(req, res) {
         }
         res.render('applicant_account', {
             data:_response.data,
-            exp:is_experience
+            exp :is_experience
         });
     });
-});
-
-router.get('/signup-exp', function(req, res) {
-    res.render('signup_exp');
 });
 
 router.get('/exp-account', function(req, res) {
@@ -97,7 +93,6 @@ router.get('/job-info', function(req, res) {
 router.get('/form-template', function(req, res) {
     res.render('form_template');
 });
-
 
 router.get('/forgot/password', function(req, res) {
     res.render('forgot_password');
