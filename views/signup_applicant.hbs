@@ -32,7 +32,7 @@
                                                    data-target="/signup-recruiter"><i class="fa fa-user"
                                                                                       aria-hidden="true"></i>Recruiter</a>
                                                 <a class="btn signup-applicant role active" type="submit"
-                                                   data-target="/signup-fresh"><i class="fa fa-user"
+                                                   data-target="/signup-applicant"><i class="fa fa-user"
                                                                                   aria-hidden="true"></i>Applicant</a>
                                             </div>
                                         </div>
@@ -83,7 +83,7 @@
                                             <div class="col-md-6 col-xs-6">
                                                 <div class="box_sec">
                                                     <select id="selectExpYear"
-                                                            class="form-control js_select js_exp_year select2">
+                                                            class="form-control js_select2 js_exp_year">
                                                         <option value="0">0 Years</option>
                                                         <option value="1">1 Years</option>
                                                         <option value="2">2 Years</option>
@@ -93,7 +93,7 @@
                                             <div class="col-md-6 col-xs-6">
                                                 <div class="box_sec">
                                                     <select id="selectExpMonth"
-                                                            class="form-control js_exp_month select2">
+                                                            class="form-control js_exp_month js_select2">
                                                         <option value="0">0 Months</option>
                                                         <option value="1">1 Months</option>
                                                         <option value="2">2 Months</option>
@@ -189,7 +189,7 @@
                                         <label class="control-label">Gender</label>
                                         <div class="box_sec">
                                             <select
-                                                    class="form-control js_gender required">
+                                                    class="form-control js_gender required js_select2">
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                                 <option value="other">Others</option>
@@ -237,7 +237,7 @@
                                             </span>
                                             <span>Drag & drop Image or </span>
                                             <a class="upload_txt">Upload file</a>
-                                            <input type="file" class="input_file">
+                                            <input type="file" class="input_file js_input_file">
                                         </div>
                                     </div>
                                 </div>
