@@ -14,7 +14,7 @@
     "cookie-parser": "^1.4.3",
     "debug": "^2.6.0",
     "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
+    "express-handlebars": "3.0.0",
     "express-session": "^1.15.2",
     "formidable": "latest",
     "gm": "^1.23.1",
