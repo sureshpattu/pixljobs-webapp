@@ -60,5 +60,11 @@ router.post('/applicant', function(req, res, next) {
     });
 });
 
+router.post('/forgot-password', function (req, res) {
+    helper_utils.makeApiRequest(req, 'POST', '/password/reset/token/create', function (_response) {
+        res.json(_response);
+    });
+});
+
 
 module.exports = router;
