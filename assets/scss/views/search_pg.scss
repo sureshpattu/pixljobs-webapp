@@ -282,6 +282,33 @@
         }
 
     }
+    .irs--flat .irs-bar {
+        cursor: pointer;
+        background-color: rgb(102, 223, 141);
+    }
+
+    .irs--flat .irs-from, .irs--flat .irs-to, .irs--flat .irs-single {
+        background-color: rgb(102, 223, 141);
+        cursor: pointer;
+
+        &:before {
+            border-top-color: rgb(102, 223, 141);
+        }
+    }
+
+    .irs--flat .irs-to, .irs--flat .irs-single {
+        background-color: rgb(102, 223, 141);
+        cursor: pointer;
+    }
+
+    .irs--flat .irs-single {
+        background-color: rgb(102, 223, 141);
+
+    }
+
+    .irs--flat .irs-handle > i:first-child {
+        background-color: rgb(102, 223, 141);
+    }
 }
 
 @media all and (max-width: 767px) {

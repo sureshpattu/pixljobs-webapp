@@ -4,7 +4,7 @@
     <title>Search</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{>header_assets select2=true}}
+    {{>header_assets select2=true ranger=true}}
 </head>
 <body class="search_pg">
 {{>header}}
@@ -351,48 +351,18 @@
                             Salary
                         </label>
                         <div class="box_sec">
-                            <ul class="list_sec">
-                                <li class="active">
-                                    <div class="type_name">0 - 2000</div>
-                                    <div class="type_number">16</div>
-                                    <label class="check_box">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li class="active">
-                                    <div class="type_name">2000 - 5000</div>
-                                    <div class="type_number">16</div>
-                                    <label class="check_box">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li class="active">
-                                    <div class="type_name">5000 - 8000</div>
-                                    <div class="type_number">16</div>
-                                    <label class="check_box">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li>
-                                    <div class="type_name">8000 - 10000</div>
-                                    <div class="type_number">16</div>
-                                    <label class="check_box">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                                <li class="active">
-                                    <div class="type_name">10000+</div>
-                                    <div class="type_number">16</div>
-                                    <label class="check_box">
-                                        <input type="checkbox">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </li>
-                            </ul>
+                            <div class="wrapper" style="padding:20px;">
+                                <div class="range-slider">
+                                    <input type="text" class="js-range-slider" value="" />
+                                </div>
+                                <hr>
+                                <div class="extra-controls form-inline">
+                                    <div class="form-group">
+                                        <input type="hidden" class="js-input-from form-control" value="0" />
+                                        <input type="hidden" class="js-input-to form-control" value="0" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -400,11 +370,84 @@
         </div>
     </div>
 </section>
-{{>footer bottom_form=true  select2=true}}
+{{>footer bottom_form=true  select2=true ranger=true}}
 </body>
 <script type="application/javascript">
     $(function() {
         $('.js_select2').select2({});
+    });
+
+    // Trigger
+
+    $(function () {
+
+        var $range = $(".js-range-slider"),
+            $inputFrom = $(".js-input-from"),
+            $inputTo = $(".js-input-to"),
+            instance,
+            min = 0,
+            max = 3000000,
+            from = 0,
+            to = 0;
+
+        $range.ionRangeSlider({
+            type: "double",
+            min: min,
+            max: max,
+            from: 0,
+            to: 500000,
+            prefix: 'Rp. ',
+            onStart: updateInputs,
+            onChange: updateInputs,
+            step: 50000,
+            prettify_enabled: true,
+            prettify_separator: ".",
+            values_separator: " - ",
+            force_edges: true
+
+
+        });
+
+        instance = $range.data("ionRangeSlider");
+
+        function updateInputs (data) {
+            from = data.from;
+            to = data.to;
+
+            $inputFrom.prop("value", from);
+            $inputTo.prop("value", to);
+        }
+
+        $inputFrom.on("input", function () {
+            var val = $(this).prop("value");
+
+            // validate
+            if (val < min) {
+                val = min;
+            } else if (val > to) {
+                val = to;
+            }
+
+            instance.update({
+                from: val
+            });
+        });
+
+        $inputTo.on("input", function () {
+            var val = $(this).prop("value");
+
+            // validate
+            if (val < from) {
+                val = from;
+            } else if (val > max) {
+                val = max;
+            }
+
+            instance.update({
+                to: val
+            });
+        });
+
     });
 </script>
 </html>

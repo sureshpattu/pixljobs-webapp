@@ -2321,6 +2321,27 @@ body.popup-visible {
   top: 22px;
   right: 0;
 }
+.search_pg .irs--flat .irs-bar {
+  cursor: pointer;
+  background-color: #66df8d;
+}
+.search_pg .irs--flat .irs-from, .search_pg .irs--flat .irs-to, .search_pg .irs--flat .irs-single {
+  background-color: #66df8d;
+  cursor: pointer;
+}
+.search_pg .irs--flat .irs-from:before, .search_pg .irs--flat .irs-to:before, .search_pg .irs--flat .irs-single:before {
+  border-top-color: #66df8d;
+}
+.search_pg .irs--flat .irs-to, .search_pg .irs--flat .irs-single {
+  background-color: #66df8d;
+  cursor: pointer;
+}
+.search_pg .irs--flat .irs-single {
+  background-color: #66df8d;
+}
+.search_pg .irs--flat .irs-handle > i:first-child {
+  background-color: #66df8d;
+}
 
 @media all and (max-width: 767px) {
   .search_pg .hero_sec .title {
