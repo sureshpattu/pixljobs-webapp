@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Pixlcoders</title>
+    <title>Pixlcoders Sign-Up-Applicant</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{>header_assets swiper=true  select2=true}}
+    {{>header_assets swiper=true  select2=true cropper=true}}
 </head>
 <body class="signup_pg">
 {{>header}}
@@ -29,33 +29,38 @@
                                             <label for="" class="control-label">Select a role</label>
                                             <div class="role_row">
                                                 <a class="btn signup-recruit role" type="submit"
-                                                   data-target="/signup-recruiter"><i class="fa fa-user"
+                                                   data-target="/sign-up/recruiter"><i class="fa fa-user"
                                                                                       aria-hidden="true"></i>Recruiter</a>
                                                 <a class="btn signup-applicant role active" type="submit"
-                                                   data-target="/signup-fresh"><i class="fa fa-user"
+                                                   data-target="/sign-up/applicant"><i class="fa fa-user"
                                                                                   aria-hidden="true"></i>Applicant</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xs-8 col-sm-6 col-md-6 hidden-xs">
-                                    <div class="upload_photo_wrap">
-                                        <img src="" alt="" class="img_sec">
+                                    <div class="upload_photo_wrap js_profile_img_wrap"
+                                         data-target="#profileImageCropperModal"
+                                         data-toggle="modal" data-backdrop="static">
+                                        <img src="" alt="" class="img_sec js_img_pre_holder">
                                         <div class="icon_wrap">
                                             <i class="fa fa-camera"></i>
                                             <div class="upload_txt">Upload Photo</div>
                                         </div>
-                                        <input type="file" class="input_file">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 visible-xs">
-                                    <div class="upload_photo_wrap">
-                                        <img src="" alt="" class="img_sec">
-                                        <div class="icon_wrap">
-                                            <i class="fa fa-camera"></i>
-                                            <div class="upload_txt">Upload Photo</div>
+                                    <div class="profile_img_wrap js_profile_img_wrap"
+                                         data-target="#profileImageCropperModal"
+                                         data-toggle="modal" data-backdrop="static">
+                                        {{#if user.links.avatar_url}}
+                                            <img class="profile_img js_img_pre_holder"
+                                                 src="/cdn/img{{user.links.avatar_url}}">
+                                        {{/if}}
+                                        <div class="change_photo">
+                                            <i class="fa fa-camera"><span class="txt">Change Photo</span></i>
                                         </div>
-                                        <input type="file" class="input_file">
+                                        <img src="/img/loading.gif" class="loader_img js_prof_pic_load_img hide">
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +69,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Full Name</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required js_name"
+                                            <input type="text" class="form-control js_name required"
                                                    autocomplete="nope"
                                                    placeholder="Enter your first name and last name">
                                         </div>
@@ -78,7 +83,7 @@
                                             <div class="col-md-6 col-xs-6">
                                                 <div class="box_sec">
                                                     <select id="selectExpYear"
-                                                            class="form-control required js_select">
+                                                            class="form-control js_select2 js_exp_year">
                                                         <option value="0">0 Years</option>
                                                         <option value="1">1 Years</option>
                                                         <option value="2">2 Years</option>
@@ -88,7 +93,7 @@
                                             <div class="col-md-6 col-xs-6">
                                                 <div class="box_sec">
                                                     <select id="selectExpMonth"
-                                                            class="form-control required">
+                                                            class="form-control js_exp_month js_select2">
                                                         <option value="0">0 Months</option>
                                                         <option value="1">1 Months</option>
                                                         <option value="2">2 Months</option>
@@ -105,7 +110,7 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Qualification</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control required js_qualification"
+                                                <input type="text" class="form-control js_qualification"
                                                        autocomplete="nope" placeholder="Highest academic qualification">
                                             </div>
                                         </div>
@@ -114,7 +119,7 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Expected Annual Salary</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control required js_salary"
+                                                <input type="text" class="form-control js_anual_salary"
                                                        autocomplete="nope" placeholder="Enter Amt in No.s only">
                                                 <span class="inr_txt">INR</span>
                                             </div>
@@ -126,76 +131,21 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Institution</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control required js_institution"
+                                                <input type="text" class="form-control js_institution"
                                                        autocomplete="nope"
                                                        placeholder="Last academic institution attended">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Gender</label>
-                                            <div class="box_sec">
-                                                <input type="text" class="form-control required js_mobile"
-                                                       autocomplete="nope" placeholder="Gender">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Contact No.</label><a href=""
-                                                                                               class="non_verify_link">VERIFY</a>
-                                            <div class="box_sec">
-                                                <input type="text" class="form-control required js_mobile"
-                                                       autocomplete="nope" placeholder="Your 10 digit mobile No.">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Email ID</label><a href=""
-                                                                                            class="verify_link">VERIFY</a>
-                                            <div class="box_sec">
-                                                <input type="text" class="form-control required js_email"
-                                                       autocomplete="nope" placeholder="Your current Email ID">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Password</label>
-                                            <div class="box_sec">
-                                                <input type="text" class="form-control required js_email"
-                                                       autocomplete="nope" placeholder="Your password">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Upload Resume</label>
-                                            <div class="box_sec upload_sec">
-                                            <span class="fa fa-file-text-o icon_sec">
-                                                <span class="fa fa-arrow-circle-o-up sub_icon_sec"></span>
-                                            </span>
-                                                <span>Drag & drop Image or </span>
-                                                <a class="upload_txt">Upload file</a>
-                                                <input type="file" class="input_file">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="exp_detail_sec" id="expDetails">
+                            <div class="exp_detail_sec hide" id="expDetails">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Designation</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control required js_designation"
+                                                <input type="text" class="form-control js_designation"
                                                        autocomplete="nope" placeholder="Mention about your role">
                                             </div>
                                         </div>
@@ -204,7 +154,7 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Company Name</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control required js_company"
+                                                <input type="text" class="form-control js_company"
                                                        autocomplete="nope" placeholder="Enter your company's name">
                                             </div>
                                         </div>
@@ -215,7 +165,7 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Current Annual Salary</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control required js_cur_salary"
+                                                <input type="text" class="form-control js_cur_salary"
                                                        autocomplete="nope" placeholder="Enter Amt in No.s only">
                                                 <span class="inr_txt">INR</span>
                                             </div>
@@ -225,72 +175,76 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Expected Annual Salary</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control required js_anual_salary"
+                                                <input type="text" class="form-control js_anual_salary"
                                                        autocomplete="nope" placeholder="Enter Amt in No.s only">
                                                 <span class="inr_txt">INR</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Gender</label>
-                                            <div class="box_sec">
-                                                <input type="text" class="form-control required js_mobile"
-                                                       autocomplete="nope" placeholder="Gender">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Contact No.</label>
-                                            <a href="" class="non_verify_link">VERIFY</a>
-                                            <div class="box_sec">
-                                                <input type="text" class="form-control required js_mobile"
-                                                       autocomplete="nope" placeholder="Your 10 digit mobile No.">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Email ID</label><a href="" class="verify_link">VERIFY</a>
-                                            <div class="box_sec">
-                                                <input type="text" class="form-control required js_email"
-                                                       autocomplete="nope" placeholder="Your current Email ID">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Password</label>
-                                            <div class="box_sec">
-                                                <input type="text" class="form-control required js_email"
-                                                       autocomplete="nope" placeholder="Your password">
-                                            </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Gender</label>
+                                        <div class="box_sec">
+                                            <select
+                                                    class="form-control js_gender required js_select2">
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Others</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group pixl_form_group">
-                                            <label class="control-label">Upload Resume</label>
-                                            <div class="box_sec upload_sec">
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Contact No.</label><a href=""
+                                                                                           class="non_verify_link">VERIFY</a>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required js_mobile"
+                                                   autocomplete="nope" placeholder="Your 10 digit mobile No.">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Email ID</label><a href=""
+                                                                                        class="verify_link">VERIFY</a>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required js_email"
+                                                   autocomplete="nope" placeholder="Your current Email ID">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Password</label>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required js_password"
+                                                   autocomplete="nope" placeholder="Your password">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Upload Resume</label>
+                                        <div class="box_sec upload_sec">
                                             <span class="fa fa-file-text-o icon_sec">
                                                 <span class="fa fa-arrow-circle-o-up sub_icon_sec"></span>
                                             </span>
-                                                <span>Drag & drop Image or </span>
-                                                <a class="upload_txt">Upload file</a>
-                                                <input type="file" class="input_file">
-                                            </div>
+                                            <span>Drag & drop Image or </span>
+                                            <a class="upload_txt">Upload file</a>
+                                            <input type="file" class="input_file js_input_file">
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="cta_wrap">
                                 <button class="btn btn_big btn_preview">PREVIEW</button>
-                                <button class="btn btn_big btn_blue js_submit">
+                                <button class="btn btn_big btn_blue" type="submit">
                                     PROCEED
                                     <span class="fa fa-arrow-right right_icon"></span>
                                 </button>
@@ -302,11 +256,13 @@
         </div>
     </div>
 </section>
-{{>footer swiper=true select2=true}}
+{{>popup/profile_photo_upload}}
+{{>footer swiper=true select2=true cropper=true}}
 </body>
 <script type="application/javascript">
     $(function() {
         ApplicantSignUpHandler.init();
+        ApplicantSignUpHandler.initView();
     });
 
     $('.signup-recruit').on('click', function(event) {
@@ -325,11 +281,11 @@
         $('#selectExpYear').change(function() {
             var selectedItem = $(this).val();
             if(selectedItem.valueOf() > 0) {
-                $('#freshDetails').hide();
-                $('#expDetails').show();
+                $('#freshDetails').addClass('hide');
+                $('#expDetails').removeClass('hide');
             } else {
-                $('#freshDetails').show();
-                $('#expDetails').hide();
+                $('#freshDetails').removeClass('hide');
+                $('#expDetails').addClass('hide');
             }
         });
     });
@@ -338,12 +294,11 @@
         $('#selectExpMonth').change(function() {
             var selectedItem = $(this).val();
             if(selectedItem > 0) {
-                $('#freshDetails').hide();
-                $('#expDetails').show();
-            }
-            else {
-                $('#freshDetails').show();
-                $('#expDetails').hide();
+                $('#freshDetails').addClass('hide');
+                $('#expDetails').removeClass('hide');
+            } else {
+                $('#freshDetails').removeClass('hide');
+                $('#expDetails').addClass('hide');
             }
         });
     });

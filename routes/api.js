@@ -1,7 +1,7 @@
 'use strict';
 
-const express      = require('express');
-const router       = express.Router();
+const express = require('express');
+const router = express.Router();
 const helper_utils = require('./util/common');
 
 function setUserCookies(_response, res) {
@@ -30,8 +30,14 @@ router.post('/applicant-auth/login', function(req, res, next) {
 });
 
 router.post('/applicant', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'POST', '/applicant', function(_response) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant' + req.cookies.pixljob_user_id, function(_response) {
         res.json(_response);
+    });
+});
+
+router.post('/applicant/avatar/upload', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/avatar/upload', function(_response) {
+        setUserCookies(_response, res);
     });
 });
 
@@ -53,5 +59,14 @@ router.post('/recruit', function(req, res, next) {
         res.json(_response);
     });
 });
+
+
+
+router.post('/forgot-password', function (req, res) {
+    helper_utils.makeApiRequest(req, 'POST', '/password/reset/token/create', function (_response) {
+        res.json(_response);
+    });
+});
+
 
 module.exports = router;

@@ -2,14 +2,15 @@ var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils = require('../utils/common');
 
-function RecruiterHandler() {
-    function bindRecruiterEvent() {
+function RecruiterProfileHandler() {
+    function bindRecruiterProfileEvent() {
         $('.js_select2').select2({});
         var _form_name = '#jsSignUpRecruitForm';
         var _form = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
+            var _id = _form.find('.js_data_id').val();
             if(FormValidator.validateForm(_form_name)) {
                 var obj = {
                     name           :_form.find('.js_name').val(),
@@ -33,14 +34,14 @@ function RecruiterHandler() {
                         alert(_res.message || 'Something went wrong!');
                     }
                 };
-                ApiUtil.makeAjaxRequest('/api/recruiter-auth/register', '', 'POST', '', obj, callback);
+                ApiUtil.makeAjaxRequest('/api/recruiter/' + _id, '', 'PUT', '', obj, callback);
             }
         });
     }
 
     return {
         init    :function() {
-            bindRecruiterEvent();
+            bindRecruiterProfileEvent();
         },
         initView:function(_land_ids) {
             _lang_ids_arr = _land_ids;
@@ -58,4 +59,4 @@ function RecruiterHandler() {
     }
 }
 
-module.exports = RecruiterHandler();
+module.exports = RecruiterProfileHandler();

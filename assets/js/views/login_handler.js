@@ -48,12 +48,33 @@ function LoginHandler() {
 
     }
 
+    function bindForgotPasswordFormEvent() {
+        if (FormValidator.validateForm('#forgotPasswordForm')) {
+            var obj = {
+                email: $('.js_email').val(),
+            };
+            var callback = function (data) {
+                if (data && !data.err) {
+                    alert(data.msg);
+                } else {
+
+                    alert(data.msg || 'something went wrong');
+                }
+                console.log(data);
+            };
+            ApiUtil.makeAjaxRequest('/api/forgot-password', '', 'POST', '', obj, callback);
+        }
+    }
+
     return {
         init              :function() {
             bindLoginEvent();
         },
         initRecruiterLogin:function() {
             bindRecruiterLoginEvent();
+        },
+        initForgotPassword:function() {
+            bindForgotPasswordFormEvent();
         }
     };
 }

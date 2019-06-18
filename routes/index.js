@@ -25,16 +25,16 @@ router.get('/', function(req, res) {
     res.render('search');
 });
 
-router.get('/postjob-work', function(req, res) {
-    res.render('postjob_work');
+router.get('/post-job', function(req, res) {
+    res.render('post_job_work');
 });
 
-router.get('/postjob-company', function(req, res) {
-    res.render('postjob_company');
+router.get('/post-job/company', function(req, res) {
+    res.render('post_job_company');
 });
 
-router.get('/postjob-info', function(req, res) {
-    res.render('postjob_info');
+router.get('/post-job/info', function(req, res) {
+    res.render('post_job_info');
 });
 
 router.get('/job-applicant-one', function(req, res) {
@@ -51,30 +51,39 @@ router.get('/job-recruiter', function(req, res) {
     });
 });
 
-router.get('/signup-recruiter', function(req, res) {
-    res.render('signup_recruiter');
+router.get('/sign-up/recruiter', function(req, res) {
+    res.render('sign_up_recruiter');
 });
 
-router.get('/signup-fresh', function(req, res) {
-    res.render('signup_fresh', {
+router.get('/sign-up/applicant', function(req, res) {
+    res.render('sign_up_applicant', {
         data:[{}, {}, {}, {}]
     });
 });
 
-router.get('/signup-exp', function(req, res) {
-    res.render('signup_exp');
-});
-
-router.get('/fresher-account', function(req, res) {
-    res.render('fresher_account');
+router.get('/applicant-account', function(req, res) {
+    helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
+        let is_experience = false;
+        if(_response.data.exp_year > 0 || _response.data.exp_month > 0) {
+            is_experience = true;
+        }
+        res.render('applicant_account', {
+            data:_response.data,
+            exp :is_experience
+        });
+    });
 });
 
 router.get('/exp-account', function(req, res) {
     res.render('experience_account');
 });
 
-router.get('/recruiter-profile', function(req, res) {
-    res.render('recruiter_profile');
+router.get('/recruiter', function(req, res) {
+    helper_utils.makeApiRequest(req, 'GET', '/recruiter/' + req.cookies.pixljob_user_id, function(_response) {
+        res.render('recruiter_profile', {
+            data:_response.data
+        });
+    });
 });
 
 router.get('/job-info', function(req, res) {
@@ -85,4 +94,7 @@ router.get('/form-template', function(req, res) {
     res.render('form_template');
 });
 
+router.get('/forgot-password', function(req, res) {
+    res.render('forgot_password');
+});
 module.exports = router;

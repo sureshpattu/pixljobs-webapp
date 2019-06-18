@@ -1,14 +1,30 @@
 'use strict';
 
 const helper_utils = require('../routes/util/common');
+const config       = require('./config');
 
-function checkLogin(req, cb) {
-    if(req.cookies && req.cookies.med_cond_user_token && req.cookies.med_cond_user_id) {
+exports.clearUserCookie = function(req, res, next) {
+    res.clearCookie('pixljob_user_id');
+    res.clearCookie('pixljob_user_token');
+    next();
+};
+
+function clearCookie(req, res) {
+    if(req.session && req.session.user) {
+        req.session.user = [];
+    }
+    res.clearCookie('pixljob_user_token');
+    res.clearCookie('pixljob_user_id');
+}
+
+function checkApplicantLogin(req, cb) {
+    if(req.cookies && req.cookies.pixljob_user_id && req.cookies.pixljob_user_token) {
+        //Make api call to backend and check is user is valid
         req.body = {
-            id   :req.cookies.med_cond_user_id,
-            token:req.cookies.med_cond_user_token
+            id   :req.cookies.pixljob_user_id,
+            token:req.cookies.pixljob_user_token
         };
-        helper_utils.makeApiRequest(req, 'POST', '/auth/login/check', function(_response) {
+        helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/login/check', function(_response) {
             cb(_response);
         });
     } else {
@@ -16,47 +32,74 @@ function checkLogin(req, cb) {
     }
 }
 
-exports.clearUserCookie = function(req, res, next) {
-    res.clearCookie('med_cond_user_token');
-    res.clearCookie('med_cond_user_id');
-    next();
-};
-
-function clearCookie(req, res) {
-    res.clearCookie('med_cond_user_token');
-    res.clearCookie('med_cond_user_id');
+function checkRecruiterLogin(req, cb) {
+    if(req.cookies && req.cookies.pixljob_user_id && req.cookies.pixljob_user_token) {
+        //Make api call to backend and check is user is valid
+        req.body = {
+            id   :req.cookies.pixljob_user_id,
+            token:req.cookies.pixljob_user_token
+        };
+        helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/login/check', function(_response) {
+            cb(_response);
+        });
+    } else {
+        cb({error:true, msg:'User Not Logged in'});
+    }
 }
 
-exports.isLoggedIn = function(req, res, next) {
+function checkPath(req) {
     let userActivateUrlRegx = new RegExp('^\/user\/activate\/[0-9,a-z,A-Z^)]*');
-    if(req.path === '/login' ||
-        req.path === '/user/login' || userActivateUrlRegx.test(req.path) ||
-        req.path === '/logout' || req.path === '/user/checkLogin') {
+    return req.path === '/login' ||
+        req.path === '/api/login' ||
+        req.path === '/login/mobile' ||
+        req.path === '/login/email' ||
+        req.path === '/login/pass-code' ||
+        userActivateUrlRegx.test(req.path) ||
+        req.path === '/logout' ||
+        req.path === '/checkLogin';
+}
+
+function showLoginPage(req, res) {
+    //Clear User cookie
+    clearCookie(req, res);
+    //Redirect To Login Page
+    res.redirect('/login?ref=' + req.originalUrl);
+}
+
+exports.getUserIdFromSession = function(req, res, next) {
+    if(req.session.hasOwnProperty('user')) {
+        return req.session.user.id;
+    } else {
+        res.redirect('/login?ref=' + req.originalUrl);
+    }
+};
+
+exports.isApplicantLoggedIn = function(req, res, next) {
+    if(checkPath(req)) {
         next();
     } else {
-        checkLogin(req, function(data) {
-            if(data.error) {
-                clearCookie(req, res);
-                res.redirect('/login?ref=' + req.originalUrl);
-            } else {
-                res.cookie('med_cond_user_token', data.data.token);
-                res.cookie('med_cond_user_id', data.data.id);
+        checkApplicantLogin(req, function(data) {
+            if(data && !data.error) {
                 next();
+            } else {
+                showLoginPage(req, res);
             }
         });
     }
 };
 
-exports.isSuperAdmin = function(req, res, next) {
-    checkLogin(req, function(data) {
-        if(data.err) {
-            res.redirect('/login?ref=' + req.originalUrl);
-        } else {
-            if(data.data.user_type === '1') {
+exports.isRecruiterLoggedIn = function(req, res, next) {
+    if(checkPath(req)) {
+        //Allow user to go to next page
+        next();
+    } else {
+        checkRecruiterLogin(req, function(data) {
+            if(data && !data.error) {
                 next();
             } else {
-                res.redirect('/login?user_permission_error=true&ref=' + req.originalUrl);
+                showLoginPage(req, res)
             }
-        }
-    });
+        });
+    }
 };
+
