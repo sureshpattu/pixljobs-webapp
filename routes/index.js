@@ -94,7 +94,7 @@ router.get('/form-template', function(req, res) {
     res.render('form_template');
 });
 
-router.get('/forgot/password', function(req, res) {
+router.get('/forgot-password', function(req, res) {
     res.render('forgot_password');
 });
 module.exports = router;
