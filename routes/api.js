@@ -54,6 +54,12 @@ router.post('/recruiter-auth/login', function(req, res, next) {
     });
 });
 
+router.post('/recruiter-auth/forgot-password', function (req, res) {
+    helper_utils.makeApiRequest(req, 'POST', '/reset/password', function (_response) {
+        res.json(_response);
+    });
+});
+
 router.post('/recruit', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/recruit', function(_response) {
         res.json(_response);
