@@ -548,15 +548,21 @@ function LoginHandler() {
     }
 
     function bindForgotPasswordFormEvent() {
-        var _form_name = '#forgotPasswordForm';
-        var _form      = $(_form_name);
+        var isApplicant = true;
+        var _form_name  = '#forgotPasswordForm';
+        var _form       = $(_form_name);
         _form.submit(function(e) {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
                 var _obj = {
-                    email   :_form.find('.js_email').val()
+                    email:_form.find('.js_email').val()
                 };
-                ApiUtil.makeAjaxRequest('/api/applicant-auth/forgot/password', '', 'POST', '', _obj, function(_res) {
+
+                var _api_url = '/api/applicant-auth/forgot/password';
+                if(!isApplicant) {
+                    _api_url = '/api/recruiter-auth/forgot/password';
+                }
+                ApiUtil.makeAjaxRequest(_api_url, '', 'POST', '', _obj, function(_res) {
                     if(!_res.error) {
                         alert(_res.message);
                     } else {
@@ -565,6 +571,22 @@ function LoginHandler() {
                 });
             }
             return false;
+        });
+
+        var _applicant_tab = $('.js_applicant_tab');
+        var _recruiter_tab = $('.js_recruiter_tab');
+
+        _applicant_tab.on('click', function() {
+            _applicant_tab.addClass('active');
+            _recruiter_tab.removeClass('active');
+            isApplicant = true;
+
+        });
+
+        _recruiter_tab.on('click', function() {
+            _applicant_tab.removeClass('active');
+            _recruiter_tab.addClass('active');
+            isApplicant = false;
         });
     }
 
