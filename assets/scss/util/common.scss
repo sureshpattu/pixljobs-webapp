@@ -834,7 +834,6 @@ input.form-control, select.form-control, textarea.form-control {
 
     &.upload_sec {
         background-color: transparent;
-
         height: 64px;
         border-radius: 5px;
         border: 2px dashed #dadada;
@@ -883,6 +882,7 @@ input.form-control, select.form-control, textarea.form-control {
             bottom: 0;
             z-index: 1;
             width: 100%;
+            cursor: pointer;
         }
     }
 }
