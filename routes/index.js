@@ -49,7 +49,11 @@ router.get('/job-recruiter', function(req, res) {
 });
 
 router.get('/sign-up/recruiter', function(req, res) {
-    res.render('sign_up_recruiter');
+    helper_utils.makeApiRequest(req, 'GET', '/industries', function(_response) {
+        res.render('sign_up_recruiter', {
+            industries:_response.data || []
+        });
+    });
 });
 
 router.get('/sign-up/applicant', function(req, res) {
@@ -96,7 +100,7 @@ router.get('/forgot-password', function(req, res) {
 });
 
 router.get('/forgot/password/:token', function(req, res) {
-    req.reset_token = req.params.token;
+    req.body.reset_token = req.params.token;
     helper_utils.makeApiRequest(req, 'POST', '/forgot/password/token', function(_response) {
         res.render('forgot_password');
     });

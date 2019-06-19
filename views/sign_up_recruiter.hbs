@@ -4,7 +4,7 @@
     <title>Pixlcoders</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{>header_assets swiper=true  select2=true cropper=true}}
+    {{>header_assets swiper=true  select2=true}}
 </head>
 <body class="signup_pg">
 {{>header}}
@@ -28,26 +28,28 @@
                                         <div class="form-group pixl_form_group">
                                             <label for="" class="control-label">Select a role</label>
                                             <div class="role_row">
-                                                <a class="btn signup-recruit role active" type="submit"
-                                                   data-target="/sign-up/recruiter"><i class="fa fa-user"
-                                                                                       aria-hidden="true"></i>Recruiter</a>
-                                                <a class="btn signup-applicant role " type="submit"
-                                                   data-target="/sign-up/applicant"><i class="fa fa-user"
-                                                                                       aria-hidden="true"></i>Applicant</a>
+                                                <a class="btn signup-recruit role active" href="/sign-up/recruiter">
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                    Recruiter
+                                                </a>
+                                                <a class="btn signup-applicant role" href="/sign-up/applicant">
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                    Applicant
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xs-8 col-sm-6 col-md-6 hidden-xs">
-                                    <div class="upload_photo_wrap js_profile_img_wrap"
-                                         data-target="#profileImageCropperModal"
-                                         data-toggle="modal" data-backdrop="static">
-                                        <img src="" alt="" class="img_sec js_img_pre_holder">
+                                    <div class="upload_photo_wrap js_profile_img_wrap">
+                                        <div class="pf_img_wrap">
+                                            <img class="img_sec js_img_pre_holder hide">
+                                        </div>
                                         <div class="icon_wrap">
                                             <i class="fa fa-camera"></i>
-                                            <div class="upload_txt">Upload Company</div>
-                                            <div class="upload_txt">Logo</div>
+                                            <div class="upload_txt">Upload Photo</div>
                                         </div>
+                                        <input type="file" class="js_input_profile_file">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 visible-xs js_profile_img_wrap"
@@ -119,11 +121,11 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Industry</label>
                                         <div class="box_sec">
-                                            <select class="form-control required js_industry js_select2">
+                                            <select class="form-control js_industry js_select2">
                                                 <option value="">Select a domain</option>
-                                                <option value="Front End">Front End</option>
-                                                <option value="Back End">Back End</option>
-                                                <option value="Full Stack">Full Stack</option>
+                                                {{#each industries}}
+                                                    <option value="{{this.id}}">{{this.name}}</option>
+                                                {{/each}}
                                             </select>
                                         </div>
                                     </div>
@@ -184,21 +186,20 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Company Benefits</label>
                                         <div class="box_sec">
-                                            <div id="textarea" class="form-control text_area  js_company_benefit">
-                                                <input type="text">
-                                            </div>
+                                            <select multiple="multiple"
+                                                    class="form-control required js_company_benefit">
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="cta_wrap">
                                 <button class="btn btn_big btn_preview">PREVIEW</button>
-                                <button class="btn btn_big btn_blue">
+                                <button type="submit" class="btn btn_big btn_blue">
                                     PROCEED
                                     <span class="fa fa-arrow-right right_icon"></span>
                                 </button>
                             </div>
-                            <input type="hidden" class="js_applicant_id" value="{{data.id}}">
                         </form>
                     </div>
                 </div>
@@ -206,41 +207,11 @@
         </div>
     </div>
 </section>
-{{>popup/profile_photo_upload}}
-{{>footer swiper=true select2=true cropper=true}}
+{{>footer swiper=true select2=true}}
 </body>
-<script type="application/javascript">
-
+<script type="text/javascript">
     $(function() {
         RecruiterHandler.init();
-        RecruiterHandler.initView();
-    });
-
-    $('#textarea input').on('keyup', function(e) {
-        var key = e.which;
-        if(key == 188) {
-            $('<button/>').text($(this).val().slice(0, -1)).insertBefore($(this));
-            $(this).val('').focus();
-        }
-        ;
-    });
-
-    $('#textarea').on('click', 'button', function(e) {
-        e.preventDefault();
-        $(this).remove();
-        return false;
-    });
-
-    $('.signup-recruit').on('click', function(event) {
-        event.preventDefault();
-        var url = $(this).data('target');
-        location.replace(url);
-    });
-
-    $('.signup-applicant').on('click', function(event) {
-        event.preventDefault();
-        var url = $(this).data('target');
-        location.replace(url);
     });
 </script>
 </html>
