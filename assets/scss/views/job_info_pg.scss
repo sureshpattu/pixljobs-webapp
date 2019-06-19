@@ -14,7 +14,7 @@
         background-color: #ffffff;
 
         .job_sec {
-            padding: 22px;
+            padding: 22px 0 0 46px;
             position: relative;
 
             .job_card_title {
@@ -28,7 +28,7 @@
             .company_logo {
                 display: inline-block;
                 position: absolute;
-                top: 50px;
+                top: 45px;
                 right: 44px;
                 font-size: 21px;
                 color: #637282;
@@ -39,25 +39,51 @@
 
                 .tags_wrap {
                     .tags {
-                        font-size: 15px;
-                        font-weight: 600;
+                        font-size: 17px;
                         color: #637282;
                         display: inline-block;
                         padding: 0 34px 0 0;
 
+                        .dollar_icons {
+                            width: 12px;
+                            height: 19px;
+                            margin: 0 2px 5px 0;
+                        }
+
+                        .cal_icons {
+                            width: 12px;
+                            height: 13px;
+                            border-radius: 1px;
+                            margin: 0 3px 7px 0;
+                        }
+
+                        .loc_icons {
+                            width: 9px;
+                            height: 14px;
+                            color: #d3dae0;
+                            margin: 0 2px 5px;
+                        }
+
+                        .place_icons {
+                            width: 17px;
+                            height: 15px;
+                            color: #d3dae0;
+                            margin: 0 2px 6px;
+                        }
 
                     }
 
                     .btn_wrap {
-                        text-align: right;
-                        display: inline-block;
-
                         .post_tag {
+                            font-size: 11px;
                             border-radius: 3px;
+                            font-weight: normal;
                             background-color: #5b8fe9;
                             color: #fff;
-                            padding: 5px;
-                            text-align: center;
+                            padding: 6px 5px 6px 7px;
+                            text-transform: uppercase;
+                            margin: 0 0 0 42px;
+                            letter-spacing: 0.7px;
                         }
                     }
                 }
@@ -80,8 +106,7 @@
                 border-top: solid 2px #eaedf0;
                 border-bottom: solid 2px #eaedf0;
                 text-align: center;
-                padding-top: 20px;
-                padding-bottom: 20px;
+                padding: 20px 0 20px 46px;
             }
 
             .col_bordered:last-child {
@@ -92,12 +117,14 @@
                 font-size: 14px;
                 font-weight: 600;
                 color: #637282;
+                text-align: left;
             }
 
             .option_val {
                 font-size: 18px;
                 font-weight: 900;
                 color: #637282;
+                padding-left: 8px;
 
             }
         }
@@ -106,11 +133,11 @@
             padding: 20px;
 
             .about_sec {
-                padding: 20px 30px 30px 30px;
+                padding: 28px 48px 30px 26px;
             }
 
             .requirement_sec {
-                padding: 20px 30px 30px 30px;
+                padding: 20px 64px 30px 25px;
             }
 
 
@@ -123,6 +150,10 @@
 
             .requirement_list {
                 padding-left: 30px;
+
+                .requirement_line {
+                    padding-bottom: 7px;
+                }
             }
         }
 
@@ -130,7 +161,7 @@
             border-top: 2px solid #eaedf0;
 
             .tech_sec {
-                padding: 40px 50px 50px 50px;
+                padding: 45px 46px 53px 47px;
 
                 .desc_title {
                     font-size: 27px;
@@ -139,11 +170,15 @@
                 }
 
                 .desc {
-                    padding-top: 15px;
-                    font-size: 18px;
-                    font-weight: 300;
+                    padding-top: 16px;
+                    font-size: 17px;
+                    font-weight: 600;
                     color: #2e3d4e;
                     text-transform: uppercase;
+
+                    .css_wrap {
+                        margin: 0 0 0 30px;
+                    }
 
                     .tech_name {
                         display: inline-block;
@@ -186,7 +221,11 @@
             padding: 20px;
 
             .about_sec {
-                padding: 20px 30px 30px 30px;
+                padding: 20px 46px 30px 26px;
+
+                .desc_title {
+                    padding: 0;
+                }
             }
 
 
@@ -195,6 +234,7 @@
                 font-size: 18px;
                 font-weight: 300;
                 color: #637282;
+
 
                 .circle_wrap {
                     display: inline-block;
@@ -216,9 +256,17 @@
                     }
 
                     .title {
-                        margin: 0 0 37px 35px;
+                        margin: 0 0 37px 45px;
                     }
                 }
+
+                .spl_wrap {
+                    padding-left: 43px;
+                }
+            }
+
+            .benefits_desc {
+                padding-top: 37px;
             }
         }
 
@@ -245,13 +293,15 @@
                 font-size: 14px;
                 font-weight: 600;
                 color: #637282;
+                text-align: left;
+                padding-left: 31px;
             }
 
             .option_val {
                 font-size: 18px;
                 font-weight: 900;
                 color: #637282;
-
+                padding-left: 5px;
             }
         }
     }
@@ -267,28 +317,38 @@
             font-weight: 600;
             text-align: center;
             color: #ffffff;
+            width: 329px;
+            height: 64px;
         }
 
         .link_txt {
             font-size: 18px;
             font-weight: 600;
-            text-align: center;
             color: #637282;
-            padding: 20px 0 7px;
+            text-align: center;
+            padding: 20px 0 7px 40px;
         }
+
+        .links_sec {
+            width: 280px;
+        }
+
 
         .link_sec {
             text-align: center;
+            padding: 0 0 0 45px;
 
             .link {
                 font-size: 18px;
                 font-weight: 600;
                 color: #21aeff;
+                text-decoration-line: underline;
             }
         }
 
         .social_link_wrap {
-            margin: 51px 0 0;
+            width: 335px;
+            margin: 74px 0 0;
             text-align: center;
 
             .social_link {
@@ -305,9 +365,10 @@
         }
 
         .tags_sec {
+            width: 310px;
             text-align: center;
-            padding-top: 37px;
-            margin: 0 0 0 15px;
+            padding-top: 44px;
+            margin: 0 0 0 12px;
 
             .tech_tg {
                 border-radius: 4px;
@@ -325,7 +386,7 @@
             font-weight: 300;
             text-align: center;
             color: #9aa2a9;
-            padding-top: 20px;
+            padding: 22px 0 0 90px;
             text-transform: uppercase;
         }
 
@@ -342,31 +403,40 @@
             font-weight: 600;
             text-align: center;
             color: #2e3d4e;
-            padding-bottom: 30px;
+            padding: 0 0 30px 40px;
         }
 
         .similar_post_card {
+            width: 346px;
+            height: 149px;
             padding: 31px 28px;
             box-shadow: 0 26px 38px 0 rgba(0, 0, 0, 0.22);
             background-color: #ffffff;
             border-radius: 3px;
 
+            .profile_img_wrap {
+                padding-top: 18px;
+            }
+
             .post_title {
                 font-size: 20px;
                 font-weight: 600;
                 color: #2e3d4e;
+                padding: 0 0 6px 16px;
             }
 
             .company {
                 font-size: 18px;
                 font-weight: 600;
                 color: #c7d0d8;
+                padding: 0 0 6px 16px;
             }
 
             .place {
                 font-size: 18px;
                 font-weight: 600;
                 color: #89929e;
+                padding: 0 0 0 16px;
             }
 
         }
@@ -396,22 +466,37 @@
 
                 .job_card_title {
                     font-size: 26px;
+
+
+                }
+
+                .company_logo {
+                    display: none;
                 }
 
                 .job_tags {
-                    padding-bottom: 0px;
+                    padding-bottom: 0;
 
                     .tags_wrap {
                         .tags {
-                            padding: 0 32px 0 0;
+                            padding: 0 15px 0 0;
                             margin: 10px 0 10px 0;
+
                         }
 
-                        .post_tag {
-                            margin: 10px 0 10px 0;
-                            width: 260px;
+                        .btn_wrap {
+                            width: 100%;
+
+                            .post_tag {
+                                margin: 10px 0 10px 0;
+                                display: block;
+                                width: 100%;
+                                text-align: center;
+                            }
                         }
                     }
+
+
                 }
 
             }
@@ -429,7 +514,7 @@
             }
 
             .job_desc {
-                padding: 0px;
+                padding: 0;
 
                 .about_sec {
                     padding: 20px 15px 30px 15px;
@@ -443,6 +528,12 @@
             .tech_details {
                 .tech_sec {
                     padding: 30px 15px 50px 15px;
+
+                    .desc {
+                        .css_wrap {
+                            margin: 0;
+                        }
+                    }
                 }
 
             }
@@ -451,10 +542,16 @@
 
         .about_company_card {
             .company_desc {
-                padding: 0px;
+                padding: 0;
 
                 .about_sec {
                     padding: 20px 15px 30px 15px;
+                }
+
+                .desc {
+                    .spl_wrap {
+                        padding: 0;
+                    }
                 }
             }
 
@@ -472,12 +569,38 @@
             padding-top: 30px;
 
             .btn-apply {
+                width: 290px;
                 padding: 16px 34px;
+            }
+
+            .link_txt {
+                padding: 20px 0 7px;
+            }
+
+            .link_sec {
+                padding: 0;
+            }
+
+            .social_link_wrap {
+                width: 300px;
+            }
+
+            .tags_sec {
+                margin: 0;
+            }
+
+            .views_sec {
+                padding: 22px 0 0;
             }
         }
 
         .similar_sec {
+            .title {
+                padding: 0 0 30px;
+            }
+
             .similar_post_card {
+                width: 290px;
                 margin: 0 13px 5px 0;
             }
         }
