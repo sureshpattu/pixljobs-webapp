@@ -61,8 +61,7 @@
     }
 
     .radio {
-
-        padding-top: 25px;
+        padding: 0;
 
         input[type="radio"] {
             position: absolute;
@@ -101,6 +100,7 @@
             &:focus {
                 + .radio-label {
                     color: #00c87a;
+
                     &:before {
                         outline: none;
                         border-color: #00c87a;
@@ -156,6 +156,10 @@
         background-color: rgb(102, 223, 141);
     }
 
+    .checkbox label, .radio label {
+        display: block;
+        padding: 24px;
+    }
 
 }
 
