@@ -50,7 +50,7 @@ function ApplicantSignUpHandler() {
                     resume         :_form.find('.js_input_file').val()
                 };
                 var _img_pre_holder = _form.find('.js_input_profile_file');
-                if(_img_pre_holder.files.length !== 0) {
+                if(_img_pre_holder.val()) {
                     uploadImage(_img_pre_holder, function(_res_path) {
                         if(!_res_path.error && _res_path.data) {
                             obj.photo      = _res_path.data.file;
@@ -77,7 +77,7 @@ function ApplicantSignUpHandler() {
     }
 
     function bindApplicantEditEvent() {
-        var _form_name = '#jsSignUpApplicantForm';
+        var _form_name = '#jsApplicantEditForm';
         var _form      = $(_form_name);
         console.log(_form);
 
