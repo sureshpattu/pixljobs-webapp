@@ -63,16 +63,16 @@ router.get('/sign-up/applicant', function(req, res) {
 });
 
 router.get('/applicant-account', function(req, res) {
-    helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
-        let is_experience = false;
-        if(_response.data.exp_year > 0 || _response.data.exp_month > 0) {
-            is_experience = true;
-        }
+    //helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
+    //    let is_experience = false;
+    //    if(_response.data.exp_year > 0 || _response.data.exp_month > 0) {
+    //        is_experience = true;
+    //    }
         res.render('applicant_account', {
-            data:_response.data,
-            exp :is_experience
+            //data:_response.data,
+            //exp :is_experience
         });
-    });
+    //});
 });
 
 router.get('/exp-account', function(req, res) {
