@@ -72,7 +72,7 @@
                                             <div class="box_sec">
                                                 <input type="text" class="form-control gl_input_box required js_company_name"
                                                        autocomplete="nope" placeholder="Enter your company's name"
-                                                       value="{{company.name}}">
+                                                       value="{{data.company.name}}">
                                             </div>
                                         </div>
                                     </div>
@@ -81,7 +81,7 @@
                                             <label class="control-label">Industry</label>
                                             <div class="box_sec">
                                                 <select class="form-control required js_industry js_select2">
-                                                    <option>{{company.industry}}</option>
+                                                    <option>{{data.company.industry.name}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -93,7 +93,7 @@
                                             <label class="control-label">Company Size</label>
                                             <div class="box_sec">
                                                 <select class="form-control required js_company_size js_select2">
-                                                    <option>{{data.company_size}}</option>
+                                                    <option>{{data.company.size}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -105,7 +105,7 @@
                                                 <input type="text" class="form-control gl_input_box required js_company_url"
                                                        autocomplete="nope"
                                                        placeholder="Your company's official website"
-                                                       value="{{data.company_url}}">
+                                                       value="{{data.company.url}}">
                                             </div>
                                         </div>
                                     </div>
@@ -118,7 +118,7 @@
                                             <div class="box_sec">
                                             <textarea rows="2" class="form-control gl_input_box required js_about_company"
                                                       placeholder="Few words describing your company’s work culture, domain expertise, etc."
-                                                      autocomplete="nope">{{data.about_company}}</textarea>
+                                                      autocomplete="nope">{{data.company.about}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -130,7 +130,7 @@
                                             <div class="box_sec">
                                             <textarea rows="2" class="form-control gl_input_box required"
                                                       placeholder=""
-                                                      autocomplete="nope">{{data.company_benefit}}</textarea>
+                                                      autocomplete="nope">{{data.company.company_benefits.name}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -186,7 +186,7 @@
 </body>
 <script type="application/javascript">
     $(function() {
-        RecruiterProfileHandler.init();
+        RecruiterHandler.initEdit();
     });
 
 </script>

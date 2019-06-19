@@ -77,7 +77,6 @@ function RecruiterHandler() {
                 };
                 var _img_pre_holder = _form.find('.js_input_profile_file');
 
-
                 var callback = function(_res) {
                     if(!_res.error) {
                         if(_img_pre_holder.val()) {
@@ -86,27 +85,11 @@ function RecruiterHandler() {
                             })
                         }
                         updateCompanyDetails(_res.data.id, _form);
-                        //
-                        //window.location.href = '/applicant-account'
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
                 };
-                ApiUtil.makeAjaxRequest('/api/recruiter', '', 'PUT', '', obj, callback);
-
-                //ApiUtil.makeAjaxRequest('/api/recruiter-auth/register', '', 'PUT', '', _user_obj, function(_res) {
-                //    if(!_res.error && _res.data) {
-                //        if(_img_pre_holder.val()) {
-                //            uploadImage(_img_pre_holder, function(_res_path) {
-                //                updateUserPhoto(_res.data.id, _res_path);
-                //            })
-                //        }
-                //        postCompanyDetails(_res.data.id, _form);
-                //
-                //    } else {
-                //        alert(_res.message || 'Something went wrong!');
-                //    }
-                //});
+                ApiUtil.makeAjaxRequest('/api/recruiter', '', 'PUT', '', _user_obj, callback);
             }
         });
     }
@@ -218,7 +201,7 @@ function RecruiterHandler() {
     }
 
     return {
-        init:function() {
+        init    :function() {
             bindCommonClickEvents();
             bindRecruiterEvent();
         },
