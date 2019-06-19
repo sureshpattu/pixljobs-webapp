@@ -3,18 +3,37 @@ var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
 
 function ApplicantSignUpHandler() {
-    function bindApplicantSignUpEvent() {
 
-        $('.js_select2').select2({});
+    function readURL(input) {
+        if(input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.js_img_pre_holder').attr('src', e.target.result);
+                $('.js_img_pre_holder').removeClass('hide');
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function uploadImage(_ele, _cb) {
+        var formData = new FormData();
+        formData.append('photo', _ele[0].files[0]);
+        ApiUtil.makeFileUploadRequest('/api/applicant/avatar/upload', '', 'POST', '', formData,
+            function(_res_path) {
+                _cb(_res_path);
+            });
+    }
+
+    function bindApplicantSignUpEvent() {
         var _form_name = '#jsSignUpApplicantForm';
         var _form      = $(_form_name);
-        console.log(_form);
-
         _form.unbind().submit(function(e) {
             e.preventDefault();
             console.log(_form_name);
             if(FormValidator.validateForm(_form_name)) {
-                var obj = {
+                var obj             = {
                     name           :_form.find('.js_name').val(),
                     qualification  :_form.find('.js_qualification').val(),
                     institution    :_form.find('.js_institution').val(),
@@ -30,22 +49,26 @@ function ApplicantSignUpHandler() {
                     exp_year       :_form.find('.js_exp_year').val(),
                     resume         :_form.find('.js_input_file').val()
                 };
-                console.log(obj);
-                var callback = function(_res) {
-                    if(!_res.error) {
-                        window.location.href = '/applicant-account'
-                    } else {
-                        alert(_res.message || 'Something went wrong!');
+                var _img_pre_holder = _form.find('.js_input_profile_file');
+                uploadImage(_img_pre_holder, function(_res_path) {
+                    if(!_res_path.error && _res_path.data) {
+                        obj.photo      = _res_path.data.file;
+                        obj.photo_type = _res_path.data.file_type;
                     }
-                };
-                ApiUtil.makeAjaxRequest('/api/applicant-auth/register', '', 'POST', '', obj, callback);
+                    ApiUtil.makeAjaxRequest('/api/applicant-auth/register', '', 'POST', '', obj, function(_res) {
+                        if(!_res.error) {
+                            window.location.href = '/applicant-account'
+                        } else {
+                            alert(_res.message || 'Something went wrong!');
+                        }
+                    });
+                })
+
             }
         });
     }
 
     function bindApplicantEditEvent() {
-
-        $('.js_select2').select2({});
         var _form_name = '#jsSignUpApplicantForm';
         var _form      = $(_form_name);
         console.log(_form);
@@ -54,7 +77,7 @@ function ApplicantSignUpHandler() {
             e.preventDefault();
             console.log(_form_name);
             if(FormValidator.validateForm(_form_name)) {
-                var obj = {
+                var obj      = {
                     name           :_form.find('.js_name').val(),
                     qualification  :_form.find('.js_qualification').val(),
                     institution    :_form.find('.js_institution').val(),
@@ -69,7 +92,6 @@ function ApplicantSignUpHandler() {
                     exp_month      :_form.find('.js_exp_month').val(),
                     exp_year       :_form.find('.js_exp_year').val()
                 };
-                console.log(obj);
                 var callback = function(_res) {
                     if(!_res.error) {
                         window.location.href = '/applicant-account'
@@ -77,30 +99,49 @@ function ApplicantSignUpHandler() {
                         alert(_res.message || 'Something went wrong!');
                     }
                 };
-                ApiUtil.makeAjaxRequest('/api/applicant-auth/register', '', 'POST', '', obj, callback);
+                ApiUtil.makeAjaxRequest('/api/applicant', '', 'PUT', '', obj, callback);
             }
         });
     }
 
+    function bindCommonClickEvents() {
+        $('.js_select2').select2({});
+
+        $('#selectExpMonth').change(function() {
+            var selectedItem = $(this).val();
+            if(selectedItem > 0) {
+                $('#freshDetails').addClass('hide');
+                $('#expDetails').removeClass('hide');
+            } else {
+                $('#freshDetails').removeClass('hide');
+                $('#expDetails').addClass('hide');
+            }
+        });
+
+        $('#selectExpYear').change(function() {
+            var selectedItem = $(this).val();
+            if(selectedItem.valueOf() > 0) {
+                $('#freshDetails').addClass('hide');
+                $('#expDetails').removeClass('hide');
+            } else {
+                $('#freshDetails').removeClass('hide');
+                $('#expDetails').addClass('hide');
+            }
+        });
+
+        $('.js_input_profile_file').change(function() {
+            readURL(this);
+        });
+
+    }
+
     return {
         init    :function() {
+            bindCommonClickEvents();
             bindApplicantSignUpEvent();
         },
         initEdit:function() {
             bindApplicantEditEvent();
-        },
-        initView:function(_land_ids) {
-            _lang_ids_arr = _land_ids;
-            utils.initProfileImageCropper('#profileImageCropperModal', '.js_profile_img_wrap', 'userPicPreviewImage',
-                function() {
-                    $('.js_prof_pic_load_img').removeClass('hide');
-                    ApiUtil.makeAjaxRequest('/api/avatar/upload', '', 'POST', '',
-                        {src:$('.js_img_pre_holder').attr('src')}, function(_res) {
-                            $('.js_prof_pic_load_img').addClass('hide');
-
-                        });
-                });
-
         }
     }
 }
