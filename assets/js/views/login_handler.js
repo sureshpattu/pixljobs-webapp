@@ -14,7 +14,7 @@ function LoginHandler() {
                 };
                 ApiUtil.makeAjaxRequest('/api/applicant-auth/login', '', 'POST', '', _obj, function(_res) {
                     if(!_res.error) {
-                        window.location.href = '/';
+                        window.location.href = '/applicant-account';
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
@@ -37,7 +37,7 @@ function LoginHandler() {
                 };
                 ApiUtil.makeAjaxRequest('/api/recruiter-auth/login', '', 'POST', '', _obj, function(_res) {
                     if(!_res.error) {
-                        window.location.href = '/';
+                        window.location.href = '/recruiter';
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
@@ -91,6 +91,46 @@ function LoginHandler() {
         });
     }
 
+
+    function bindResetPasswordFormEvent() {
+        var _form_name  = '#resetPasswordForm';
+        var _form       = $(_form_name);
+        _form.submit(function(e) {
+            e.preventDefault();
+            if (FormValidator.validateForm(_form_name)) {
+                var _new_pass = _form.find('.js_new_passwd').val();
+                var _confirm_pass = _form.find('.js_confirm_passwd').val();
+                var user_id = _form.find('.js_user_id').val();
+                var _obj = {};
+
+                if (_new_pass === _confirm_pass) {
+                    _obj = {
+                        password: _new_pass,
+                    };
+                    postResetPassword(_obj, _form);
+                } else {
+                    _form.find('.js_server_error').removeClass('hide');
+                    _form.find('.js_server_error_msg').html('Confirm password not matched!');
+                    _form.find('.js_confirm_passwd').addClass('error');
+                }
+            }
+            return false;
+        });
+
+    }
+
+    function postResetPassword(obj, formEle) {
+        var callback = function (data) {
+            if (data && data._id) {
+                window.location.href = '/logout';
+            } else {
+                formEle.find('.js_server_error').removeClass('hide');
+                formEle.find('.js_server_error_msg').html(data.msg);
+            }
+        };
+        ApiUtil.makeAjaxRequest('/api/applicant/reset-password/' + obj.user_id, '', 'POST', '', obj, callback);
+    }
+
     function bindCommonClickEvents() {
         var _recruiterLoginForm = $('#jsRecruiterLoginForm');
         var _applicantLoginForm = $('#jsApplicantLoginForm');
@@ -124,7 +164,10 @@ function LoginHandler() {
         },
         initForgotPassword:function() {
             bindForgotPasswordFormEvent();
-        }
+        },
+        initResetPassword:function() {
+            bindResetPasswordFormEvent();
+        },
     };
 }
 

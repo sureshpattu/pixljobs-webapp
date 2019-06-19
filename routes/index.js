@@ -66,16 +66,16 @@ router.get('/sign-up/applicant', function(req, res) {
 });
 
 router.get('/applicant-account', function(req, res) {
-    //helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
-    //    let is_experience = false;
-    //    if(_response.data.exp_year > 0 || _response.data.exp_month > 0) {
-    //        is_experience = true;
-    //    }
-    res.render('applicant_account', {
-        //data:_response.data,
-        //exp :is_experience
+    helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
+        let is_experience = false;
+        if(_response.data.exp_year > 0 || _response.data.exp_month > 0) {
+            is_experience = true;
+        }
+        res.render('applicant_account', {
+            data:_response.data,
+            exp :is_experience
+        });
     });
-    //});
 });
 
 router.get('/exp-account', function(req, res) {
@@ -102,10 +102,45 @@ router.get('/forgot-password', function(req, res) {
     res.render('forgot_password');
 });
 
-router.get('/forgot/password/:token', function(req, res) {
+router.get('/reset-password', function(req, res) {
+    res.render('reset_password');
+});
+
+router.get('/applicant/forgot/password/:token', function(req, res) {
     req.body.reset_token = req.params.token;
-    helper_utils.makeApiRequest(req, 'POST', '/forgot/password/token', function(_response) {
-        res.render('forgot_password');
+    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/forgot/password/token', function(_response) {
+        if(_response.error) {
+            res.render('login');
+        } else {
+            res.render('reset_password', {user_id:_response.data.id});
+        }
+
+    });
+});
+
+router.get('/recruiter/forgot/password/:token', function(req, res) {
+    req.body.reset_token = req.params.token;
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/forgot/password/token', function(_response) {
+        res.render('reset_password');
+    });
+});
+
+router.get('/applicant/email/verify/:token', function(req, res) {
+    req.email_token = req.params.token;
+    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/verify/email/token', function(_response) {
+        if(_response.data.is_email_verified = true) {
+            res.render('login');
+        }
+
+    });
+});
+
+router.get('/recruiter/email/verify/:token', function(req, res) {
+    req.email_token = req.params.token;
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/verify/email/token', function(_response) {
+        if(_response.data.is_email_verified = true) {
+            res.render('login');
+        }
     });
 });
 module.exports = router;

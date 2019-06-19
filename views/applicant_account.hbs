@@ -44,13 +44,13 @@
                             </div>
                         </div>
                         <div class="detail_sec">
-                            <form class="" id="jsLoginForm">
+                            <form class="" id="jsApplicantEditForm">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Full Name</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control"
+                                                <input type="text" class="form-control js_name"
                                                        value="{{data.name}}">
                                             </div>
                                         </div>
@@ -63,8 +63,11 @@
                                                     <div class="box_sec">
                                                         <select class="form-control js_select2 js_exp_year">
                                                             <option value="">{{data.exp_year}}</option>
-                                                            <option>0 Years</option>
-                                                            <option>0 Years</option>
+                                                            <option value="1">2 Years</option>
+                                                            <option value="2">3 Years</option>
+                                                            <option value="2">4 Years</option>
+                                                            <option value="2">5 Years</option>
+                                                            <option value="2">6 Years</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -72,8 +75,11 @@
                                                     <div class="box_sec">
                                                         <select class="form-control js_select2 js_exp_month">
                                                             <option value="">{{data.exp_month}}</option>
-                                                            <option>0 Month</option>
-                                                            <option>0 Month</option>
+                                                            <option value="2">2 Months</option>
+                                                            <option value="2">3 Months</option>
+                                                            <option value="2">4 Months</option>
+                                                            <option value="2">5 Months</option>
+                                                            <option value="2">6 Months</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -88,7 +94,7 @@
                                                 <div class="form-group pixl_form_group">
                                                     <label class="control-label">Designation</label>
                                                     <div class="box_sec">
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control js_designation"
                                                                value="{{data.designation}}">
                                                     </div>
                                                 </div>
@@ -97,7 +103,7 @@
                                                 <div class="form-group pixl_form_group">
                                                     <label class="control-label">Company Name</label>
                                                     <div class="box_sec">
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control js_company"
                                                                value="{{data.company}}">
                                                     </div>
                                                 </div>
@@ -109,7 +115,7 @@
                                                 <div class="form-group pixl_form_group">
                                                     <label class="control-label">Current Annual Salary</label>
                                                     <div class="box_sec">
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control js_cur_salary"
                                                                value="{{data.current_salary}}">
                                                         <span class="inr_txt">INR</span>
                                                     </div>
@@ -119,7 +125,7 @@
                                                 <div class="form-group pixl_form_group">
                                                     <label class="control-label">Expected Annual Salary</label>
                                                     <div class="box_sec">
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control js_anual_salary"
                                                                value="{{data.expected_salary}}">
                                                         <span class="inr_txt">INR</span>
                                                     </div>
@@ -134,7 +140,7 @@
                                                 <div class="form-group pixl_form_group">
                                                     <label class="control-label">Qualification</label>
                                                     <div class="box_sec">
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control js_qualification"
                                                                value="{{data.qualification}}">
                                                     </div>
                                                 </div>
@@ -143,7 +149,7 @@
                                                 <div class="form-group pixl_form_group">
                                                     <label class="control-label">Expected Annual Salary</label>
                                                     <div class="box_sec">
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control js_anual_salary"
                                                                value="{{data.expected_salary}}">
                                                         <span class="inr_txt">INR</span>
                                                     </div>
@@ -156,7 +162,7 @@
                                                 <div class="form-group pixl_form_group">
                                                     <label class="control-label">Institution</label>
                                                     <div class="box_sec">
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control js_institution"
                                                                value="{{data.institution}}">
                                                     </div>
                                                 </div>
@@ -170,7 +176,7 @@
                                             <label class="control-label">Contact No.</label><span
                                                 class="verify_txt">Verify</span>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control"
+                                                <input type="text" class="form-control js_mobile"
                                                        value="{{data.mobile}}">
                                             </div>
                                         </div>
@@ -181,7 +187,7 @@
                                             <span class="checked_icon fa fa-check-circle"></span>
                                             <span class="verified_txt">Verified</span>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control "
+                                                <input type="text" class="form-control js_email"
                                                        value="{{data.email}}">
                                             </div>
                                         </div>
@@ -220,13 +226,10 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </form>
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
