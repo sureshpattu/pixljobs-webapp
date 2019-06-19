@@ -20,7 +20,7 @@ function ApplicantSignUpHandler() {
     function uploadImage(_ele, _cb) {
         var formData = new FormData();
         formData.append('photo', _ele[0].files[0]);
-        ApiUtil.makeFileUploadRequest('/api/applicant/avatar/upload', '', 'POST', '', formData,
+        ApiUtil.makeFileUploadRequest('/api/applicant/photo/upload', '', 'POST', '', formData,
             function(_res_path) {
                 _cb(_res_path);
             });

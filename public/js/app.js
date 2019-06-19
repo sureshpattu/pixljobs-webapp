@@ -1,11 +1,10 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 window.PopupPage              = require('./utils/popupHandler');
-window.RegistrationHandler    = require('./views/registration_handler');
 window.LoginHandler           = require('./views/login_handler');
 window.RecruiterHandler       = require('./views/recruiter_handler');
 window.ApplicantSignUpHandler = require('./views/applicant_handler');
 window.RecruiterProfileHandler       = require('./views/recruiter_profile_handler');
-},{"./utils/popupHandler":5,"./views/applicant_handler":6,"./views/login_handler":7,"./views/recruiter_handler":8,"./views/recruiter_profile_handler":9,"./views/registration_handler":10}],2:[function(require,module,exports){
+},{"./utils/popupHandler":5,"./views/applicant_handler":6,"./views/login_handler":7,"./views/recruiter_handler":8,"./views/recruiter_profile_handler":9}],2:[function(require,module,exports){
 var qs = require('querystring');
 
 module.exports = {
@@ -74,7 +73,7 @@ module.exports = {
         });
     }
 };
-},{"querystring":13}],3:[function(require,module,exports){
+},{"querystring":12}],3:[function(require,module,exports){
 exports.clearForm = function(formId) {
     $(formId).find('input').val(' ');
     $(formId).find('select').val(' ');
@@ -369,7 +368,7 @@ function ApplicantSignUpHandler() {
     function uploadImage(_ele, _cb) {
         var formData = new FormData();
         formData.append('photo', _ele[0].files[0]);
-        ApiUtil.makeFileUploadRequest('/api/applicant/avatar/upload', '', 'POST', '', formData,
+        ApiUtil.makeFileUploadRequest('/api/applicant/photo/upload', '', 'POST', '', formData,
             function(_res_path) {
                 _cb(_res_path);
             });
@@ -754,47 +753,6 @@ function RecruiterProfileHandler() {
 
 module.exports = RecruiterProfileHandler();
 },{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],10:[function(require,module,exports){
-var ApiUtil       = require('../utils/apiUtil');
-var FormValidator = require('../utils/formValidator');
-var utils         = require('../utils/common');
-
-function RegistrationHandler() {
-    function bindRegisterEvent() {
-        $('.js_select2').select2({});
-        var _form_name = '#jsSignUpForm';
-        var _form      = $(_form_name);
-
-        _form.unbind().submit(function(e) {
-            e.preventDefault();
-            if(FormValidator.validateForm(_form_name)) {
-                var obj      = {
-                    name    :_form.find('.js_name').val(),
-                    gender  :_form.find('.js_gender').val(),
-                    mobile  :_form.find('.js_mobile').val() || '0',
-                    email   :_form.find('.js_email').val(),
-                    password:_form.find('.js_password').val()
-                };
-                var callback = function(_res) {
-                    if(!_res.error) {
-                        window.location.href = '/'
-                    } else {
-                        alert(_res.message || 'Something went wrong!');
-                    }
-                };
-                ApiUtil.makeAjaxRequest('/api/auth/register', '', 'POST', '', obj, callback);
-            }
-        });
-    }
-
-    return {
-        init:function() {
-            bindRegisterEvent();
-        }
-    }
-}
-
-module.exports = RegistrationHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],11:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -880,7 +838,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],12:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -967,10 +925,10 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":11,"./encode":12}]},{},[1]);
+},{"./decode":10,"./encode":11}]},{},[1]);
