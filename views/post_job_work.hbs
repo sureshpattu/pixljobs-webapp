@@ -31,7 +31,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Title</label>
                                         <div class="box_sec">
-                                            <input type="email" class="form-control required js_title"
+                                            <input type="text" class="form-control required js_title"
                                                    placeholder="Eg: Frontend Developer, UI Designer...">
                                         </div>
                                     </div>
@@ -41,7 +41,10 @@
                                             <div class="col-md-6">
                                                 <div class="box_sec radio_box">
                                                     <div class="form-control radio">
-                                                        <input id="locationType1" name="locationType" type="radio"
+                                                        <input id="locationType1"
+                                                               name="locationType"
+                                                               type="radio"
+                                                               value="office"
                                                                checked>
                                                         <label for="locationType1" class="radio-label">On Site</label>
                                                     </div>
@@ -50,7 +53,10 @@
                                             <div class="col-md-6">
                                                 <div class="box_sec radio_box">
                                                     <div class="form-control radio">
-                                                        <input id="locationType2" name="locationType" type="radio">
+                                                        <input id="locationType2"
+                                                               name="locationType"
+                                                               value="remote"
+                                                               type="radio">
                                                         <label for="locationType2" class="radio-label">Remote</label>
                                                     </div>
                                                 </div>
@@ -91,7 +97,6 @@
                                                 <div class="range-slider">
                                                     <input type="text" class="js-range-slider" value=""/>
                                                 </div>
-                                                <hr>
                                                 <div class="extra-controls form-inline">
                                                     <div class="form-group">
                                                         <input type="hidden" class="js-input-from form-control"
@@ -107,6 +112,7 @@
                                         <button class="btn btn_big btn_blue">PROCEED
                                             <img src="/img/icons/full-arrow-blue.svg" alt="" class="right_icon">
                                         </button>
+                                        <input type="hidden" value="{{recruiter_id}}" class="js_recruiter_id">
                                     </div>
                                 </form>
                             </div>

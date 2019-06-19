@@ -31,7 +31,8 @@ router.get('/post-job', function(req, res) {
         }
     ], function(err, results) {
         res.render('post_job_work', {
-            categories:!results[0].error ? results[0].data : []
+            categories  :!results[0].error ? results[0].data : [],
+            recruiter_id:req.cookies.pixljob_user_id
         });
     });
 

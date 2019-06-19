@@ -4,7 +4,7 @@ var utils         = require('../utils/common');
 
 function PostJobHandler() {
 
-    function bindRecruiterEvent() {
+    function bindPostJobEvent() {
         $('.js_select2').select2({});
         var _form_name = '#jsJobForm';
         var _form      = $(_form_name);
@@ -12,26 +12,30 @@ function PostJobHandler() {
         _form.unbind().submit(function(e) {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
-                //locationType1
-                //locationType2
-                var _user_obj       = {
-                    name       :_form.find('.js_title').val(),
-                    category_id:_form.find('.js_category').val(),
-                    job_type   :_form.find('.js_job_type').val(),
-                    salary_min :_form.find('.js-input-from').val(),
-                    salary_max :_form.find('.js-input-to').val()
+                var locationType1 = _form.find('#locationType1');
+                var locationType2 = _form.find('#locationType2');
+
+                var _location_type = '';
+                if(locationType1.attr('checked')) {
+                    _location_type = locationType1.val();
+                }
+                if(locationType2.attr('checked')) {
+                    _location_type = locationType2.val();
+                }
+
+                var _obj = {
+                    name         :_form.find('.js_title').val(),
+                    category_id  :_form.find('.js_category').val(),
+                    recruiter_id :_form.find('.js_recruiter_id').val(),
+                    job_type     :_form.find('.js_job_type').val(),
+                    salary_min   :_form.find('.js-input-from').val(),
+                    salary_max   :_form.find('.js-input-to').val(),
+                    location_type:_location_type
                 };
-                var _img_pre_holder = _form.find('.js_input_profile_file');
 
-                ApiUtil.makeAjaxRequest('/api/recruiter-auth/register', '', 'POST', '', _user_obj, function(_res) {
+                ApiUtil.makeAjaxRequest('/api/qa-jobs', '', 'POST', '', _obj, function(_res) {
                     if(!_res.error && _res.data) {
-                        if(_img_pre_holder.val()) {
-                            uploadImage(_img_pre_holder, function(_res_path) {
-                                updateUserPhoto(_res.data.id, _res_path);
-                            })
-                        }
-                        postCompanyDetails(_res.data.id, _form);
-
+                       // window.location.href = '/post-job/info'
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
@@ -112,7 +116,7 @@ function PostJobHandler() {
     return {
         init:function() {
             bindCommonClickEvents();
-            bindRecruiterEvent();
+            bindPostJobEvent();
         }
     }
 }

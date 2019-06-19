@@ -122,4 +122,10 @@ router.post('/benefits', function(req, res, next) {
     });
 });
 
+router.post('/qa-jobs', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/qa-jobs', function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;
