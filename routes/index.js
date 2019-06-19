@@ -94,4 +94,11 @@ router.get('/form-template', function(req, res) {
 router.get('/forgot-password', function(req, res) {
     res.render('forgot_password');
 });
+
+router.get('/forgot/password/:token', function(req, res) {
+    req.reset_token = req.params.token;
+    helper_utils.makeApiRequest(req, 'POST', '/forgot/password/token', function(_response) {
+        res.render('forgot_password');
+    });
+});
 module.exports = router;

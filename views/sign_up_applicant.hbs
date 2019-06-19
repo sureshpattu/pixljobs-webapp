@@ -28,31 +28,32 @@
                                         <div class="form-group pixl_form_group">
                                             <label for="" class="control-label">Select a role</label>
                                             <div class="role_row">
-                                                <a class="btn signup-recruit role" type="submit"
-                                                   data-target="/sign-up/recruiter"><i class="fa fa-user"
-                                                                                      aria-hidden="true"></i>Recruiter</a>
-                                                <a class="btn signup-applicant role active" type="submit"
-                                                   data-target="/sign-up/applicant"><i class="fa fa-user"
-                                                                                  aria-hidden="true"></i>Applicant</a>
+                                                <a class="btn signup-recruit role" href="/sign-up/recruiter">
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                    Recruiter
+                                                </a>
+                                                <a class="btn signup-applicant role active" href="/sign-up/applicant">
+                                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                                    Applicant
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-xs-8 col-sm-6 col-md-6 hidden-xs">
-                                    <div class="upload_photo_wrap js_profile_img_wrap"
-                                         data-target="#profileImageCropperModal"
-                                         data-toggle="modal" data-backdrop="static">
-                                        <img src="" alt="" class="img_sec js_img_pre_holder">
+                                    <div class="upload_photo_wrap js_profile_img_wrap">
+                                        <div class="pf_img_wrap">
+                                            <img class="img_sec js_img_pre_holder hide">
+                                        </div>
                                         <div class="icon_wrap">
                                             <i class="fa fa-camera"></i>
                                             <div class="upload_txt">Upload Photo</div>
                                         </div>
+                                        <input type="file" class="js_input_profile_file">
                                     </div>
                                 </div>
                                 <div class="col-xs-12 visible-xs">
-                                    <div class="profile_img_wrap js_profile_img_wrap"
-                                         data-target="#profileImageCropperModal"
-                                         data-toggle="modal" data-backdrop="static">
+                                    <div class="profile_img_wrap js_profile_img_wrap">
                                         {{#if user.links.avatar_url}}
                                             <img class="profile_img js_img_pre_holder"
                                                  src="/cdn/img{{user.links.avatar_url}}">
@@ -256,53 +257,12 @@
         </div>
     </div>
 </section>
-{{>popup/profile_photo_upload}}
+<!--{{>popup/profile_photo_upload}}-->
 {{>footer swiper=true select2=true cropper=true}}
 </body>
 <script type="application/javascript">
     $(function() {
         ApplicantSignUpHandler.init();
-        ApplicantSignUpHandler.initView();
     });
-
-    $('.signup-recruit').on('click', function(event) {
-        event.preventDefault();
-        var url = $(this).data('target');
-        location.replace(url);
-    });
-
-    $('.signup-applicant').on('click', function(event) {
-        event.preventDefault();
-        var url = $(this).data('target');
-        location.replace(url);
-    });
-
-    $(function() {
-        $('#selectExpYear').change(function() {
-            var selectedItem = $(this).val();
-            if(selectedItem.valueOf() > 0) {
-                $('#freshDetails').addClass('hide');
-                $('#expDetails').removeClass('hide');
-            } else {
-                $('#freshDetails').removeClass('hide');
-                $('#expDetails').addClass('hide');
-            }
-        });
-    });
-
-    $(function() {
-        $('#selectExpMonth').change(function() {
-            var selectedItem = $(this).val();
-            if(selectedItem > 0) {
-                $('#freshDetails').addClass('hide');
-                $('#expDetails').removeClass('hide');
-            } else {
-                $('#freshDetails').removeClass('hide');
-                $('#expDetails').addClass('hide');
-            }
-        });
-    });
-
-
 </script>
 </html>

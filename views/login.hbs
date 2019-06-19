@@ -29,18 +29,39 @@
                                         <div class="form-group pixl_form_group">
                                             <label for="" class="control-label">Select a role</label>
                                             <div class="role_row">
-                                                <a class="btn role active" type="submit"><i
-                                                        class="fa fa-user"
-                                                        aria-hidden="true"></i>Applicant</a>
-                                                <a class="btn signup-recruit role " type="submit"
-                                                ><i class="fa fa-user"
-                                                    aria-hidden="true"></i>Recruiter</a>
+
+
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <form class="" id="jsLoginForm">
+                            <form class="" id="jsApplicantLoginForm">
+                                <div class="form-group pixl_form_group">
+                                    <label class="control-label">Email</label>
+                                    <div class="box_sec">
+                                        <input type="text" class="form-control required js_email"
+                                               placeholder="Your email address">
+                                    </div>
+                                </div>
+                                <div class="form-group pixl_form_group">
+                                    <label class="control-label">Password</label>
+                                    <div class="box_sec">
+                                        <input type="text" class="form-control required js_password"
+                                               placeholder="Enter password">
+                                    </div>
+                                </div>
+                                <a href="/forgot-password" class="cta_link">I forgot password</a>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn_big btn_blue">LOGIN</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <form class="hide" id="jsRecruiterLoginForm">
                                 <div class="form-group pixl_form_group">
                                     <label class="control-label">Email</label>
                                     <div class="box_sec">
