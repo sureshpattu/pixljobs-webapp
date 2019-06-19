@@ -43,7 +43,7 @@
                                                     <div class="form-control radio">
                                                         <input id="locationType1" name="locationType" type="radio"
                                                                checked>
-                                                        <label for="radio-2" class="radio-label">On Site</label>
+                                                        <label for="locationType1" class="radio-label">On Site</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -51,7 +51,7 @@
                                                 <div class="box_sec radio_box">
                                                     <div class="form-control radio">
                                                         <input id="locationType2" name="locationType" type="radio">
-                                                        <label for="radio-1" class="radio-label">Remote</label>
+                                                        <label for="locationType2" class="radio-label">Remote</label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -62,8 +62,8 @@
                                         <div class="box_sec">
                                             <select class="form-control js_select2 js_category">
                                                 <option value="0">Select Job Category</option>
-                                                {{#each category}}
-                                                    <option value="{{id}}">{{name}}</option>
+                                                {{#each categories}}
+                                                    <option value="{{this.id}}">{{this.name}}</option>
                                                 {{/each}}
                                             </select>
                                         </div>
@@ -117,83 +117,9 @@
 </section>
 {{>footer swiper=true select2=true ranger=true}}
 </body>
-<script type="application/javascript">
+<script type="text/javascript">
     $(function() {
-
-        $('.js_select2').select2({});
-
-    });
-
-    // Trigger
-
-    $(function() {
-
-        var $range     = $('.js-range-slider'),
-            $inputFrom = $('.js-input-from'),
-            $inputTo   = $('.js-input-to'),
-            instance,
-            min        = 0,
-            max        = 3000000,
-            from       = 0,
-            to         = 0;
-
-        $range.ionRangeSlider({
-            type              :'double',
-            min               :min,
-            max               :max,
-            from              :0,
-            to                :500000,
-            prefix            :'Rp. ',
-            onStart           :updateInputs,
-            onChange          :updateInputs,
-            step              :50000,
-            prettify_enabled  :true,
-            prettify_separator:'.',
-            values_separator  :' - ',
-            force_edges       :true
-
-        });
-
-        instance = $range.data('ionRangeSlider');
-
-        function updateInputs(data) {
-            from = data.from;
-            to   = data.to;
-
-            $inputFrom.prop('value', from);
-            $inputTo.prop('value', to);
-        }
-
-        $inputFrom.on('input', function() {
-            var val = $(this).prop('value');
-
-            // validate
-            if(val < min) {
-                val = min;
-            } else if(val > to) {
-                val = to;
-            }
-
-            instance.update({
-                from:val
-            });
-        });
-
-        $inputTo.on('input', function() {
-            var val = $(this).prop('value');
-
-            // validate
-            if(val < from) {
-                val = from;
-            } else if(val > max) {
-                val = max;
-            }
-
-            instance.update({
-                to:val
-            });
-        });
-
+        PostJobHandler.init();
     });
 </script>
 </html>
