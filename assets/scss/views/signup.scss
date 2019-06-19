@@ -4,6 +4,14 @@
     .signup_wrap {
         padding: 69px 75px 78px 78px;
 
+        .arrow_down {
+            position: absolute;
+            top: 18px;
+            right: 8px;
+            background: #FFFFFF;
+            padding: 10px;
+        }
+
         .pixl_form_group {
             margin-bottom: 35px;
 
@@ -56,7 +64,6 @@
             position: relative;
             margin: 0 auto;
             box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.12);
-            background-color: #ffffff;
 
             .img_sec {
                 width: 216px;
@@ -77,9 +84,12 @@
                 transform: translate(-50%, -50%);
                 opacity: 0.77;
 
-                .fa-camera {
-                    opacity: 0.19;
-                    margin-bottom: 8px;
+                .upload_pic {
+                    background-image: url("/img/icons/upload-pic.svg");
+                    background-repeat: no-repeat;
+                    margin: 0 0 0 19px;
+                    height: 38px;
+                    opacity: 0.77;
                 }
 
                 .upload_txt {
@@ -141,7 +151,7 @@
                     text-transform: uppercase;
                     width: 180px;
 
-                    .fa {
+                    .role_icon {
                         padding-right: 10px;
                     }
                 }
@@ -165,7 +175,7 @@
                     color: #25de8c;
                     text-transform: uppercase;
 
-                    .fa {
+                    .role_icon {
                         padding-right: 10px;
                     }
                 }

@@ -95,6 +95,7 @@ a:active {
   width: 18px;
   border: 1px solid #dee1e7;
   border-radius: 2px;
+  background: #ffffff;
 }
 .check_box input:checked ~ .checkmark {
   background-color: #fc7968;
@@ -1217,6 +1218,7 @@ body.popup-visible {
   font-size: 33px;
   font-weight: 300;
   color: #ffffff;
+  padding: 5px 0 0 0;
 }
 .footer_pg .input_wrap {
   display: table;
@@ -2118,10 +2120,9 @@ body.popup-visible {
   outline: none;
 }
 .search_pg .hero_sec .fa-search {
-  opacity: 0.3;
   color: #888888;
   position: absolute;
-  top: 18px;
+  top: 20px;
   right: 20px;
   font-size: 26px;
 }
@@ -2199,7 +2200,7 @@ body.popup-visible {
   margin: 0 auto;
 }
 .search_pg .main_cont_sec .bottom_cta_wrap .fa {
-  font-size: 18px;
+  width: 15px;
   position: relative;
   left: 14px;
   top: 1px;
@@ -2257,7 +2258,7 @@ body.popup-visible {
   margin: 0 8px 0 0;
 }
 .search_pg .main_cont_sec .info_sec:last-child {
-  margin: 0;
+  margin: 0 0 0 2px;
 }
 .search_pg .main_cont_sec .info_sec .txt_sec {
   font-size: 15px;
@@ -2267,16 +2268,45 @@ body.popup-visible {
 .search_pg .main_cont_sec .info_sec .icon_sec {
   color: #6c7786;
   font-size: 12px;
-  margin: 0 1px 0 0;
+  margin: -4px 1px 0 0;
+}
+.search_pg .main_cont_sec .info_sec .icon_dollar_sec {
+  color: #6c7786;
+  margin: -2px 8px 0 2px;
+  width: 8px;
+}
+.search_pg .main_cont_sec .info_sec .icon_marker_sec {
+  width: 10.9px;
+  height: 15.6px;
+  opacity: 0.44;
 }
 .search_pg .main_cont_sec .filter_sec {
   padding: 0 0 42px;
 }
 .search_pg .main_cont_sec .filter_sec .box_label {
-  padding: 0 0 8px;
+  padding: 0 0 15px;
+}
+.search_pg .main_cont_sec .filter_sec .arrow_down {
+  position: absolute;
+  top: 18px;
+  right: 8px;
+  background: #FFFFFF;
+  padding: 10px;
 }
 .search_pg .main_cont_sec .filter_sec .check_box.right {
   margin: 3px 0 0;
+}
+.search_pg .main_cont_sec .filter_sec .check_box.right .checkmark {
+  left: auto;
+  right: 0;
+  border-radius: 2px;
+  border: solid 1px #dee1e7;
+}
+.search_pg .main_cont_sec .filter_sec .icon_marker_sec {
+  width: 15.9px;
+  height: 15.6px;
+  opacity: 0.44;
+  margin-right: 10px;
 }
 .search_pg .main_cont_sec .list_sec {
   padding: 0;
@@ -2694,6 +2724,13 @@ body.popup-visible {
 .signup_pg .signup_wrap {
   padding: 69px 75px 78px 78px;
 }
+.signup_pg .signup_wrap .arrow_down {
+  position: absolute;
+  top: 18px;
+  right: 8px;
+  background: #FFFFFF;
+  padding: 10px;
+}
 .signup_pg .signup_wrap .pixl_form_group {
   margin-bottom: 35px;
 }
@@ -2740,7 +2777,6 @@ body.popup-visible {
   position: relative;
   margin: 0 auto;
   box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.12);
-  background-color: #ffffff;
 }
 .signup_pg .signup_wrap .upload_photo_wrap .img_sec {
   width: 216px;
@@ -2760,9 +2796,12 @@ body.popup-visible {
   transform: translate(-50%, -50%);
   opacity: 0.77;
 }
-.signup_pg .signup_wrap .upload_photo_wrap .icon_wrap .fa-camera {
-  opacity: 0.19;
-  margin-bottom: 8px;
+.signup_pg .signup_wrap .upload_photo_wrap .icon_wrap .upload_pic {
+  background-image: url("/img/icons/upload-pic.svg");
+  background-repeat: no-repeat;
+  margin: 0 0 0 19px;
+  height: 38px;
+  opacity: 0.77;
 }
 .signup_pg .signup_wrap .upload_photo_wrap .icon_wrap .upload_txt {
   font-size: 12px;
@@ -2814,7 +2853,7 @@ body.popup-visible {
   text-transform: uppercase;
   width: 180px;
 }
-.signup_pg .signup_wrap .role_wrap .role_row .role .fa {
+.signup_pg .signup_wrap .role_wrap .role_row .role .role_icon {
   padding-right: 10px;
 }
 .signup_pg .signup_wrap .role_wrap .role_row .active {
@@ -2834,7 +2873,7 @@ body.popup-visible {
   color: #25de8c;
   text-transform: uppercase;
 }
-.signup_pg .signup_wrap .role_wrap .role_row .role_applicant .fa {
+.signup_pg .signup_wrap .role_wrap .role_row .role_applicant .role_icon {
   padding-right: 10px;
 }
 .signup_pg .signup_wrap .gl_input_text {
