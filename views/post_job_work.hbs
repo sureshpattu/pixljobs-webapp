@@ -18,7 +18,7 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <form class="form_sec" id="jsJobForm">
-                                    <div class="title_wrap">
+                                    <div class="title_wrap text-center">
                                         <div class="title">Post job</div>
                                         <div class="sub_title">About Work (1/3)</div>
                                     </div>
@@ -66,6 +66,7 @@
                                                     <option value="{{id}}">{{name}}</option>
                                                 {{/each}}
                                             </select>
+                                            <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
@@ -80,6 +81,7 @@
                                                 <option value="Volunteer">Volunteer</option>
                                                 <option value="Temporary">Temporary</option>
                                             </select>
+                                            <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
@@ -101,9 +103,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="cta_wrap">
-                                        <button class="btn btn_big btn_blue">PROCEED <span
-                                                class="fa fa-arrow-right"></span>
+                                    <div class="cta_wrap text-center">
+                                        <button class="btn btn_big btn_blue">PROCEED
+                                            <img src="/img/icons/full-arrow-blue.svg" alt="" class="right_icon">
                                         </button>
                                     </div>
                                 </form>
@@ -158,7 +160,7 @@
 
         function updateInputs(data) {
             from = data.from;
-            to   = data.to;
+            to = data.to;
 
             $inputFrom.prop('value', from);
             $inputTo.prop('value', to);
