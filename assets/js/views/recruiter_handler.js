@@ -60,6 +60,57 @@ function RecruiterHandler() {
         });
     }
 
+    function bindRecruiterEditEvent() {
+        $('.js_select2').select2({});
+        var _form_name = '#jsEditRecruitForm';
+        var _form      = $(_form_name);
+
+        _form.unbind().submit(function(e) {
+            e.preventDefault();
+            if(FormValidator.validateForm(_form_name)) {
+                var _user_obj       = {
+                    name       :_form.find('.js_name').val(),
+                    email      :_form.find('.js_email').val(),
+                    password   :_form.find('.js_password').val(),
+                    gender     :_form.find('.js_gender').val(),
+                    designation:_form.find('.js_designation').val()
+                };
+                var _img_pre_holder = _form.find('.js_input_profile_file');
+
+
+                var callback = function(_res) {
+                    if(!_res.error) {
+                        if(_img_pre_holder.val()) {
+                            uploadImage(_img_pre_holder, function(_res_path) {
+                                updateUserPhoto(_res.data.id, _res_path);
+                            })
+                        }
+                        updateCompanyDetails(_res.data.id, _form);
+                        //
+                        //window.location.href = '/applicant-account'
+                    } else {
+                        alert(_res.message || 'Something went wrong!');
+                    }
+                };
+                ApiUtil.makeAjaxRequest('/api/recruiter', '', 'PUT', '', obj, callback);
+
+                //ApiUtil.makeAjaxRequest('/api/recruiter-auth/register', '', 'PUT', '', _user_obj, function(_res) {
+                //    if(!_res.error && _res.data) {
+                //        if(_img_pre_holder.val()) {
+                //            uploadImage(_img_pre_holder, function(_res_path) {
+                //                updateUserPhoto(_res.data.id, _res_path);
+                //            })
+                //        }
+                //        postCompanyDetails(_res.data.id, _form);
+                //
+                //    } else {
+                //        alert(_res.message || 'Something went wrong!');
+                //    }
+                //});
+            }
+        });
+    }
+
     function updateUserPhoto(user_id, _res_path) {
         if(!_res_path.error && _res_path.data) {
 
@@ -101,6 +152,31 @@ function RecruiterHandler() {
         });
     }
 
+    function updateCompanyDetails(user_id, _form) {
+        var _company_obj = {
+            recruiter_id:user_id,
+            name        :_form.find('.js_company_name').val() || '0',
+            industry_id :_form.find('.js_industry').val(),
+            size        :_form.find('.js_company_size').val(),
+            url         :_form.find('.js_company_url').val(),
+            about       :_form.find('.js_about_company').val(),
+            street      :_form.find('.js_street').val(),
+            area        :_form.find('.js_area').val(),
+            city        :_form.find('.js_city').val(),
+            state       :_form.find('.js_state').val(),
+            pin         :_form.find('.js_pin').val(),
+            country     :_form.find('.js_country').val()
+        };
+
+        ApiUtil.makeAjaxRequest('/api/companies', '', 'PUT', '', _company_obj, function(_res) {
+            if(!_res.error && _res.data) {
+                updateCompanyBenefits(_res.data.id, _form)
+            } else {
+                alert(_res.message || 'Something went wrong!');
+            }
+        });
+    }
+
     function postCompanyBenefits(company_id, _form) {
         var _company_obj = {
             company_id:company_id,
@@ -108,6 +184,21 @@ function RecruiterHandler() {
         };
 
         ApiUtil.makeAjaxRequest('/api/benefits', '', 'POST', '', _company_obj, function(_res) {
+            if(!_res.error) {
+                window.location.href = '/recruiter'
+            } else {
+                alert(_res.message || 'Something went wrong!');
+            }
+        });
+    }
+
+    function updateCompanyBenefits(company_id, _form) {
+        var _company_obj = {
+            company_id:company_id,
+            benefits  :_form.find('.js_company_benefit').val() || []
+        };
+
+        ApiUtil.makeAjaxRequest('/api/benefits', '', 'PUT', '', _company_obj, function(_res) {
             if(!_res.error) {
                 window.location.href = '/recruiter'
             } else {
@@ -130,6 +221,10 @@ function RecruiterHandler() {
         init:function() {
             bindCommonClickEvents();
             bindRecruiterEvent();
+        },
+        initEdit:function() {
+            bindCommonClickEvents();
+            bindRecruiterEditEvent();
         }
     }
 }

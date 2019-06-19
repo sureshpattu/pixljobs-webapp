@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Account Experience</title>
+    <title>Account Recruiter</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
@@ -36,12 +36,12 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="name_txt">{{data.name}}</div>
-                                    <div class="qualification_txt">Full Stack Developer, 5yrs Exp.</div>
+                                    <div class="qualification_txt">{{data.designation}}, 5yrs Exp.</div>
                                 </div>
                             </div>
                         </div>
                         <div class="detail_sec">
-                            <form class="" id="jsLoginForm" action="/">
+                            <form class="" id="jsEditRecruitForm" action="/">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group pixl_form_group">
@@ -70,9 +70,9 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Company Name</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control gl_input_box required"
+                                                <input type="text" class="form-control gl_input_box required js_company_name"
                                                        autocomplete="nope" placeholder="Enter your company's name"
-                                                       value="{{data.company}}">
+                                                       value="{{company.name}}">
                                             </div>
                                         </div>
                                     </div>
@@ -80,8 +80,8 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Industry</label>
                                             <div class="box_sec">
-                                                <select class="form-control required js_select2">
-                                                    <option>{{data.industry}}</option>
+                                                <select class="form-control required js_industry js_select2">
+                                                    <option>{{company.industry}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -92,7 +92,7 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Company Size</label>
                                             <div class="box_sec">
-                                                <select class="form-control required js_select2">
+                                                <select class="form-control required js_company_size js_select2">
                                                     <option>{{data.company_size}}</option>
                                                 </select>
                                             </div>
@@ -102,7 +102,7 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Company URL</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control gl_input_box required"
+                                                <input type="text" class="form-control gl_input_box required js_company_url"
                                                        autocomplete="nope"
                                                        placeholder="Your company's official website"
                                                        value="{{data.company_url}}">
@@ -116,7 +116,7 @@
                                             <label class="control-label">About Company</label><span
                                                 class="gl_input_text">in 200 words or less</span>
                                             <div class="box_sec">
-                                            <textarea rows="2" class="form-control gl_input_box required"
+                                            <textarea rows="2" class="form-control gl_input_box required js_about_company"
                                                       placeholder="Few words describing your company’s work culture, domain expertise, etc."
                                                       autocomplete="nope">{{data.about_company}}</textarea>
                                             </div>

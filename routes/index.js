@@ -3,6 +3,7 @@ const router       = express.Router();
 const verify       = require('../config/verify');
 const async        = require('async');
 const helper_utils = require('./util/common');
+const _            = require('underscore');
 
 router.get('/login', function(req, res) {
     res.render('login');
@@ -83,11 +84,37 @@ router.get('/exp-account', function(req, res) {
 });
 
 router.get('/recruiter', function(req, res) {
-    helper_utils.makeApiRequest(req, 'GET', '/recruiter/' + req.cookies.pixljob_user_id, function(_response) {
-        res.render('recruiter_profile', {
-            data:_response.data
+    async.parallel([
+            function(callback) {
+                helper_utils.makeApiRequest(req, 'GET', '/recruiter/' + req.cookies.pixljob_user_id, function(_response) {
+                    callback(null, _response)
+                });
+            },
+            function(callback) {
+                helper_utils.makeApiRequest(req, 'GET', '/companies/' + req.cookies.pixljob_user_id, function(_response) {
+                    callback(null, _response)
+                });
+            },
+            function(callback) {
+                helper_utils.makeApiRequest(req, 'GET', '/industries/' + req.cookies.pixljob_user_id, function(_response) {
+                    callback(null, _response)
+                });
+            },
+            function(callback) {
+                helper_utils.makeApiRequest(req, 'GET', '/benefits/' + req.cookies.pixljob_user_id, function(_response) {
+                    callback(null, _response);
+                });
+            }
+        ],  // optional callback
+        function(err, results) {
+            res.render('recruiter_profile', {
+                data      :results[0].data,
+                company   :results[1].data,
+                industries:results[2].data,
+                benefit   :results[3].data
+                // is_admin:true
+            });
         });
-    });
 });
 
 router.get('/job-info', function(req, res) {
