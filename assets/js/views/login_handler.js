@@ -14,7 +14,7 @@ function LoginHandler() {
                 };
                 ApiUtil.makeAjaxRequest('/api/applicant-auth/login', '', 'POST', '', _obj, function(_res) {
                     if(!_res.error) {
-                        window.location.href = '/';
+                        window.location.href = '/applicant-account';
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
@@ -37,7 +37,7 @@ function LoginHandler() {
                 };
                 ApiUtil.makeAjaxRequest('/api/recruiter-auth/login', '', 'POST', '', _obj, function(_res) {
                     if(!_res.error) {
-                        window.location.href = '/';
+                        window.location.href = '/recruiter';
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }

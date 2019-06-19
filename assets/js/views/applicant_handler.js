@@ -57,7 +57,7 @@ function ApplicantSignUpHandler() {
                     }
                     ApiUtil.makeAjaxRequest('/api/applicant-auth/register', '', 'POST', '', obj, function(_res) {
                         if(!_res.error) {
-                            window.location.href = '/applicant-account'
+                            window.location.href = '/login'
                         } else {
                             alert(_res.message || 'Something went wrong!');
                         }

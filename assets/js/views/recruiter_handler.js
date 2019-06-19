@@ -28,7 +28,7 @@ function RecruiterHandler() {
                 console.log(obj);
                 var callback = function(_res) {
                     if(!_res.error) {
-                        window.location.href = '/recruiter'
+                        window.location.href = '/login'
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }

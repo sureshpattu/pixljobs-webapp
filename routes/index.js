@@ -101,4 +101,18 @@ router.get('/forgot/password/:token', function(req, res) {
         res.render('forgot_password');
     });
 });
+
+router.get('/applicant/email/verify/:token', function(req, res) {
+    req.email_token = req.params.token;
+    helper_utils.makeApiRequest(req, 'POST', '/verify/email/token', function(_response) {
+        res.render('login');
+    });
+});
+
+router.get('/recruiter/email/verify/:token', function(req, res) {
+    req.email_token = req.params.token;
+    helper_utils.makeApiRequest(req, 'POST', '/verify/email/token', function(_response) {
+        res.render('login');
+    });
+});
 module.exports = router;
