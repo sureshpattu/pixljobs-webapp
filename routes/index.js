@@ -64,10 +64,10 @@ router.get('/applicant-account', function(req, res) {
     //    if(_response.data.exp_year > 0 || _response.data.exp_month > 0) {
     //        is_experience = true;
     //    }
-        res.render('applicant_account', {
-            //data:_response.data,
-            //exp :is_experience
-        });
+    res.render('applicant_account', {
+        //data:_response.data,
+        //exp :is_experience
+    });
     //});
 });
 
@@ -104,15 +104,24 @@ router.get('/forgot/password/:token', function(req, res) {
 
 router.get('/applicant/email/verify/:token', function(req, res) {
     req.email_token = req.params.token;
-    helper_utils.makeApiRequest(req, 'POST', '/verify/email/token', function(_response) {
-        res.render('login');
+    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/verify/email/token', function(_response) {
+        let _email_verified = false;
+        if(_response.data.is_email_verified = true) {
+            res.render('login');
+            email : _email_verified;
+        }
+
     });
 });
 
 router.get('/recruiter/email/verify/:token', function(req, res) {
     req.email_token = req.params.token;
-    helper_utils.makeApiRequest(req, 'POST', '/verify/email/token', function(_response) {
-        res.render('login');
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/verify/email/token', function(_response) {
+        let _email_verified = false;
+        if(_response.data.is_email_verified = true) {
+            res.render('login');
+            email : _email_verified;
+        }
     });
 });
 module.exports = router;
