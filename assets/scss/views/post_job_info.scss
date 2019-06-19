@@ -2,7 +2,6 @@
     .hero_sec {
 
         .title_wrap {
-            max-width: 515px;
             padding: 40px 0 35px;
 
             .title {
@@ -27,8 +26,7 @@
 
         .progress {
             position: relative;
-            right: 123px;
-            width: 154%;
+            width: 100%;
             height: 6px;
             margin-bottom: 30px;
             overflow: hidden;
