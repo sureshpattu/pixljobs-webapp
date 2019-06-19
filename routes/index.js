@@ -49,9 +49,12 @@ router.get('/job-recruiter', function(req, res) {
 });
 
 router.get('/sign-up/recruiter', function(req, res) {
-    helper_utils.makeApiRequest(req, 'GET', '/industries', function(_response) {
-        res.render('sign_up_recruiter', {
-            industries:_response.data || []
+    helper_utils.makeApiRequest(req, 'GET', '/industries', function(_industries) {
+        helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_benefits) {
+            res.render('sign_up_recruiter', {
+                industries:_industries.data || [],
+                benefits :_benefits.data || []
+            });
         });
     });
 });
@@ -68,10 +71,10 @@ router.get('/applicant-account', function(req, res) {
     //    if(_response.data.exp_year > 0 || _response.data.exp_month > 0) {
     //        is_experience = true;
     //    }
-        res.render('applicant_account', {
-            //data:_response.data,
-            //exp :is_experience
-        });
+    res.render('applicant_account', {
+        //data:_response.data,
+        //exp :is_experience
+    });
     //});
 });
 

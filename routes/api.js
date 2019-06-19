@@ -94,8 +94,8 @@ router.post('/recruiter', function(req, res, next) {
     });
 });
 
-router.put('/recruiter', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'PUT', '/recruiter/' + req.cookies.pixljob_user_id, function(_response) {
+router.put('/recruiter/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/recruiter/' + req.params.id, function(_response) {
         res.json(_response);
     });
 });
@@ -108,6 +108,18 @@ router.post('/recruiter/photo/upload', function(req, res, next) {
 
 router.get('/recruiter/photo/:image', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE', '/recruiter/photo/' + req.params.image, '', res);
+});
+
+router.post('/companies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/companies', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/benefits', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/benefits', function(_response) {
+        res.json(_response);
+    });
 });
 
 module.exports = router;
