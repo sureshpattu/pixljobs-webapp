@@ -49,20 +49,27 @@ function RecruiterHandler() {
 
                 };
                 var _img_pre_holder = _form.find('.js_input_profile_file');
-                uploadImage(_img_pre_holder, function(_res_path) {
-                    if(!_res_path.error && _res_path.data) {
-                        obj.photo      = _res_path.data.file;
-                        obj.photo_type = _res_path.data.file_type;
-                    }
-                    ApiUtil.makeAjaxRequest('/api/recruiter-auth/register', '', 'POST', '', obj, function(_res) {
-                        if(!_res.error) {
-                            alert(_res.message);
-                            window.location.href = '/login'
-                        } else {
-                            alert(_res.message || 'Something went wrong!');
+                if(_img_pre_holder.files.length !== 0) {
+                    uploadImage(_img_pre_holder, function(_res_path) {
+                        if(!_res_path.error && _res_path.data) {
+                            obj.photo      = _res_path.data.file;
+                            obj.photo_type = _res_path.data.file_type;
                         }
-                    });
-                })
+                        postRegisterAPI(obj);
+                    })
+                } else {
+                    postRegisterAPI(obj);
+                }
+            }
+        });
+    }
+
+    function postRegisterAPI(_obj) {
+        ApiUtil.makeAjaxRequest('/api/recruiter-auth/register', '', 'POST', '', _obj, function(_res) {
+            if(!_res.error) {
+                window.location.href = '/login'
+            } else {
+                alert(_res.message || 'Something went wrong!');
             }
         });
     }
