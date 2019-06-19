@@ -1,12 +1,12 @@
-var ApiUtil = require('../utils/apiUtil');
+var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
-var utils = require('../utils/common');
+var utils         = require('../utils/common');
 
 function RecruiterHandler() {
     function bindRecruiterEvent() {
         $('.js_select2').select2({});
         var _form_name = '#jsSignUpRecruitForm';
-        var _form = $(_form_name);
+        var _form      = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
