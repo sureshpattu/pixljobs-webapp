@@ -28,40 +28,29 @@
                                         <div class="form-group pixl_form_group">
                                             <label for="" class="control-label">Select a role</label>
                                             <div class="role_row">
-                                                <a class="btn signup-recruit role" href="/sign-up/recruiter">
-                                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                                    Recruiter
-                                                </a>
-                                                <a class="btn signup-applicant role active" href="/sign-up/applicant">
-                                                    <i class="fa fa-user" aria-hidden="true"></i>
-                                                    Applicant
-                                                </a>
+                                                <a class="btn signup-recruit role " type="submit"
+                                                   data-target="/sign-up/recruiter">
+                                                    <img src="/img/icons/recuter.svg" alt="" class="role_icon">
+                                                    Recruiter</a>
+                                                <a class="btn signup-applicant role active " type="submit"
+                                                   data-target="/sign-up/applicant">
+                                                    <img src="/img/icons/applicant.svg" alt="" class="role_icon">
+                                                    Applicant</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-8 col-sm-6 col-md-6 hidden-xs">
+                                <div class="col-sm-6 col-md-6">
                                     <div class="upload_photo_wrap js_profile_img_wrap">
                                         <div class="pf_img_wrap">
                                             <img class="img_sec js_img_pre_holder hide">
                                         </div>
                                         <div class="icon_wrap">
-                                            <i class="fa fa-camera"></i>
-                                            <div class="upload_txt">Upload Photo</div>
+                                            <div class="upload_pic"></div>
+                                            <div class="upload_txt">Upload Company</div>
+                                            <div class="upload_txt">Logo</div>
                                         </div>
                                         <input type="file" class="js_input_profile_file">
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 visible-xs">
-                                    <div class="profile_img_wrap js_profile_img_wrap">
-                                        {{#if user.links.avatar_url}}
-                                            <img class="profile_img js_img_pre_holder"
-                                                 src="/cdn/img{{user.links.avatar_url}}">
-                                        {{/if}}
-                                        <div class="change_photo">
-                                            <i class="fa fa-camera"><span class="txt">Change Photo</span></i>
-                                        </div>
-                                        <img src="/img/loading.gif" class="loader_img js_prof_pic_load_img hide">
                                     </div>
                                 </div>
                             </div>
@@ -89,6 +78,7 @@
                                                         <option value="1">1 Years</option>
                                                         <option value="2">2 Years</option>
                                                     </select>
+                                                    <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xs-6">
@@ -99,6 +89,7 @@
                                                         <option value="1">1 Months</option>
                                                         <option value="2">2 Months</option>
                                                     </select>
+                                                    <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                                 </div>
                                             </div>
                                         </div>
@@ -189,12 +180,12 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Gender</label>
                                         <div class="box_sec">
-                                            <select
-                                                    class="form-control js_gender required js_select2">
+                                            <select class="form-control js_gender required js_select2">
                                                 <option value="male">Male</option>
                                                 <option value="female">Female</option>
                                                 <option value="other">Others</option>
                                             </select>
+                                            <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                         </div>
                                     </div>
                                 </div>
@@ -233,9 +224,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Upload Resume</label>
                                         <div class="box_sec upload_sec">
-                                            <span class="fa fa-file-text-o icon_sec">
-                                                <span class="fa fa-arrow-circle-o-up sub_icon_sec"></span>
-                                            </span>
+                                            <img src="/img/icons/upload-doc.svg" alt="" class="icon_sec">
                                             <span>Drag & drop Image or </span>
                                             <a class="upload_txt">Upload file</a>
                                             <input type="file" class="input_file js_input_file">
