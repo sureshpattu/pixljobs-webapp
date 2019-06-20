@@ -83,6 +83,7 @@
                                                 <select class="form-control required js_industry js_select2">
                                                     <option>{{data.company.industry.name}}</option>
                                                 </select>
+                                                <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                             </div>
                                         </div>
                                     </div>
@@ -95,6 +96,7 @@
                                                 <select class="form-control required js_company_size js_select2">
                                                     <option>{{data.company.size}}</option>
                                                 </select>
+                                                <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                             </div>
                                         </div>
                                     </div>
@@ -140,9 +142,7 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Upload Resume <span class="updated_txt">updated 2 days ago</span></label>
                                             <div class="box_sec upload_sec">
-                                            <span class="fa fa-file-text-o icon_sec">
-                                                <span class="fa fa-arrow-circle-o-up sub_icon_sec"></span>
-                                            </span>
+                                                <img src="/img/icons/upload-doc.svg" alt="" class="icon_sec">
                                                 <span>RahCV122019.pdf</span>
                                                 <a class="upload_txt">Re-Upload</a>
                                                 <input type="file" class="input_file">
@@ -150,31 +150,15 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-2">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group pixl_form_group">
-                                                    <button type="submit"
-                                                            class="preview_btn btn btn-default btn-lg btn-block">Preview
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group pixl_form_group">
-                                                    <button type="submit"
-                                                            class="submit_btn btn btn-primary btn-lg btn-block"><span
-                                                            class="fa fa-check"></span> Save
-                                                    </button>
-                                                    <input type="hidden" class="js_data_id" value="{{data.id}}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                <div class="cta_wrap">
+                                    <button class="btn btn_big btn_preview">PREVIEW</button>
+                                    <button class="btn btn_big btn_blue" type="submit">
+                                        SAVE
+                                        <img src="/img/icons/tick.svg" alt="" class="tick_icon">
+                                    </button>
+                                    <input type="hidden" class="js_data_id" value="{{data.id}}">
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>

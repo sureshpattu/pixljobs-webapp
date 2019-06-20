@@ -798,7 +798,7 @@ textarea.form-control.input_new {
             font-weight: 400;
             color: #637282;
 
-            .select2-selection__choice__remove{
+            .select2-selection__choice__remove {
                 position: absolute;
                 top: 3px;
                 right: 5px;
@@ -1136,9 +1136,11 @@ select.select {
 
     .left_icon {
         position: absolute;
-        left: 44px;
-        top: 28px;
-        font-size: 18px;
+        left: 30px;
+        top: 32px;
+        color: #adb3fc;
+        width: 14.5px;
+        opacity: 0.9;
     }
 
     .right_icon {
@@ -1148,6 +1150,13 @@ select.select {
         color: #adb3fc;
         width: 14.5px;
         opacity: 0.9;
+    }
+
+    .tick_icon {
+        position: absolute;
+        left: 55px;
+        top: 33px;
+        width: 14px;
     }
 }
 
