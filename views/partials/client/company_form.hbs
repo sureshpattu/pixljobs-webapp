@@ -1,0 +1,85 @@
+<form class="form_sec jsJobCompanyForm">
+    <div class="form-group pixl_form_group">
+        <label class="control-label">URL to your offer</label>
+        <div class="box_sec">
+            <input type="text" class="form-control" placeholder="Paste here">
+        </div>
+    </div>
+    <div class="form-group pixl_form_group">
+        <label class="control-label">Company Name</label>
+        <div class="box_sec">
+            <input type="text" class="form-control" placeholder="Type here" value="{{data.name}}">
+        </div>
+    </div>
+    <div class="form-group pixl_form_group">
+        <label class="control-label">Company Logo</label>
+        <div class="box_sec upload_sec">
+                                            <span class="fa fa-file-text-o icon_sec">
+                                          <span class="fa fa-arrow-circle-o-up sub_icon_sec"></span>
+                                            </span>
+            <span>Drag & drop Image or </span>
+            <a class="upload_txt">Upload file</a>
+            <input type="file" class="input_file">
+        </div>
+    </div>
+    <div class="form-group pixl_form_group">
+        <label class="control-label">Industry <span
+                class="fade_txt">(Optional)</span></label>
+        <div class="box_sec">
+            <select class="form-control js_industry js_select2">
+                <option value="">Select a domain</option>
+                {{#each industries}}
+                    {{#ifCond ../data.industry_id '===' this.id}}
+                        <option value="{{this.id}}" selected>{{this.name}}</option>
+                    {{else}}
+                        <option value="{{this.id}}">{{this.name}}</option>
+                    {{/ifCond}}
+                {{/each}}
+            </select>
+        </div>
+    </div>
+    <div class="form-group pixl_form_group">
+        <label class="control-label">Company Size <span
+                class="fade_txt">(No. of employees)</span></label>
+        <div class="box_sec">
+            <select class="form-control required js_company_size js_select2">
+                <option value="select">Select Range</option>
+                <option value="1-10" {{#ifCond data.size '===' '1-10'}}selected{{/ifCond}}>1-10</option>
+                <option value="11-20" {{#ifCond data.size '===' '11-20'}}selected{{/ifCond}}>11-20</option>
+                <option value="30-50" {{#ifCond data.size '===' '30-50'}}selected{{/ifCond}}>30-50</option>
+                <option value="50+" {{#ifCond data.size '===' '50+'}}selected{{/ifCond}}>50+</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group pixl_form_group">
+        <label class="control-label">About company <span
+                class="fade_txt">(Optional)</span></label>
+        <div class="box_sec">
+            <input type="text" class="form-control" placeholder="Type here" value="{{data.about}}">
+        </div>
+    </div>
+    <div class="form-group pixl_form_group">
+        <label class="control-label">Benefits</label>
+        <div class="box_sec">
+            <select multiple="multiple"
+                    class="form-control required js_company_benefit">
+                {{#each benefits}}
+                    {{#each data.company_benefits}}
+                        {{#ifCond ../this.id '===' this.benefit.id}}
+                            <option value="{{../this.id}}" selected>{{../this.name}}</option>
+                        {{/ifCond}}
+                    {{else}}
+                        <option value="{{this.id}}">{{this.name}}</option>
+                    {{/each}}
+                {{/each}}
+            </select>
+        </div>
+    </div>
+    <div class="form-group pixl_form_group">
+        <label class="control-label">Email for candidates</label>
+        <div class="box_sec">
+            <input type="email" class="form-control"
+                   placeholder=" careers@pixlcoders.com">
+        </div>
+    </div>
+</form>

@@ -128,4 +128,16 @@ router.post('/qa-jobs', function(req, res, next) {
     });
 });
 
+router.put('/qa-jobs/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/qa-jobs/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/qa-job/technologies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/qa-job/technologies', function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;

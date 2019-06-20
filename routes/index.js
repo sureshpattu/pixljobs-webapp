@@ -38,12 +38,50 @@ router.get('/post-job', function(req, res) {
 
 });
 
-router.get('/post-job/company', function(req, res) {
-    res.render('post_job_company');
+router.get('/post-job/info/:id', function(req, res) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/technologies', function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        res.render('post_job_info', {
+            technologies:!results[0].error ? results[0].data : [],
+            job_id      :req.params.id
+        });
+    });
 });
 
-router.get('/post-job/info', function(req, res) {
-    res.render('post_job_info');
+router.get('/post-job/company/:id', function(req, res) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/recruiter/' + req.cookies.pixljob_user_id, function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/industries', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        var _companies = [];
+        if(results[0] && !results[0].error && results[0].data) {
+            _companies = results[0].data.companies;
+        }
+        res.render('post_job_company', {
+            companies :_companies,
+            industries:!results[1].error ? results[1].data : [],
+            benefits  :!results[2].error ? results[2].data : [],
+            job_id    :req.params.id
+        });
+    });
 });
 
 router.get('/job-applicant-one', function(req, res) {

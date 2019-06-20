@@ -74,7 +74,7 @@ module.exports = {
         });
     }
 };
-},{"querystring":13}],3:[function(require,module,exports){
+},{"querystring":15}],3:[function(require,module,exports){
 exports.clearForm = function(formId) {
     $(formId).find('input').val(' ');
     $(formId).find('select').val(' ');
@@ -683,11 +683,11 @@ module.exports = LoginHandler();
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
+var waterfall     = require('async-waterfall');
 
 function PostJobHandler() {
 
     function bindPostJobEvent() {
-        $('.js_select2').select2({});
         var _form_name = '#jsJobForm';
         var _form      = $(_form_name);
 
@@ -717,13 +717,92 @@ function PostJobHandler() {
 
                 ApiUtil.makeAjaxRequest('/api/qa-jobs', '', 'POST', '', _obj, function(_res) {
                     if(!_res.error && _res.data) {
-                       // window.location.href = '/post-job/info'
+                        window.location.href = '/post-job/info/' + _res.data.id;
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
                 });
             }
         });
+    }
+
+    function bindPostJobWorkInfoEvent() {
+        var _form_name = '#jsJobInfoForm';
+        var _form      = $(_form_name);
+
+        _form.unbind().submit(function(e) {
+            e.preventDefault();
+            if(FormValidator.validateForm(_form_name)) {
+                var _job_id = _form.find('.js_job_id').val();
+
+                var _obj = {
+                    work_week:_form.find('.js_work_week').val(),
+                    holidays :_form.find('.js_holidays').val(),
+                    desc     :_form.find('.js_desc').val()
+                };
+
+                ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
+                    if(!_res.error && _res.data) {
+
+                        postJobTechnologies(_job_id, _form)
+                    } else {
+                        alert(_res.message || 'Something went wrong!');
+                    }
+                });
+            }
+        });
+    }
+
+    function postJobTechnologies(_job_id, _form) {
+        var _technologies = _form.find('.js_technologies').val();
+        if(_technologies) {
+            waterfall(_technologies.map(function(arrayItem) {
+                return function(lastItemResult, CB) {
+                    if(!CB) {
+                        CB             = lastItemResult;
+                        lastItemResult = null;
+                    }
+                    var _obj = {
+                        job_id       :_job_id,
+                        technology_id:arrayItem
+                    };
+
+                    ApiUtil.makeAjaxRequest('/api/qa-job/technologies', '', 'POST', '', _obj, function(_res) {
+                        CB(null, []);
+                    });
+                }
+            }), function(err, result) {
+                window.location.href = '/post-job/company/' + _job_id;
+            });
+        }
+    }
+
+    function bindPostJobCompanyEvent() {
+        var _form_name = '.jsJobCompanyForm';
+        var _form      = $(_form_name);
+
+        _form.unbind().submit(function(e) {
+            e.preventDefault();
+            if(FormValidator.validateForm(_form_name)) {
+                var _job_id = $('.js_job_id').val();
+
+                var _obj = {
+                    company_id:$('.js_company_id').val()
+                };
+
+                ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
+                    if(!_res.error && _res.data) {
+                        window.location.href = '/';
+                    } else {
+                        alert(_res.message || 'Something went wrong!');
+                    }
+                });
+            }
+        });
+
+        $('.jsSubmitCompanyFormBtn').click(function() {
+            _form.submit();
+        })
     }
 
     function bindCommonClickEvents() {
@@ -796,15 +875,30 @@ function PostJobHandler() {
     }
 
     return {
-        init:function() {
+        init        :function() {
             bindCommonClickEvents();
             bindPostJobEvent();
+        },
+        initWorkInfo:function() {
+            bindPostJobWorkInfoEvent();
+            $('.js_technologies').select2({
+                tags           :true,
+                tokenSeparators:[',']
+            });
+        },
+        initCompany :function() {
+            bindPostJobCompanyEvent();
+            $('.js_company_benefit').select2({
+                tags           :true,
+                tokenSeparators:[',']
+            });
+            $('.js_select2').select2({});
         }
     }
 }
 
 module.exports = PostJobHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],9:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async-waterfall":11}],9:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -1006,6 +1100,271 @@ function RecruiterProfileHandler() {
 
 module.exports = RecruiterProfileHandler();
 },{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],11:[function(require,module,exports){
+(function (process,setImmediate){
+// MIT license (by Elan Shanker).
+(function(globals) {
+  'use strict';
+
+  var nextTick = function (fn) {
+    if (typeof setImmediate === 'function') {
+      setImmediate(fn);
+    } else if (typeof process !== 'undefined' && process.nextTick) {
+      process.nextTick(fn);
+    } else {
+      setTimeout(fn, 0);
+    }
+  };
+
+  var makeIterator = function (tasks) {
+    var makeCallback = function (index) {
+      var fn = function () {
+        if (tasks.length) {
+          tasks[index].apply(null, arguments);
+        }
+        return fn.next();
+      };
+      fn.next = function () {
+        return (index < tasks.length - 1) ? makeCallback(index + 1): null;
+      };
+      return fn;
+    };
+    return makeCallback(0);
+  };
+  
+  var _isArray = Array.isArray || function(maybeArray){
+    return Object.prototype.toString.call(maybeArray) === '[object Array]';
+  };
+
+  var waterfall = function (tasks, callback) {
+    callback = callback || function () {};
+    if (!_isArray(tasks)) {
+      var err = new Error('First argument to waterfall must be an array of functions');
+      return callback(err);
+    }
+    if (!tasks.length) {
+      return callback();
+    }
+    var wrapIterator = function (iterator) {
+      return function (err) {
+        if (err) {
+          callback.apply(null, arguments);
+          callback = function () {};
+        } else {
+          var args = Array.prototype.slice.call(arguments, 1);
+          var next = iterator.next();
+          if (next) {
+            args.push(wrapIterator(next));
+          } else {
+            args.push(callback);
+          }
+          nextTick(function () {
+            iterator.apply(null, args);
+          });
+        }
+      };
+    };
+    wrapIterator(makeIterator(tasks))();
+  };
+
+  if (typeof define !== 'undefined' && define.amd) {
+    define([], function () {
+      return waterfall;
+    }); // RequireJS
+  } else if (typeof module !== 'undefined' && module.exports) {
+    module.exports = waterfall; // CommonJS
+  } else {
+    globals.asyncWaterfall = waterfall; // <script>
+  }
+})(this);
+
+}).call(this,require('_process'),require("timers").setImmediate)
+},{"_process":12,"timers":16}],12:[function(require,module,exports){
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+},{}],13:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -1091,7 +1450,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],12:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -1178,10 +1537,89 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":11,"./encode":12}]},{},[1]);
+},{"./decode":13,"./encode":14}],16:[function(require,module,exports){
+(function (setImmediate,clearImmediate){
+var nextTick = require('process/browser.js').nextTick;
+var apply = Function.prototype.apply;
+var slice = Array.prototype.slice;
+var immediateIds = {};
+var nextImmediateId = 0;
+
+// DOM APIs, for completeness
+
+exports.setTimeout = function() {
+  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
+};
+exports.setInterval = function() {
+  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
+};
+exports.clearTimeout =
+exports.clearInterval = function(timeout) { timeout.close(); };
+
+function Timeout(id, clearFn) {
+  this._id = id;
+  this._clearFn = clearFn;
+}
+Timeout.prototype.unref = Timeout.prototype.ref = function() {};
+Timeout.prototype.close = function() {
+  this._clearFn.call(window, this._id);
+};
+
+// Does not start the time, just sets up the members needed.
+exports.enroll = function(item, msecs) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = msecs;
+};
+
+exports.unenroll = function(item) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = -1;
+};
+
+exports._unrefActive = exports.active = function(item) {
+  clearTimeout(item._idleTimeoutId);
+
+  var msecs = item._idleTimeout;
+  if (msecs >= 0) {
+    item._idleTimeoutId = setTimeout(function onTimeout() {
+      if (item._onTimeout)
+        item._onTimeout();
+    }, msecs);
+  }
+};
+
+// That's not how node.js implements it but the exposed api is the same.
+exports.setImmediate = typeof setImmediate === "function" ? setImmediate : function(fn) {
+  var id = nextImmediateId++;
+  var args = arguments.length < 2 ? false : slice.call(arguments, 1);
+
+  immediateIds[id] = true;
+
+  nextTick(function onNextTick() {
+    if (immediateIds[id]) {
+      // fn.call() is faster so we optimize for the common use-case
+      // @see http://jsperf.com/call-apply-segu
+      if (args) {
+        fn.apply(null, args);
+      } else {
+        fn.call(null);
+      }
+      // Prevent ids from leaking
+      exports.clearImmediate(id);
+    }
+  });
+
+  return id;
+};
+
+exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
+  delete immediateIds[id];
+};
+}).call(this,require("timers").setImmediate,require("timers").clearImmediate)
+},{"process/browser.js":12,"timers":16}]},{},[1]);
