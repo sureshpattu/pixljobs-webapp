@@ -19,7 +19,23 @@ router.get('/register', function(req, res) {
 });
 
 router.get('/', function(req, res) {
-    res.render('search');
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'POST', '/qa-jobs/search', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/categories', function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        res.render('search', {
+            data      :!results[0].error ? results[0].data : [],
+            categories:!results[1].error ? results[1].data : []
+        });
+    });
 });
 
 router.get('/post-job', function(req, res) {
@@ -35,7 +51,6 @@ router.get('/post-job', function(req, res) {
             recruiter_id:req.cookies.pixljob_user_id
         });
     });
-
 });
 
 router.get('/post-job/info/:id', function(req, res) {
@@ -44,10 +59,16 @@ router.get('/post-job/info/:id', function(req, res) {
             helper_utils.makeApiRequest(req, 'GET', '/technologies', function(_res) {
                 callback(null, _res);
             });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/' + req.params.id, function(_res) {
+                callback(null, _res);
+            });
         }
     ], function(err, results) {
         res.render('post_job_info', {
             technologies:!results[0].error ? results[0].data : [],
+            job_data    :!results[1].error ? results[1].data : [],
             job_id      :req.params.id
         });
     });
@@ -69,6 +90,11 @@ router.get('/post-job/company/:id', function(req, res) {
             helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
                 callback(null, _res);
             });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/' + req.params.id, function(_res) {
+                callback(null, _res);
+            });
         }
     ], function(err, results) {
         var _companies = [];
@@ -79,6 +105,7 @@ router.get('/post-job/company/:id', function(req, res) {
             companies :_companies,
             industries:!results[1].error ? results[1].data : [],
             benefits  :!results[2].error ? results[2].data : [],
+            job_data  :!results[3].error ? results[3].data : [],
             job_id    :req.params.id
         });
     });
