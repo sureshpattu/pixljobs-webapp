@@ -2577,33 +2577,54 @@ body.popup-visible {
     background: #FFFFFF;
     padding: 10px;
   }
-  .postjob_work .hero_sec {
+  .postjob_work .common_form_sec {
+    margin: 90px -15px 0;
+  }
+  .postjob_work .common_form_sec .hero_sec {
     margin: 47px 10px 0 10px;
   }
-  .postjob_work .hero_sec .progress {
+  .postjob_work .common_form_sec .hero_sec .progress {
     right: 10px;
     width: 108%;
   }
-  .postjob_work .hero_sec .pixl_form_group .control-label {
+  .postjob_work .common_form_sec .hero_sec .pixl_form_group .control-label {
     padding: 0 10px 7px;
   }
-  .postjob_work .hero_sec .pixl_form_group .box_sec {
+  .postjob_work .common_form_sec .hero_sec .pixl_form_group .box_sec {
     width: 92%;
     margin: 15px 0 0 12px;
   }
-  .postjob_work .hero_sec .pixl_form_group .icon_wrap {
+  .postjob_work .common_form_sec .hero_sec .pixl_form_group .icon_wrap {
     z-index: 1;
     padding: 25px 30px 0 0;
   }
-  .postjob_work .hero_sec .btn_blue {
+  .postjob_work .common_form_sec .hero_sec .btn_blue {
     margin: 20px 0 30px;
   }
-  .postjob_work .hero_sec .fa-arrow-right {
+  .postjob_work .common_form_sec .hero_sec .fa-arrow-right {
     padding: 0 0 0 15px;
   }
   .postjob_work .navbar-header {
     margin-left: 20px;
   }
+}
+.postjob_company .arrow_down {
+  position: absolute;
+  top: 18px;
+  right: 8px;
+  background: #FFFFFF;
+  padding: 10px;
+}
+.postjob_company .hero_sec .pixl_form_group {
+  margin-bottom: 35px;
+}
+.postjob_company .hero_sec .pixl_form_group .icon_wrap {
+  right: 5px;
+}
+.postjob_company .hero_sec .pixl_form_group .icon_wrap .icon_sec {
+  width: 14px;
+  height: 14px;
+  opacity: 1;
 }
 .postjob_company .hero_sec .title_wrap {
   padding: 40px 0 35px;
@@ -2618,7 +2639,7 @@ body.popup-visible {
 }
 .postjob_company .hero_sec .title_wrap .sub_title {
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.28;
   letter-spacing: 0.4px;
   text-align: center;
@@ -2633,7 +2654,7 @@ body.popup-visible {
   position: relative;
   width: 100%;
   height: 6px;
-  margin-bottom: 30px;
+  margin-bottom: 67px;
   overflow: hidden;
   background-color: #f5f5f5;
   border-radius: 4px;
@@ -2659,30 +2680,40 @@ body.popup-visible {
 }
 
 @media all and (max-width: 767px) {
-  .postjob_company .hero_sec {
+  .postjob_company .arrow_down {
+    position: absolute;
+    top: 18px;
+    right: 8px;
+    background: #FFFFFF;
+    padding: 10px;
+  }
+  .postjob_company .common_form_sec {
+    margin: 90px -15px 0;
+  }
+  .postjob_company .common_form_sec .hero_sec {
     margin: 47px 10px 0 10px;
   }
-  .postjob_company .hero_sec .progress {
+  .postjob_company .common_form_sec .hero_sec .progress {
     right: 10px;
     width: 108%;
   }
-  .postjob_company .hero_sec .pixl_form_group .control-label {
+  .postjob_company .common_form_sec .hero_sec .pixl_form_group .control-label {
     padding: 0 10px 7px;
   }
-  .postjob_company .hero_sec .pixl_form_group .box_sec {
+  .postjob_company .common_form_sec .hero_sec .pixl_form_group .box_sec {
     width: 93%;
     margin: 0 0 0 10px;
   }
-  .postjob_company .hero_sec .cta_wrap {
-    margin: 71px -15px 203px 0;
+  .postjob_company .common_form_sec .hero_sec .cta_wrap {
+    margin: 20px 0 30px;
   }
-  .postjob_company .hero_sec .cta_wrap .second_btn {
+  .postjob_company .common_form_sec .hero_sec .cta_wrap .second_btn {
     margin: 0 10px 20px;
   }
-  .postjob_company .hero_sec .cta_wrap .fa-arrow-left {
+  .postjob_company .common_form_sec .hero_sec .cta_wrap .fa-arrow-left {
     padding: 0 15px 0 0;
   }
-  .postjob_company .hero_sec .cta_wrap .fa-arrow-right {
+  .postjob_company .common_form_sec .hero_sec .cta_wrap .fa-arrow-right {
     padding: 0 0 0 15px;
   }
   .postjob_company .navbar-header {
@@ -2742,30 +2773,33 @@ body.popup-visible {
 }
 
 @media all and (max-width: 767px) {
-  .postjob_info .hero_sec {
+  .postjob_info .common_form_sec {
+    margin: 90px -15px 0;
+  }
+  .postjob_info .common_form_sec .hero_sec {
     margin: 47px 10px 0 10px;
   }
-  .postjob_info .hero_sec .progress {
+  .postjob_info .common_form_sec .hero_sec .progress {
     right: 10px;
     width: 108%;
   }
-  .postjob_info .hero_sec .pixl_form_group .control-label {
+  .postjob_info .common_form_sec .hero_sec .pixl_form_group .control-label {
     padding: 0 10px 7px;
   }
-  .postjob_info .hero_sec .pixl_form_group .box_sec {
+  .postjob_info .common_form_sec .hero_sec .pixl_form_group .box_sec {
     width: 92%;
     margin: 0 0 0 12px;
   }
-  .postjob_info .hero_sec .cta_wrap {
-    margin: 71px -15px 203px 0;
+  .postjob_info .common_form_sec .hero_sec .cta_wrap {
+    margin: 20px 0 30px;
   }
-  .postjob_info .hero_sec .cta_wrap .second_btn {
+  .postjob_info .common_form_sec .hero_sec .cta_wrap .second_btn {
     margin: 0 10px 20px;
   }
-  .postjob_info .hero_sec .cta_wrap .fa-arrow-left {
+  .postjob_info .common_form_sec .hero_sec .cta_wrap .fa-arrow-left {
     padding: 0 15px 0 0;
   }
-  .postjob_info .hero_sec .cta_wrap .fa-arrow-right {
+  .postjob_info .common_form_sec .hero_sec .cta_wrap .fa-arrow-right {
     padding: 0 0 0 15px;
   }
   .postjob_info .navbar-header {
