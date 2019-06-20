@@ -54,21 +54,21 @@
                             width: 12px;
                             height: 13px;
                             border-radius: 1px;
-                            margin: 0 3px 7px 0;
+                            margin: 0 3px 5px 0;
                         }
 
                         .loc_icons {
                             width: 9px;
                             height: 14px;
                             color: #d3dae0;
-                            margin: 0 2px 5px;
+                            margin: 0 2px 3px;
                         }
 
                         .place_icons {
                             width: 17px;
-                            height: 15px;
+                            height: 14px;
                             color: #d3dae0;
-                            margin: 0 2px 6px;
+                            margin: 0 2px 4px;
                         }
 
                     }
@@ -349,18 +349,30 @@
         .social_link_wrap {
             width: 335px;
             margin: 74px 0 0;
-            text-align: center;
 
             .social_link {
                 border-radius: 4px;
                 background-color: #e2e6ea;
-                padding: 10px 5px;
-                margin: 0 3px 0 0;
+                padding: 15px 8px 13px 34px;
                 font-size: 14px;
                 font-weight: 600;
                 text-align: center;
                 color: #2e3d4e;
                 text-transform: uppercase;
+                display: block;
+                position: relative;
+                width: 101px;
+                height: 44px;
+
+                .social_icons {
+                    position: absolute;
+                    top: 14px;
+                    left: 12px;
+                }
+            }
+
+            .social_txt {
+                padding: 10px 0 0;
             }
         }
 
@@ -583,6 +595,16 @@
 
             .social_link_wrap {
                 width: 300px;
+
+                .social_link {
+                    padding: 15px 50px 13px 28px;
+                    width: 71px;
+
+                    .social_icons {
+                        top: 14px;
+                        left: 6px;
+                    }
+                }
             }
 
             .tags_sec {

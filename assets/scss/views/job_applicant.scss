@@ -148,8 +148,8 @@
             }
 
             &.collapsed {
-                .fa-angle-down {
-                    transform: rotate(-90deg);
+                .arrow_icon {
+                    transform: rotate(90deg);
                 }
             }
         }
@@ -169,10 +169,11 @@
             margin: 17px 15px 10px auto;
             padding: 10px 0 0;
 
-            .fa {
+            .close_icon {
                 position: relative;
                 left: -2px;
                 font-size: 13px;
+                padding: 0 3px 2px 0;
             }
         }
 
@@ -198,6 +199,23 @@
                     z-index: 5;
                     top: 2.5px;
                     margin: 0 5px 0 0;
+                }
+
+                .c_circle {
+                    display: inline-block;
+                    width: 22px;
+                    height: 22px;
+                    background-color: #d3dae0;
+                    border-radius: 50%;
+                    position: relative;
+                    z-index: 5;
+                    top: 1px;
+                    text-align: center;
+                    padding: 2px 0 0 1px;
+
+                    .icon_tick {
+                        width: 13px;
+                    }
                 }
 
                 .c_name {
@@ -283,8 +301,8 @@
                     border-left-color: rgba(230, 247, 240, 0.42);
                 }
 
-                .fa-check-circle {
-                    color: #3fdfa1;
+                .c_circle {
+                    background-color: #3fdfa1;
                 }
 
                 .c_name {
@@ -405,6 +423,7 @@
                 &:after {
                     border-top: 5px dashed #baead5;
                 }
+
                 &:before {
                     border-top: 5px dashed #baead5;
                 }
