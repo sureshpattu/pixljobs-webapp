@@ -3227,8 +3227,8 @@ body.popup-visible {
 .job_applicant_pg .cards_wrap .panel-title .small_txt {
   margin: 0 20px 0 0;
 }
-.job_applicant_pg .cards_wrap .panel-title.collapsed .fa-angle-down {
-  transform: rotate(-90deg);
+.job_applicant_pg .cards_wrap .panel-title.collapsed .arrow_icon {
+  transform: rotate(90deg);
 }
 .job_applicant_pg .cards_wrap .close_btn_link {
   width: 95px;
@@ -3245,10 +3245,11 @@ body.popup-visible {
   margin: 17px 15px 10px auto;
   padding: 10px 0 0;
 }
-.job_applicant_pg .cards_wrap .close_btn_link .fa {
+.job_applicant_pg .cards_wrap .close_btn_link .close_icon {
   position: relative;
   left: -2px;
   font-size: 13px;
+  padding: 0 3px 2px 0;
 }
 .job_applicant_pg .cards_wrap .card_status_one_wrap, .job_applicant_pg .cards_wrap .card_status_two_wrap {
   display: table;
@@ -3272,6 +3273,21 @@ body.popup-visible {
   z-index: 5;
   top: 2.5px;
   margin: 0 5px 0 0;
+}
+.job_applicant_pg .cards_wrap .card_status_one_wrap .card_cell .c_circle, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_cell .c_circle {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-color: #d3dae0;
+  border-radius: 50%;
+  position: relative;
+  z-index: 5;
+  top: 1px;
+  text-align: center;
+  padding: 2px 0 0 1px;
+}
+.job_applicant_pg .cards_wrap .card_status_one_wrap .card_cell .c_circle .icon_tick, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_cell .c_circle .icon_tick {
+  width: 13px;
 }
 .job_applicant_pg .cards_wrap .card_status_one_wrap .card_cell .c_name, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_cell .c_name {
   opacity: 0.5;
@@ -3345,8 +3361,8 @@ body.popup-visible {
 .job_applicant_pg .cards_wrap .card_status_one_wrap.viewed .viewed_sec:after, .job_applicant_pg .cards_wrap .card_status_one_wrap .card_status_two_wrap.viewed .viewed_sec:after, .job_applicant_pg .cards_wrap .card_status_two_wrap.viewed .card_status_one_wrap .viewed_sec:after, .job_applicant_pg .cards_wrap .card_status_one_wrap.downloaded .downloaded_sec:after, .job_applicant_pg .cards_wrap .card_status_one_wrap .card_status_two_wrap.downloaded .downloaded_sec:after, .job_applicant_pg .cards_wrap .card_status_two_wrap.downloaded .card_status_one_wrap .downloaded_sec:after, .job_applicant_pg .cards_wrap .card_status_one_wrap.shortlisted .shortlisted_sec:after, .job_applicant_pg .cards_wrap .card_status_one_wrap .card_status_two_wrap.shortlisted .shortlisted_sec:after, .job_applicant_pg .cards_wrap .card_status_two_wrap.shortlisted .card_status_one_wrap .shortlisted_sec:after, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_status_one_wrap.viewed .viewed_sec:after, .job_applicant_pg .cards_wrap .card_status_one_wrap.viewed .card_status_two_wrap .viewed_sec:after, .job_applicant_pg .cards_wrap .card_status_two_wrap.viewed .viewed_sec:after, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_status_one_wrap.downloaded .downloaded_sec:after, .job_applicant_pg .cards_wrap .card_status_one_wrap.downloaded .card_status_two_wrap .downloaded_sec:after, .job_applicant_pg .cards_wrap .card_status_two_wrap.downloaded .downloaded_sec:after, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_status_one_wrap.shortlisted .shortlisted_sec:after, .job_applicant_pg .cards_wrap .card_status_one_wrap.shortlisted .card_status_two_wrap .shortlisted_sec:after, .job_applicant_pg .cards_wrap .card_status_two_wrap.shortlisted .shortlisted_sec:after {
   border-left-color: rgba(230, 247, 240, 0.42);
 }
-.job_applicant_pg .cards_wrap .card_status_one_wrap.viewed .viewed_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_one_wrap .card_status_two_wrap.viewed .viewed_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_two_wrap.viewed .card_status_one_wrap .viewed_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_one_wrap.downloaded .downloaded_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_one_wrap .card_status_two_wrap.downloaded .downloaded_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_two_wrap.downloaded .card_status_one_wrap .downloaded_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_one_wrap.shortlisted .shortlisted_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_one_wrap .card_status_two_wrap.shortlisted .shortlisted_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_two_wrap.shortlisted .card_status_one_wrap .shortlisted_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_status_one_wrap.viewed .viewed_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_one_wrap.viewed .card_status_two_wrap .viewed_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_two_wrap.viewed .viewed_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_status_one_wrap.downloaded .downloaded_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_one_wrap.downloaded .card_status_two_wrap .downloaded_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_two_wrap.downloaded .downloaded_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_status_one_wrap.shortlisted .shortlisted_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_one_wrap.shortlisted .card_status_two_wrap .shortlisted_sec .fa-check-circle, .job_applicant_pg .cards_wrap .card_status_two_wrap.shortlisted .shortlisted_sec .fa-check-circle {
-  color: #3fdfa1;
+.job_applicant_pg .cards_wrap .card_status_one_wrap.viewed .viewed_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_one_wrap .card_status_two_wrap.viewed .viewed_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_two_wrap.viewed .card_status_one_wrap .viewed_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_one_wrap.downloaded .downloaded_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_one_wrap .card_status_two_wrap.downloaded .downloaded_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_two_wrap.downloaded .card_status_one_wrap .downloaded_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_one_wrap.shortlisted .shortlisted_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_one_wrap .card_status_two_wrap.shortlisted .shortlisted_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_two_wrap.shortlisted .card_status_one_wrap .shortlisted_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_status_one_wrap.viewed .viewed_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_one_wrap.viewed .card_status_two_wrap .viewed_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_two_wrap.viewed .viewed_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_status_one_wrap.downloaded .downloaded_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_one_wrap.downloaded .card_status_two_wrap .downloaded_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_two_wrap.downloaded .downloaded_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_status_one_wrap.shortlisted .shortlisted_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_one_wrap.shortlisted .card_status_two_wrap .shortlisted_sec .c_circle, .job_applicant_pg .cards_wrap .card_status_two_wrap.shortlisted .shortlisted_sec .c_circle {
+  background-color: #3fdfa1;
 }
 .job_applicant_pg .cards_wrap .card_status_one_wrap.viewed .viewed_sec .c_name, .job_applicant_pg .cards_wrap .card_status_one_wrap .card_status_two_wrap.viewed .viewed_sec .c_name, .job_applicant_pg .cards_wrap .card_status_two_wrap.viewed .card_status_one_wrap .viewed_sec .c_name, .job_applicant_pg .cards_wrap .card_status_one_wrap.downloaded .downloaded_sec .c_name, .job_applicant_pg .cards_wrap .card_status_one_wrap .card_status_two_wrap.downloaded .downloaded_sec .c_name, .job_applicant_pg .cards_wrap .card_status_two_wrap.downloaded .card_status_one_wrap .downloaded_sec .c_name, .job_applicant_pg .cards_wrap .card_status_one_wrap.shortlisted .shortlisted_sec .c_name, .job_applicant_pg .cards_wrap .card_status_one_wrap .card_status_two_wrap.shortlisted .shortlisted_sec .c_name, .job_applicant_pg .cards_wrap .card_status_two_wrap.shortlisted .card_status_one_wrap .shortlisted_sec .c_name, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_status_one_wrap.viewed .viewed_sec .c_name, .job_applicant_pg .cards_wrap .card_status_one_wrap.viewed .card_status_two_wrap .viewed_sec .c_name, .job_applicant_pg .cards_wrap .card_status_two_wrap.viewed .viewed_sec .c_name, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_status_one_wrap.downloaded .downloaded_sec .c_name, .job_applicant_pg .cards_wrap .card_status_one_wrap.downloaded .card_status_two_wrap .downloaded_sec .c_name, .job_applicant_pg .cards_wrap .card_status_two_wrap.downloaded .downloaded_sec .c_name, .job_applicant_pg .cards_wrap .card_status_two_wrap .card_status_one_wrap.shortlisted .shortlisted_sec .c_name, .job_applicant_pg .cards_wrap .card_status_one_wrap.shortlisted .card_status_two_wrap .shortlisted_sec .c_name, .job_applicant_pg .cards_wrap .card_status_two_wrap.shortlisted .shortlisted_sec .c_name {
   opacity: 1;
@@ -3764,19 +3780,19 @@ body.popup-visible {
   width: 12px;
   height: 13px;
   border-radius: 1px;
-  margin: 0 3px 7px 0;
+  margin: 0 3px 5px 0;
 }
 .job_info_pg .job_card .job_sec .job_tags .tags_wrap .tags .loc_icons {
   width: 9px;
   height: 14px;
   color: #d3dae0;
-  margin: 0 2px 5px;
+  margin: 0 2px 3px;
 }
 .job_info_pg .job_card .job_sec .job_tags .tags_wrap .tags .place_icons {
   width: 17px;
-  height: 15px;
+  height: 14px;
   color: #d3dae0;
-  margin: 0 2px 6px;
+  margin: 0 2px 4px;
 }
 .job_info_pg .job_card .job_sec .job_tags .tags_wrap .btn_wrap .post_tag {
   font-size: 11px;
@@ -3990,18 +4006,28 @@ body.popup-visible {
 .job_info_pg .apply_sec .social_link_wrap {
   width: 335px;
   margin: 74px 0 0;
-  text-align: center;
 }
 .job_info_pg .apply_sec .social_link_wrap .social_link {
   border-radius: 4px;
   background-color: #e2e6ea;
-  padding: 10px 5px;
-  margin: 0 3px 0 0;
+  padding: 15px 8px 13px 34px;
   font-size: 14px;
   font-weight: 600;
   text-align: center;
   color: #2e3d4e;
   text-transform: uppercase;
+  display: block;
+  position: relative;
+  width: 101px;
+  height: 44px;
+}
+.job_info_pg .apply_sec .social_link_wrap .social_link .social_icons {
+  position: absolute;
+  top: 14px;
+  left: 12px;
+}
+.job_info_pg .apply_sec .social_link_wrap .social_txt {
+  padding: 10px 0 0;
 }
 .job_info_pg .apply_sec .tags_sec {
   width: 310px;
@@ -4151,6 +4177,14 @@ body.popup-visible {
   }
   .job_info_pg .apply_sec .social_link_wrap {
     width: 300px;
+  }
+  .job_info_pg .apply_sec .social_link_wrap .social_link {
+    padding: 15px 50px 13px 28px;
+    width: 71px;
+  }
+  .job_info_pg .apply_sec .social_link_wrap .social_link .social_icons {
+    top: 14px;
+    left: 6px;
   }
   .job_info_pg .apply_sec .tags_sec {
     margin: 0;
