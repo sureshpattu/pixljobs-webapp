@@ -105,6 +105,10 @@
         .cta_wrap {
             text-align: center;
             margin-top: 34px;
+
+            .btn_big {
+                margin-left: 14px;
+            }
         }
 
         .inr_txt {
@@ -233,6 +237,10 @@
 
                     .btn_preview {
                         margin: 0 0 14px 0;
+                    }
+
+                    .btn_big {
+                        margin-left: 0;
                     }
                 }
 
