@@ -1,11 +1,11 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-window.PopupPage               = require('./utils/popupHandler');
-window.LoginHandler            = require('./views/login_handler');
-window.RecruiterHandler        = require('./views/recruiter_handler');
-window.ApplicantSignUpHandler  = require('./views/applicant_handler');
-window.RecruiterProfileHandler = require('./views/recruiter_profile_handler');
-window.PostJobHandler          = require('./views/post_job_handler');
-},{"./utils/popupHandler":5,"./views/applicant_handler":6,"./views/login_handler":7,"./views/post_job_handler":8,"./views/recruiter_handler":9,"./views/recruiter_profile_handler":10}],2:[function(require,module,exports){
+window.PopupPage                   = require('./utils/popupHandler');
+window.LoginHandler                = require('./views/login_handler');
+window.RecruiterHandler            = require('./views/recruiter_handler');
+window.ApplicantSignUpHandler      = require('./views/applicant_handler');
+window.RecruiterProfileEditHandler = require('./views/recruiter_profile_edit_handler');
+window.PostJobHandler              = require('./views/post_job_handler');
+},{"./utils/popupHandler":5,"./views/applicant_handler":6,"./views/login_handler":7,"./views/post_job_handler":8,"./views/recruiter_handler":9,"./views/recruiter_profile_edit_handler":10}],2:[function(require,module,exports){
 var qs = require('querystring');
 
 module.exports = {
@@ -1028,7 +1028,7 @@ function RecruiterHandler() {
     }
 
     return {
-        init:function() {
+        init    :function() {
             bindCommonClickEvents();
             bindRecruiterEvent();
         }
@@ -1041,64 +1041,139 @@ var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils = require('../utils/common');
 
-function RecruiterProfileHandler() {
-    function bindRecruiterProfileEvent() {
+function RecruiterProfileEditHandler() {
+    function uploadImage(_ele, _cb) {
+        var formData = new FormData();
+        formData.append('photo', _ele[0].files[0]);
+        ApiUtil.makeFileUploadRequest('/api/recruiter/photo/upload', '', 'POST', '', formData,
+            function(_res_path) {
+                _cb(_res_path);
+            });
+    }
+
+    function readURL(input) {
+        if(input.files && input.files[0]) {
+            var reader          = new FileReader();
+            var _img_pre_holder = $('.js_img_pre_holder');
+
+            reader.onload = function(e) {
+                _img_pre_holder.attr('src', e.target.result);
+                _img_pre_holder.removeClass('hide');
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function bindRecruiterEditEvent() {
         $('.js_select2').select2({});
-        var _form_name = '#jsSignUpRecruitForm';
-        var _form = $(_form_name);
+        var _form_name = '#jsEditRecruitForm';
+        var _form      = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
-            var _id = _form.find('.js_data_id').val();
             if(FormValidator.validateForm(_form_name)) {
-                var obj = {
-                    name           :_form.find('.js_name').val(),
-                    email          :_form.find('.js_email').val(),
-                    password       :_form.find('.js_password').val(),
-                    gender         :_form.find('.js_gender').val(),
-                    designation    :_form.find('.js_designation').val(),
-                    company        :_form.find('.js_company_name').val() || '0',
-                    industry       :_form.find('.js_industry').val(),
-                    company_size   :_form.find('.js_company_size').val(),
-                    company_url    :_form.find('.js_company_url').val(),
-                    about_company  :_form.find('.js_about_company').val(),
-                    company_benefit:_form.find('.js_company_benefit').val()
-
+                var _user_obj       = {
+                    name       :_form.find('.js_name').val(),
+                    email      :_form.find('.js_email').val(),
+                    password   :_form.find('.js_password').val(),
+                    gender     :_form.find('.js_gender').val(),
+                    designation:_form.find('.js_designation').val()
                 };
-                console.log(obj);
+                var _img_pre_holder = _form.find('.js_input_profile_file');
+
                 var callback = function(_res) {
                     if(!_res.error) {
-                        window.location.href = '/recruiter'
+                        if(_img_pre_holder.val()) {
+                            uploadImage(_img_pre_holder, function(_res_path) {
+                                updateUserPhoto(_res.data.id, _res_path);
+                            })
+                        }
+                        updateCompanyDetails(_res.data.id, _form);
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
                 };
-                ApiUtil.makeAjaxRequest('/api/recruiter/' + _id, '', 'PUT', '', obj, callback);
+                ApiUtil.makeAjaxRequest('/api/recruiter', '', 'PUT', '', _user_obj, callback);
             }
         });
     }
 
+    function updateUserPhoto(user_id, _res_path) {
+        if(!_res_path.error && _res_path.data) {
+
+            var _obj = {
+                photo     :_res_path.data.file,
+                photo_type:_res_path.data.file_type
+            };
+
+            ApiUtil.makeAjaxRequest('/api/recruiter/' + user_id, '', 'PUT', '', _obj, function(_res) {
+                if(_res.error) {
+                    alert(_res.message || 'Something went wrong!');
+                }
+            });
+        }
+    }
+
+    function updateCompanyDetails(user_id, _form) {
+        var _company_obj = {
+            recruiter_id:user_id,
+            name        :_form.find('.js_company_name').val() || '0',
+            industry_id :_form.find('.js_industry').val(),
+            size        :_form.find('.js_company_size').val(),
+            url         :_form.find('.js_company_url').val(),
+            about       :_form.find('.js_about_company').val(),
+            street      :_form.find('.js_street').val(),
+            area        :_form.find('.js_area').val(),
+            city        :_form.find('.js_city').val(),
+            state       :_form.find('.js_state').val(),
+            pin         :_form.find('.js_pin').val(),
+            country     :_form.find('.js_country').val()
+        };
+
+        ApiUtil.makeAjaxRequest('/api/companies', '', 'PUT', '', _company_obj, function(_res) {
+            if(!_res.error && _res.data) {
+                updateCompanyBenefits(_res.data.id, _form)
+            } else {
+                alert(_res.message || 'Something went wrong!');
+            }
+        });
+    }
+
+    function updateCompanyBenefits(company_id, _form) {
+        var _company_obj = {
+            company_id:company_id,
+            benefits  :_form.find('.js_company_benefit').val() || []
+        };
+
+        ApiUtil.makeAjaxRequest('/api/benefits', '', 'PUT', '', _company_obj, function(_res) {
+            if(!_res.error) {
+                window.location.href = '/recruiter'
+            } else {
+                alert(_res.message || 'Something went wrong!');
+            }
+        });
+    }
+
+    function bindCommonClickEvents() {
+        $('.js_input_profile_file').change(function() {
+            readURL(this);
+        });
+        $('.js_company_benefit').select2({
+            tags           :true,
+            tokenSeparators:[',']
+        });
+    }
+
     return {
-        init    :function() {
-            bindRecruiterProfileEvent();
-        },
-        initView:function(_land_ids) {
-            _lang_ids_arr = _land_ids;
-            utils.initProfileImageCropper('#profileImageCropperModal', '.js_profile_img_wrap', 'userPicPreviewImage',
-                function() {
-                    $('.js_prof_pic_load_img').removeClass('hide');
-                    ApiUtil.makeAjaxRequest('/api/avatar/upload', '', 'POST', '',
-                        {src:$('.js_img_pre_holder').attr('src')}, function(_res) {
-                            $('.js_prof_pic_load_img').addClass('hide');
-
-                        });
-                });
-
+        initEdit    :function() {
+            bindCommonClickEvents();
+            bindRecruiterEditEvent();
         }
     }
 }
 
-module.exports = RecruiterProfileHandler();
+module.exports = RecruiterProfileEditHandler();
 },{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],11:[function(require,module,exports){
 (function (process,setImmediate){
 // MIT license (by Elan Shanker).

@@ -1,8 +1,8 @@
-var ApiUtil       = require('../utils/apiUtil');
+var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
-var utils         = require('../utils/common');
+var utils = require('../utils/common');
 
-function RecruiterHandler() {
+function RecruiterProfileEditHandler() {
     function uploadImage(_ele, _cb) {
         var formData = new FormData();
         formData.append('photo', _ele[0].files[0]);
@@ -26,9 +26,9 @@ function RecruiterHandler() {
         }
     }
 
-    function bindRecruiterEvent() {
+    function bindRecruiterEditEvent() {
         $('.js_select2').select2({});
-        var _form_name = '#jsSignUpRecruitForm';
+        var _form_name = '#jsEditRecruitForm';
         var _form      = $(_form_name);
 
         _form.unbind().submit(function(e) {
@@ -43,19 +43,19 @@ function RecruiterHandler() {
                 };
                 var _img_pre_holder = _form.find('.js_input_profile_file');
 
-                ApiUtil.makeAjaxRequest('/api/recruiter-auth/register', '', 'POST', '', _user_obj, function(_res) {
-                    if(!_res.error && _res.data) {
+                var callback = function(_res) {
+                    if(!_res.error) {
                         if(_img_pre_holder.val()) {
                             uploadImage(_img_pre_holder, function(_res_path) {
                                 updateUserPhoto(_res.data.id, _res_path);
                             })
                         }
-                        postCompanyDetails(_res.data.id, _form);
-
+                        updateCompanyDetails(_res.data.id, _form);
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
-                });
+                };
+                ApiUtil.makeAjaxRequest('/api/recruiter', '', 'PUT', '', _user_obj, callback);
             }
         });
     }
@@ -76,7 +76,7 @@ function RecruiterHandler() {
         }
     }
 
-    function postCompanyDetails(user_id, _form) {
+    function updateCompanyDetails(user_id, _form) {
         var _company_obj = {
             recruiter_id:user_id,
             name        :_form.find('.js_company_name').val() || '0',
@@ -92,22 +92,22 @@ function RecruiterHandler() {
             country     :_form.find('.js_country').val()
         };
 
-        ApiUtil.makeAjaxRequest('/api/companies', '', 'POST', '', _company_obj, function(_res) {
+        ApiUtil.makeAjaxRequest('/api/companies', '', 'PUT', '', _company_obj, function(_res) {
             if(!_res.error && _res.data) {
-                postCompanyBenefits(_res.data.id, _form)
+                updateCompanyBenefits(_res.data.id, _form)
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
         });
     }
 
-    function postCompanyBenefits(company_id, _form) {
+    function updateCompanyBenefits(company_id, _form) {
         var _company_obj = {
             company_id:company_id,
             benefits  :_form.find('.js_company_benefit').val() || []
         };
 
-        ApiUtil.makeAjaxRequest('/api/benefits', '', 'POST', '', _company_obj, function(_res) {
+        ApiUtil.makeAjaxRequest('/api/benefits', '', 'PUT', '', _company_obj, function(_res) {
             if(!_res.error) {
                 window.location.href = '/recruiter'
             } else {
@@ -127,11 +127,11 @@ function RecruiterHandler() {
     }
 
     return {
-        init    :function() {
+        initEdit    :function() {
             bindCommonClickEvents();
-            bindRecruiterEvent();
+            bindRecruiterEditEvent();
         }
     }
 }
 
-module.exports = RecruiterHandler();
+module.exports = RecruiterProfileEditHandler();
