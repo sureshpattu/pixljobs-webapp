@@ -94,8 +94,8 @@ router.post('/recruiter', function(req, res, next) {
     });
 });
 
-router.put('/recruiter', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'PUT', '/recruiter/'  + req.cookies.pixljob_user_id, function(_response) {
+router.put('/recruiter/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/recruiter/' + req.req.cookies.pixljob_user_id, function(_response) {
         res.json(_response);
     });
 });
@@ -130,6 +130,12 @@ router.post('/benefits', function(req, res, next) {
 
 router.put('/benefits', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'PUT', '/benefits/' + req.cookies.pixljob_user_id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/qa-jobs', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/qa-jobs', function(_response) {
         res.json(_response);
     });
 });

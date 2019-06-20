@@ -23,7 +23,19 @@ router.get('/', function(req, res) {
 });
 
 router.get('/post-job', function(req, res) {
-    res.render('post_job_work');
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/categories', function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        res.render('post_job_work', {
+            categories  :!results[0].error ? results[0].data : [],
+            recruiter_id:req.cookies.pixljob_user_id
+        });
+    });
+
 });
 
 router.get('/post-job/company', function(req, res) {
