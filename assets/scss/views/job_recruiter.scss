@@ -334,13 +334,21 @@
             }
         }
 
-        .swiper-button-next, .swiper-button-prev {
-            //background-image: none;
+        .swiper-button-next {
+            background-image: none;
+            background-image: url("/img/icons/arrow-right-big-grey.svg");
+            //height: auto;
+        }
+
+        .swiper-button-prev {
+            background-image: none;
+            background-image: url("/img/icons/arrow-right-big-grey.svg");
+            transform: rotate(180deg);
             //height: auto;
         }
 
         .swiper-button-disabled {
-            opacity: 0;
+            opacity: 1;
         }
 
         .swiper-slide-next {

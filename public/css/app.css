@@ -3878,8 +3878,17 @@ body.popup-visible {
   color: #4a58ff;
   padding: 21px 20px;
 }
+.job_recruiter_pg .cards_wrap .swiper-button-next {
+  background-image: none;
+  background-image: url("/img/icons/arrow-right-big-grey.svg");
+}
+.job_recruiter_pg .cards_wrap .swiper-button-prev {
+  background-image: none;
+  background-image: url("/img/icons/arrow-right-big-grey.svg");
+  transform: rotate(180deg);
+}
 .job_recruiter_pg .cards_wrap .swiper-button-disabled {
-  opacity: 0;
+  opacity: 1;
 }
 .job_recruiter_pg .cards_wrap .swiper-slide-next {
   position: relative;
