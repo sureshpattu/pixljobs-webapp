@@ -28,11 +28,27 @@
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
-                                {{#each companies}}
-                                    {{>client/company_form data=this industries=../industries benefits=../benefits}}
-                                {{else}}
+                                <div class="companies_wrap">
+                                    <div class="select_comp_txt">Select company</div>
+                                    <ul class="list_sec">
+                                        {{#each companies}}
+                                            <li class="active">
+                                                <label class="check_box js_company_check_box_wrap">
+                                                    <input type="checkbox" class="js_company_check_box"
+                                                           data-cid="{{this.id}}">
+                                                    <span class="checkmark"></span>
+                                                    {{this.name}}
+                                                </label>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                    {{#if companies.length}}
+                                        <a class="btn btn_blue add_new_company_btn js_add_new_company_btn">Add New Company</a>
+                                    {{/if}}
+                                </div>
+                                <div class="js_forms_wrap {{#if companies.length}}hide{{/if}}">
                                     {{>client/company_form}}
-                                {{/each}}
+                                </div>
                                 <div class="cta_wrap">
                                     <a class="btn btn_big second_btn" href="/post-job/info/{{job_id}}">
                                         RETURN
@@ -44,6 +60,7 @@
                                     </button>
                                     <input type="hidden" class="js_job_id" value="{{job_id}}">
                                     <input type="hidden" class="js_company_id" value="{{companies.0.id}}">
+                                    <input type="hidden" class="js_user_id" value="{{user_id}}">
                                 </div>
                             </div>
                         </div>

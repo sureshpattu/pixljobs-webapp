@@ -106,7 +106,8 @@ router.get('/post-job/company/:id', function(req, res) {
             industries:!results[1].error ? results[1].data : [],
             benefits  :!results[2].error ? results[2].data : [],
             job_data  :!results[3].error ? results[3].data : [],
-            job_id    :req.params.id
+            job_id    :req.params.id,
+            user_id    :req.cookies.pixljob_user_id,
         });
     });
 });
