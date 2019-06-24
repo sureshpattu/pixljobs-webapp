@@ -178,31 +178,109 @@ function PostJobHandler() {
     }
 
     function bindPostJobCompanyEvent() {
+
+        $('.js_company_benefit').select2({
+            tags           :true,
+            tokenSeparators:[',']
+        });
+        $('.js_select2').select2({});
+
+        var _company_check_box = $('.js_company_check_box');
+        _company_check_box.click(function() {
+            var _this = $(this);
+            if(_this.prop('checked')) {
+                _company_check_box.prop('checked', false);
+                _this.prop('checked', true);
+            } else {
+                _company_check_box.prop('checked', false);
+                _this.prop('checked', false);
+            }
+        });
+
+        $('.js_add_new_company_btn').click(function() {
+            _company_check_box.prop('checked', false);
+            $('.js_forms_wrap').removeClass('hide');
+            $(this).addClass('hide');
+        });
+
+        $('.jsSubmitCompanyFormBtn').click(function() {
+            var _isNewCompany = false;
+            _company_check_box.each(function(index, ele) {
+                if(ele.prop('checked' && ele.data('id'))) {
+                    var _company_id = ele.data('id');
+                    updateJobCompany(_company_id);
+                    return false;
+                } else {
+                    _isNewCompany = true;
+                }
+            });
+            if(_isNewCompany) {
+                postCompanyDetails();
+            }
+        });
+    }
+
+    function updateJobCompany(_company_id) {
+        var _job_id = $('.js_job_id').val();
+
+        var _obj = {
+            company_id:_company_id
+        };
+        ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
+            if(!_res.error && _res.data) {
+                window.location.href = '/';
+            } else {
+                alert(_res.message || 'Something went wrong!');
+            }
+        });
+    }
+
+    function postCompanyDetails() {
         var _form_name = '.jsJobCompanyForm';
         var _form      = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
-                var _job_id = $('.js_job_id').val();
-
-                var _obj = {
-                    company_id:$('.js_company_id').val()
+                var _company_obj = {
+                    recruiter_id:$('.js_user_id').val(),
+                    name        :_form.find('.js_company_name').val() || '0',
+                    industry_id :_form.find('.js_industry').val(),
+                    size        :_form.find('.js_company_size').val(),
+                    url         :_form.find('.js_company_url').val(),
+                    about       :_form.find('.js_about_company').val(),
+                    //street      :_form.find('.js_street').val(),
+                    //area        :_form.find('.js_area').val(),
+                    //city        :_form.find('.js_city').val(),
+                    //state       :_form.find('.js_state').val(),
+                    //pin         :_form.find('.js_pin').val(),
+                    //country     :_form.find('.js_country').val()
                 };
 
-                ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
+                ApiUtil.makeAjaxRequest('/api/companies', '', 'POST', '', _company_obj, function(_res) {
                     if(!_res.error && _res.data) {
-                        window.location.href = '/';
+                        postCompanyBenefits(_res.data.id, _form)
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
                 });
             }
         });
+    }
 
-        $('.jsSubmitCompanyFormBtn').click(function() {
-            _form.submit();
-        })
+    function postCompanyBenefits(company_id, _form) {
+        var _company_obj = {
+            company_id:company_id,
+            benefits  :_form.find('.js_company_benefit').val() || []
+        };
+
+        ApiUtil.makeAjaxRequest('/api/benefits', '', 'POST', '', _company_obj, function(_res) {
+            if(!_res.error) {
+                window.location.href = '/';
+            } else {
+                alert(_res.message || 'Something went wrong!');
+            }
+        });
     }
 
     return {
@@ -219,11 +297,6 @@ function PostJobHandler() {
         },
         initCompany :function() {
             bindPostJobCompanyEvent();
-            $('.js_company_benefit').select2({
-                tags           :true,
-                tokenSeparators:[',']
-            });
-            $('.js_select2').select2({});
         }
     }
 }
