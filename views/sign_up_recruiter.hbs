@@ -4,7 +4,7 @@
     <title>Pixlcoders</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{>header_assets swiper=true  select2=true cropper=true}}
+    {{>header_assets swiper=true  select2=true}}
 </head>
 <body class="signup_pg">
 {{>header}}
@@ -28,38 +28,29 @@
                                         <div class="form-group pixl_form_group">
                                             <label for="" class="control-label">Select a role</label>
                                             <div class="role_row">
-                                                <a class="btn signup-recruit role active" type="submit"
-                                                   data-target="/sign-up/recruiter"><i class="fa fa-user"
-                                                                                       aria-hidden="true"></i>Recruiter</a>
-                                                <a class="btn signup-applicant role " type="submit"
-                                                   data-target="/sign-up/applicant"><i class="fa fa-user"
-                                                                                       aria-hidden="true"></i>Applicant</a>
+                                                <a class="btn signup-recruit role active" href="/sign-up/recruiter">
+                                                    <img src="/img/icons/recuter-color.svg" alt="" class="role_icon">
+                                                    Recruiter
+                                                </a>
+                                                <a class="btn signup-applicant role" href="/sign-up/applicant">
+                                                    <img src="/img/icons/applicant-grey.svg" alt="" class="role_icon">
+                                                    Applicant
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-8 col-sm-6 col-md-6 hidden-xs">
-                                    <div class="upload_photo_wrap js_profile_img_wrap"
-                                         data-target="#profileImageCropperModal"
-                                         data-toggle="modal" data-backdrop="static">
-                                        <img src="" alt="" class="img_sec js_img_pre_holder">
+                                <div class="col-sm-6 col-md-6 col-xs-12">
+                                    <div class="upload_photo_wrap js_profile_img_wrap">
+                                        <div class="pf_img_wrap">
+                                            <img class="img_sec js_img_pre_holder hide">
+                                        </div>
                                         <div class="icon_wrap">
-                                            <i class="fa fa-camera"></i>
+                                            <div class="upload_pic"></div>
                                             <div class="upload_txt">Upload Company</div>
                                             <div class="upload_txt">Logo</div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-12 visible-xs js_profile_img_wrap"
-                                     data-target="#profileImageCropperModal"
-                                     data-toggle="modal" data-backdrop="static">
-                                    <div class="upload_photo_wrap">
-                                        <img src="" alt="" class="img_sec js_img_pre_holder">
-                                        <div class="icon_wrap">
-                                            <i class="fa fa-camera"></i>
-                                            <div class="upload_txt">Upload Company</div>
-                                            <div class="upload_txt">Logo</div>
-                                        </div>
+                                        <input type="file" class="js_input_profile_file">
                                     </div>
                                 </div>
                             </div>
@@ -87,10 +78,34 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
+                                        <label class="control-label">Gender</label>
+                                        <div class="box_sec">
+                                            <select name="exp_select"
+                                                    class="form-control required js_gender js_select2">
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                            <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Mobile</label>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required js_password"
+                                                   autocomplete="nope" placeholder="Enter mobile">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
                                         <label class="control-label">Email ID</label><a href=""
                                                                                         class="verify_link">VERIFY</a>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required js_email"
+                                            <input type="email" class="form-control required js_email"
                                                    autocomplete="nope" placeholder="Your current Email ID">
                                         </div>
                                     </div>
@@ -99,7 +114,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Password</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required js_password"
+                                            <input type="password" class="form-control required js_password"
                                                    autocomplete="nope" placeholder="Enter Password">
                                         </div>
                                     </div>
@@ -119,12 +134,13 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Industry</label>
                                         <div class="box_sec">
-                                            <select class="form-control required js_industry js_select2">
+                                            <select class="form-control js_industry js_select2">
                                                 <option value="">Select a domain</option>
-                                                <option value="Front End">Front End</option>
-                                                <option value="Back End">Back End</option>
-                                                <option value="Full Stack">Full Stack</option>
+                                                {{#each industries}}
+                                                    <option value="{{this.id}}">{{this.name}}</option>
+                                                {{/each}}
                                             </select>
+                                            <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                         </div>
                                     </div>
                                 </div>
@@ -136,33 +152,77 @@
                                         <div class="box_sec">
                                             <select class="form-control required js_company_size js_select2">
                                                 <option value="select">Select Range</option>
-                                                <option value="5-10">5-10</option>
+                                                <option value="1-10">1-10</option>
                                                 <option value="11-20">11-20</option>
                                                 <option value="30-50">30-50</option>
+                                                <option value="50+">50+</option>
                                             </select>
+                                            <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Gender</label>
+                                        <label class="control-label">Company URL</label>
                                         <div class="box_sec">
-                                            <select name="exp_select"
-                                                    class="form-control required js_gender js_select2">
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                            </select>
+                                            <input type="text" class="form-control required js_company_url"
+                                                   autocomplete="nope" placeholder="Your company's official website">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-4">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Company URL</label>
+                                        <label class="control-label">Street</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required js_company_url"
-                                                   autocomplete="nope" placeholder="Your company's official website">
+                                            <input type="text" class="form-control required js_street"
+                                                   autocomplete="nope" placeholder="Enter street">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Area</label>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required js_area"
+                                                   autocomplete="nope" placeholder="Enter area">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">City</label>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required js_city"
+                                                   autocomplete="nope" placeholder="Enter city">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">State</label>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required js_state"
+                                                   autocomplete="nope" placeholder="Enter state">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Country</label>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required js_country"
+                                                   autocomplete="nope" placeholder="Enter country">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Pin Code</label>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required js_pin"
+                                                   autocomplete="nope" placeholder="Enter pin">
                                         </div>
                                     </div>
                                 </div>
@@ -182,23 +242,25 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Company Benefits</label>
+                                        <label class="control-label">Company Benefits<span class="gl_input_text">separated by comma ( , )</span></label>
                                         <div class="box_sec">
-                                            <div id="textarea" class="form-control text_area  js_company_benefit">
-                                                <input type="text">
-                                            </div>
+                                            <select multiple="multiple"
+                                                    class="form-control required js_company_benefit">
+                                                {{#each benefits}}
+                                                    <option value="{{this.id}}">{{this.name}}</option>
+                                                {{/each}}
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="cta_wrap">
                                 <button class="btn btn_big btn_preview">PREVIEW</button>
-                                <button class="btn btn_big btn_blue">
+                                <button type="submit" class="btn btn_big btn_blue">
                                     PROCEED
-                                    <span class="fa fa-arrow-right right_icon"></span>
+                                    <img src="/img/icons/full-arrow-blue.svg" alt="" class="right_icon">
                                 </button>
                             </div>
-                            <input type="hidden" class="js_applicant_id" value="{{data.id}}">
                         </form>
                     </div>
                 </div>
@@ -206,41 +268,11 @@
         </div>
     </div>
 </section>
-{{>popup/profile_photo_upload}}
-{{>footer swiper=true select2=true cropper=true}}
+{{>footer swiper=true select2=true}}
 </body>
-<script type="application/javascript">
-
+<script type="text/javascript">
     $(function() {
         RecruiterHandler.init();
-        RecruiterHandler.initView();
-    });
-
-    $('#textarea input').on('keyup', function(e) {
-        var key = e.which;
-        if(key == 188) {
-            $('<button/>').text($(this).val().slice(0, -1)).insertBefore($(this));
-            $(this).val('').focus();
-        }
-        ;
-    });
-
-    $('#textarea').on('click', 'button', function(e) {
-        e.preventDefault();
-        $(this).remove();
-        return false;
-    });
-
-    $('.signup-recruit').on('click', function(event) {
-        event.preventDefault();
-        var url = $(this).data('target');
-        location.replace(url);
-    });
-
-    $('.signup-applicant').on('click', function(event) {
-        event.preventDefault();
-        var url = $(this).data('target');
-        location.replace(url);
     });
 </script>
 </html>

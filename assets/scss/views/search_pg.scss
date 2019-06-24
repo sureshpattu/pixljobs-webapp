@@ -33,10 +33,9 @@
         }
 
         .fa-search {
-            opacity: 0.3;
             color: #888888;
             position: absolute;
-            top: 18px;
+            top: 20px;
             right: 20px;
             font-size: 26px;
         }
@@ -131,7 +130,7 @@
             }
 
             .fa {
-                font-size: 18px;
+                width: 15px;
                 position: relative;
                 left: 14px;
                 top: 1px;
@@ -202,11 +201,11 @@
             margin: 0 8px 0 0;
 
             &:last-child {
-                margin: 0;
+                margin: 0 0 0 2px;
             }
 
             .txt_sec {
-                font-size: 15px;
+                font-size: 14px;
                 font-weight: normal;
                 color: #6c7786;
             }
@@ -214,7 +213,19 @@
             .icon_sec {
                 color: #6c7786;
                 font-size: 12px;
-                margin: 0 1px 0 0;
+                margin: -4px 1px 0 0;
+            }
+
+            .icon_dollar_sec {
+                color: #6c7786;
+                margin: -2px 8px 0 2px;
+                width: 8px;
+            }
+
+            .icon_marker_sec {
+                width: 10.9px;
+                height: 15.6px;
+                opacity: 0.44;
             }
         }
 
@@ -222,11 +233,33 @@
             padding: 0 0 42px;
 
             .box_label {
-                padding: 0 0 8px;
+                padding: 0 0 15px;
+            }
+
+
+            .arrow_down {
+                position: absolute;
+                top: 18px;
+                right: 8px;
+                background: #FFFFFF;
+                padding: 10px;
             }
 
             .check_box.right {
                 margin: 3px 0 0;
+
+                .checkmark {
+                    left: auto;
+                    right: 0;
+                    border-radius: 2px;
+                }
+            }
+
+            .icon_marker_sec {
+                width: 15.9px;
+                height: 15.6px;
+                opacity: 0.44;
+                margin-right: 10px;
             }
 
         }
@@ -282,6 +315,7 @@
         }
 
     }
+
     .irs--flat .irs-bar {
         cursor: pointer;
         background-color: rgb(102, 223, 141);

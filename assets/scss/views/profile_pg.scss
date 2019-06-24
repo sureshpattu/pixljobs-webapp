@@ -1,6 +1,32 @@
 .profile_pg {
     background-color: #f8f8f9;
 
+    .pixl_form_group {
+        margin-bottom: 35px;
+
+        .verified_wrap {
+            display: inline-block;
+            margin-left: 5px;
+            position: relative;
+            bottom: 2px;
+
+            .verified_email {
+                background-color: #D4F9E8;
+                display: inline-block;
+                border-radius: 50%;
+                width: 17px;
+                padding-left: 3px;
+            }
+
+            .verified_txt {
+                font-size: 11px;
+                font-weight: 600;
+                text-align: center;
+                color: #04b972;
+                margin-left: 4px;
+            }
+        }
+    }
 
     .sidenav {
         padding: 0;
@@ -44,7 +70,7 @@
     }
 
     .form_wrap {
-        padding: 20px;
+        padding: 35px 40px 80px 40px;
 
         .name_info_sec {
             border-bottom: solid 2px #eaedf0;
@@ -99,6 +125,15 @@
             }
         }
 
+        .cta_wrap {
+            text-align: center;
+            margin-top: 34px;
+
+            .btn_big {
+                margin-left: 14px;
+            }
+        }
+
         .inr_txt {
             position: absolute;
             top: 42px;
@@ -139,13 +174,6 @@
             }
         }
 
-        .verified_txt {
-            font-size: 11px;
-            font-weight: 600;
-            text-align: center;
-            color: #04b972;
-        }
-
         .cta_link {
             text-decoration: none;
             cursor: pointer;
@@ -180,6 +208,14 @@
             text-align: center;
         }
 
+        .arrow_down {
+            position: absolute;
+            top: 18px;
+            right: 8px;
+            background: #fff;
+            padding: 10px;
+        }
+
 
     }
 
@@ -188,24 +224,43 @@
 
 @media all and (max-width: 767px) {
     .profile_pg {
+
         .profile_img_wrap {
-            margin-left: 70px;
+            margin: 0 auto;
         }
 
-        .form_wrap {
-            .name_info_sec {
-                padding: 0px;
+        .common_form_sec {
+            margin: 90px -15px 0;
 
-                .name_txt {
-                    text-align: center;
+            .form_wrap {
+                padding: 35px 10px 10px 10px;
+
+                .name_info_sec {
+                    padding: 0px;
+
+                    .name_txt {
+                        text-align: center;
+                    }
+
+                    .qualification_txt {
+                        text-align: center;
+                    }
+
                 }
 
-                .qualification_txt {
+                .cta_wrap {
                     text-align: center;
+
+                    .btn_preview {
+                        margin: 0 0 14px 0;
+                    }
+
+                    .btn_big {
+                        margin-left: 0;
+                    }
                 }
 
             }
-
         }
     }
 }

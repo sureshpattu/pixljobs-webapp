@@ -110,4 +110,58 @@ router.get('/recruiter/photo/:image', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE', '/recruiter/photo/' + req.params.image, '', res);
 });
 
+router.post('/companies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/companies', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.put('/companies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/companies/' + req.cookies.pixljob_user_id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/benefits', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/benefits', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.put('/benefits', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/benefits/' + req.cookies.pixljob_user_id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/qa-jobs', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/qa-jobs', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/qa-jobs/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/qa-jobs/search', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.put('/qa-jobs/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/qa-jobs/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/qa-job/technologies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/qa-job/technologies', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/qa-job/categories', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/qa-job/categories', function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;

@@ -4,8 +4,16 @@
     .signup_wrap {
         padding: 69px 75px 78px 78px;
 
+        .arrow_down {
+            position: absolute;
+            top: 18px;
+            right: 8px;
+            background: #FFFFFF;
+            padding: 10px;
+        }
+
         .pixl_form_group {
-            margin-bottom: 35px;
+            margin-bottom: 45px;
 
             .text_area {
                 overflow: auto !important;
@@ -93,9 +101,12 @@
                 transform: translate(-50%, -50%);
                 opacity: 0.77;
 
-                .fa-camera {
-                    opacity: 0.19;
-                    margin-bottom: 8px;
+                .upload_pic {
+                    background-image: url("/img/icons/upload-pic.svg");
+                    background-repeat: no-repeat;
+                    margin: 0 0 0 19px;
+                    height: 38px;
+                    opacity: 0.77;
                 }
 
                 .upload_txt {
@@ -157,7 +168,7 @@
                     text-transform: uppercase;
                     width: 180px;
 
-                    .fa {
+                    .role_icon {
                         padding-right: 10px;
                     }
                 }
@@ -181,7 +192,7 @@
                     color: #25de8c;
                     text-transform: uppercase;
 
-                    .fa {
+                    .role_icon {
                         padding-right: 10px;
                     }
                 }
@@ -293,7 +304,7 @@
                 border-radius: 6px;
                 box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .13);
                 background-color: #fff;
-                padding: 20px 27px;
+                padding: 20px 20px;
                 font-size: 12px;
                 letter-spacing: .6px;
                 font-weight: 600;
