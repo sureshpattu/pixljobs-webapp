@@ -33,7 +33,8 @@
                                                 class="fade_txt">(hours)</span></label>
                                         <div class="box_sec">
                                             <input type="text" class="form-control js_work_week"
-                                                   placeholder="Type in Numbers Eg: 40 Hrs">
+                                                   placeholder="Type in Numbers Eg: 40 Hrs"
+                                                   value="{{job_data.work_week}}">
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
@@ -41,13 +42,15 @@
                                                 class="fade_txt">(days - per year)</span></label>
                                         <div class="box_sec">
                                             <input type="text" class="form-control js_holidays"
-                                                   placeholder="Type in Numbers Eg: 20 days">
+                                                   placeholder="Type in Numbers Eg: 20 days"
+                                                   value="{{job_data.holidays}}">
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Description <span>(max 320 chars)</span></label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control js_desc" placeholder="Type here">
+                                            <input type="text" class="form-control js_desc" placeholder="Type here"
+                                                   value="{{job_data.desc}}">
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
@@ -62,7 +65,7 @@
                                         </div>
                                     </div>
                                     <div class="cta_wrap">
-                                        <a class="btn btn_big second_btn" href="/post-job/{{job_id}}">
+                                        <a class="btn btn_big second_btn" href="/post-job-edit/{{job_id}}">
                                             RETURN
                                             <img src="/img/icons/full-arrow-grey.svg" alt="" class="left_icon">
                                         </a>

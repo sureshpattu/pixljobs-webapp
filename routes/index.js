@@ -53,6 +53,28 @@ router.get('/post-job', function(req, res) {
     });
 });
 
+router.get('/post-job-edit/:id', function(req, res) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/categories', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/' + req.params.id, function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        res.render('post_job_work_edit', {
+            categories  :!results[0].error ? results[0].data : [],
+             work_data  :!results[1].error ? results[1].data : [],
+            recruiter_id:req.cookies.pixljob_user_id,
+            job_id      :req.params.id
+        });
+    });
+});
+
 router.get('/post-job/info/:id', function(req, res) {
     async.parallel([
         function(callback) {
