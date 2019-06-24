@@ -179,12 +179,6 @@ function PostJobHandler() {
 
     function bindPostJobCompanyEvent() {
 
-        $('.js_company_benefit').select2({
-            tags           :true,
-            tokenSeparators:[',']
-        });
-        $('.js_select2').select2({});
-
         var _company_check_box = $('.js_company_check_box');
         _company_check_box.click(function() {
             var _this = $(this);
@@ -201,22 +195,31 @@ function PostJobHandler() {
             _company_check_box.prop('checked', false);
             $('.js_forms_wrap').removeClass('hide');
             $(this).addClass('hide');
+
+            $('.jsSubmitCompanyBtn').removeClass('hide');
+            $('.jsSubmitExistingCompanyBtn').addClass('hide');
+
+            $('.js_company_benefit').select2({
+                tags           :true,
+                tokenSeparators:[',']
+            });
+            $('.js_select2').select2({});
         });
 
-        $('.jsSubmitCompanyFormBtn').click(function() {
-            var _isNewCompany = false;
+        $('.jsSubmitExistingCompanyBtn').click(function() {
             _company_check_box.each(function(index, ele) {
-                if(ele.prop('checked' && ele.data('id'))) {
-                    var _company_id = ele.data('id');
+                console.log(index, ele);
+                var _this = $(ele);
+                if(_this.prop('checked')) {
+                    var _company_id = _this.data('cid');
                     updateJobCompany(_company_id);
                     return false;
-                } else {
-                    _isNewCompany = true;
                 }
             });
-            if(_isNewCompany) {
-                postCompanyDetails();
-            }
+        });
+
+        $('.jsSubmitCompanyBtn').click(function() {
+            $('#jsJobCompanyForm').submit();
         });
     }
 
@@ -228,19 +231,20 @@ function PostJobHandler() {
         };
         ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
-                window.location.href = '/';
+                // window.location.href = '/';
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
         });
     }
 
-    function postCompanyDetails() {
-        var _form_name = '.jsJobCompanyForm';
+    function bindPostJobCompanyFormEvent() {
+        var _form_name = '#jsJobCompanyForm';
         var _form      = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
+            console.log('hi');
             if(FormValidator.validateForm(_form_name)) {
                 var _company_obj = {
                     recruiter_id:$('.js_user_id').val(),
@@ -249,13 +253,15 @@ function PostJobHandler() {
                     size        :_form.find('.js_company_size').val(),
                     url         :_form.find('.js_company_url').val(),
                     about       :_form.find('.js_about_company').val(),
-                    //street      :_form.find('.js_street').val(),
-                    //area        :_form.find('.js_area').val(),
-                    //city        :_form.find('.js_city').val(),
-                    //state       :_form.find('.js_state').val(),
-                    //pin         :_form.find('.js_pin').val(),
-                    //country     :_form.find('.js_country').val()
+                    street      :_form.find('.js_street').val(),
+                    area        :_form.find('.js_area').val(),
+                    city        :_form.find('.js_city').val(),
+                    state       :_form.find('.js_state').val(),
+                    pin         :_form.find('.js_pin').val(),
+                    country     :_form.find('.js_country').val()
                 };
+
+                console.log(_company_obj);
 
                 ApiUtil.makeAjaxRequest('/api/companies', '', 'POST', '', _company_obj, function(_res) {
                     if(!_res.error && _res.data) {
@@ -276,7 +282,7 @@ function PostJobHandler() {
 
         ApiUtil.makeAjaxRequest('/api/benefits', '', 'POST', '', _company_obj, function(_res) {
             if(!_res.error) {
-                window.location.href = '/';
+                updateJobCompany(company_id);
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
@@ -297,6 +303,7 @@ function PostJobHandler() {
         },
         initCompany :function() {
             bindPostJobCompanyEvent();
+            bindPostJobCompanyFormEvent();
         }
     }
 }

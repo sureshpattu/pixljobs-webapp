@@ -20,6 +20,12 @@ body {
     border: 2px solid red !important;
     box-shadow: none !important;
     outline: none !important;
+
+    & + .select2.select2-container {
+        border: 2px solid red !important;
+        box-shadow: none !important;
+        outline: none !important;
+    }
 }
 
 .no_bottom_pad {
