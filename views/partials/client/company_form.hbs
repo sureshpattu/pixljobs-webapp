@@ -24,7 +24,7 @@
             <label class="control-label">Industry <span
                     class="fade_txt">(Optional)</span></label>
             <div class="box_sec">
-                <select class="form-control js_industry js_select2">
+                <select class="form-control js_industry js_select2" style="width:100%">
                     <option value="">Select a domain</option>
                     {{#each industries}}
                         {{#ifCond ../data.industry_id '===' this.id}}
@@ -41,7 +41,7 @@
             <label class="control-label">Company Size <span
                     class="fade_txt">(No. of employees)</span></label>
             <div class="box_sec">
-                <select class="form-control required js_company_size js_select2">
+                <select class="form-control required js_company_size js_select2" style="width:100%">
                     <option value="select">Select Range</option>
                     <option value="1-10" {{#ifCond data.size '===' '1-10'}}selected{{/ifCond}}>1-10</option>
                     <option value="11-20" {{#ifCond data.size '===' '11-20'}}selected{{/ifCond}}>11-20</option>
