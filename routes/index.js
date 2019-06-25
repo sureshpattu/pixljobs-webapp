@@ -68,7 +68,7 @@ router.get('/post-job-edit/:id', function(req, res) {
     ], function(err, results) {
         res.render('post_job_work_edit', {
             categories  :!results[0].error ? results[0].data : [],
-             work_data  :!results[1].error ? results[1].data : [],
+            work_data   :!results[1].error ? results[1].data : [],
             recruiter_id:req.cookies.pixljob_user_id,
             job_id      :req.params.id
         });
@@ -129,7 +129,7 @@ router.get('/post-job/company/:id', function(req, res) {
             benefits  :!results[2].error ? results[2].data : [],
             job_data  :!results[3].error ? results[3].data : [],
             job_id    :req.params.id,
-            user_id    :req.cookies.pixljob_user_id,
+            user_id   :req.cookies.pixljob_user_id
         });
     });
 });
@@ -168,7 +168,7 @@ router.get('/sign-up/applicant', function(req, res) {
 router.get('/applicant-account', function(req, res) {
     helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
         let is_experience = false;
-        if(_response.data.exp_year > 0 || _response.data.exp_month > 0) {
+        if(_response && _response.data && (_response.data.exp_year > 0 || _response.data.exp_month > 0)) {
             is_experience = true;
         }
         res.render('applicant_account', {
