@@ -73,7 +73,7 @@
                                                 <input type="text"
                                                        class="form-control gl_input_box required js_company_name"
                                                        autocomplete="nope" placeholder="Enter your company's name"
-                                                       value="{{companies.name}}">
+                                                       value="{{data.companies.0.name}}">
                                             </div>
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@
                                                 <select class="form-control required js_industry js_select2">
                                                     <option value="">Select a domain</option>
                                                     {{#each industries}}
-                                                        {{#ifCond ../data.companies.industries.id '===' this.id}}
+                                                        {{#ifCond ../data.companies.0.industry_id '===' this.id}}
                                                             <option value="{{this.id}}" selected>{{this.name}}</option>
                                                         {{else}}
                                                             <option value="{{this.id}}">{{this.name}}</option>
@@ -104,16 +104,16 @@
                                                 <select class="form-control required js_company_size js_select2">
                                                     <option value="select">Select Range</option>
                                                     <option value="1-10"
-                                                            {{#ifCond data.size '===' '1-10'}}selected{{/ifCond}}>1-10
+                                                            {{#ifCond data.companies.0.size '===' '1-10'}}selected{{/ifCond}}>1-10
                                                     </option>
                                                     <option value="11-20"
-                                                            {{#ifCond data.size '===' '11-20'}}selected{{/ifCond}}>11-20
+                                                            {{#ifCond data.companies.0.size '===' '11-20'}}selected{{/ifCond}}>11-20
                                                     </option>
                                                     <option value="30-50"
-                                                            {{#ifCond data.size '===' '30-50'}}selected{{/ifCond}}>30-50
+                                                            {{#ifCond data.companies.0.size '===' '30-50'}}selected{{/ifCond}}>30-50
                                                     </option>
                                                     <option value="50+"
-                                                            {{#ifCond data.size '===' '50+'}}selected{{/ifCond}}>50+
+                                                            {{#ifCond data.companies.0.size '===' '50+'}}selected{{/ifCond}}>50+
                                                     </option>
                                                 </select>
                                                 <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
@@ -128,7 +128,7 @@
                                                        class="form-control gl_input_box required js_company_url"
                                                        autocomplete="nope"
                                                        placeholder="Your company's official website"
-                                                       value="{{companies.url}}">
+                                                       value="{{data.companies.0.url}}">
                                             </div>
                                         </div>
                                     </div>
@@ -142,7 +142,7 @@
                                             <textarea rows="2"
                                                       class="form-control gl_input_box required js_about_company"
                                                       placeholder="Few words describing your company’s work culture, domain expertise, etc."
-                                                      autocomplete="nope">{{companies.about}}</textarea>
+                                                      autocomplete="nope">{{data.companies.0.about}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -154,7 +154,7 @@
                                             <div class="box_sec">
                                             <textarea rows="2" class="form-control gl_input_box required"
                                                       placeholder=""
-                                                      autocomplete="nope">{{data.company.company_benefits.name}}</textarea>
+                                                      autocomplete="nope">{{data.companies.0.company_benefits.0.benefit.name}}</textarea>
                                             </div>
                                         </div>
                                     </div>

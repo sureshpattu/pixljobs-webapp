@@ -198,18 +198,26 @@ router.get('/recruiter', function(req, res) {
             helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
                 callback(null, _res);
             });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/' + req.params.id, function(_res) {
+                callback(null, _res);
+            });
         }
+
     ], function(err, results) {
         var _companies = [];
         if(results[0] && !results[0].error && results[0].data) {
             _companies = results[0].data.companies;
         }
         res.render('recruiter_profile', {
-            data:!results[0].error ? results[0].data : [],
+            companies :_companies,
+            data      :!results[0].error ? results[0].data : [],
             industries:!results[1].error ? results[1].data : [],
             benefits  :!results[2].error ? results[2].data : [],
-            user_id   :req.cookies.pixljob_user_id,
-            companies :_companies
+            job_data  :!results[3].error ? results[3].data : [],
+            job_id    :req.params.id,
+            user_id   :req.cookies.pixljob_user_id
         });
     });
 });
