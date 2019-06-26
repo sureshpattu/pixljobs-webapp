@@ -1,5 +1,5 @@
 {{#each data}}
-    <div class="card_sec new_card">
+    <a class="card_sec new_card" href="/job-info/{{this.id}}">
         <div class="new_sec">
             <span class="fa fa-certificate"></span>
             <span class="new_txt">NEW</span>
@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-6">
                 <div class="cta_wrap">
-                    <a class="btn btn_blue">FRONTEND</a>
+                    <div class="btn btn_blue">FRONTEND</div>
                 </div>
                 <div class="job_details_wrap">
                     <div class="info_sec">
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </a>
 {{else}}
-    <h1>No data found!</h1>
+    <h4 class="text-center text-capitalize">NO DATA FOUND!</h4>
 {{/each}}

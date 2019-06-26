@@ -164,4 +164,22 @@ router.post('/qa-job/categories', function(req, res, next) {
     });
 });
 
+router.post('/job-applications', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/job-applications', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/job-applications/check', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/job-applications/check', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.get('/job-applications/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'GET', '/job-applications/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;

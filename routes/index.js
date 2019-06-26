@@ -196,8 +196,26 @@ router.get('/recruiter', function(req, res) {
     });
 });
 
-router.get('/job-info', function(req, res) {
-    res.render('job_info');
+router.get('/job-info/:id', function(req, res) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/' + req.params.id, function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            req.body.applicant_id = req.cookies.pixljob_user_id;
+            req.body.job_id       = req.params.id;
+            helper_utils.makeApiRequest(req, 'POST', '/job-applications/check', function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        res.render('job_info', {
+            data      :!results[0].error ? results[0].data : [],
+            is_applied:!results[1].error ? (!!results[1].data) : false
+        });
+    });
 });
 
 router.get('/form-template', function(req, res) {
