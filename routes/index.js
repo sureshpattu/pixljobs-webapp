@@ -174,7 +174,7 @@ router.get('/sign-up/applicant', function(req, res) {
 router.get('/applicant-account', function(req, res) {
     helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
         let is_experience = false;
-        if(_response.data.exp_year > 0 || _response.data.exp_month > 0) {
+        if(_response && _response.data && (_response.data.exp_year > 0 || _response.data.exp_month > 0)) {
             is_experience = true;
         }
         res.render('applicant_account', {
