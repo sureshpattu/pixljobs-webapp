@@ -29,11 +29,17 @@ router.get('/', function(req, res) {
             helper_utils.makeApiRequest(req, 'GET', '/categories', function(_res) {
                 callback(null, _res);
             });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/count/job-type', function(_res) {
+                callback(null, _res);
+            });
         }
     ], function(err, results) {
         res.render('search', {
-            data      :!results[0].error ? results[0].data : [],
-            categories:!results[1].error ? results[1].data : []
+            data          :!results[0].error ? results[0].data : [],
+            categories    :!results[1].error ? results[1].data : [],
+            job_type_count:!results[2].error ? results[2].data : []
         });
     });
 });
@@ -68,7 +74,7 @@ router.get('/post-job-edit/:id', function(req, res) {
     ], function(err, results) {
         res.render('post_job_work_edit', {
             categories  :!results[0].error ? results[0].data : [],
-             work_data  :!results[1].error ? results[1].data : [],
+            work_data   :!results[1].error ? results[1].data : [],
             recruiter_id:req.cookies.pixljob_user_id,
             job_id      :req.params.id
         });
@@ -129,7 +135,7 @@ router.get('/post-job/company/:id', function(req, res) {
             benefits  :!results[2].error ? results[2].data : [],
             job_data  :!results[3].error ? results[3].data : [],
             job_id    :req.params.id,
-            user_id    :req.cookies.pixljob_user_id,
+            user_id   :req.cookies.pixljob_user_id
         });
     });
 });
