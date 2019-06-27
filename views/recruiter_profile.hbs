@@ -47,7 +47,7 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Full Name</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control gl_input_box required"
+                                                <input type="text" class="form-control gl_input_box required js_name"
                                                        autocomplete="nope"
                                                        placeholder="Enter your first name and last name"
                                                        value="{{data.name}}">
@@ -58,7 +58,7 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Designation</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control gl_input_box required"
+                                                <input type="text" class="form-control gl_input_box required js_designation"
                                                        autocomplete="nope" placeholder="Mention about your role"
                                                        value="{{data.designation}}">
                                             </div>
@@ -70,9 +70,10 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Company Name</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control gl_input_box required js_company_name"
+                                                <input type="text"
+                                                       class="form-control gl_input_box required js_company_name"
                                                        autocomplete="nope" placeholder="Enter your company's name"
-                                                       value="{{data.company.name}}">
+                                                       value="{{data.companies.0.name}}">
                                             </div>
                                         </div>
                                     </div>
@@ -81,7 +82,14 @@
                                             <label class="control-label">Industry</label>
                                             <div class="box_sec">
                                                 <select class="form-control required js_industry js_select2">
-                                                    <option>{{data.company.industry.name}}</option>
+                                                    <option value="">Select a domain</option>
+                                                    {{#each industries}}
+                                                        {{#ifCond ../data.companies.0.industry_id '===' this.id}}
+                                                            <option value="{{this.id}}" selected>{{this.name}}</option>
+                                                        {{else}}
+                                                            <option value="{{this.id}}">{{this.name}}</option>
+                                                        {{/ifCond}}
+                                                    {{/each}}
                                                 </select>
                                                 <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                             </div>
@@ -94,7 +102,19 @@
                                             <label class="control-label">Company Size</label>
                                             <div class="box_sec">
                                                 <select class="form-control required js_company_size js_select2">
-                                                    <option>{{data.company.size}}</option>
+                                                    <option value="select">Select Range</option>
+                                                    <option value="1-10"
+                                                            {{#ifCond data.companies.0.size '===' '1-10'}}selected{{/ifCond}}>1-10
+                                                    </option>
+                                                    <option value="11-20"
+                                                            {{#ifCond data.companies.0.size '===' '11-20'}}selected{{/ifCond}}>11-20
+                                                    </option>
+                                                    <option value="30-50"
+                                                            {{#ifCond data.companies.0.size '===' '30-50'}}selected{{/ifCond}}>30-50
+                                                    </option>
+                                                    <option value="50+"
+                                                            {{#ifCond data.companies.0.size '===' '50+'}}selected{{/ifCond}}>50+
+                                                    </option>
                                                 </select>
                                                 <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                             </div>
@@ -104,10 +124,11 @@
                                         <div class="form-group pixl_form_group">
                                             <label class="control-label">Company URL</label>
                                             <div class="box_sec">
-                                                <input type="text" class="form-control gl_input_box required js_company_url"
+                                                <input type="text"
+                                                       class="form-control gl_input_box required js_company_url"
                                                        autocomplete="nope"
                                                        placeholder="Your company's official website"
-                                                       value="{{data.company.url}}">
+                                                       value="{{data.companies.0.url}}">
                                             </div>
                                         </div>
                                     </div>
@@ -118,9 +139,10 @@
                                             <label class="control-label">About Company</label><span
                                                 class="gl_input_text">in 200 words or less</span>
                                             <div class="box_sec">
-                                            <textarea rows="2" class="form-control gl_input_box required js_about_company"
+                                            <textarea rows="2"
+                                                      class="form-control gl_input_box required js_about_company"
                                                       placeholder="Few words describing your company’s work culture, domain expertise, etc."
-                                                      autocomplete="nope">{{data.company.about}}</textarea>
+                                                      autocomplete="nope">{{data.companies.0.about}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -132,7 +154,7 @@
                                             <div class="box_sec">
                                             <textarea rows="2" class="form-control gl_input_box required"
                                                       placeholder=""
-                                                      autocomplete="nope">{{data.company.company_benefits.name}}</textarea>
+                                                      autocomplete="nope">{{data.companies.0.company_benefits.0.benefit.name}}</textarea>
                                             </div>
                                         </div>
                                     </div>

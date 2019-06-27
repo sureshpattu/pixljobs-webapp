@@ -1,7 +1,7 @@
-const express      = require('express');
-const router       = express.Router();
-const verify       = require('../config/verify');
-const async        = require('async');
+const express = require('express');
+const router = express.Router();
+const verify = require('../config/verify');
+const async = require('async');
 const helper_utils = require('./util/common');
 
 router.get('/login', function(req, res) {
@@ -189,9 +189,41 @@ router.get('/exp-account', function(req, res) {
 });
 
 router.get('/recruiter', function(req, res) {
-    helper_utils.makeApiRequest(req, 'GET', '/recruiter/' + req.cookies.pixljob_user_id, function(_response) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/recruiter/' + req.cookies.pixljob_user_id, function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/industries', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/' + req.params.id, function(_res) {
+                callback(null, _res);
+            });
+        }
+
+    ], function(err, results) {
+        var _companies = [];
+        if(results[0] && !results[0].error && results[0].data) {
+            _companies = results[0].data.companies;
+        }
         res.render('recruiter_profile', {
-            data:_response.data
+            companies :_companies,
+            data      :!results[0].error ? results[0].data : [],
+            industries:!results[1].error ? results[1].data : [],
+            benefits  :!results[2].error ? results[2].data : [],
+            job_data  :!results[3].error ? results[3].data : [],
+            job_id    :req.params.id,
+            user_id   :req.cookies.pixljob_user_id
         });
     });
 });

@@ -1,7 +1,7 @@
-var ApiUtil       = require('../utils/apiUtil');
+var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
-var utils         = require('../utils/common');
-var waterfall     = require('async-waterfall');
+var utils = require('../utils/common');
+var waterfall = require('async-waterfall');
 
 function PostJobHandler() {
 
@@ -37,7 +37,7 @@ function PostJobHandler() {
 
         function updateInputs(data) {
             from = data.from;
-            to   = data.to;
+            to = data.to;
 
             $inputFrom.prop('value', from);
             $inputTo.prop('value', to);
@@ -76,7 +76,7 @@ function PostJobHandler() {
 
     function bindPostJobEvent() {
         var _form_name = '#jsJobForm';
-        var _form      = $(_form_name);
+        var _form = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
@@ -128,7 +128,7 @@ function PostJobHandler() {
 
     function bindPostJobWorkInfoEvent() {
         var _form_name = '#jsJobInfoForm';
-        var _form      = $(_form_name);
+        var _form = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
@@ -159,7 +159,7 @@ function PostJobHandler() {
             waterfall(_technologies.map(function(arrayItem) {
                 return function(lastItemResult, CB) {
                     if(!CB) {
-                        CB             = lastItemResult;
+                        CB = lastItemResult;
                         lastItemResult = null;
                     }
                     var _obj = {
@@ -231,7 +231,8 @@ function PostJobHandler() {
         };
         ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
-                // window.location.href = '/';
+                alert("Job posted successfully!");
+                window.location.href = '/';
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
@@ -240,11 +241,11 @@ function PostJobHandler() {
 
     function bindPostJobCompanyFormEvent() {
         var _form_name = '#jsJobCompanyForm';
-        var _form      = $(_form_name);
+        var _form = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
-            console.log('hi');
+            //console.log('hi');
             if(FormValidator.validateForm(_form_name)) {
                 var _company_obj = {
                     recruiter_id:$('.js_user_id').val(),
@@ -258,7 +259,8 @@ function PostJobHandler() {
                     city        :_form.find('.js_city').val(),
                     state       :_form.find('.js_state').val(),
                     pin         :_form.find('.js_pin').val(),
-                    country     :_form.find('.js_country').val()
+                    country     :_form.find('.js_country').val(),
+                    email       :_form.find('.js_candidate_email').val()
                 };
 
                 console.log(_company_obj);
