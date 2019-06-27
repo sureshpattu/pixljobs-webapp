@@ -110,7 +110,7 @@ function RecruiterHandler() {
 
         ApiUtil.makeAjaxRequest('/api/benefits', '', 'POST', '', _company_obj, function(_res) {
             if(!_res.error) {
-                window.location.href = '/recruiter'
+               // window.location.href = '/recruiter'
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
