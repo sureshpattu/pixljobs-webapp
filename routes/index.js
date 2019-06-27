@@ -29,11 +29,17 @@ router.get('/', function(req, res) {
             helper_utils.makeApiRequest(req, 'GET', '/categories', function(_res) {
                 callback(null, _res);
             });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/count/job-type', function(_res) {
+                callback(null, _res);
+            });
         }
     ], function(err, results) {
         res.render('search', {
-            data      :!results[0].error ? results[0].data : [],
-            categories:!results[1].error ? results[1].data : []
+            data          :!results[0].error ? results[0].data : [],
+            categories    :!results[1].error ? results[1].data : [],
+            job_type_count:!results[2].error ? results[2].data : []
         });
     });
 });
@@ -168,7 +174,7 @@ router.get('/sign-up/applicant', function(req, res) {
 router.get('/applicant-account', function(req, res) {
     helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
         let is_experience = false;
-        if(_response.data.exp_year > 0 || _response.data.exp_month > 0) {
+        if(_response && _response.data && (_response.data.exp_year > 0 || _response.data.exp_month > 0)) {
             is_experience = true;
         }
         res.render('applicant_account', {
@@ -222,8 +228,26 @@ router.get('/recruiter', function(req, res) {
     });
 });
 
-router.get('/job-info', function(req, res) {
-    res.render('job_info');
+router.get('/job-info/:id', function(req, res) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/' + req.params.id, function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            req.body.applicant_id = req.cookies.pixljob_user_id;
+            req.body.job_id       = req.params.id;
+            helper_utils.makeApiRequest(req, 'POST', '/job-applications/check', function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        res.render('job_info', {
+            data      :!results[0].error ? results[0].data : [],
+            is_applied:!results[1].error ? (!!results[1].data) : false
+        });
+    });
 });
 
 router.get('/form-template', function(req, res) {

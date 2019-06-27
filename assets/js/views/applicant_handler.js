@@ -102,6 +102,7 @@ function ApplicantSignUpHandler() {
                 };
                 var callback = function(_res) {
                     if(!_res.error) {
+                        alert('Data updated successfully!');
                         window.location.href = '/applicant-account'
                     } else {
                         alert(_res.message || 'Something went wrong!');
@@ -150,6 +151,7 @@ function ApplicantSignUpHandler() {
         },
         initEdit:function() {
             bindApplicantEditEvent();
+            $('.js_select2').select2({});
         }
     }
 }

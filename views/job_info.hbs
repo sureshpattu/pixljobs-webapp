@@ -18,9 +18,9 @@
                     <div class="common_form_sec">
                         <div class="job_card">
                             <div class="job_sec">
-                                <div class="job_card_title">Front end Developer</div>
+                                <div class="job_card_title">{{data.name}}</div>
                                 <div class="company_logo">
-                                    Squarespace
+                                    {{data.company.name}}
                                 </div>
                                 <div class="job_tags">
                                     <div class="row">
@@ -28,19 +28,23 @@
                                             <div class="tags_wrap spl_wrap">
                                                 <div class="tags">
                                                     <img src="/img/icons/dollar.svg" class="dollar_icons">
-                                                    2000 - 4000
+                                                    {{data.salary_min}} - {{data.salary_max}}
                                                 </div>
                                                 <div class="tags">
                                                     <img src="/img/icons/calendar.svg" class="cal_icons">
-                                                    2 days ago
+                                                    {{#countDateTime data.created_at}}{{/countDateTime}}
                                                 </div>
                                                 <div class="tags ">
                                                     <img src="/img/icons/location.svg" class="loc_icons">
-                                                    Krakow, PL
+                                                    {{data.company.city}}
                                                 </div>
                                                 <div class="tags">
                                                     <img src="/img/icons/place.svg" class="place_icons">
-                                                    Remote
+                                                    {{#ifCond data.location_type '===' 'office'}}
+                                                        On Site
+                                                    {{else}}
+                                                        Remote
+                                                    {{/ifCond}}
                                                 </div>
                                             </div>
                                         </div>
@@ -60,19 +64,19 @@
                                 <div class="row row_c">
                                     <div class="col-md-4 col_bordered">
                                         <div class="option">TYPE:
-                                            <span class="option_val">Internship</span>
+                                            <span class="option_val">{{data.job_type}}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col_bordered">
                                         <div class="option">
                                             WORKWEEK:
-                                            <span class="option_val">40 hours</span>
+                                            <span class="option_val">{{data.work_week}} hours</span>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col_bordered">
                                         <div class="option">
                                             HOLIDAY:
-                                            <span class="option_val">20 days</span>
+                                            <span class="option_val">{{data.holidays}} days</span>
                                         </div>
                                     </div>
                                 </div>
@@ -84,18 +88,7 @@
                                             About the work
                                         </div>
                                         <div class="desc">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor
-                                            incididunt ut
-                                            labore et dolore magna aliqua. At elementum eu facilisis sed odio morbi.
-                                            Auctor
-                                            eu
-                                            augue
-                                            ut
-                                            lectus. Lacus vestibulum sed arcu non. Leo in vitae turpis massa sed
-                                            elementum
-                                            tempus
-                                            egestas. Vitae congue eu.
+                                            {{data.desc}}
                                         </div>
                                     </div>
                                     <div class="requirement_sec">
@@ -131,45 +124,20 @@
                                     </div>
                                     <div class="desc">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="row">
-                                                    <div class="col-md-6 col-xs-6">
-                                                        <div class="tech_name">Angular 2</div>
-                                                    </div>
-                                                    <div class="col-md-6 col-xs-6">
-                                                        <div class="filled_bar"></div>
-                                                        <div class="filled_bar"></div>
-                                                        <div class="filled_bar"></div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="css_wrap">
+                                            {{#each data.qa_job_technologies}}
+                                                <div class="col-md-6">
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-6">
-                                                            <div class="tech_name">Css/CSS3</div>
+                                                            <div class="tech_name">{{technology.name}}</div>
                                                         </div>
                                                         <div class="col-md-6 col-xs-6">
                                                             <div class="filled_bar"></div>
                                                             <div class="filled_bar"></div>
-                                                            <div class="filled_bar"></div>
+                                                            <div class="empty_bar"></div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="row">
-                                                    <div class="col-md-6 col-xs-6">
-                                                        <div class="tech_name">Html/html5</div>
-                                                    </div>
-                                                    <div class="col-md-6 col-xs-6">
-                                                        <div class="empty_bar"></div>
-                                                        <div class="empty_bar"></div>
-                                                        <div class="filled_bar"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {{/each}}
                                         </div>
                                     </div>
                                 </div>
@@ -182,11 +150,7 @@
                                         About Company
                                     </div>
                                     <div class="desc">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut
-                                        labore et dolore arcu non. Leo in vitae turpis massa sed elementum
-                                        tempus
-                                        egestas. Vitae congue eu.
+                                        {{data.company.about}}
                                     </div>
                                 </div>
                             </div>
@@ -195,13 +159,13 @@
                                 <div class="row row_c">
                                     <div class="col-md-6 col_bordered">
                                         <div class="option">COMPANY SIZE:
-                                            <span class="option_val">50-100</span>
+                                            <span class="option_val">{{data.company.size}}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col_bordered">
                                         <div class="option">
                                             INDUSTRY:
-                                            <span class="option_val">Internet</span>
+                                            <span class="option_val">{{data.company.industry.name}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -214,42 +178,16 @@
                                     </div>
                                     <div class="desc benefits_desc">
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="circle_wrap">
-                                                    <div class="circle_tick">
-                                                        <img src="/img/icons/tick.svg" class="icons tick">
-                                                    </div>
-                                                    <div class="title">Free Lunch</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="spl_wrap">
+                                            {{#each data.company.company_benefits}}
+                                                <div class="col-md-6">
                                                     <div class="circle_wrap">
                                                         <div class="circle_tick">
                                                             <img src="/img/icons/tick.svg" class="icons tick">
                                                         </div>
-                                                        <div class="title">Private health care</div>
+                                                        <div class="title">{{benefit.name}}</div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="circle_wrap ">
-                                                    <div class="circle_tick">
-                                                        <img src="/img/icons/tick.svg" class="icons tick">
-                                                    </div>
-                                                    <div class="title">Free snacks</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="spl_wrap">
-                                                    <div class="circle_wrap">
-                                                        <div class="circle_tick">
-                                                            <img src="/img/icons/tick.svg" class="icons tick">
-                                                        </div>
-                                                        <div class="title">Macbook Pro</div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            {{/each}}
                                         </div>
                                     </div>
                                 </div>
@@ -260,19 +198,21 @@
                 </div>
                 <div class="col-md-3">
                     <div class="apply_sec">
-                        <button type="submit"
-                                class="btn btn-apply">
-                            Apply for this position now
-                        </button>
-                        <div class="links_part">
-                            <div class="link_txt">
-                                or <br/>
-                                copy and apply by email
+                        {{#if is_applied}}{{else}}
+                            <button type="button"
+                                    class="btn btn-apply">
+                                Apply for this position now
+                            </button>
+                            <div class="links_part">
+                                <div class="link_txt">
+                                    or <br/>
+                                    copy and apply by email
+                                </div>
+                                <div class="link_sec">
+                                    <a class="link" href="">career@squarespace.io</a>
+                                </div>
                             </div>
-                            <div class="link_sec">
-                                <a class="link" href="">career@squarespace.io</a>
-                            </div>
-                        </div>
+                        {{/if}}
                         <div class="social_link_wrap">
                             <div class="row">
                                 <div class="col-md-4 col-xs-4">

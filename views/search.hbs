@@ -14,7 +14,7 @@
             Search for your dream job
         </div>
         <div class="search_input_wrap">
-            <input type="text" class="form-control search_input">
+            <input type="text" class="form-control search_input js_search_input">
             <img src="/img/icons/search.svg" alt="" class="fa-search">
         </div>
         <div class="job_found_txt">
@@ -26,11 +26,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9">
-                <div class="cards_wrap">
+                <div class="cards_wrap js_job_list_wrap">
                     {{>client/job_search_card data=data.result}}
                 </div>
                 <div class="bottom_cta_wrap">
-                    <a class="cta_load_more_link">
+                    <a class="cta_load_more_link hide js_load_more_btn">
                         Show 10 more job offers
                         <img src="/img/icons/arrow-down.svg" class="fa" alt="">
                     </a>
@@ -43,7 +43,7 @@
                             Job category
                         </label>
                         <div class="box_sec">
-                            <select class="form-control js_select2">
+                            <select class="form-control js_select2 js_category">
                                 <option value="">Choose category</option>
                                 {{#each categories}}
                                     <option value="{{this.id}}">{{this.name}}</option>
@@ -80,43 +80,88 @@
                         </label>
                         <div class="box_sec">
                             <ul class="list_sec">
-                                <li class="active">
+                                <li class="{{#if job_type_count.FullTime}}active{{/if}}">
                                     <div class="type_name">Full time</div>
-                                    <div class="type_number">16</div>
+                                    <div class="type_number">
+                                        {{#if job_type_count.FullTime}}
+                                            {{job_type_count.FullTime}}
+                                        {{else}}
+                                            0
+                                        {{/if}}
+                                    </div>
                                     <label class="check_box">
-                                        <input type="checkbox">
+                                        <input type="checkbox"
+                                               class="js_job_type_checkbox"
+                                               data-val="FullTime"
+                                               {{#if job_type_count.FullTime}}{{else}}disabled{{/if}}>
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
-                                <li class="active">
+                                <li class="{{#if job_type_count.PartTime}}active{{/if}}">
                                     <div class="type_name">Part time</div>
-                                    <div class="type_number">16</div>
+                                    <div class="type_number">
+                                        {{#if job_type_count.PartTime}}
+                                            {{job_type_count.PartTime}}
+                                        {{else}}
+                                            0
+                                        {{/if}}
+                                    </div>
                                     <label class="check_box">
-                                        <input type="checkbox">
+                                        <input type="checkbox"
+                                               class="js_job_type_checkbox"
+                                               data-val="PartTime"
+                                            {{#if job_type_count.PartTime}}{{else}}disabled{{/if}}>
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
-                                <li class="active">
+                                <li class="{{#if job_type_count.Contract}}active{{/if}}">
                                     <div class="type_name">Contract</div>
-                                    <div class="type_number">16</div>
+                                    <div class="type_number">
+                                        {{#if job_type_count.Contract}}
+                                            {{job_type_count.Contract}}
+                                        {{else}}
+                                            0
+                                        {{/if}}
+                                    </div>
                                     <label class="check_box">
-                                        <input type="checkbox">
+                                        <input type="checkbox"
+                                               class="js_job_type_checkbox"
+                                               data-val="Contract"
+                                               {{#if job_type_count.Contract}}{{else}}disabled{{/if}}>
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
-                                <li>
+                                <li class="{{#if job_type_count.Volunteer}}active{{/if}}">
                                     <div class="type_name">Freelance</div>
-                                    <div class="type_number">16</div>
+                                    <div class="type_number">
+                                        {{#if job_type_count.Volunteer}}
+                                            {{job_type_count.Volunteer}}
+                                        {{else}}
+                                            0
+                                        {{/if}}
+                                    </div>
                                     <label class="check_box">
-                                        <input type="checkbox">
+                                        <input type="checkbox"
+                                               class="js_job_type_checkbox"
+                                               data-val="Volunteer"
+                                               {{#if job_type_count.Volunteer}}{{else}}disabled{{/if}}>
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
-                                <li>
+                                <li class="{{#if job_type_count.Internship}}active{{/if}}">
                                     <div class="type_name">Internship</div>
-                                    <div class="type_number">16</div>
+                                    <div class="type_number">
+                                        {{#if job_type_count.Internship}}
+                                            {{job_type_count.Internship}}
+                                        {{else}}
+                                            0
+                                        {{/if}}
+                                    </div>
                                     <label class="check_box">
-                                        <input type="checkbox">
+                                        <input type="checkbox"
+                                               class="js_job_type_checkbox"
+                                               data-val="Internship"
+                                               {{#if job_type_count.Internship}}{{else}}disabled{{/if}}>
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>
@@ -132,7 +177,6 @@
                                 <div class="range-slider">
                                     <input type="text" class="js-range-slider" value=""/>
                                 </div>
-                                <hr>
                                 <div class="extra-controls form-inline">
                                     <div class="form-group">
                                         <input type="hidden" class="js-input-from form-control" value="0"/>
@@ -151,79 +195,7 @@
 </body>
 <script type="application/javascript">
     $(function() {
-        $('.js_select2').select2({});
-    });
-
-    // Trigger
-
-    $(function() {
-
-        var $range     = $('.js-range-slider'),
-            $inputFrom = $('.js-input-from'),
-            $inputTo   = $('.js-input-to'),
-            instance,
-            min        = 0,
-            max        = 3000000,
-            from       = 0,
-            to         = 0;
-
-        $range.ionRangeSlider({
-            type              :'double',
-            min               :min,
-            max               :max,
-            from              :0,
-            to                :500000,
-            prefix            :'Rp. ',
-            onStart           :updateInputs,
-            onChange          :updateInputs,
-            step              :50000,
-            prettify_enabled  :true,
-            prettify_separator:'.',
-            values_separator  :' - ',
-            force_edges       :true
-
-        });
-
-        instance = $range.data('ionRangeSlider');
-
-        function updateInputs(data) {
-            from = data.from;
-            to   = data.to;
-
-            $inputFrom.prop('value', from);
-            $inputTo.prop('value', to);
-        }
-
-        $inputFrom.on('input', function() {
-            var val = $(this).prop('value');
-
-            // validate
-            if(val < min) {
-                val = min;
-            } else if(val > to) {
-                val = to;
-            }
-
-            instance.update({
-                from:val
-            });
-        });
-
-        $inputTo.on('input', function() {
-            var val = $(this).prop('value');
-
-            // validate
-            if(val < from) {
-                val = from;
-            } else if(val > max) {
-                val = max;
-            }
-
-            instance.update({
-                to:val
-            });
-        });
-
+        JobSearchHandler.init();
     });
 </script>
 </html>
