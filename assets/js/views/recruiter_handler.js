@@ -38,6 +38,7 @@ function RecruiterHandler() {
                     name       :_form.find('.js_name').val(),
                     email      :_form.find('.js_email').val(),
                     password   :_form.find('.js_password').val(),
+                    mobile     :_form.find('.js_mobile').val(),
                     gender     :_form.find('.js_gender').val(),
                     designation:_form.find('.js_designation').val()
                 };
@@ -127,7 +128,7 @@ function RecruiterHandler() {
     }
 
     return {
-        init    :function() {
+        init:function() {
             bindCommonClickEvents();
             bindRecruiterEvent();
         }

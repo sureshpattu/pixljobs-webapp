@@ -34,7 +34,7 @@ function JobSearchHandler() {
 
             }
         };
-        ApiUtil.makeAjaxRequest('/api/qa-jobs/search', '', 'POST', '', _query, callback);
+        ApiUtil.makeAjaxRequest('/api/jobs/search', '', 'POST', '', _query, callback);
     }
 
     function loadMoreJobs() {
@@ -62,7 +62,7 @@ function JobSearchHandler() {
 
             }
         };
-        ApiUtil.makeAjaxRequest('/api/qa-jobs/search', '', 'POST', '', _query, callback);
+        ApiUtil.makeAjaxRequest('/api/jobs/search', '', 'POST', '', _query, callback);
     }
 
     function bindClickEvents() {
