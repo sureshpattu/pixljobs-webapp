@@ -1848,7 +1848,7 @@ function RecruiterProfileEditHandler() {
                 var callback = function(_res) {
                     if(!_res.error) {
                         alert('Recruiter details updated successfully!');
-                        window.location.href = '/recruiter'
+                        window.location.href = '/'
                         //if(_img_pre_holder.val()) {
                         //    uploadImage(_img_pre_holder, function(_res_path) {
                         //        updateUserPhoto(_res.data.id, _res_path);
