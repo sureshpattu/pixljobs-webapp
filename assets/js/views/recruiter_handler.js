@@ -1,6 +1,6 @@
-var ApiUtil       = require('../utils/apiUtil');
+var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
-var utils         = require('../utils/common');
+var utils = require('../utils/common');
 
 function RecruiterHandler() {
     function uploadImage(_ele, _cb) {
@@ -14,7 +14,7 @@ function RecruiterHandler() {
 
     function readURL(input) {
         if(input.files && input.files[0]) {
-            var reader          = new FileReader();
+            var reader = new FileReader();
             var _img_pre_holder = $('.js_img_pre_holder');
 
             reader.onload = function(e) {
@@ -29,17 +29,18 @@ function RecruiterHandler() {
     function bindRecruiterEvent() {
         $('.js_select2').select2({});
         var _form_name = '#jsSignUpRecruitForm';
-        var _form      = $(_form_name);
+        var _form = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
-                var _user_obj       = {
+                var _user_obj = {
                     name       :_form.find('.js_name').val(),
                     email      :_form.find('.js_email').val(),
                     password   :_form.find('.js_password').val(),
                     mobile     :_form.find('.js_mobile').val(),
                     gender     :_form.find('.js_gender').val(),
+                    mobile     :_form.find('.js_mobile').val(),
                     designation:_form.find('.js_designation').val()
                 };
                 var _img_pre_holder = _form.find('.js_input_profile_file');

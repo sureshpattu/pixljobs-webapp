@@ -69,7 +69,11 @@
                                             <select class="form-control js_select2 js_category" required="required">
                                                 <option value="0">Select Job Category</option>
                                                 {{#each categories}}
-                                                    <option value="{{this.id}}">{{this.name}}</option>
+                                                    {{#ifCond ../work_data.qa_job_categories.0.category.id '===' this.id}}
+                                                        <option value="{{this.id}}" selected>{{this.name}}</option>
+                                                    {{else}}
+                                                        <option value="{{this.id}}">{{this.name}}</option>
+                                                    {{/ifCond}}
                                                 {{/each}}
                                             </select>
                                             <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">

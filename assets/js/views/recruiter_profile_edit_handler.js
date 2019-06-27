@@ -14,7 +14,7 @@ function RecruiterProfileEditHandler() {
 
     function readURL(input) {
         if(input.files && input.files[0]) {
-            var reader          = new FileReader();
+            var reader = new FileReader();
             var _img_pre_holder = $('.js_img_pre_holder');
 
             reader.onload = function(e) {
@@ -29,33 +29,37 @@ function RecruiterProfileEditHandler() {
     function bindRecruiterEditEvent() {
         $('.js_select2').select2({});
         var _form_name = '#jsEditRecruitForm';
-        var _form      = $(_form_name);
+        var _form = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
-                var _user_obj       = {
+
+                var _job_id = _form.find('.js_data_id').val();
+
+                var _user_obj = {
                     name       :_form.find('.js_name').val(),
-                    email      :_form.find('.js_email').val(),
-                    password   :_form.find('.js_password').val(),
+                    designation:_form.find('.js_designation').val(),
                     gender     :_form.find('.js_gender').val(),
-                    designation:_form.find('.js_designation').val()
+                    mobile     :_form.find('.js_mobile').val()
                 };
                 var _img_pre_holder = _form.find('.js_input_profile_file');
 
                 var callback = function(_res) {
                     if(!_res.error) {
-                        if(_img_pre_holder.val()) {
-                            uploadImage(_img_pre_holder, function(_res_path) {
-                                updateUserPhoto(_res.data.id, _res_path);
-                            })
-                        }
-                        updateCompanyDetails(_res.data.id, _form);
+                        alert('Recruiter details updated successfully!');
+                        window.location.href = '/'
+                        //if(_img_pre_holder.val()) {
+                        //    uploadImage(_img_pre_holder, function(_res_path) {
+                        //        updateUserPhoto(_res.data.id, _res_path);
+                        //    })
+                        //}
+                        //updateCompanyDetails(_res.data.id, _form);
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
                 };
-                ApiUtil.makeAjaxRequest('/api/recruiter', '', 'PUT', '', _user_obj, callback);
+                ApiUtil.makeAjaxRequest('/api/recruiter/' + _job_id, '', 'PUT', '', _user_obj, callback);
             }
         });
     }
@@ -127,7 +131,7 @@ function RecruiterProfileEditHandler() {
     }
 
     return {
-        initEdit    :function() {
+        initEdit:function() {
             bindCommonClickEvents();
             bindRecruiterEditEvent();
         }
