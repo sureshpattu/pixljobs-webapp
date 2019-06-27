@@ -94,8 +94,8 @@ router.post('/recruiter', function(req, res, next) {
     });
 });
 
-router.put('/recruiter', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'PUT', '/recruiter/' + req.cookies.pixljob_user_id, function(_response) {
+router.put('/recruiter/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/recruiter/' + req.params.id, function(_response) {
         res.json(_response);
     });
 });
