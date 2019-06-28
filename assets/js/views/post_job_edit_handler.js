@@ -72,6 +72,11 @@ function PostJobHandler() {
                 to:val
             });
         });
+
+        $('.js_job_requirements').select2({
+            tags           :true,
+            tokenSeparators:[',']
+        });
     }
 
     function bindPostJobEvent() {
@@ -110,6 +115,14 @@ function PostJobHandler() {
                         alert(_res.message || 'Something went wrong!');
                     }
                 });
+
+                ApiUtil.makeAjaxRequest('/api/qa-requirements', '', 'POST', '', _obj, function(_res) {
+                    if(!_res.error && _res.data) {
+                        postJobRequirements(_res.data.id, _form);
+                    } else {
+                        alert(_res.message || 'Something went wrong!');
+                    }
+                });
             }
         });
     }
@@ -122,6 +135,20 @@ function PostJobHandler() {
         ApiUtil.makeAjaxRequest('/api/qa-job/categories', '', 'POST', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
                 window.location.href = '/post-job/info/' + _job_id;
+            } else {
+                alert(_res.message || 'Something went wrong!');
+            }
+        });
+    }
+
+    function postJobRequirements(_reuirement_id, _form) {
+        var _obj = {
+            qa_reuirement_id  :_reuirement_id,
+            reuirement_id:_form.find('.js_job_requirements').val()
+        };
+        ApiUtil.makeAjaxRequest('/api/qa-job/raquirements', '', 'POST', '', _obj, function(_res) {
+            if(!_res.error && _res.data) {
+                window.location.href = '/post-job/info/' + _reuirement_id;
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
