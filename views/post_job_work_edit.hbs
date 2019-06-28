@@ -96,6 +96,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
+                                        <label class="control-label">Job Requirements<span class="gl_input_text">separated by comma ( , )</span></label>
+                                        <div class="box_sec">
+                                            <select multiple="multiple"
+                                                    class="form-control required js_job_requirements">
+                                                {{#each requirements}}
+                                                    <option value="{{this.id}}">{{this.name}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group pixl_form_group">
                                         <label class="control-label">Salary - Annual INR</label>
                                         <div class="box_sec">
                                             <div class="wrapper" style="padding:20px;">

@@ -72,6 +72,11 @@ function PostJobHandler() {
                 to:val
             });
         });
+
+        $('.js_job_requirements').select2({
+            tags           :true,
+            tokenSeparators:[',']
+        });
     }
 
     function bindPostJobEvent() {
@@ -119,6 +124,22 @@ function PostJobHandler() {
         };
         ApiUtil.makeAjaxRequest('/api/qa-job/categories', '', 'POST', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
+                postJobRequirements(_job_id, _form);
+                // window.location.href = '/post-job/info/' + _job_id;
+            } else {
+                alert(_res.message || 'Something went wrong!');
+            }
+        });
+    }
+
+    function postJobRequirements(_job_id, _form) {
+        var _obj = {
+            qa_job_id  :_job_id,
+            requirements  :_form.find('.js_job_requirements').val() || []
+        };
+        ApiUtil.makeAjaxRequest('/api/requirements', '', 'POST', '', _obj, function(_res) {
+
+            if(!_res.error) {
                 window.location.href = '/post-job/info/' + _job_id;
             } else {
                 alert(_res.message || 'Something went wrong!');
