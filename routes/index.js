@@ -18,6 +18,56 @@ router.get('/register', function(req, res) {
     res.render('register');
 });
 
+router.get('/form-template', function(req, res) {
+    res.render('form_template');
+});
+
+router.get('/forgot-password', function(req, res) {
+    res.render('forgot_password');
+});
+
+router.get('/reset-password', function(req, res) {
+    res.render('reset_password');
+});
+
+router.get('/job-applicant-one', function(req, res) {
+    res.render('job_applicant_one');
+});
+
+router.get('/exp-account', function(req, res) {
+    res.render('experience_account');
+});
+
+//Applicant routes ----------------------------------------------------------------------------------------------------
+router.get('/sign-up/applicant', function(req, res) {
+    res.render('sign_up_applicant');
+});
+
+router.get('/applicant/forgot/password/:token', function(req, res) {
+    req.body.reset_token = req.params.token;
+    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/forgot/password/token', function(_response) {
+        if(_response.error) {
+            res.render('login');
+        } else {
+            res.render('reset_password', {user_id:_response.data.id});
+        }
+
+    });
+});
+
+router.get('/applicant/email/verify/:token', function(req, res) {
+    req.email_token = req.params.token;
+    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/verify/email/token', function(_response) {
+        var is_email_verified = false;
+        if(!_response.error && _response.data) {
+            is_email_verified = _response.data.is_email_verified;
+        }
+        res.render('login', {
+            is_email_verified:is_email_verified
+        });
+
+    });
+});
 router.get('/', function(req, res) {
     async.parallel([
         function(callback) {
@@ -40,6 +90,153 @@ router.get('/', function(req, res) {
             data          :!results[0].error ? results[0].data : [],
             categories    :!results[1].error ? results[1].data : [],
             job_type_count:!results[2].error ? results[2].data : []
+        });
+    });
+});
+
+router.get('/applicant-account', function(req, res) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id,
+                function(_res) {
+                    callback(null, _res);
+                });
+        }
+    ], function(err, results) {
+        let is_experience = false;
+        if(results[0] && results[0].data && (results[0].data.exp_year > 0 || results[0].data.exp_month > 0)) {
+            is_experience = true;
+        }
+        res.render('applicant_account', {
+            data:!results[0].error ? results[0].data : [],
+            exp :is_experience
+        });
+    });
+});
+
+router.get('/applicant/applications/:id', function(req, res) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            req.body.applicant_id = req.cookies.pixljob_user_id;
+            helper_utils.makeApiRequest(req, 'POST', '/job-applications/search', function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        res.render('applicant_applications', {
+            user        :!results[0].error ? results[0].data : [],
+            applications:!results[1].error ? results[1].data : []
+        });
+    });
+});
+
+router.get('/job-info/:id', function(req, res) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/jobs/' + req.params.id, function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            req.body.applicant_id = req.cookies.pixljob_user_id;
+            req.body.job_id       = req.params.id;
+            helper_utils.makeApiRequest(req, 'POST', '/job-applications/check', function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        res.render('job_info', {
+            data        :!results[0].error ? results[0].data : [],
+            is_applied  :!results[1].error ? (!!results[1].data) : false,
+            applicant_id:req.cookies.pixljob_user_id,
+            job_id      :req.params.id
+        });
+    });
+});
+
+//recruiter routes ----------------------------------------------------------------------------------------------------
+router.get('/sign-up/recruiter', function(req, res) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/industries', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        res.render('sign_up_recruiter', {
+            industries:!results[0].error ? results[0].data : [],
+            benefits  :!results[1].error ? results[1].data : []
+        });
+    });
+});
+
+router.get('/recruiter/email/verify/:token', function(req, res) {
+    req.email_token = req.params.token;
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/verify/email/token', function(_response) {
+        var is_email_verified = false;
+        if(!_response.error && _response.data) {
+            is_email_verified = _response.data.is_email_verified;
+        }
+        res.render('login', {
+            is_email_verified:is_email_verified
+        });
+    });
+});
+
+router.get('/recruiter/forgot/password/:token', function(req, res) {
+    req.body.reset_token = req.params.token;
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/forgot/password/token', function(_response) {
+        res.render('reset_password');
+    });
+});
+
+router.get('/recruiter', function(req, res) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
+                function(_res) {
+                    callback(null, _res);
+                });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/industries', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/' + req.params.id, function(_res) {
+                callback(null, _res);
+            });
+        }
+
+    ], function(err, results) {
+        var _companies = [];
+        if(results[0] && !results[0].error && results[0].data) {
+            _companies = results[0].data.companies;
+        }
+        res.render('recruiter_profile', {
+            companies :_companies,
+            data      :!results[0].error ? results[0].data : [],
+            industries:!results[1].error ? results[1].data : [],
+            benefits  :!results[2].error ? results[2].data : [],
+            job_data  :!results[3].error ? results[3].data : [],
+            job_id    :req.params.id,
+            user_id   :req.cookies.pixljob_user_id
         });
     });
 });
@@ -141,198 +338,10 @@ router.get('/post-job/company/:id', function(req, res) {
     });
 });
 
-router.get('/applicant-account', function(req, res) {
-    async.parallel([
-        function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id,
-                function(_res) {
-                    callback(null, _res);
-                });
-        }
-    ], function(err, results) {
-        let is_experience = false;
-        if(results[0] && results[0].data && (results[0].data.exp_year > 0 || results[0].data.exp_month > 0)) {
-            is_experience = true;
-        }
-        res.render('applicant_account', {
-            data:!results[0].error ? results[0].data : [],
-            exp :is_experience
-        });
-    });
-});
-
-router.get('/applicant/applications/:id', function(req, res) {
-    async.parallel([
-        function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_res) {
-                callback(null, _res);
-            });
-        },
-        function(callback) {
-            req.body.applicant_id = req.cookies.pixljob_user_id;
-            helper_utils.makeApiRequest(req, 'POST', '/job-applications/search', function(_res) {
-                callback(null, _res);
-            });
-        }
-    ], function(err, results) {
-        res.render('applicant_applications', {
-            user        :!results[0].error ? results[0].data : [],
-            applications:!results[1].error ? results[1].data : []
-        });
-    });
-});
-
-router.get('/job-applicant-one', function(req, res) {
-    res.render('job_applicant_one');
-});
-
 router.get('/job-recruiter', function(req, res) {
     res.render('job_recruiter', {
         data:[{}, {}, {}, {}]
     });
 });
 
-router.get('/sign-up/recruiter', function(req, res) {
-    helper_utils.makeApiRequest(req, 'GET', '/industries', function(_industries) {
-        helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_benefits) {
-            res.render('sign_up_recruiter', {
-                industries:_industries.data || [],
-                benefits  :_benefits.data || []
-            });
-        });
-    });
-});
-
-router.get('/sign-up/applicant', function(req, res) {
-    res.render('sign_up_applicant', {
-        data:[{}, {}, {}, {}]
-    });
-});
-
-router.get('/exp-account', function(req, res) {
-    res.render('experience_account');
-});
-
-router.get('/recruiter', function(req, res) {
-    async.parallel([
-        function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
-                function(_res) {
-                    callback(null, _res);
-                });
-        },
-        function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/industries', function(_res) {
-                callback(null, _res);
-            });
-        },
-        function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
-                callback(null, _res);
-            });
-        },
-        function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/' + req.params.id, function(_res) {
-                callback(null, _res);
-            });
-        }
-
-    ], function(err, results) {
-        var _companies = [];
-        if(results[0] && !results[0].error && results[0].data) {
-            _companies = results[0].data.companies;
-        }
-        res.render('recruiter_profile', {
-            companies :_companies,
-            data      :!results[0].error ? results[0].data : [],
-            industries:!results[1].error ? results[1].data : [],
-            benefits  :!results[2].error ? results[2].data : [],
-            job_data  :!results[3].error ? results[3].data : [],
-            job_id    :req.params.id,
-            user_id   :req.cookies.pixljob_user_id
-        });
-    });
-});
-
-router.get('/job-info/:id', function(req, res) {
-    async.parallel([
-        function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/jobs/' + req.params.id, function(_res) {
-                callback(null, _res);
-            });
-        },
-        function(callback) {
-            req.body.applicant_id = req.cookies.pixljob_user_id;
-            req.body.job_id       = req.params.id;
-            helper_utils.makeApiRequest(req, 'POST', '/job-applications/check', function(_res) {
-                callback(null, _res);
-            });
-        }
-    ], function(err, results) {
-        res.render('job_info', {
-            data        :!results[0].error ? results[0].data : [],
-            is_applied  :!results[1].error ? (!!results[1].data) : false,
-            applicant_id:req.cookies.pixljob_user_id,
-            job_id      :req.params.id
-        });
-    });
-});
-
-router.get('/form-template', function(req, res) {
-    res.render('form_template');
-});
-
-router.get('/forgot-password', function(req, res) {
-    res.render('forgot_password');
-});
-
-router.get('/reset-password', function(req, res) {
-    res.render('reset_password');
-});
-
-router.get('/applicant/forgot/password/:token', function(req, res) {
-    req.body.reset_token = req.params.token;
-    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/forgot/password/token', function(_response) {
-        if(_response.error) {
-            res.render('login');
-        } else {
-            res.render('reset_password', {user_id:_response.data.id});
-        }
-
-    });
-});
-
-router.get('/recruiter/forgot/password/:token', function(req, res) {
-    req.body.reset_token = req.params.token;
-    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/forgot/password/token', function(_response) {
-        res.render('reset_password');
-    });
-});
-
-router.get('/applicant/email/verify/:token', function(req, res) {
-    req.email_token = req.params.token;
-    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/verify/email/token', function(_response) {
-        var is_email_verified = false;
-        if(!_response.error && _response.data) {
-            is_email_verified = _response.data.is_email_verified;
-        }
-        res.render('login', {
-            is_email_verified:is_email_verified
-        });
-
-    });
-});
-
-router.get('/recruiter/email/verify/:token', function(req, res) {
-    req.email_token = req.params.token;
-    helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/verify/email/token', function(_response) {
-        var is_email_verified = false;
-        if(!_response.error && _response.data) {
-            is_email_verified = _response.data.is_email_verified;
-        }
-        res.render('login', {
-            is_email_verified:is_email_verified
-        });
-    });
-});
 module.exports = router;
