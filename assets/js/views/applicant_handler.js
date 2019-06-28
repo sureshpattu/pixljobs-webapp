@@ -49,6 +49,7 @@ function ApplicantSignUpHandler() {
                     exp_year       :_form.find('.js_exp_year').val(),
                     resume         :_form.find('.js_input_file').val()
                 };
+                console.log(obj);
                 var _img_pre_holder = _form.find('.js_input_profile_file');
                 if(_img_pre_holder.val()) {
                     uploadImage(_img_pre_holder, function(_res_path) {
@@ -127,6 +128,10 @@ function ApplicantSignUpHandler() {
                 $('.js_designation').addClass('required');
                 $('.js_company').addClass('required');
                 $('.js_cur_salary').addClass('required');
+
+                $('.js_exp_detail_sec').removeClass('hide');
+                $('.js_fresh_detail_sec').addClass('hide');
+
             } else {
                 $('#freshDetails').removeClass('hide');
                 $('#expDetails').addClass('hide');
@@ -136,6 +141,9 @@ function ApplicantSignUpHandler() {
                 $('.js_designation').removeClass('required');
                 $('.js_company').removeClass('required');
                 $('.js_cur_salary').removeClass('required');
+
+                $('.js_exp_detail_sec').addClass('hide');
+                $('.js_fresh_detail_sec').removeClass('hide');
             }
         });
 
@@ -151,6 +159,9 @@ function ApplicantSignUpHandler() {
                 $('.js_company').addClass('required');
                 $('.js_cur_salary').addClass('required');
 
+                $('.js_exp_detail_sec').removeClass('hide');
+                $('.js_fresh_detail_sec').addClass('hide');
+
             } else {
                 $('#freshDetails').removeClass('hide');
                 $('#expDetails').addClass('hide');
@@ -160,6 +171,9 @@ function ApplicantSignUpHandler() {
                 $('.js_designation').removeClass('required');
                 $('.js_company').removeClass('required');
                 $('.js_cur_salary').removeClass('required');
+
+                $('.js_exp_detail_sec').addClass('hide');
+                $('.js_fresh_detail_sec').removeClass('hide');
             }
         });
 
