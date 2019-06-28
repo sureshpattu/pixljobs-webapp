@@ -28,7 +28,11 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="profile_img_wrap">
-                                        <img src="https://via.placeholder.com/150" class="img_sec">
+                                        {{#if data.photo}}
+                                            <img src="/api/recruiter/photo/{{data.photo}}" class="img_sec">
+                                        {{else}}
+                                            <img src="https://via.placeholder.com/150" class="img_sec">
+                                        {{/if}}
                                         <div class="icon_wrap">
                                             <span class="fa fa-pencil"></span>
                                         </div>
@@ -77,7 +81,8 @@
                                                             {{#ifCond data.gender '===' 'male'}}selected{{/ifCond}}>Male
                                                     </option>
                                                     <option value="female"
-                                                            {{#ifCond data.gender '===' 'female'}}selected{{/ifCond}}>Female
+                                                            {{#ifCond data.gender '===' 'female'}}selected{{/ifCond}}>
+                                                        Female
                                                     </option>
                                                 </select>
                                                 <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">

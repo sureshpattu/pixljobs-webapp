@@ -27,7 +27,11 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="profile_img_wrap">
-                                        <img src="https://via.placeholder.com/150" class="img_sec">
+                                        {{#if data.photo}}
+                                            <img src="/api/applicant/photo/{{data.photo}}" class="img_sec">
+                                        {{else}}
+                                            <img src="https://via.placeholder.com/150" class="img_sec">
+                                        {{/if}}
                                         <div class="icon_wrap">
                                             <span class="fa fa-pencil"></span>
                                         </div>
@@ -116,47 +120,58 @@
                                                             <option value="1"
                                                                 {{#ifCond data.exp_month '===' '1'}}
                                                                     selected
-                                                                {{/ifCond}}>1 Months</option>
+                                                                {{/ifCond}}>1 Months
+                                                            </option>
                                                             <option value="2"
                                                                 {{#ifCond data.exp_month '===' '2'}}
                                                                     selected
-                                                                {{/ifCond}}>2 Months</option>
+                                                                {{/ifCond}}>2 Months
+                                                            </option>
                                                             <option value="3"
                                                                 {{#ifCond data.exp_month '===' '3'}}
                                                                     selected
-                                                                {{/ifCond}}>3 Months</option>
+                                                                {{/ifCond}}>3 Months
+                                                            </option>
                                                             <option value="4"
                                                                 {{#ifCond data.exp_month '===' '4'}}
                                                                     selected
-                                                                {{/ifCond}}>4 Months</option>
+                                                                {{/ifCond}}>4 Months
+                                                            </option>
                                                             <option value="5"
                                                                 {{#ifCond data.exp_month '===' '5'}}
                                                                     selected
-                                                                {{/ifCond}}>5 Months</option>
+                                                                {{/ifCond}}>5 Months
+                                                            </option>
                                                             <option value="6"
                                                                 {{#ifCond data.exp_month '===' '6'}}
                                                                     selected
-                                                                {{/ifCond}}>6 Months</option>
+                                                                {{/ifCond}}>6 Months
+                                                            </option>
                                                             <option value="7"
                                                                 {{#ifCond data.exp_month '===' '7'}}
                                                                     selected
-                                                                {{/ifCond}}>7 Months</option>
+                                                                {{/ifCond}}>7 Months
+                                                            </option>
                                                             <option value="8"
                                                                 {{#ifCond data.exp_month '===' '8'}}
                                                                     selected
-                                                                {{/ifCond}}>8 Months</option>
+                                                                {{/ifCond}}>8 Months
+                                                            </option>
                                                             <option value="9"
                                                                 {{#ifCond data.exp_month '===' '9'}}
                                                                     selected
-                                                                {{/ifCond}}>9 Months</option>
+                                                                {{/ifCond}}>9 Months
+                                                            </option>
                                                             <option value="10"
                                                                 {{#ifCond data.exp_month '===' '10'}}
                                                                     selected
-                                                                {{/ifCond}}>10 Months</option>
+                                                                {{/ifCond}}>10 Months
+                                                            </option>
                                                             <option value="11"
                                                                 {{#ifCond data.exp_month '===' '11'}}
                                                                     selected
-                                                                {{/ifCond}}>11 Months</option>
+                                                                {{/ifCond}}>11 Months
+                                                            </option>
                                                         </select>
                                                     </div>
                                                 </div>
