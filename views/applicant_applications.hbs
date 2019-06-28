@@ -34,17 +34,22 @@
                             <div class="col-md-10">
                                 <div class="details_sec">
                                     <div class="name">
-                                        Sunil Suresh Patil
+                                        {{user.name}}
                                     </div>
                                     <div class="designation">
-                                        Full Stack Developer, 5yrs Exp.
+                                        {{#if user.designation}}
+                                            {{user.designation}},
+                                            {{user.exp_year}}.{{user.exp_month}}yrs Exp
+                                        {{else}}
+                                            {{user.qualification}}
+                                        {{/if}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="cards_wrap">
-                        {{>client/applicant_job_status}}
+                    <div class="cards_wrap js_applications_wrap">
+                        {{>client/job_application data=applications.result}}
                     </div>
                 </div>
             </div>

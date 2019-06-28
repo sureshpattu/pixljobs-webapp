@@ -105,9 +105,10 @@ router.get('/post-job/info/:id', function(req, res) {
 router.get('/post-job/company/:id', function(req, res) {
     async.parallel([
         function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/recruiter/' + req.cookies.pixljob_user_id, function(_res) {
-                callback(null, _res);
-            });
+            helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
+                function(_res) {
+                    callback(null, _res);
+                });
         },
         function(callback) {
             helper_utils.makeApiRequest(req, 'GET', '/industries', function(_res) {
@@ -140,12 +141,49 @@ router.get('/post-job/company/:id', function(req, res) {
     });
 });
 
-router.get('/job-applicant-one', function(req, res) {
-    res.render('job_applicant_one');
+router.get('/applicant-account', function(req, res) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id,
+                function(_res) {
+                    callback(null, _res);
+                });
+        }
+    ], function(err, results) {
+        let is_experience = false;
+        if(results[0] && results[0].data && (results[0].data.exp_year > 0 || results[0].data.exp_month > 0)) {
+            is_experience = true;
+        }
+        res.render('applicant_account', {
+            data:!results[0].error ? results[0].data : [],
+            exp :is_experience
+        });
+    });
 });
 
-router.get('/job-applicant-two', function(req, res) {
-    res.render('job_applicant_two');
+router.get('/applicant/applications/:id', function(req, res) {
+    async.parallel([
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            req.body.applicant_id = req.cookies.pixljob_user_id;
+            helper_utils.makeApiRequest(req, 'POST', '/job-applications/search', function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        res.render('applicant_applications', {
+            user        :!results[0].error ? results[0].data : [],
+            applications:!results[1].error ? results[1].data : []
+        });
+    });
+});
+
+router.get('/job-applicant-one', function(req, res) {
+    res.render('job_applicant_one');
 });
 
 router.get('/job-recruiter', function(req, res) {
@@ -171,19 +209,6 @@ router.get('/sign-up/applicant', function(req, res) {
     });
 });
 
-router.get('/applicant-account', function(req, res) {
-    helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
-        let is_experience = false;
-        if(_response && _response.data && (_response.data.exp_year > 0 || _response.data.exp_month > 0)) {
-            is_experience = true;
-        }
-        res.render('applicant_account', {
-            data:_response.data,
-            exp :is_experience
-        });
-    });
-});
-
 router.get('/exp-account', function(req, res) {
     res.render('experience_account');
 });
@@ -191,9 +216,10 @@ router.get('/exp-account', function(req, res) {
 router.get('/recruiter', function(req, res) {
     async.parallel([
         function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/recruiter/' + req.cookies.pixljob_user_id, function(_res) {
-                callback(null, _res);
-            });
+            helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
+                function(_res) {
+                    callback(null, _res);
+                });
         },
         function(callback) {
             helper_utils.makeApiRequest(req, 'GET', '/industries', function(_res) {
