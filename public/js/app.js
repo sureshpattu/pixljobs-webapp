@@ -8,7 +8,8 @@ window.PostJobHandler              = require('./views/post_job_handler');
 window.PostJobEditHandler          = require('./views/post_job_edit_handler');
 window.JobSearchHandler            = require('./views/job_search_handler');
 window.JobInfoHandler              = require('./views/job_info_handler');
-},{"./utils/popupHandler":6,"./views/applicant_handler":7,"./views/job_info_handler":8,"./views/job_search_handler":9,"./views/login_handler":10,"./views/post_job_edit_handler":11,"./views/post_job_handler":12,"./views/recruiter_handler":13,"./views/recruiter_profile_edit_handler":14}],2:[function(require,module,exports){
+window.ApplicantEditHandler        = require('./views/applicant_handler_edit');
+},{"./utils/popupHandler":6,"./views/applicant_handler":7,"./views/applicant_handler_edit":8,"./views/job_info_handler":9,"./views/job_search_handler":10,"./views/login_handler":11,"./views/post_job_edit_handler":12,"./views/post_job_handler":13,"./views/recruiter_handler":14,"./views/recruiter_profile_edit_handler":15}],2:[function(require,module,exports){
 var qs = require('querystring');
 
 module.exports = {
@@ -77,7 +78,7 @@ module.exports = {
         });
     }
 };
-},{"querystring":20}],3:[function(require,module,exports){
+},{"querystring":21}],3:[function(require,module,exports){
 exports.clearForm = function(formId) {
     $(formId).find('input').val(' ');
     $(formId).find('select').val(' ');
@@ -443,7 +444,7 @@ Handlebars.registerHelper('countDateTime', function(dateString) {
     }
 });
 
-},{"moment":16}],6:[function(require,module,exports){
+},{"moment":17}],6:[function(require,module,exports){
 function PopupPage() {
 
     function bindClickEvents(_allow_close) {
@@ -560,10 +561,10 @@ function ApplicantSignUpHandler() {
                             obj.photo = _res_path.data.file;
                             obj.photo_type = _res_path.data.file_type;
                         }
-                        //postRegisterAPI(obj);
+                        postRegisterAPI(obj);
                     })
                 } else {
-                    //postRegisterAPI(obj);
+                    postRegisterAPI(obj);
                 }
 
             }
@@ -700,6 +701,123 @@ function ApplicantSignUpHandler() {
 
 module.exports = ApplicantSignUpHandler();
 },{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],8:[function(require,module,exports){
+var ApiUtil = require('../utils/apiUtil');
+var FormValidator = require('../utils/formValidator');
+var utils = require('../utils/common');
+
+function ApplicantSignUpHandler() {
+    function bindApplicantEditEvent() {
+        var _form_name = '#jsApplicantEditForm';
+        var _form = $(_form_name);
+
+        _form.unbind().submit(function(e) {
+            e.preventDefault();
+            if(FormValidator.validateForm(_form_name)) {
+                var obj = {
+                    name           :_form.find('.js_name').val(),
+                    qualification  :_form.find('.js_qualification').val(),
+                    institution    :_form.find('.js_institution').val(),
+                    designation    :_form.find('.js_designation').val(),
+                    company        :_form.find('.js_company').val(),
+                    current_salary :_form.find('.js_cur_salary').val(),
+                    expected_salary:_form.find('.js_anual_salary').val(),
+                    mobile         :_form.find('.js_mobile').val() || '0',
+                    email          :_form.find('.js_email').val(),
+                    password       :_form.find('.js_password').val(),
+                    gender         :_form.find('.js_gender').val(),
+                    exp_month      :_form.find('.js_exp_month').val(),
+                    exp_year       :_form.find('.js_exp_year').val()
+                };
+
+                console.log(obj);
+                var callback = function(_res) {
+                    if(!_res.error) {
+                        alert('Data updated successfully!');
+                        window.location.href = '/applicant-account'
+                    } else {
+                        alert(_res.message || 'Something went wrong!');
+                    }
+                };
+                ApiUtil.makeAjaxRequest('/api/applicant', '', 'PUT', '', obj, callback);
+            }
+        });
+    }
+
+    function bindCommonClickEvents() {
+        $('.js_select2').select2({});
+
+        $('#selectExpMonth').change(function() {
+            var selectedItem = $(this).val();
+            if(selectedItem > 0) {
+                $('#freshDetails').addClass('hide');
+                $('#expDetails').removeClass('hide');
+
+                $('.js_qualification').removeClass('required');
+
+                $('.js_designation').addClass('required');
+                $('.js_company').addClass('required');
+                $('.js_cur_salary').addClass('required');
+
+                $('.js_exp_detail_sec').removeClass('hide');
+                $('.js_fresh_detail_sec').addClass('hide');
+
+            } else {
+                $('#freshDetails').removeClass('hide');
+                $('#expDetails').addClass('hide');
+
+                $('.js_qualification').addClass('required');
+
+                $('.js_designation').removeClass('required');
+                $('.js_company').removeClass('required');
+                $('.js_cur_salary').removeClass('required');
+
+                $('.js_exp_detail_sec').addClass('hide');
+                $('.js_fresh_detail_sec').removeClass('hide');
+            }
+        });
+
+        $('#selectExpYear').change(function() {
+            var selectedItem = $(this).val();
+            if(selectedItem.valueOf() > 0) {
+                $('#freshDetails').addClass('hide');
+                $('#expDetails').removeClass('hide');
+
+                $('.js_qualification').removeClass('required');
+
+                $('.js_designation').addClass('required');
+                $('.js_company').addClass('required');
+                $('.js_cur_salary').addClass('required');
+
+                $('.js_exp_detail_sec').removeClass('hide');
+                $('.js_fresh_detail_sec').addClass('hide');
+
+            } else {
+                $('#freshDetails').removeClass('hide');
+                $('#expDetails').addClass('hide');
+
+                $('.js_qualification').addClass('required');
+
+                $('.js_designation').removeClass('required');
+                $('.js_company').removeClass('required');
+                $('.js_cur_salary').removeClass('required');
+
+                $('.js_exp_detail_sec').addClass('hide');
+                $('.js_fresh_detail_sec').removeClass('hide');
+            }
+        });
+    }
+
+    return {
+        init:function() {
+            bindCommonClickEvents();
+            bindApplicantEditEvent();
+            $('.js_select2').select2({});
+        }
+    }
+}
+
+module.exports = ApplicantSignUpHandler();
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],9:[function(require,module,exports){
 var ApiUtil           = require('../utils/apiUtil');
 var FormValidator     = require('../utils/formValidator');
 var utils             = require('../utils/common');
@@ -741,7 +859,7 @@ function JobInfoHandler() {
 }
 
 module.exports = JobInfoHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"../utils/handlebar_helpers":5}],9:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"../utils/handlebar_helpers":5}],10:[function(require,module,exports){
 var ApiUtil           = require('../utils/apiUtil');
 var FormValidator     = require('../utils/formValidator');
 var utils             = require('../utils/common');
@@ -944,7 +1062,7 @@ function JobSearchHandler() {
 }
 
 module.exports = JobSearchHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"../utils/handlebar_helpers":5}],10:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"../utils/handlebar_helpers":5}],11:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 
@@ -1119,7 +1237,7 @@ function LoginHandler() {
 }
 
 module.exports = LoginHandler();
-},{"../utils/apiUtil":2,"../utils/formValidator":4}],11:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/formValidator":4}],12:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -1426,7 +1544,7 @@ function PostJobHandler() {
 }
 
 module.exports = PostJobHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async-waterfall":15}],12:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async-waterfall":16}],13:[function(require,module,exports){
 var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils = require('../utils/common');
@@ -1740,7 +1858,7 @@ function PostJobHandler() {
 }
 
 module.exports = PostJobHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async-waterfall":15}],13:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async-waterfall":16}],14:[function(require,module,exports){
 var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils = require('../utils/common');
@@ -1879,7 +1997,7 @@ function RecruiterHandler() {
 }
 
 module.exports = RecruiterHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],14:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],15:[function(require,module,exports){
 var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils = require('../utils/common');
@@ -2021,7 +2139,7 @@ function RecruiterProfileEditHandler() {
 }
 
 module.exports = RecruiterProfileEditHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],15:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],16:[function(require,module,exports){
 (function (process,setImmediate){
 // MIT license (by Elan Shanker).
 (function(globals) {
@@ -2100,7 +2218,7 @@ module.exports = RecruiterProfileEditHandler();
 })(this);
 
 }).call(this,require('_process'),require("timers").setImmediate)
-},{"_process":17,"timers":21}],16:[function(require,module,exports){
+},{"_process":18,"timers":22}],17:[function(require,module,exports){
 //! moment.js
 
 ;(function (global, factory) {
@@ -6704,7 +6822,7 @@ module.exports = RecruiterProfileEditHandler();
 
 })));
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -6890,7 +7008,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -6976,7 +7094,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -7063,13 +7181,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":18,"./encode":19}],21:[function(require,module,exports){
+},{"./decode":19,"./encode":20}],22:[function(require,module,exports){
 (function (setImmediate,clearImmediate){
 var nextTick = require('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -7148,4 +7266,4 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
   delete immediateIds[id];
 };
 }).call(this,require("timers").setImmediate,require("timers").clearImmediate)
-},{"process/browser.js":17,"timers":21}]},{},[1]);
+},{"process/browser.js":18,"timers":22}]},{},[1]);
