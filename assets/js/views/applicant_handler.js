@@ -1,6 +1,6 @@
-var ApiUtil       = require('../utils/apiUtil');
+var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
-var utils         = require('../utils/common');
+var utils = require('../utils/common');
 
 function ApplicantSignUpHandler() {
 
@@ -28,12 +28,12 @@ function ApplicantSignUpHandler() {
 
     function bindApplicantSignUpEvent() {
         var _form_name = '#jsSignUpApplicantForm';
-        var _form      = $(_form_name);
+        var _form = $(_form_name);
         _form.unbind().submit(function(e) {
             e.preventDefault();
             console.log(_form_name);
             if(FormValidator.validateForm(_form_name)) {
-                var obj             = {
+                var obj = {
                     name           :_form.find('.js_name').val(),
                     qualification  :_form.find('.js_qualification').val(),
                     institution    :_form.find('.js_institution').val(),
@@ -49,11 +49,12 @@ function ApplicantSignUpHandler() {
                     exp_year       :_form.find('.js_exp_year').val(),
                     resume         :_form.find('.js_input_file').val()
                 };
+                console.log(obj);
                 var _img_pre_holder = _form.find('.js_input_profile_file');
                 if(_img_pre_holder.val()) {
                     uploadImage(_img_pre_holder, function(_res_path) {
                         if(!_res_path.error && _res_path.data) {
-                            obj.photo      = _res_path.data.file;
+                            obj.photo = _res_path.data.file;
                             obj.photo_type = _res_path.data.file_type;
                         }
                         postRegisterAPI(obj);
@@ -78,14 +79,14 @@ function ApplicantSignUpHandler() {
 
     function bindApplicantEditEvent() {
         var _form_name = '#jsApplicantEditForm';
-        var _form      = $(_form_name);
+        var _form = $(_form_name);
         console.log(_form);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
             console.log(_form_name);
             if(FormValidator.validateForm(_form_name)) {
-                var obj      = {
+                var obj = {
                     name           :_form.find('.js_name').val(),
                     qualification  :_form.find('.js_qualification').val(),
                     institution    :_form.find('.js_institution').val(),
@@ -121,9 +122,28 @@ function ApplicantSignUpHandler() {
             if(selectedItem > 0) {
                 $('#freshDetails').addClass('hide');
                 $('#expDetails').removeClass('hide');
+
+                $('.js_qualification').removeClass('required');
+
+                $('.js_designation').addClass('required');
+                $('.js_company').addClass('required');
+                $('.js_cur_salary').addClass('required');
+
+                $('.js_exp_detail_sec').removeClass('hide');
+                $('.js_fresh_detail_sec').addClass('hide');
+
             } else {
                 $('#freshDetails').removeClass('hide');
                 $('#expDetails').addClass('hide');
+
+                $('.js_qualification').addClass('required');
+
+                $('.js_designation').removeClass('required');
+                $('.js_company').removeClass('required');
+                $('.js_cur_salary').removeClass('required');
+
+                $('.js_exp_detail_sec').addClass('hide');
+                $('.js_fresh_detail_sec').removeClass('hide');
             }
         });
 
@@ -132,9 +152,28 @@ function ApplicantSignUpHandler() {
             if(selectedItem.valueOf() > 0) {
                 $('#freshDetails').addClass('hide');
                 $('#expDetails').removeClass('hide');
+
+                $('.js_qualification').removeClass('required');
+
+                $('.js_designation').addClass('required');
+                $('.js_company').addClass('required');
+                $('.js_cur_salary').addClass('required');
+
+                $('.js_exp_detail_sec').removeClass('hide');
+                $('.js_fresh_detail_sec').addClass('hide');
+
             } else {
                 $('#freshDetails').removeClass('hide');
                 $('#expDetails').addClass('hide');
+
+                $('.js_qualification').addClass('required');
+
+                $('.js_designation').removeClass('required');
+                $('.js_company').removeClass('required');
+                $('.js_cur_salary').removeClass('required');
+
+                $('.js_exp_detail_sec').addClass('hide');
+                $('.js_fresh_detail_sec').removeClass('hide');
             }
         });
 

@@ -40,7 +40,6 @@ function RecruiterHandler() {
                     password   :_form.find('.js_password').val(),
                     mobile     :_form.find('.js_mobile').val(),
                     gender     :_form.find('.js_gender').val(),
-                    mobile     :_form.find('.js_mobile').val(),
                     designation:_form.find('.js_designation').val()
                 };
                 var _img_pre_holder = _form.find('.js_input_profile_file');
