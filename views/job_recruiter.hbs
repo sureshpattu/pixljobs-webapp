@@ -34,19 +34,17 @@
                             <div class="col-md-10">
                                 <div class="details_sec">
                                     <div class="name">
-                                        Pattu Technologies
+                                        {{companies.0.name}}
                                     </div>
                                     <div class="designation">
-                                        Bangalore, www.pixlcoders.com
+                                        {{companies.0.city}}{{companies.0.url}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="cards_wrap js_cards_wrap">
-                        {{#each data}}
-                            {{>client/applicant_card_row}}
-                        {{/each}}
+                        {{>client/applicant_card_row data=jobs.result}}
                     </div>
                 </div>
             </div>

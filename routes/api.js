@@ -236,4 +236,10 @@ router.put('/qa-job/requirements', function(req, res, next) {
     });
 });
 
+router.post('/jobs/recruiter/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/jobs/recruiter/search', function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;

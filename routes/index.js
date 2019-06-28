@@ -186,9 +186,32 @@ router.get('/job-applicant-one', function(req, res) {
     res.render('job_applicant_one');
 });
 
-router.get('/job-recruiter', function(req, res) {
-    res.render('job_recruiter', {
-        data:[{}, {}, {}, {}]
+router.get('/job-recruiter/:id', function (req, res) {
+    async.parallel([
+        function (callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
+                function (_res) {
+                    callback(null, _res);
+                });
+        },
+        function (callback) {
+            req.body.recruiter_id = req.cookies.pixljob_user_id;
+            helper_utils.makeApiRequest(req, 'POST', '/jobs/recruiter/search',
+                function (_res) {
+                    callback(null, _res);
+                });
+        }
+    ], function (err, results) {
+        var _companies = [];
+        if (results[0] && !results[0].error && results[0].data) {
+            _companies = results[0].data.companies;
+        }
+        console.log("result",results[0]);
+        res.render('job_recruiter', {
+            companies: _companies,
+            user: !results[0].error ? results[0].data : [],
+            jobs: !results[1].error ? results[1].data : []
+        });
     });
 });
 

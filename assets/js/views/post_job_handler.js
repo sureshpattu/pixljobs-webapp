@@ -138,7 +138,8 @@ function PostJobHandler() {
             requirements  :_form.find('.js_job_requirements').val() || []
         };
         ApiUtil.makeAjaxRequest('/api/requirements', '', 'POST', '', _obj, function(_res) {
-            if(!_res.error && _res.data) {
+
+            if(!_res.error) {
                 window.location.href = '/post-job/info/' + _job_id;
             } else {
                 alert(_res.message || 'Something went wrong!');
