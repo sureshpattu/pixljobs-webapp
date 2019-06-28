@@ -18,7 +18,7 @@
             <img src="/img/icons/search.svg" alt="" class="fa-search">
         </div>
         <div class="job_found_txt">
-            44 job offers found
+            {{data.total}} job offers found
         </div>
     </div>
 </section>
@@ -30,7 +30,7 @@
                     {{>client/job_search_card data=data.result}}
                 </div>
                 <div class="bottom_cta_wrap">
-                    <a class="cta_load_more_link hide js_load_more_btn">
+                    <a class="cta_load_more_link {{#ifCond data.result.pages '>' '1'}}hide{{/ifCond}} js_load_more_btn">
                         Show 10 more job offers
                         <img src="/img/icons/arrow-down.svg" class="fa" alt="">
                     </a>
@@ -110,7 +110,7 @@
                                         <input type="checkbox"
                                                class="js_job_type_checkbox"
                                                data-val="PartTime"
-                                            {{#if job_type_count.PartTime}}{{else}}disabled{{/if}}>
+                                               {{#if job_type_count.PartTime}}{{else}}disabled{{/if}}>
                                         <span class="checkmark"></span>
                                     </label>
                                 </li>

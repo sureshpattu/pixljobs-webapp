@@ -182,6 +182,36 @@ router.get('/job-applications/:id', function(req, res, next) {
     });
 });
 
+router.post('/jobs', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/jobs', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/jobs/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/jobs/search', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.put('/jobs/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/jobs/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/job/technologies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/job/technologies', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/job/categories', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/job/categories', function(_response) {
+        res.json(_response);
+    });
+});
+
 router.post('/requirements', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/requirements', function(_response) {
         res.json(_response);

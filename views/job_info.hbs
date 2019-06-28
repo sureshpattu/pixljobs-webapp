@@ -124,7 +124,7 @@
                                     </div>
                                     <div class="desc">
                                         <div class="row">
-                                            {{#each data.qa_job_technologies}}
+                                            {{#each data.job_technologies}}
                                                 <div class="col-md-6">
                                                     <div class="row">
                                                         <div class="col-md-6 col-xs-6">
@@ -199,17 +199,21 @@
                 <div class="col-md-3">
                     <div class="apply_sec">
                         {{#if is_applied}}{{else}}
-                            <button type="button"
-                                    class="btn btn-apply">
-                                Apply for this position now
-                            </button>
-                            <div class="links_part">
-                                <div class="link_txt">
-                                    or <br/>
-                                    copy and apply by email
-                                </div>
-                                <div class="link_sec">
-                                    <a class="link" href="">career@squarespace.io</a>
+                            <div class="js_apply_cta_wrap">
+                                <button type="button"
+                                        class="btn btn-apply js_apply_job">
+                                    Apply for this position now
+                                </button>
+                                <input type="hidden" class="js_applicant_id" value="{{applicant_id}}">
+                                <input type="hidden" class="js_job_id" value="{{job_id}}">
+                                <div class="links_part">
+                                    <div class="link_txt">
+                                        or <br/>
+                                        copy and apply by email
+                                    </div>
+                                    <div class="link_sec">
+                                        <a class="link" href="">career@squarespace.io</a>
+                                    </div>
                                 </div>
                             </div>
                         {{/if}}
@@ -315,7 +319,7 @@
 </body>
 <script type="application/javascript">
     $(function() {
-
+        JobInfoHandler.init();
     });
 </script>
 </html>

@@ -1,7 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const verify = require('../config/verify');
-const async = require('async');
+const express      = require('express');
+const router       = express.Router();
+const verify       = require('../config/verify');
+const async        = require('async');
 const helper_utils = require('./util/common');
 
 router.get('/login', function(req, res) {
@@ -21,7 +21,7 @@ router.get('/register', function(req, res) {
 router.get('/', function(req, res) {
     async.parallel([
         function(callback) {
-            helper_utils.makeApiRequest(req, 'POST', '/qa-jobs/search', function(_res) {
+            helper_utils.makeApiRequest(req, 'POST', '/jobs/search', function(_res) {
                 callback(null, _res);
             });
         },
@@ -31,7 +31,7 @@ router.get('/', function(req, res) {
             });
         },
         function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/count/job-type', function(_res) {
+            helper_utils.makeApiRequest(req, 'GET', '/jobs/count/job-type', function(_res) {
                 callback(null, _res);
             });
         }
@@ -231,7 +231,7 @@ router.get('/recruiter', function(req, res) {
 router.get('/job-info/:id', function(req, res) {
     async.parallel([
         function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/' + req.params.id, function(_res) {
+            helper_utils.makeApiRequest(req, 'GET', '/jobs/' + req.params.id, function(_res) {
                 callback(null, _res);
             });
         },
@@ -244,8 +244,10 @@ router.get('/job-info/:id', function(req, res) {
         }
     ], function(err, results) {
         res.render('job_info', {
-            data      :!results[0].error ? results[0].data : [],
-            is_applied:!results[1].error ? (!!results[1].data) : false
+            data        :!results[0].error ? results[0].data : [],
+            is_applied  :!results[1].error ? (!!results[1].data) : false,
+            applicant_id:req.cookies.pixljob_user_id,
+            job_id      :req.params.id
         });
     });
 });

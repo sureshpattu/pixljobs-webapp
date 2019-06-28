@@ -38,6 +38,7 @@ function RecruiterHandler() {
                     name       :_form.find('.js_name').val(),
                     email      :_form.find('.js_email').val(),
                     password   :_form.find('.js_password').val(),
+                    mobile     :_form.find('.js_mobile').val(),
                     gender     :_form.find('.js_gender').val(),
                     mobile     :_form.find('.js_mobile').val(),
                     designation:_form.find('.js_designation').val()
@@ -110,7 +111,7 @@ function RecruiterHandler() {
 
         ApiUtil.makeAjaxRequest('/api/benefits', '', 'POST', '', _company_obj, function(_res) {
             if(!_res.error) {
-                window.location.href = '/recruiter'
+               // window.location.href = '/recruiter'
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
