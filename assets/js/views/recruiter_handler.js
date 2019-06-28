@@ -34,26 +34,18 @@ function RecruiterHandler() {
         _form.unbind().submit(function(e) {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
-                var _user_obj       = {
+                var _user_obj = {
                     name       :_form.find('.js_name').val(),
                     email      :_form.find('.js_email').val(),
                     password   :_form.find('.js_password').val(),
                     mobile     :_form.find('.js_mobile').val(),
                     gender     :_form.find('.js_gender').val(),
-                    mobile     :_form.find('.js_mobile').val(),
                     designation:_form.find('.js_designation').val()
                 };
-                var _img_pre_holder = _form.find('.js_input_profile_file');
 
                 ApiUtil.makeAjaxRequest('/api/recruiter-auth/register', '', 'POST', '', _user_obj, function(_res) {
                     if(!_res.error && _res.data) {
-                        if(_img_pre_holder.val()) {
-                            uploadImage(_img_pre_holder, function(_res_path) {
-                                updateUserPhoto(_res.data.id, _res_path);
-                            })
-                        }
-                        postCompanyDetails(_res.data.id, _form);
-
+                        uploadFiles(_form, _res.data.id);
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
@@ -62,19 +54,23 @@ function RecruiterHandler() {
         });
     }
 
-    function updateUserPhoto(user_id, _res_path) {
-        if(!_res_path.error && _res_path.data) {
-
-            var _obj = {
-                photo     :_res_path.data.file,
-                photo_type:_res_path.data.file_type
-            };
-
-            ApiUtil.makeAjaxRequest('/api/recruiter/' + user_id, '', 'PUT', '', _obj, function(_res) {
-                if(_res.error) {
-                    alert(_res.message || 'Something went wrong!');
-                }
-            });
+    function uploadFiles(_form, recruiter_id) {
+        var _input_file = _form.find('.js_input_profile_file');
+        if(_input_file.val()) {
+            var formData = new FormData();
+            formData.append('photo', _input_file[0].files[0]);
+            ApiUtil.makeFileUploadRequest('/api/recruiter/photo/upload/' + recruiter_id, '', 'POST', '',
+                formData,
+                function(_res_path) {
+                    if(!_res_path.error) {
+                        alert(_res.message);
+                    } else {
+                        alert(_res.message || 'Something went wrong!');
+                    }
+                    postCompanyDetails(recruiter_id, _form);
+                });
+        } else {
+            postCompanyDetails(recruiter_id, _form);
         }
     }
 
