@@ -134,10 +134,10 @@ function PostJobHandler() {
 
     function postJobRequirements(_job_id, _form) {
         var _obj = {
-            reuirement_id  :_reuirement_id,
-            reuirements:_form.find('.js_job_requirements').val()
+            qa_job_id  :_job_id,
+            requirements  :_form.find('.js_job_requirements').val() || []
         };
-        ApiUtil.makeAjaxRequest('/api/job/raquirements', '', 'POST', '', _obj, function(_res) {
+        ApiUtil.makeAjaxRequest('/api/requirements', '', 'POST', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
                 window.location.href = '/post-job/info/' + _job_id;
             } else {

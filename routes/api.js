@@ -194,4 +194,16 @@ router.put('/requirements', function(req, res, next) {
     });
 });
 
+router.post('/qa-job/requirements', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/qa-job/requirements', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.put('/qa-job/requirements', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/qa-job/requirements/' + req.cookies.pixljob_user_id, function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;
