@@ -53,14 +53,24 @@ router.put('/applicant', function(req, res, next) {
     });
 });
 
-router.post('/applicant/photo/upload', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/applicant/photo/upload', function(_response) {
+router.post('/applicant/photo/upload/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/applicant/photo/upload/' + req.params.id, function(_response) {
         res.json(_response);
     });
 });
 
 router.get('/applicant/photo/:image', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE', '/applicant/photo/' + req.params.image, '', res);
+});
+
+router.post('/applicant/resume/upload/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/applicant/resume/upload/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.get('/applicant/resume/:file', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'IMAGE', '/applicant/resume/' + req.params.file, '', res);
 });
 
 //Recruiters APIs-----------------------------------------------------------------------------------------------------
@@ -100,8 +110,8 @@ router.put('/recruiter/:id', function(req, res, next) {
     });
 });
 
-router.post('/recruiter/photo/upload', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/recruiter/photo/upload', function(_response) {
+router.post('/recruiter/photo/upload/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/recruiter/photo/upload' + req.params.id, function(_response) {
         res.json(_response);
     });
 });
