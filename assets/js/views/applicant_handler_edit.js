@@ -3,6 +3,20 @@ var FormValidator = require('../utils/formValidator');
 var utils = require('../utils/common');
 
 function ApplicantSignUpHandler() {
+    var _img_pre_holder = $('.js_img_pre_holder');
+
+    function readURL(input) {
+        if(input.files && input.files[0]) {
+            var reader    = new FileReader();
+            reader.onload = function(e) {
+                _img_pre_holder.attr('src', e.target.result);
+                _img_pre_holder.removeClass('hide');
+                $('.js_profile_img_txt').addClass('hide');
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
     function bindApplicantEditEvent() {
         var _form_name = '#jsApplicantEditForm';
         var _form = $(_form_name);
@@ -29,14 +43,55 @@ function ApplicantSignUpHandler() {
                 console.log(obj);
                 var callback = function(_res) {
                     if(!_res.error) {
+                        uploadFiles(_form, _res.data.id);
                         alert('Data updated successfully!');
-                        window.location.href = '/applicant-account'
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
                 };
                 ApiUtil.makeAjaxRequest('/api/applicant', '', 'PUT', '', obj, callback);
             }
+        });
+    }
+
+    function uploadFiles(_form, applicant_id) {
+        async.parallel([
+            function(callback) {
+                var _input_file = _form.find('.js_input_profile_file');
+                if(_input_file.val()) {
+                    var formData = new FormData();
+                    formData.append('photo', _input_file[0].files[0]);
+                    ApiUtil.makeFileUploadRequest('/api/applicant/photo/upload/' + applicant_id, '', 'POST', '',
+                        formData,
+                        function(_res_path) {
+                            if(_res_path.error) {
+                                alert(_res.message || 'Something went wrong!');
+                            }
+                            callback(null, null);
+                        });
+                } else {
+                    callback(null, null);
+                }
+            },
+            function(callback) {
+                var _input_file = _form.find('.js_resume_file');
+                if(_input_file.val()) {
+                    var formData = new FormData();
+                    formData.append('photo', _input_file[0].files[0]);
+                    ApiUtil.makeFileUploadRequest('/api/applicant/resume/upload/' + applicant_id, '', 'POST', '',
+                        formData,
+                        function(_res_path) {
+                            if(_res_path.error) {
+                                alert(_res.message || 'Something went wrong!');
+                            }
+                            callback(null, null);
+                        });
+                } else {
+                    callback(null, null);
+                }
+            }
+        ], function(err, results) {
+            window.location.href = '/applicant-account'
         });
     }
 
