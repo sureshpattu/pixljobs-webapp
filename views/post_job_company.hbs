@@ -28,24 +28,27 @@
                         </div>
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
-                                <div class="companies_wrap">
-                                    <div class="select_comp_txt">Select company</div>
-                                    <ul class="list_sec">
-                                        {{#each companies}}
-                                            <li class="active">
-                                                <label class="check_box js_company_check_box_wrap">
-                                                    <input type="checkbox" class="js_company_check_box"
-                                                           data-cid="{{this.id}}">
-                                                    <span class="checkmark"></span>
-                                                    {{this.name}}
-                                                </label>
-                                            </li>
-                                        {{/each}}
-                                    </ul>
-                                    {{#if companies.length}}
-                                        <a class="btn btn_blue add_new_company_btn js_add_new_company_btn">Add New Company</a>
-                                    {{/if}}
-                                </div>
+                                {{#if companies.length}}
+                                    <div class="companies_wrap">
+                                        <div class="select_comp_txt">Select company</div>
+                                        <ul class="list_sec">
+                                            {{#each companies}}
+                                                <li class="active">
+                                                    <label class="check_box js_company_check_box_wrap">
+                                                        <input type="checkbox" class="js_company_check_box"
+                                                               data-cid="{{this.id}}">
+                                                        <span class="checkmark"></span>
+                                                        {{this.name}}
+                                                    </label>
+                                                </li>
+                                            {{/each}}
+                                        </ul>
+
+                                        <a class="btn btn_blue add_new_company_btn js_add_new_company_btn">
+                                            Add New Company
+                                        </a>
+                                    </div>
+                                {{/if}}
                                 <div class="js_forms_wrap {{#if companies.length}}hide{{/if}}">
                                     {{>client/company_form}}
                                 </div>
@@ -54,11 +57,13 @@
                                         RETURN
                                         <img src="/img/icons/full-arrow-grey.svg" alt="" class="left_icon">
                                     </a>
-                                    <button class="btn btn_big btn_blue jsSubmitExistingCompanyBtn">
+                                    <button class="btn btn_big btn_blue {{#if
+                                            companies.length}}hide{{/if}} jsSubmitExistingCompanyBtn">
                                         PROCEED
                                         <img src="/img/icons/full-arrow-blue.svg" alt="" class="right_icon">
                                     </button>
-                                    <button class="btn btn_big btn_blue hide jsSubmitCompanyBtn">
+                                    <button class="btn btn_big btn_blue {{#if
+                                            companies.length}}{{else}}hide{{/if}} jsSubmitCompanyBtn">
                                         PROCEED
                                         <img src="/img/icons/full-arrow-blue.svg" alt="" class="right_icon">
                                     </button>

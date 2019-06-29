@@ -8,7 +8,7 @@
     {{>header_assets select2=true}}
 </head>
 <body class="profile_pg">
-{{>header}}
+{{>header user=user}}
 <section class="common_main_sec">
     {{>common_hero_sec}}
     <div class="container">
@@ -263,7 +263,8 @@
                                                             {{#ifCond data.gender '===' 'male'}}selected{{/ifCond}}>Male
                                                     </option>
                                                     <option value="female"
-                                                            {{#ifCond data.gender '===' 'female'}}selected{{/ifCond}}>Female
+                                                            {{#ifCond data.gender '===' 'female'}}selected{{/ifCond}}>
+                                                        Female
                                                     </option>
                                                 </select>
                                                 <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">

@@ -41,6 +41,26 @@
                 padding: 12px 0 0;
                 margin: 0 0 0 15px;
             }
+
+            &.user_link_wrap.dropdown {
+                a {
+                    padding: 10px;
+                }
+
+                .user_img {
+                    width: 30px;
+                    height: 30px;
+                }
+
+                .dropdown-menu {
+                    border: none;
+
+                    a {
+                        padding: 8px 15px;
+                        font-size: 14px;
+                    }
+                }
+            }
         }
     }
 }
@@ -53,6 +73,7 @@
 
         .navbar-brand {
             margin: 9px 0 0 15px;
+
             img {
                 height: 30px;
             }

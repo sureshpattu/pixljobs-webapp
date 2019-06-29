@@ -252,4 +252,14 @@ router.post('/jobs/recruiter/search', function(req, res, next) {
     });
 });
 
+router.post('/companies/photo/upload/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/companies/photo/upload/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.get('/companies/photo/:image', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'IMAGE', '/companies/photo/' + req.params.image, '', res);
+});
+
 module.exports = router;

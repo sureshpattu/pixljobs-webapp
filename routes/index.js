@@ -71,6 +71,13 @@ router.get('/applicant/email/verify/:token', function(req, res) {
 router.get('/', function(req, res) {
     async.parallel([
         function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
             helper_utils.makeApiRequest(req, 'POST', '/jobs/search', function(_res) {
                 callback(null, _res);
             });
@@ -87,15 +94,23 @@ router.get('/', function(req, res) {
         }
     ], function(err, results) {
         res.render('search', {
-            data          :!results[0].error ? results[0].data : [],
-            categories    :!results[1].error ? results[1].data : [],
-            job_type_count:!results[2].error ? results[2].data : []
+            user          :!results[0].error ? results[0].data : null,
+            data          :!results[1].error ? results[1].data : [],
+            categories    :!results[2].error ? results[2].data : [],
+            job_type_count:!results[3].error ? results[3].data : []
         });
     });
 });
 
 router.get('/applicant-account', function(req, res) {
     async.parallel([
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
         function(callback) {
             helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id,
                 function(_res) {
@@ -108,7 +123,8 @@ router.get('/applicant-account', function(req, res) {
             is_experience = true;
         }
         res.render('applicant_account', {
-            data:!results[0].error ? results[0].data : [],
+            user:!results[0].error ? results[0].data : [],
+            data:!results[1].error ? results[1].data : [],
             exp :is_experience
         });
     });
@@ -116,6 +132,13 @@ router.get('/applicant-account', function(req, res) {
 
 router.get('/applicant/applications/:id', function(req, res) {
     async.parallel([
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
         function(callback) {
             helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_res) {
                 callback(null, _res);
@@ -130,13 +153,21 @@ router.get('/applicant/applications/:id', function(req, res) {
     ], function(err, results) {
         res.render('applicant_applications', {
             user        :!results[0].error ? results[0].data : [],
-            applications:!results[1].error ? results[1].data : []
+            data        :!results[1].error ? results[1].data : [],
+            applications:!results[2].error ? results[2].data : []
         });
     });
 });
 
 router.get('/job-info/:id', function(req, res) {
     async.parallel([
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
         function(callback) {
             helper_utils.makeApiRequest(req, 'GET', '/jobs/' + req.params.id, function(_res) {
                 callback(null, _res);
@@ -151,8 +182,9 @@ router.get('/job-info/:id', function(req, res) {
         }
     ], function(err, results) {
         res.render('job_info', {
-            data        :!results[0].error ? results[0].data : [],
-            is_applied  :!results[1].error ? (!!results[1].data) : false,
+            user        :!results[0].error ? results[0].data : [],
+            data        :!results[1].error ? results[1].data : [],
+            is_applied  :!results[2].error ? (!!results[2].data) : false,
             applicant_id:req.cookies.pixljob_user_id,
             job_id      :req.params.id
         });
@@ -203,6 +235,13 @@ router.get('/recruiter/forgot/password/:token', function(req, res) {
 router.get('/recruiter', function(req, res) {
     async.parallel([
         function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
             helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
                 function(_res) {
                     callback(null, _res);
@@ -231,10 +270,11 @@ router.get('/recruiter', function(req, res) {
         }
         res.render('recruiter_profile', {
             companies :_companies,
-            data      :!results[0].error ? results[0].data : [],
-            industries:!results[1].error ? results[1].data : [],
-            benefits  :!results[2].error ? results[2].data : [],
-            job_data  :!results[3].error ? results[3].data : [],
+            user      :!results[0].error ? results[0].data : [],
+            data      :!results[1].error ? results[1].data : [],
+            industries:!results[2].error ? results[2].data : [],
+            benefits  :!results[3].error ? results[3].data : [],
+            job_data  :!results[4].error ? results[4].data : [],
             job_id    :req.params.id,
             user_id   :req.cookies.pixljob_user_id
         });
@@ -244,13 +284,21 @@ router.get('/recruiter', function(req, res) {
 router.get('/post-job', function(req, res) {
     async.parallel([
         function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
             helper_utils.makeApiRequest(req, 'GET', '/categories', function(_res) {
                 callback(null, _res);
             });
         }
     ], function(err, results) {
         res.render('post_job_work', {
-            categories  :!results[0].error ? results[0].data : [],
+            user        :!results[0].error ? results[0].data : [],
+            categories  :!results[1].error ? results[1].data : [],
             recruiter_id:req.cookies.pixljob_user_id
         });
     });
@@ -258,6 +306,13 @@ router.get('/post-job', function(req, res) {
 
 router.get('/post-job-edit/:id', function(req, res) {
     async.parallel([
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
         function(callback) {
             helper_utils.makeApiRequest(req, 'GET', '/categories', function(_res) {
                 callback(null, _res);
@@ -270,8 +325,9 @@ router.get('/post-job-edit/:id', function(req, res) {
         }
     ], function(err, results) {
         res.render('post_job_work_edit', {
-            categories  :!results[0].error ? results[0].data : [],
-            work_data   :!results[1].error ? results[1].data : [],
+            user        :!results[0].error ? results[0].data : [],
+            categories  :!results[1].error ? results[1].data : [],
+            work_data   :!results[2].error ? results[2].data : [],
             recruiter_id:req.cookies.pixljob_user_id,
             job_id      :req.params.id
         });
@@ -280,6 +336,13 @@ router.get('/post-job-edit/:id', function(req, res) {
 
 router.get('/post-job/info/:id', function(req, res) {
     async.parallel([
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
         function(callback) {
             helper_utils.makeApiRequest(req, 'GET', '/technologies', function(_res) {
                 callback(null, _res);
@@ -292,8 +355,9 @@ router.get('/post-job/info/:id', function(req, res) {
         }
     ], function(err, results) {
         res.render('post_job_info', {
-            technologies:!results[0].error ? results[0].data : [],
-            job_data    :!results[1].error ? results[1].data : [],
+            user        :!results[0].error ? results[0].data : [],
+            technologies:!results[1].error ? results[1].data : [],
+            job_data    :!results[2].error ? results[2].data : [],
             job_id      :req.params.id
         });
     });
@@ -301,6 +365,13 @@ router.get('/post-job/info/:id', function(req, res) {
 
 router.get('/post-job/company/:id', function(req, res) {
     async.parallel([
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
         function(callback) {
             helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
                 function(_res) {
@@ -324,44 +395,53 @@ router.get('/post-job/company/:id', function(req, res) {
         }
     ], function(err, results) {
         var _companies = [];
-        if(results[0] && !results[0].error && results[0].data) {
-            _companies = results[0].data.companies;
+        if(results[1] && !results[1].error && results[1].data) {
+            _companies = results[1].data.companies;
         }
         res.render('post_job_company', {
             companies :_companies,
-            industries:!results[1].error ? results[1].data : [],
-            benefits  :!results[2].error ? results[2].data : [],
-            job_data  :!results[3].error ? results[3].data : [],
+            user      :!results[0].error ? results[0].data : [],
+            industries:!results[2].error ? results[2].data : [],
+            benefits  :!results[3].error ? results[3].data : [],
+            job_data  :!results[4].error ? results[4].data : [],
             job_id    :req.params.id,
             user_id   :req.cookies.pixljob_user_id
         });
     });
 });
 
-router.get('/job-recruiter/:id', function (req, res) {
+router.get('/recruiter/applications/:id', function(req, res) {
     async.parallel([
-        function (callback) {
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
             helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
-                function (_res) {
+                function(_res) {
                     callback(null, _res);
                 });
         },
-        function (callback) {
+        function(callback) {
             req.body.recruiter_id = req.cookies.pixljob_user_id;
             helper_utils.makeApiRequest(req, 'POST', '/jobs/recruiter/search',
-                function (_res) {
+                function(_res) {
                     callback(null, _res);
                 });
         }
-    ], function (err, results) {
+    ], function(err, results) {
         var _companies = [];
-        if (results[0] && !results[0].error && results[0].data) {
-            _companies = results[0].data.companies;
+        if(results[1] && !results[1].error && results[1].data) {
+            _companies = results[1].data.companies;
         }
         res.render('job_recruiter', {
-            companies: _companies,
-            user: !results[0].error ? results[0].data : [],
-            jobs: !results[1].error ? results[1].data : []
+            companies:_companies,
+            user     :!results[0].error ? results[0].data : [],
+            data     :!results[1].error ? results[1].data : [],
+            jobs     :!results[2].error ? results[2].data : []
         });
     });
 });

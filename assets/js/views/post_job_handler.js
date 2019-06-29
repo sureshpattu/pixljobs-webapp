@@ -1,7 +1,7 @@
-var ApiUtil = require('../utils/apiUtil');
+var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
-var utils = require('../utils/common');
-var waterfall = require('async-waterfall');
+var utils         = require('../utils/common');
+var waterfall     = require('async-waterfall');
 
 function PostJobHandler() {
 
@@ -37,7 +37,7 @@ function PostJobHandler() {
 
         function updateInputs(data) {
             from = data.from;
-            to = data.to;
+            to   = data.to;
 
             $inputFrom.prop('value', from);
             $inputTo.prop('value', to);
@@ -81,7 +81,7 @@ function PostJobHandler() {
 
     function bindPostJobEvent() {
         var _form_name = '#jsJobForm';
-        var _form = $(_form_name);
+        var _form      = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
@@ -134,8 +134,8 @@ function PostJobHandler() {
 
     function postJobRequirements(_job_id, _form) {
         var _obj = {
-            qa_job_id  :_job_id,
-            requirements  :_form.find('.js_job_requirements').val() || []
+            qa_job_id   :_job_id,
+            requirements:_form.find('.js_job_requirements').val() || []
         };
         ApiUtil.makeAjaxRequest('/api/requirements', '', 'POST', '', _obj, function(_res) {
 
@@ -149,7 +149,7 @@ function PostJobHandler() {
 
     function bindPostJobWorkInfoEvent() {
         var _form_name = '#jsJobInfoForm';
-        var _form = $(_form_name);
+        var _form      = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
@@ -180,7 +180,7 @@ function PostJobHandler() {
             waterfall(_technologies.map(function(arrayItem) {
                 return function(lastItemResult, CB) {
                     if(!CB) {
-                        CB = lastItemResult;
+                        CB             = lastItemResult;
                         lastItemResult = null;
                     }
                     var _obj = {
@@ -199,32 +199,9 @@ function PostJobHandler() {
     }
 
     function bindPostJobCompanyEvent() {
-
-        var _company_check_box = $('.js_company_check_box');
-        _company_check_box.click(function() {
-            var _this = $(this);
-            if(_this.prop('checked')) {
-                _company_check_box.prop('checked', false);
-                _this.prop('checked', true);
-            } else {
-                _company_check_box.prop('checked', false);
-                _this.prop('checked', false);
-            }
-        });
-
-        $('.js_add_new_company_btn').click(function() {
-            _company_check_box.prop('checked', false);
-            $('.js_forms_wrap').removeClass('hide');
-            $(this).addClass('hide');
-
-            $('.jsSubmitCompanyBtn').removeClass('hide');
-            $('.jsSubmitExistingCompanyBtn').addClass('hide');
-
-            $('.js_company_benefit').select2({
-                tags           :true,
-                tokenSeparators:[',']
-            });
-            $('.js_select2').select2({});
+        $('.js_company_benefit').select2({
+            tags           :true,
+            tokenSeparators:[',']
         });
 
         $('.jsSubmitExistingCompanyBtn').click(function() {
@@ -242,6 +219,31 @@ function PostJobHandler() {
         $('.jsSubmitCompanyBtn').click(function() {
             $('#jsJobCompanyForm').submit();
         });
+
+        var _company_check_box = $('.js_company_check_box');
+        if(_company_check_box) {
+            _company_check_box.click(function() {
+                var _this = $(this);
+                if(_this.prop('checked')) {
+                    _company_check_box.prop('checked', false);
+                    _this.prop('checked', true);
+                } else {
+                    _company_check_box.prop('checked', false);
+                    _this.prop('checked', false);
+                }
+            });
+
+            $('.js_add_new_company_btn').click(function() {
+                _company_check_box.prop('checked', false);
+                $('.js_forms_wrap').removeClass('hide');
+                $(this).addClass('hide');
+
+                $('.jsSubmitCompanyBtn').removeClass('hide');
+                $('.jsSubmitExistingCompanyBtn').addClass('hide');
+                $('.js_select2').select2({});
+            });
+        }
+
     }
 
     function updateJobCompany(_company_id) {
@@ -252,7 +254,7 @@ function PostJobHandler() {
         };
         ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
-                alert("Job posted successfully!");
+                alert('Job posted successfully!');
                 window.location.href = '/';
             } else {
                 alert(_res.message || 'Something went wrong!');
@@ -262,7 +264,7 @@ function PostJobHandler() {
 
     function bindPostJobCompanyFormEvent() {
         var _form_name = '#jsJobCompanyForm';
-        var _form = $(_form_name);
+        var _form      = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
@@ -284,17 +286,30 @@ function PostJobHandler() {
                     email       :_form.find('.js_candidate_email').val()
                 };
 
-                console.log(_company_obj);
-
                 ApiUtil.makeAjaxRequest('/api/companies', '', 'POST', '', _company_obj, function(_res) {
                     if(!_res.error && _res.data) {
-                        postCompanyBenefits(_res.data.id, _form)
+                        uploadFiles(_res.data.id, _form)
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
                 });
             }
         });
+    }
+
+    function uploadFiles(company_id, _form) {
+        var _input_file = _form.find('.js_input_c_logo_file');
+        if(_input_file.val()) {
+            var formData = new FormData();
+            formData.append('photo', _input_file[0].files[0]);
+            ApiUtil.makeFileUploadRequest('/api/companies/photo/upload/' + company_id, '', 'POST', '',
+                formData,
+                function(_res_path) {
+                    postCompanyBenefits(company_id, _form);
+                });
+        } else {
+            postCompanyBenefits(company_id, _form);
+        }
     }
 
     function postCompanyBenefits(company_id, _form) {
