@@ -28,9 +28,9 @@
                                 <div class="col-md-3">
                                     <div class="profile_img_wrap">
                                         {{#if data.photo}}
-                                            <img src="/api/applicant/photo/{{data.photo}}" class="img_sec">
+                                            <img src="/api/applicant/photo/{{data.photo}}" class="img_sec js_img_pre_holder">
                                         {{else}}
-                                            <img src="https://via.placeholder.com/150" class="img_sec">
+                                            <img src="https://via.placeholder.com/150" class="img_sec js_img_pre_holder">
                                         {{/if}}
                                         <input type="file" class="js_input_profile_file" accept="image/*">
                                         <input type="hidden" class="js_existing_profile_photo" value="{{data.photo}}">
