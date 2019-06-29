@@ -358,7 +358,6 @@ router.get('/job-recruiter/:id', function (req, res) {
         if (results[0] && !results[0].error && results[0].data) {
             _companies = results[0].data.companies;
         }
-        console.log("result",results[0]);
         res.render('job_recruiter', {
             companies: _companies,
             user: !results[0].error ? results[0].data : [],

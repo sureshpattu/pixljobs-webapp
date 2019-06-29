@@ -3,15 +3,6 @@ var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
 
 function RecruiterHandler() {
-    function uploadImage(_ele, _cb) {
-        var formData = new FormData();
-        formData.append('photo', _ele[0].files[0]);
-        ApiUtil.makeFileUploadRequest('/api/recruiter/photo/upload', '', 'POST', '', formData,
-            function(_res_path) {
-                _cb(_res_path);
-            });
-    }
-
     function readURL(input) {
         if(input.files && input.files[0]) {
             var reader          = new FileReader();
@@ -20,6 +11,7 @@ function RecruiterHandler() {
             reader.onload = function(e) {
                 _img_pre_holder.attr('src', e.target.result);
                 _img_pre_holder.removeClass('hide');
+                $('.js_profile_img_txt').addClass('hide');
             };
 
             reader.readAsDataURL(input.files[0]);

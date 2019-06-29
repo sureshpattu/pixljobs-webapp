@@ -26,6 +26,26 @@
                 margin-left: 4px;
             }
         }
+
+        .verify_link {
+            font-size: 12px;
+            font-weight: bold;
+            color: #ffffff;
+            border-radius: 3px;
+            background-color: #f5a623;
+            padding: 3px 5px 2px 5px;
+            margin-left: 4px;
+        }
+
+        .non_verify_link {
+            font-size: 12px;
+            font-weight: 700;
+            color: #b7b7b7;
+            border-radius: 3px;
+            background-color: #ececec;
+            padding: 3px 5px 2px 5px;
+            margin-left: 4px;
+        }
     }
 
     .sidenav {
@@ -136,7 +156,7 @@
 
         .inr_txt {
             position: absolute;
-            top: 42px;
+            top: 26px;
             right: 24px;
             color: #637282;
             font-size: 12px;

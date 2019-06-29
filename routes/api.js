@@ -111,7 +111,7 @@ router.put('/recruiter/:id', function(req, res, next) {
 });
 
 router.post('/recruiter/photo/upload/:id', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/recruiter/photo/upload' + req.params.id, function(_response) {
+    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/recruiter/photo/upload/' + req.params.id, function(_response) {
         res.json(_response);
     });
 });
