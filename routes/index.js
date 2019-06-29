@@ -9,8 +9,8 @@ router.get('/login', function(req, res) {
 });
 
 router.get('/logout', function(req, res) {
-    res.clearCookie('med_cond_user_token');
-    res.clearCookie('med_cond_user_id');
+    res.clearCookie('pixljob_user_id');
+    res.clearCookie('pixljob_user_token');
     res.redirect('/login');
 });
 
@@ -102,7 +102,7 @@ router.get('/', function(req, res) {
     });
 });
 
-router.get('/applicant-account', function(req, res) {
+router.get('/applicant-account', verify.isApplicantLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -130,7 +130,7 @@ router.get('/applicant-account', function(req, res) {
     });
 });
 
-router.get('/applicant/applications/:id', function(req, res) {
+router.get('/applicant/applications/:id', verify.isApplicantLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -232,7 +232,7 @@ router.get('/recruiter/forgot/password/:token', function(req, res) {
     });
 });
 
-router.get('/recruiter', function(req, res) {
+router.get('/recruiter', verify.isRecruiterLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -281,7 +281,7 @@ router.get('/recruiter', function(req, res) {
     });
 });
 
-router.get('/post-job', function(req, res) {
+router.get('/post-job', verify.isRecruiterLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -304,7 +304,7 @@ router.get('/post-job', function(req, res) {
     });
 });
 
-router.get('/post-job-edit/:id', function(req, res) {
+router.get('/post-job-edit/:id', verify.isRecruiterLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -334,7 +334,7 @@ router.get('/post-job-edit/:id', function(req, res) {
     });
 });
 
-router.get('/post-job/info/:id', function(req, res) {
+router.get('/post-job/info/:id', verify.isRecruiterLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -363,7 +363,7 @@ router.get('/post-job/info/:id', function(req, res) {
     });
 });
 
-router.get('/post-job/company/:id', function(req, res) {
+router.get('/post-job/company/:id', verify.isRecruiterLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -410,7 +410,7 @@ router.get('/post-job/company/:id', function(req, res) {
     });
 });
 
-router.get('/recruiter/applications/:id', function(req, res) {
+router.get('/recruiter/applications/:id', verify.isRecruiterLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -442,6 +442,41 @@ router.get('/recruiter/applications/:id', function(req, res) {
             user     :!results[0].error ? results[0].data : [],
             data     :!results[1].error ? results[1].data : [],
             jobs     :!results[2].error ? results[2].data : []
+        });
+    });
+});
+
+router.get('/recruiter/companies/:id', verify.isRecruiterLoggedIn, function(req, res) {
+    async.parallel([
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
+                function(_res) {
+                    callback(null, _res);
+                });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/industries', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        res.render('companies', {
+            user      :!results[0].error ? results[0].data : [],
+            data      :!results[1].error ? results[1].data : [],
+            industries:!results[2].error ? results[2].data : [],
+            benefits  :!results[3].error ? results[3].data : []
         });
     });
 });
