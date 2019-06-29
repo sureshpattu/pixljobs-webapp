@@ -63,6 +63,10 @@ router.get('/applicant/photo/:image', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE', '/applicant/photo/' + req.params.image, '', res);
 });
 
+router.delete('/applicant/photo/:image', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'DELETE', '/applicant/photo/' + req.params.image, '', res);
+});
+
 router.post('/applicant/resume/upload/:id', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/applicant/resume/upload/' + req.params.id, function(_response) {
         res.json(_response);
