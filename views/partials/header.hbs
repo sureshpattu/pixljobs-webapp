@@ -18,7 +18,11 @@
                         <li class="dropdown user_link_wrap">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                 {{#if user.photo}}
-                                    <img src="/api/applicant/photo/{{user.photo}}" class="user_img">
+                                    {{#if user.is_recruiter}}
+                                        <img src="/api/recruiter/photo/{{user.photo}}" class="user_img">
+                                    {{else}}
+                                        <img src="/api/applicant/photo/{{user.photo}}" class="user_img">
+                                    {{/if}}
                                 {{else}}
                                     <img src="/img/user_icon.svg" class="user_img">
                                 {{/if}}
