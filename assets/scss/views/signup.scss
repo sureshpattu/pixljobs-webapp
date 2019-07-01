@@ -173,9 +173,25 @@
                     }
                 }
 
-                .active {
+                .default_icon {
+                    display: inline-block;
+                }
+
+                .color_icon {
+                    display: none;
+                }
+
+                a.active {
                     color: #25de8c !important;
                     opacity: 1;
+
+                    .default_icon {
+                        display: none;
+                    }
+
+                    .color_icon {
+                        display: inline-block;
+                    }
                 }
 
 
