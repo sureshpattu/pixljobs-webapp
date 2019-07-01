@@ -1,7 +1,7 @@
 var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils = require('../utils/common');
-var async         = require('async');
+var async = require('async');
 
 function ApplicantSignUpHandler() {
     var _img_pre_holder = $('.js_img_pre_holder');
@@ -42,7 +42,8 @@ function ApplicantSignUpHandler() {
                 console.log(obj);
                 var callback = function (_res) {
                     if (!_res.error) {
-                        uploadFiles(_form, _res.data.id);
+                        uploadPhoto(_form, _res.data.id);
+                        uploadResume(_form, _res.data.id);
                         alert('Data updated successfully!');
                     } else {
                         alert(_res.message || 'Something went wrong!');
@@ -53,93 +54,71 @@ function ApplicantSignUpHandler() {
         });
     }
 
-    function uploadFiles(_form, applicant_id) {
-        async.parallel([
-            function (callback) {
-                var _input_file = _form.find('.js_input_profile_file');
-                var _existing_file = _form.find('.js_existing_profile_photo');
-                if (_input_file.val()) {
-
-                    if (_existing_file) {
-                        var formData = new FormData();
-                        formData.append('photo', _existing_file[0].files[0]);
-                        ApiUtil.makeFileUploadRequest('/api/applicant/photo/' + _existing_file, '', 'DELETE', '',
-                            formData,
-                            function (_res_path) {
-                                if (_res_path.error) {
-                                    alert(_res.message || 'Something went wrong!');
-                                }
-                                callback(null, null);
-                            });
-
-                    } else {
-                        reuploadFiles(_form, _res.data.id);
-                    }
-                } else {
-                    callback(null, null);
-                }
-            },
-            function (callback) {
-                var _input_file = _form.find('.js_resume_file');
-                if (_input_file.val()) {
-                    var formData = new FormData();
-                    formData.append('photo', _input_file[0].files[0]);
-                    ApiUtil.makeFileUploadRequest('/api/applicant/resume/upload/' + applicant_id, '', 'POST', '',
-                        formData,
-                        function (_res_path) {
-                            if (_res_path.error) {
-                                alert(_res.message || 'Something went wrong!');
-                            }
-                            callback(null, null);
-                        });
-                } else {
-                    callback(null, null);
-                }
+    function uploadPhoto(_form, applicant_id) {
+        var _input_file = _form.find('.js_input_profile_file');
+        var _existing_file = _form.find('.js_existing_profile_photo');
+        if (_input_file.val()) {
+            if (_existing_file.val()) {
+                ApiUtil.makeAjaxRequest('/api/applicant/photo/' + _existing_file.val(), '', 'DELETE', '','',
+                    function (_res_path) {
+                        if (_res_path.error) {
+                            updatePhoto(_form, applicant_id);
+                        }
+                        else {
+                            updatePhoto(_form, applicant_id);
+                        }
+                        window.location.href = '/applicant-account'
+                    });
             }
-        ], function (err, results) {
-            window.location.href = '/applicant-account'
-        });
+        }
     }
 
-    function reuploadFiles(_form, applicant_id) {
-        async.parallel([
-            function (callback) {
-                var _input_file = _form.find('.js_input_profile_file');
-                if (_input_file.val()) {
-                    var formData = new FormData();
-                    formData.append('photo', _input_file[0].files[0]);
-                    ApiUtil.makeFileUploadRequest('/api/applicant/photo/upload/' + applicant_id, '', 'POST', '',
-                        formData,
-                        function (_res_path) {
-                            if (_res_path.error) {
-                                alert(_res.message || 'Something went wrong!');
-                            }
-                            callback(null, null);
-                        });
-                } else {
-                    callback(null, null);
-                }
-            },
-            function (callback) {
-                var _input_file = _form.find('.js_resume_file');
-                if (_input_file.val()) {
-                    var formData = new FormData();
-                    formData.append('photo', _input_file[0].files[0]);
-                    ApiUtil.makeFileUploadRequest('/api/applicant/resume/upload/' + applicant_id, '', 'POST', '',
-                        formData,
-                        function (_res_path) {
-                            if (_res_path.error) {
-                                alert(_res.message || 'Something went wrong!');
-                            }
-                            callback(null, null);
-                        });
-                } else {
-                    callback(null, null);
-                }
+    function uploadResume(_form, applicant_id) {
+        var _input_file = _form.find('.js_input_resume_file');
+        var _existing_file = _form.find('.js_existing_resume_file');
+        if (_input_file.val()) {
+            console.log(_input_file.val());
+            if (_existing_file.val()) {
+                console.log(_existing_file.val());
+                ApiUtil.makeAjaxRequest('/api/applicant/resume/' + _existing_file.val(), '', 'DELETE', '','',
+                    function (_res_path) {
+                        if (_res_path.error) {
+                            updateResume(_form, applicant_id);
+                        }
+                        else {
+                            updateResume(_form, applicant_id);
+                        }
+                        window.location.href = '/applicant-account'
+                    });
             }
-        ], function (err, results) {
-            window.location.href = '/applicant-account'
-        });
+        }
+    }
+
+
+    function updatePhoto(_form, applicant_id) {
+        var _input_file = _form.find('.js_input_profile_file');
+        if (_input_file.val()) {
+            var formData = new FormData();
+            formData.append('photo', _input_file[0].files[0]);
+            ApiUtil.makeFileUploadRequest('/api/applicant/photo/upload/' + applicant_id, '', 'POST', '',
+                formData, function (err, results) {
+                    // window.location.href = '/applicant-account'
+                    alert('Data updated successfully!');
+                });
+        }
+    }
+
+    function updateResume(_form, applicant_id) {
+        var _input_file = _form.find('.js_input_resume_file');
+        if (_input_file.val()) {
+            var formData = new FormData();
+            formData.append('photo', _input_file[0].files[0]);
+            ApiUtil.makeFileUploadRequest('/api/applicant/resume/upload/' + applicant_id, '', 'POST', '',
+                formData, function (err, results) {
+                    // window.location.href = '/applicant-account'
+                    alert('Data updated successfully!');
+                });
+        }
     }
 
 
@@ -207,6 +186,10 @@ function ApplicantSignUpHandler() {
         });
 
         $('.js_input_profile_file').change(function () {
+            readURL(this);
+        });
+
+        $('.js_input_resume_file').change(function () {
             readURL(this);
         });
     }

@@ -64,11 +64,19 @@ router.get('/applicant/photo/:image', function(req, res, next) {
 });
 
 router.delete('/applicant/photo/:image', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'DELETE', '/applicant/photo/' + req.params.image, '', res);
+    helper_utils.makeApiRequest(req, 'DELETE', '/applicant/photo/' + req.params.image, function(_response) {
+        res.json(_response);
+    });
 });
 
 router.post('/applicant/resume/upload/:id', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/applicant/resume/upload/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.delete('/applicant/resume/:file', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'DELETE', '/applicant/resume/' + req.params.file, function(_response) {
         res.json(_response);
     });
 });
@@ -122,6 +130,12 @@ router.post('/recruiter/photo/upload/:id', function(req, res, next) {
 
 router.get('/recruiter/photo/:image', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE', '/recruiter/photo/' + req.params.image, '', res);
+});
+
+router.delete('/recruiter/photo/:image', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'DELETE', '/recruiter/photo/' + req.params.image, function(_response) {
+        res.json(_response);
+    });
 });
 
 router.post('/companies', function(req, res, next) {
