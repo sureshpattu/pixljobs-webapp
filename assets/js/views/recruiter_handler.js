@@ -55,9 +55,9 @@ function RecruiterHandler() {
                 formData,
                 function(_res_path) {
                     if(!_res_path.error) {
-                        alert(_res.message);
+                        alert(_res_path.message);
                     } else {
-                        alert(_res.message || 'Something went wrong!');
+                        alert(_res_path.message || 'Something went wrong!');
                     }
                     postCompanyDetails(recruiter_id, _form);
                 });
