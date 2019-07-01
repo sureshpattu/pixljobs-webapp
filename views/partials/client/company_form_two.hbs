@@ -62,7 +62,7 @@
                             <select class="form-control required js_industry js_select2">
                                 <option value="">Select a domain</option>
                                 {{#each ../industries}}
-                                    {{#ifCond ../industries.id '===' this.id}}
+                                    {{#ifCond ../industry.id '===' this.id}}
                                         <option value="{{this.id}}" selected>{{this.name}}</option>
                                     {{else}}
                                         <option value="{{this.id}}">{{this.name}}</option>
