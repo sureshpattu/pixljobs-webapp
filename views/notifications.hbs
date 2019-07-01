@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Account Notifications</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    {{>header_assets swiper=true  select2=true cropper=true}}
+</head>
+<body class="profile_pg">
+{{>header}}
+<section class="common_main_sec">
+    {{>common_hero_sec}}
+    <div class="container">
+        {{>recruiter_tab_link active="notification"}}
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="common_form_sec">
+                    <div class="form_wrap">
+                        <div class="name_info_sec">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="profile_img_wrap">
+                                        {{#if data.photo}}
+                                            <img src="/api/recruiter/photo/{{data.photo}}" class="img_sec">
+                                        {{else}}
+                                            <img src="https://via.placeholder.com/150" class="img_sec">
+                                        {{/if}}
+                                        <div class="icon_wrap">
+                                            <span class="fa fa-pencil"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="name_txt">{{data.name}}</div>
+                                    <div class="qualification_txt">{{data.designation}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{>footer swiper=true select2=true cropper=true}}
+</body>
+<script type="application/javascript">
+    $(function() {
+        RecruiterProfileEditHandler.initEdit();
+    });
+
+</script>
+</html>

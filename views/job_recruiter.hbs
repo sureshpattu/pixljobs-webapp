@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Recruiter</title>
+    <title>Account Applications</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{>header_assets swiper=true  select2=true}}
@@ -11,14 +11,7 @@
 <section class="common_main_sec">
     {{>common_hero_sec}}
     <div class="container">
-        <div class="common_tab_links_wrap">
-            <ul>
-                <li><a class="cta_link " href="/recruiter">Profile</a></li>
-                <li><a class="cta_link" href="/recruiter/companies/{{data.id}}">Companies</a></li>
-                <li><a class="cta_link" href="/recruiter/applications/{{data.id}}">Applications</a></li>
-                <li><a class="cta_link" href="#">Preferences</a></li>
-            </ul>
-        </div>
+        {{>recruiter_tab_link active="job_recruiter"}}
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="common_form_sec">

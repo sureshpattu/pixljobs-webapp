@@ -12,13 +12,7 @@
 <section class="common_main_sec">
     {{>common_hero_sec}}
     <div class="container">
-        <div class="common_tab_links_wrap">
-            <ul>
-                <li><a class="cta_link active" href="/applicant-account">Profile</a></li>
-                <li><a class="cta_link" href="/applicant/applications/{{data.id}}">Applications</a></li>
-                <li><a class="cta_link" href="#">Preferences</a></li>
-            </ul>
-        </div>
+        {{>applicant_tab_link active='applicant_account'}}
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="common_form_sec">
@@ -28,9 +22,11 @@
                                 <div class="col-md-3">
                                     <div class="profile_img_wrap">
                                         {{#if data.photo}}
-                                            <img src="/api/applicant/photo/{{data.photo}}" class="img_sec js_img_pre_holder">
+                                            <img src="/api/applicant/photo/{{data.photo}}"
+                                                 class="img_sec js_img_pre_holder">
                                         {{else}}
-                                            <img src="https://via.placeholder.com/150" class="img_sec js_img_pre_holder">
+                                            <img src="https://via.placeholder.com/150"
+                                                 class="img_sec js_img_pre_holder">
                                         {{/if}}
                                         <input type="file" class="js_input_profile_file" accept="image/*">
                                         <input type="hidden" class="js_existing_profile_photo" value="{{data.photo}}">

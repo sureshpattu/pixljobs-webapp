@@ -130,7 +130,7 @@ router.get('/applicant-account', verify.isApplicantLoggedIn, function(req, res) 
     });
 });
 
-router.get('/applicant/applications/:id', verify.isApplicantLoggedIn, function(req, res) {
+router.get('/applicant/applications', verify.isApplicantLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -410,7 +410,7 @@ router.get('/post-job/company/:id', verify.isRecruiterLoggedIn, function(req, re
     });
 });
 
-router.get('/recruiter/applications/:id', verify.isRecruiterLoggedIn, function(req, res) {
+router.get('/recruiter/applications', verify.isRecruiterLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -446,7 +446,7 @@ router.get('/recruiter/applications/:id', verify.isRecruiterLoggedIn, function(r
     });
 });
 
-router.get('/recruiter/companies/:id', verify.isRecruiterLoggedIn, function(req, res) {
+router.get('/recruiter/companies', verify.isRecruiterLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -479,6 +479,10 @@ router.get('/recruiter/companies/:id', verify.isRecruiterLoggedIn, function(req,
             benefits  :!results[3].error ? results[3].data : []
         });
     });
+});
+
+router.get('/notification', function(req, res) {
+    res.render('notifications');
 });
 
 module.exports = router;

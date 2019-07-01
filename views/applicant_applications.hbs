@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Pixlcoders</title>
+    <title>Applicant Application</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{>header_assets select2=true}}
@@ -11,13 +11,7 @@
 <section class="common_main_sec">
     {{>common_hero_sec}}
     <div class="container">
-        <div class="common_tab_links_wrap">
-            <ul>
-                <li><a class="cta_link " href="/applicant-account">Profile</a></li>
-                <li><a class="cta_link active" href="#">Applications</a></li>
-                <li><a class="cta_link" href="#">Preferences</a></li>
-            </ul>
-        </div>
+        {{>applicant_tab_link active="applicant_application"}}
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="common_form_sec">
@@ -62,7 +56,7 @@
     $(function() {
 
         $('.js_close_btn_link').click(function() {
-            var _this   = $(this);
+            var _this = $(this);
             var _parent = $(this).closest('.js_card_sec');
             _parent.find('.js_panel_title').trigger('click');
             if(_this.hasClass('collapsed')) {
@@ -72,7 +66,7 @@
             }
         });
         $('.js_panel_title').click(function() {
-            var _this   = $(this);
+            var _this = $(this);
             var _parent = $(this).closest('.js_card_sec');
             if(!_this.hasClass('collapsed')) {
                 _parent.find('.js_close_btn_link').addClass('hide');
