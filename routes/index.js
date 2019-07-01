@@ -256,13 +256,7 @@ router.get('/recruiter', verify.isRecruiterLoggedIn, function(req, res) {
             helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
                 callback(null, _res);
             });
-        },
-        function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/' + req.params.id, function(_res) {
-                callback(null, _res);
-            });
         }
-
     ], function(err, results) {
         var _companies = [];
         if(results[0] && !results[0].error && results[0].data) {
@@ -274,8 +268,6 @@ router.get('/recruiter', verify.isRecruiterLoggedIn, function(req, res) {
             data      :!results[1].error ? results[1].data : [],
             industries:!results[2].error ? results[2].data : [],
             benefits  :!results[3].error ? results[3].data : [],
-            job_data  :!results[4].error ? results[4].data : [],
-            job_id    :req.params.id,
             user_id   :req.cookies.pixljob_user_id
         });
     });
