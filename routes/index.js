@@ -481,8 +481,40 @@ router.get('/recruiter/companies', verify.isRecruiterLoggedIn, function(req, res
     });
 });
 
-router.get('/notification', function(req, res) {
-    res.render('notifications');
+router.get('/notification', verify.isRecruiterLoggedIn, function(req, res) {
+    async.parallel([
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
+                function(_res) {
+                    callback(null, _res);
+                });
+        },
+        function(callback) {
+            req.body.recruiter_id = req.cookies.pixljob_user_id;
+            helper_utils.makeApiRequest(req, 'POST', '/jobs/recruiter/search',
+                function(_res) {
+                    callback(null, _res);
+                });
+        }
+    ], function(err, results) {
+        var _companies = [];
+        if(results[1] && !results[1].error && results[1].data) {
+            _companies = results[1].data.companies;
+        }
+        res.render('notifications', {
+            companies:_companies,
+            user     :!results[0].error ? results[0].data : [],
+            data     :!results[1].error ? results[1].data : [],
+            jobs     :!results[2].error ? results[2].data : []
+        });
+    });
 });
 
 module.exports = router;

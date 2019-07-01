@@ -26,11 +26,11 @@
                             <ul class="dropdown-menu">
                                 {{#if user.is_recruiter}}
                                     <li><a href="/recruiter">Profile</a></li>
-                                    <li><a href="/recruiter/applications/{{user.id}}">Applications</a></li>
+                                    <li><a href="/recruiter/applications">Applications</a></li>
                                     <li><a href="#">Preferences</a></li>
                                 {{else}}
                                     <li><a href="/applicant-account">Profile</a></li>
-                                    <li><a href="/applicant/applications/{{user.id}}">Applications</a></li>
+                                    <li><a href="/applicant/applications">Applications</a></li>
                                     <li><a href="#">Preferences</a></li>
                                 {{/if}}
                                 <li><a href="/logout" title="PixlJobs Login Page">Log out</a></li>
