@@ -134,7 +134,6 @@ function PostJobHandler() {
         ApiUtil.makeAjaxRequest('/api/qa-job/categories', '', 'POST', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
                 postJobRequirements(_job_id, _form);
-                // window.location.href = '/post-job/info/' + _job_id;
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
