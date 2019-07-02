@@ -342,6 +342,8 @@ function PostJobHandler() {
         initCompany :function() {
             bindPostJobCompanyEvent();
             bindPostJobCompanyFormEvent();
+            $('.js_industry').select2();
+            $('.js_company_size').select2();
         }
     }
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Account Notification</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{>header_assets swiper=true  select2=true}}
+</head>
+<body class="job_recruiter_pg">
+{{>header}}
+<section class="common_main_sec">
+    {{>common_hero_sec}}
+    <div class="container">
+        {{>recruiter_tab_link active="notification"}}
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="common_form_sec">
+                    <div class="user_wrap">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="profile_img_wrap">
+                                    <img src="https://via.placeholder.com/150" class="img_sec">
+                                    <div class="icon_wrap">
+                                        <span class="fa fa-pencil"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="details_sec">
+                                    <div class="name">
+                                        {{companies.0.name}}
+                                    </div>
+                                    <div class="designation">
+                                        {{companies.0.city}} {{companies.0.url}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cards_wrap js_cards_wrap">
+                        {{>client/notification_card_row data=jobs.result}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{>footer swiper=true select2=true}}
+</body>
+<script type="application/javascript">
+    $(function() {
+
+    });
+</script>
+</html>

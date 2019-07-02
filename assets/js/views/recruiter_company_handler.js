@@ -83,6 +83,9 @@ function RecruiterCompanyHandler() {
     }
 
     function bindCommonClickEvents() {
+
+        $('.js_gender').select2();
+
         $('.js_input_profile_file').change(function() {
             readURL(this);
         });

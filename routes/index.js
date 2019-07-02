@@ -130,7 +130,7 @@ router.get('/applicant-account', verify.isApplicantLoggedIn, function(req, res) 
     });
 });
 
-router.get('/applicant/applications/:id', verify.isApplicantLoggedIn, function(req, res) {
+router.get('/applicant/applications', verify.isApplicantLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -402,7 +402,7 @@ router.get('/post-job/company/:id', verify.isRecruiterLoggedIn, function(req, re
     });
 });
 
-router.get('/recruiter/applications/:id', verify.isRecruiterLoggedIn, function(req, res) {
+router.get('/recruiter/applications', verify.isRecruiterLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -438,7 +438,7 @@ router.get('/recruiter/applications/:id', verify.isRecruiterLoggedIn, function(r
     });
 });
 
-router.get('/recruiter/companies/:id', verify.isRecruiterLoggedIn, function(req, res) {
+router.get('/recruiter/companies', verify.isRecruiterLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
@@ -469,6 +469,42 @@ router.get('/recruiter/companies/:id', verify.isRecruiterLoggedIn, function(req,
             data      :!results[1].error ? results[1].data : [],
             industries:!results[2].error ? results[2].data : [],
             benefits  :!results[3].error ? results[3].data : []
+        });
+    });
+});
+
+router.get('/notification', verify.isRecruiterLoggedIn, function(req, res) {
+    async.parallel([
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
+                function(_res) {
+                    callback(null, _res);
+                });
+        },
+        function(callback) {
+            req.body.recruiter_id = req.cookies.pixljob_user_id;
+            helper_utils.makeApiRequest(req, 'POST', '/jobs/recruiter/search',
+                function(_res) {
+                    callback(null, _res);
+                });
+        }
+    ], function(err, results) {
+        var _companies = [];
+        if(results[1] && !results[1].error && results[1].data) {
+            _companies = results[1].data.companies;
+        }
+        res.render('notifications', {
+            companies:_companies,
+            user     :!results[0].error ? results[0].data : [],
+            data     :!results[1].error ? results[1].data : [],
+            jobs     :!results[2].error ? results[2].data : []
         });
     });
 });
