@@ -1353,27 +1353,24 @@ var async         = require('async');
 
 function NotificationHandler() {
 
-
-
     function bindCommonClickEvents() {
         $('.js_select2').select2({});
 
-
-        $('.js_input_profile_file').change(function () {
+        $('.js_input_profile_file').change(function() {
             readURL(this);
         });
 
-        $('.js_panel_title.unread').click(function () {
-            var _this            = $(this);
-            var _parent          = $(this).closest('.js_main_card_sec');
-            _parent.find('.js_panel_title');
+        $('.js_panel_title.unread').click(function() {
+            var _this   = $(this);
+            var _notification_id =$(this).data('notification_id');
 
             var _obj = {
-                status : _obj.setValue("read")
+                status:"read"
             };
-            ApiUtil.makeAjaxRequest('/api/notifications/' + notification_id, '', 'PUT', '', _obj, function(_res) {
+            ApiUtil.makeAjaxRequest('/api/notifications/' + _notification_id, '', 'PUT', '', _obj, function(_res) {
                 if(!_res.error && _res.data) {
-                    window.location.href = '/post-job/info';
+                    //window.location.href = '/notifications';
+                    //alert('message read');
                 } else {
                     alert(_res.message || 'Something went wrong!');
                 }
@@ -1397,11 +1394,10 @@ function NotificationHandler() {
             }
         });
 
-
     }
 
     return {
-        init    :function() {
+        init:function() {
             bindCommonClickEvents();
         }
     }

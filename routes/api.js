@@ -286,4 +286,10 @@ router.get('/notifications', function(req, res, next) {
     });
 });
 
+router.put('/notifications/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/notifications/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;
