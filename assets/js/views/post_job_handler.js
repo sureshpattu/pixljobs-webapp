@@ -2,6 +2,7 @@ var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
 var waterfall     = require('async-waterfall');
+var async         = require('async');
 
 function PostJobHandler() {
 
@@ -86,6 +87,7 @@ function PostJobHandler() {
         _form.unbind().submit(function(e) {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
+                var _recruiter_id = _form.find('.js_recruiter_id').val();
                 var locationType1 = _form.find('#locationType1');
                 var locationType2 = _form.find('#locationType2');
 
@@ -99,18 +101,25 @@ function PostJobHandler() {
 
                 var _obj = {
                     name         :_form.find('.js_title').val(),
-                    recruiter_id :_form.find('.js_recruiter_id').val(),
+                    recruiter_id :_recruiter_id,
                     job_type     :_form.find('.js_job_type').val(),
                     salary_min   :_form.find('.js-input-from').val(),
                     salary_max   :_form.find('.js-input-to').val(),
                     location_type:_location_type
                 };
 
-                ApiUtil.makeAjaxRequest('/api/qa-jobs', '', 'POST', '', _obj, function(_res) {
-                    if(!_res.error && _res.data) {
-                        postJobCategory(_res.data.id, _form);
+                ApiUtil.makeAjaxRequest('/api/qa-jobs', '', 'POST', '', _obj, function(_qaJobRes) {
+                    if(!_qaJobRes.error && _qaJobRes.data) {
+                        var _adminObj = {
+                            recruiter_id:_recruiter_id,
+                            qa_job_id   :_qaJobRes.data.id,
+                            msg         :'New job posted'
+                        };
+                        ApiUtil.makeAjaxRequest('/api/admin-notifications', '', 'POST', '', _adminObj, function(_res) {
+                            postJobCategory(_qaJobRes.data.id, _form);
+                        });
                     } else {
-                        alert(_res.message || 'Something went wrong!');
+                        alert(_qaJobRes.message || 'Something went wrong!');
                     }
                 });
             }

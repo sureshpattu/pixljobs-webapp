@@ -286,4 +286,10 @@ router.get('/notifications', function(req, res, next) {
     });
 });
 
+router.post('/admin-notifications', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/admin-notifications', function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;
