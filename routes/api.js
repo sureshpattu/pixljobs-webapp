@@ -280,4 +280,10 @@ router.get('/companies/photo/:image', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE', '/companies/photo/' + req.params.image, '', res);
 });
 
+router.get('/notifications', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'GET', '/notifications', function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;
