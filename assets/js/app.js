@@ -8,4 +8,5 @@ window.PostJobEditHandler          = require('./views/post_job_edit_handler');
 window.JobSearchHandler            = require('./views/job_search_handler');
 window.JobInfoHandler              = require('./views/job_info_handler');
 window.ApplicantEditHandler        = require('./views/applicant_profile_edit_handler');
-window.RecruiterCompanyHandler        = require('./views/recruiter_company_handler');
+window.RecruiterCompanyHandler     = require('./views/recruiter_company_handler');
+window.NotificationHandler         = require('./views/notification_handler');

@@ -1,18 +1,18 @@
-{{#each data}}
-    <div class="panel main_card_sec js_main_card_sec">
+{{#each notifications}}
+    <div class="panel main_card_sec js_main_card_sec" >
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-12">
-                    <a data-toggle="collapse" class="panel-title collapsed js_panel_title"
+                    <a data-toggle="collapse" class="panel-title collapsed js_panel_title unread" data-notification_id="{{id}}"
                        data-parent="#accordion"
                        href="#collapse_{{@index}}">
                         <div class="title_sec">
                             <span class="highlights">Job Name</span>
-                            <span class="small_txt">5+ years</span>
+                            <span class="small_txt">Status : {{status}}</span>
+                            <span class="small_txt"> {{#truncateText
+                                    'simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'
+                                    40 }} {{/truncateText}}</span>
                             <img src="/img/icons/arrow-down-small.svg" alt="" class="icon_arrow_down">
-                        </div>
-                        <div class="sub_title_sec">
-                            <span class="small_txt">Company name, City name</span>
                         </div>
                     </a>
                 </div>
@@ -20,7 +20,7 @@
         </div>
         <div id="collapse_{{@index}}" class="panel-collapse collapse">
             <div class="panel-body">
-
+                <span class="small_txt">{{msg}}</span>
             </div>
         </div>
     </div>

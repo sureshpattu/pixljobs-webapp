@@ -9,8 +9,9 @@ window.PostJobEditHandler          = require('./views/post_job_edit_handler');
 window.JobSearchHandler            = require('./views/job_search_handler');
 window.JobInfoHandler              = require('./views/job_info_handler');
 window.ApplicantEditHandler        = require('./views/applicant_profile_edit_handler');
-window.RecruiterCompanyHandler        = require('./views/recruiter_company_handler');
-},{"./utils/popupHandler":6,"./views/applicant_handler":7,"./views/applicant_profile_edit_handler":8,"./views/job_info_handler":9,"./views/job_search_handler":10,"./views/login_handler":11,"./views/post_job_edit_handler":12,"./views/post_job_handler":13,"./views/recruiter_company_handler":14,"./views/recruiter_handler":15,"./views/recruiter_profile_edit_handler":16}],2:[function(require,module,exports){
+window.RecruiterCompanyHandler     = require('./views/recruiter_company_handler');
+window.NotificationHandler         = require('./views/notification_handler');
+},{"./utils/popupHandler":6,"./views/applicant_handler":7,"./views/applicant_profile_edit_handler":8,"./views/job_info_handler":9,"./views/job_search_handler":10,"./views/login_handler":11,"./views/notification_handler":12,"./views/post_job_edit_handler":13,"./views/post_job_handler":14,"./views/recruiter_company_handler":15,"./views/recruiter_handler":16,"./views/recruiter_profile_edit_handler":17}],2:[function(require,module,exports){
 var qs = require('querystring');
 
 module.exports = {
@@ -79,7 +80,7 @@ module.exports = {
         });
     }
 };
-},{"querystring":23}],3:[function(require,module,exports){
+},{"querystring":24}],3:[function(require,module,exports){
 exports.clearForm = function(formId) {
     $(formId).find('input').val(' ');
     $(formId).find('select').val(' ');
@@ -445,7 +446,7 @@ Handlebars.registerHelper('countDateTime', function(dateString) {
     }
 });
 
-},{"moment":19}],6:[function(require,module,exports){
+},{"moment":20}],6:[function(require,module,exports){
 function PopupPage() {
 
     function bindClickEvents(_allow_close) {
@@ -717,7 +718,7 @@ function ApplicantSignUpHandler() {
 }
 
 module.exports = ApplicantSignUpHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":18}],8:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":19}],8:[function(require,module,exports){
 var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils = require('../utils/common');
@@ -924,7 +925,7 @@ function ApplicantSignUpHandler() {
 }
 
 module.exports = ApplicantSignUpHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":18}],9:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":19}],9:[function(require,module,exports){
 var ApiUtil           = require('../utils/apiUtil');
 var FormValidator     = require('../utils/formValidator');
 var utils             = require('../utils/common');
@@ -1348,6 +1349,69 @@ module.exports = LoginHandler();
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
+var async         = require('async');
+
+function NotificationHandler() {
+
+
+
+    function bindCommonClickEvents() {
+        $('.js_select2').select2({});
+
+
+        $('.js_input_profile_file').change(function () {
+            readURL(this);
+        });
+
+        $('.js_panel_title.unread').click(function () {
+            var _this            = $(this);
+            var _parent          = $(this).closest('.js_main_card_sec');
+            _parent.find('.js_panel_title');
+
+            var _obj = {
+                status : _obj.setValue("read")
+            };
+            ApiUtil.makeAjaxRequest('/api/notifications/' + notification_id, '', 'PUT', '', _obj, function(_res) {
+                if(!_res.error && _res.data) {
+                    window.location.href = '/post-job/info';
+                } else {
+                    alert(_res.message || 'Something went wrong!');
+                }
+            });
+        });
+
+        $('.js_panel_title').click(function() {
+            var _this            = $(this);
+            var _parent          = $(this).closest('.js_main_card_sec');
+            var _swiperContainer = _parent.find('.swiper-container');
+            var _swiperData      = _swiperContainer.data('swiper');
+
+            if(!_this.hasClass('collapsed')) {
+                _parent.find('.js_panel_title').addClass('read');
+
+            } else {
+                _parent.find('.js_more_btn_link').removeClass('hide');
+                _parent.find('.js_open_card').addClass('hide');
+                _parent.find('.js_reopen_card').addClass('hide');
+                _parent.find('.js_total_application_txt').addClass('application');
+            }
+        });
+
+
+    }
+
+    return {
+        init    :function() {
+            bindCommonClickEvents();
+        }
+    }
+}
+
+module.exports = NotificationHandler();
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":19}],13:[function(require,module,exports){
+var ApiUtil       = require('../utils/apiUtil');
+var FormValidator = require('../utils/formValidator');
+var utils         = require('../utils/common');
 var waterfall     = require('async-waterfall');
 
 function PostJobHandler() {
@@ -1433,6 +1497,7 @@ function PostJobHandler() {
         _form.unbind().submit(function(e) {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
+                var _recruiter_id = _form.find('.js_recruiter_id').val();
                 var locationType1 = _form.find('#locationType1');
                 var locationType2 = _form.find('#locationType2');
 
@@ -1448,18 +1513,25 @@ function PostJobHandler() {
 
                 var _obj = {
                     name         :_form.find('.js_title').val(),
-                    recruiter_id :_form.find('.js_recruiter_id').val(),
+                    recruiter_id :_recruiter_id,
                     job_type     :_form.find('.js_job_type').val(),
                     salary_min   :_form.find('.js-input-from').val(),
                     salary_max   :_form.find('.js-input-to').val(),
                     location_type:_location_type
                 };
 
-                ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
-                    if(!_res.error && _res.data) {
-                        postJobCategory(_res.data.id, _form);
+                ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_qaJobRes) {
+                    if(!_qaJobRes.error && _qaJobRes.data) {
+                        var _adminObj = {
+                            recruiter_id:_recruiter_id,
+                            qa_job_id   :_qaJobRes.data.id,
+                            msg         :'Job details updated'
+                        };
+                        ApiUtil.makeAjaxRequest('/api/admin-notifications', '', 'POST', '', _adminObj, function(_res) {
+                            postJobCategory(_qaJobRes.data.id, _form);
+                        });
                     } else {
-                        alert(_res.message || 'Something went wrong!');
+                        alert(_qaJobRes.message || 'Something went wrong!');
                     }
                 });
             }
@@ -1483,8 +1555,8 @@ function PostJobHandler() {
 
     function postJobRequirements(qa_job_id, _form) {
         var _obj = {
-            qa_job_id  :qa_job_id,
-            requirements  :_form.find('.js_job_requirements').val() || []
+            qa_job_id   :qa_job_id,
+            requirements:_form.find('.js_job_requirements').val() || []
         };
         ApiUtil.makeAjaxRequest('/api/requirements', '', 'POST', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
@@ -1617,7 +1689,7 @@ function PostJobHandler() {
                     industry_id :_form.find('.js_industry').val(),
                     size        :_form.find('.js_company_size').val(),
                     url         :_form.find('.js_company_url').val(),
-                    about       :_form.find('.js_about_company').val(),
+                    about       :_form.find('.js_about_company').val()
                     //street      :_form.find('.js_street').val(),
                     //area        :_form.find('.js_area').val(),
                     //city        :_form.find('.js_city').val(),
@@ -1671,11 +1743,12 @@ function PostJobHandler() {
 }
 
 module.exports = PostJobHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async-waterfall":17}],13:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async-waterfall":18}],14:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
 var waterfall     = require('async-waterfall');
+var async         = require('async');
 
 function PostJobHandler() {
 
@@ -1760,6 +1833,7 @@ function PostJobHandler() {
         _form.unbind().submit(function(e) {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
+                var _recruiter_id = _form.find('.js_recruiter_id').val();
                 var locationType1 = _form.find('#locationType1');
                 var locationType2 = _form.find('#locationType2');
 
@@ -1773,18 +1847,25 @@ function PostJobHandler() {
 
                 var _obj = {
                     name         :_form.find('.js_title').val(),
-                    recruiter_id :_form.find('.js_recruiter_id').val(),
+                    recruiter_id :_recruiter_id,
                     job_type     :_form.find('.js_job_type').val(),
                     salary_min   :_form.find('.js-input-from').val(),
                     salary_max   :_form.find('.js-input-to').val(),
                     location_type:_location_type
                 };
 
-                ApiUtil.makeAjaxRequest('/api/qa-jobs', '', 'POST', '', _obj, function(_res) {
-                    if(!_res.error && _res.data) {
-                        postJobCategory(_res.data.id, _form);
+                ApiUtil.makeAjaxRequest('/api/qa-jobs', '', 'POST', '', _obj, function(_qaJobRes) {
+                    if(!_qaJobRes.error && _qaJobRes.data) {
+                        var _adminObj = {
+                            recruiter_id:_recruiter_id,
+                            qa_job_id   :_qaJobRes.data.id,
+                            msg         :'New job posted'
+                        };
+                        ApiUtil.makeAjaxRequest('/api/admin-notifications', '', 'POST', '', _adminObj, function(_res) {
+                            postJobCategory(_qaJobRes.data.id, _form);
+                        });
                     } else {
-                        alert(_res.message || 'Something went wrong!');
+                        alert(_qaJobRes.message || 'Something went wrong!');
                     }
                 });
             }
@@ -1799,7 +1880,6 @@ function PostJobHandler() {
         ApiUtil.makeAjaxRequest('/api/qa-job/categories', '', 'POST', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
                 postJobRequirements(_job_id, _form);
-                // window.location.href = '/post-job/info/' + _job_id;
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
@@ -2023,7 +2103,7 @@ function PostJobHandler() {
 }
 
 module.exports = PostJobHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async-waterfall":17}],14:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":19,"async-waterfall":18}],15:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -2154,7 +2234,7 @@ function RecruiterCompanyHandler() {
 }
 
 module.exports = RecruiterCompanyHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],15:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],16:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -2282,7 +2362,7 @@ function RecruiterHandler() {
 }
 
 module.exports = RecruiterHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],16:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],17:[function(require,module,exports){
 var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils = require('../utils/common');
@@ -2460,7 +2540,7 @@ function RecruiterProfileEditHandler() {
 }
 
 module.exports = RecruiterProfileEditHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],17:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],18:[function(require,module,exports){
 (function (process,setImmediate){
 // MIT license (by Elan Shanker).
 (function(globals) {
@@ -2539,7 +2619,7 @@ module.exports = RecruiterProfileEditHandler();
 })(this);
 
 }).call(this,require('_process'),require("timers").setImmediate)
-},{"_process":20,"timers":24}],18:[function(require,module,exports){
+},{"_process":21,"timers":25}],19:[function(require,module,exports){
 (function (process,global,setImmediate){
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -8152,7 +8232,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 })));
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
-},{"_process":20,"timers":24}],19:[function(require,module,exports){
+},{"_process":21,"timers":25}],20:[function(require,module,exports){
 //! moment.js
 
 ;(function (global, factory) {
@@ -12756,7 +12836,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -12942,7 +13022,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -13028,7 +13108,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -13115,13 +13195,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":21,"./encode":22}],24:[function(require,module,exports){
+},{"./decode":22,"./encode":23}],25:[function(require,module,exports){
 (function (setImmediate,clearImmediate){
 var nextTick = require('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -13200,4 +13280,4 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
   delete immediateIds[id];
 };
 }).call(this,require("timers").setImmediate,require("timers").clearImmediate)
-},{"process/browser.js":20,"timers":24}]},{},[1]);
+},{"process/browser.js":21,"timers":25}]},{},[1]);
