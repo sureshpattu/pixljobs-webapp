@@ -473,7 +473,7 @@ router.get('/recruiter/companies', verify.isRecruiterLoggedIn, function(req, res
     });
 });
 
-router.get('/notification', verify.isRecruiterLoggedIn, function(req, res) {
+router.get('/recruiter/notification', verify.isRecruiterLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
