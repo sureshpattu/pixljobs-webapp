@@ -228,7 +228,12 @@ router.get('/recruiter/email/verify/:token', function (req, res) {
 router.get('/recruiter/forgot/password/:token', function (req, res) {
     req.body.reset_token = req.params.token;
     helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/forgot/password/token', function (_response) {
-        res.render('reset_password');
+        if (_response.error) {
+            res.render('login');
+        } else {
+            res.render('reset_password', {user_id: _response.data.id});
+        }
+
     });
 });
 
