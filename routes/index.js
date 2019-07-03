@@ -508,4 +508,24 @@ router.get('/recruiter/notification', verify.isRecruiterLoggedIn, function(req, 
     });
 });
 
+router.get('/recruiter/change-password', function (req, res) {
+    res.render('recruiter_change_password');
+});
+
+router.get('/recruiter/change-email', function (req, res) {
+    res.render('recruiter_change_email');
+});
+
+router.get('/applicant/preferences', function (req, res) {
+    res.render('applicant_preferences');
+});
+
+router.get('/applicant/change-password', function (req, res) {
+    res.render('applicant_change_password');
+});
+
+router.get('/applicant/change-email', function (req, res) {
+    res.render('applicant_change_email');
+});
+
 module.exports = router;
