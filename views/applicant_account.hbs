@@ -80,8 +80,8 @@
                                                             {{/ifCond}}>
                                                             1 Years
                                                         </option>
-                                                        <option value="2"> {{#ifCond data.exp_year '===' '2'}}
-                                                            selected{{/ifCond}}2 Years
+                                                        <option value="2"{{#ifCond data.exp_year '===' '2'}}
+                                                                selected{{/ifCond}}>2 Years
                                                         </option>
                                                         <option value="3"
                                                             {{#ifCond data.exp_year '===' '3'}}
@@ -299,15 +299,22 @@
                                         <label class="control-label">Upload Resume</label>
                                         <div class="box_sec upload_sec">
                                             <img src="/img/icons/upload-doc.svg" alt="" class="icon_sec">
-                                            <span>Drag & drop Image or </span>
+                                            <span>Drag & drop file or </span>
                                             <a class="upload_txt">Upload file</a>
-                                            <input type="file" class="input_file js_input_resume_file" accept="files/*">
+                                            <input type="file" class="input_file js_input_resume_file" accept=".doc, .docx,.pdf">
                                             <input type="hidden" class="input_file js_existing_resume_file"
                                                    value="{{data.resume}}">
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {{#if data.resume}}
+                                <div class="resume_view_wrap">
+                                    <a href="/api/applicant/resume/{{data.resume}}" class="resume_link">
+                                        View resume
+                                    </a>
+                                </div>
+                            {{/if}}
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="row">
@@ -338,7 +345,7 @@
 {{>footer select2=true}}
 </body>
 <script type="application/javascript">
-    $(function () {
+    $(function() {
         ApplicantEditHandler.init();
     });
 </script>
