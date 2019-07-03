@@ -31,7 +31,7 @@
         </div>
         <div id="collapse_{{@index}}" class="panel-collapse collapse">
             <div class="panel-body company_sec">
-                <form class="form_sec" id="jsJobCompanyForm_{{@index}}">
+                <form class="form_sec jsCompanyForm" id="jsCompanyForm_{{@index}}" data-company-id="{{this.id}}">
                     <div class="form-group pixl_form_group">
                         <label class="control-label">URL to your offer</label>
                         <div class="box_sec">
@@ -184,6 +184,13 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="cta_wrap">
+                        <button class="btn btn_big btn_preview">ClOSE</button>
+                        <button class="btn btn_big btn_blue" type="submit">
+                            SAVE
+                            <img src="/img/icons/tick.svg" alt="" class="tick_icon">
+                        </button>
                     </div>
                 </form>
             </div>

@@ -3,66 +3,38 @@ var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
 
 function RecruiterCompanyHandler() {
-    function readURL(input) {
-        if(input.files && input.files[0]) {
-            var reader          = new FileReader();
-            var _img_pre_holder = $('.js_img_pre_holder');
 
-            reader.onload = function(e) {
-                _img_pre_holder.attr('src', e.target.result);
-                _img_pre_holder.removeClass('hide');
-                $('.js_profile_img_txt').addClass('hide');
-            };
+    function bindCompanyFormEvent() {
 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+        $('.jsCompanyForm').unbind().submit(function(e) {
+            e.preventDefault();
+            var _form       = $(this);
+            var _company_id = _form.data('company-id');
+            var _form_name  = '#' + _this.attr('id');
 
-    function bindRecruiterEvent() {
+            if(FormValidator.validateForm(_form_name)) {
+                var _company_obj = {
+                    recruiter_id:user_id,
+                    name        :_form.find('.js_company_name').val() || '0',
+                    industry_id :_form.find('.js_industry').val(),
+                    size        :_form.find('.js_company_size').val(),
+                    url         :_form.find('.js_company_url').val(),
+                    about       :_form.find('.js_about_company').val(),
+                    street      :_form.find('.js_street').val(),
+                    area        :_form.find('.js_area').val(),
+                    city        :_form.find('.js_city').val(),
+                    state       :_form.find('.js_state').val(),
+                    pin         :_form.find('.js_pin').val(),
+                    country     :_form.find('.js_country').val()
+                };
 
-    }
-
-    function uploadFiles(_form, recruiter_id) {
-        var _input_file = _form.find('.js_input_profile_file');
-        if(_input_file.val()) {
-            var formData = new FormData();
-            formData.append('photo', _input_file[0].files[0]);
-            ApiUtil.makeFileUploadRequest('/api/recruiter/photo/upload/' + recruiter_id, '', 'POST', '',
-                formData,
-                function(_res_path) {
-                    if(!_res_path.error) {
-                        alert(_res.message);
+                ApiUtil.makeAjaxRequest('/api/companies/' + _company_id, '', 'PUT', '', _company_obj, function(_res) {
+                    if(!_res.error && _res.data) {
+                       // postCompanyBenefits(_res.data.id, _form)
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
-                    postCompanyDetails(recruiter_id, _form);
                 });
-        } else {
-            postCompanyDetails(recruiter_id, _form);
-        }
-    }
-
-    function postCompanyDetails(user_id, _form) {
-        var _company_obj = {
-            recruiter_id:user_id,
-            name        :_form.find('.js_company_name').val() || '0',
-            industry_id :_form.find('.js_industry').val(),
-            size        :_form.find('.js_company_size').val(),
-            url         :_form.find('.js_company_url').val(),
-            about       :_form.find('.js_about_company').val(),
-            street      :_form.find('.js_street').val(),
-            area        :_form.find('.js_area').val(),
-            city        :_form.find('.js_city').val(),
-            state       :_form.find('.js_state').val(),
-            pin         :_form.find('.js_pin').val(),
-            country     :_form.find('.js_country').val()
-        };
-
-        ApiUtil.makeAjaxRequest('/api/companies', '', 'POST', '', _company_obj, function(_res) {
-            if(!_res.error && _res.data) {
-                postCompanyBenefits(_res.data.id, _form)
-            } else {
-                alert(_res.message || 'Something went wrong!');
             }
         });
     }
@@ -82,26 +54,32 @@ function RecruiterCompanyHandler() {
         });
     }
 
-    function bindCommonClickEvents() {
-
-        $('.js_gender').select2();
-
-        $('.js_input_profile_file').change(function() {
-            readURL(this);
+    function bindClickEvents() {
+        $('.js_company_benefit').select2({
+            tags           :true,
+            tokenSeparators:[',']
         });
+        $('.js_gender').select2();
         var _company_check_box = $('.js_company_checkbox');
         _company_check_box.click(function() {
             var _this = $(this);
+            var _obj  = {};
             if(_this.prop('checked')) {
                 _company_check_box.prop('checked', false);
                 _this.prop('checked', true);
+
+                _obj = {
+                    default_company_id:_this.data('id')
+                };
+
             } else {
                 _company_check_box.prop('checked', false);
                 _this.prop('checked', false);
+
+                _obj = {
+                    default_company_id:''
+                };
             }
-            var _obj = {
-                default_company_id:_this.data('id')
-            };
 
             ApiUtil.makeAjaxRequest('/api/recruiter/' + _this.data('recruiter-id'), '', 'PUT', '', _obj,
                 function(_res) {
@@ -111,18 +89,14 @@ function RecruiterCompanyHandler() {
                         alert(_res.message || 'Something went wrong!');
                     }
                 });
-        });
 
+        });
     }
 
     return {
         init:function() {
-            bindCommonClickEvents();
-            bindRecruiterEvent();
-            $('.js_company_benefit').select2({
-                tags           :true,
-                tokenSeparators:[',']
-            });
+            bindClickEvents();
+            bindCompanyFormEvent();
         }
     }
 }
