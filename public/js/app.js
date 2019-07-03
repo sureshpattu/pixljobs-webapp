@@ -11,7 +11,9 @@ window.JobInfoHandler              = require('./views/job_info_handler');
 window.ApplicantEditHandler        = require('./views/applicant_profile_edit_handler');
 window.RecruiterCompanyHandler     = require('./views/recruiter_company_handler');
 window.NotificationHandler         = require('./views/notification_handler');
-},{"./utils/popupHandler":6,"./views/applicant_handler":7,"./views/applicant_profile_edit_handler":8,"./views/job_info_handler":9,"./views/job_search_handler":10,"./views/login_handler":11,"./views/notification_handler":12,"./views/post_job_edit_handler":13,"./views/post_job_handler":14,"./views/recruiter_company_handler":15,"./views/recruiter_handler":16,"./views/recruiter_profile_edit_handler":17}],2:[function(require,module,exports){
+window.ResetAppPasswordHandler        = require('./views/reset_applicant_handler');
+window.ResetRecPasswordHandler        = require('./views/reset_recruiter_handler');
+},{"./utils/popupHandler":6,"./views/applicant_handler":7,"./views/applicant_profile_edit_handler":8,"./views/job_info_handler":9,"./views/job_search_handler":10,"./views/login_handler":11,"./views/notification_handler":12,"./views/post_job_edit_handler":13,"./views/post_job_handler":14,"./views/recruiter_company_handler":15,"./views/recruiter_handler":16,"./views/recruiter_profile_edit_handler":17,"./views/reset_applicant_handler":18,"./views/reset_recruiter_handler":19}],2:[function(require,module,exports){
 var qs = require('querystring');
 
 module.exports = {
@@ -80,7 +82,7 @@ module.exports = {
         });
     }
 };
-},{"querystring":24}],3:[function(require,module,exports){
+},{"querystring":26}],3:[function(require,module,exports){
 exports.clearForm = function(formId) {
     $(formId).find('input').val(' ');
     $(formId).find('select').val(' ');
@@ -446,7 +448,7 @@ Handlebars.registerHelper('countDateTime', function(dateString) {
     }
 });
 
-},{"moment":20}],6:[function(require,module,exports){
+},{"moment":22}],6:[function(require,module,exports){
 function PopupPage() {
 
     function bindClickEvents(_allow_close) {
@@ -718,7 +720,7 @@ function ApplicantSignUpHandler() {
 }
 
 module.exports = ApplicantSignUpHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":19}],8:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":21}],8:[function(require,module,exports){
 var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils = require('../utils/common');
@@ -925,7 +927,7 @@ function ApplicantSignUpHandler() {
 }
 
 module.exports = ApplicantSignUpHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":19}],9:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":21}],9:[function(require,module,exports){
 var ApiUtil           = require('../utils/apiUtil');
 var FormValidator     = require('../utils/formValidator');
 var utils             = require('../utils/common');
@@ -1408,7 +1410,7 @@ function NotificationHandler() {
 }
 
 module.exports = NotificationHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":19}],13:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":21}],13:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -1743,7 +1745,7 @@ function PostJobHandler() {
 }
 
 module.exports = PostJobHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async-waterfall":18}],14:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async-waterfall":20}],14:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -2103,7 +2105,7 @@ function PostJobHandler() {
 }
 
 module.exports = PostJobHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":19,"async-waterfall":18}],15:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":21,"async-waterfall":20}],15:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -2541,6 +2543,108 @@ function RecruiterProfileEditHandler() {
 
 module.exports = RecruiterProfileEditHandler();
 },{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],18:[function(require,module,exports){
+var ApiUtil = require('../utils/apiUtil');
+var FormValidator = require('../utils/formValidator');
+
+function ResetHandler() {
+    function bindResetPasswordFormEvent() {
+        var _form_name = '#resetPasswordForm';
+        var _form = $(_form_name);
+        _form.submit(function(e) {
+            e.preventDefault();
+            if(FormValidator.validateForm(_form_name)) {
+                var _new_pass = _form.find('.js_new_password').val();
+                var _confirm_pass = _form.find('.js_con_password').val();
+                var user_id = _form.find('.js_user_id').val();
+                var _obj = {};
+
+                if(_new_pass === _confirm_pass) {
+                    _obj = {
+                        user_id :user_id,
+                        password:_new_pass
+                    };
+                    postAppResetPassword(_obj, _form);
+                } else {
+                    alert('Confirm password not matched!');
+                }
+            }
+            return false;
+        });
+
+    }
+
+    function postAppResetPassword(obj, formEle) {
+        var callback = function(data) {
+            if(!data.error && data.data) {
+                window.location.href = '/applicant-account';
+            } else {
+                formEle.find('.js_server_error').removeClass('hide');
+                formEle.find('.js_server_error_msg').html(data.msg);
+            }
+        };
+        ApiUtil.makeAjaxRequest('/api/applicant/reset-password/' + obj.user_id, '', 'POST', '', obj, callback);
+    }
+
+    return {
+        initAppResetPassword:function() {
+            bindResetPasswordFormEvent();
+        }
+    };
+}
+
+module.exports = ResetHandler();
+},{"../utils/apiUtil":2,"../utils/formValidator":4}],19:[function(require,module,exports){
+var ApiUtil = require('../utils/apiUtil');
+var FormValidator = require('../utils/formValidator');
+
+function ResetHandler() {
+    function bindResetPasswordFormEvent() {
+        var _form_name = '#resetPasswordForm';
+        var _form = $(_form_name);
+        _form.submit(function(e) {
+            e.preventDefault();
+            if(FormValidator.validateForm(_form_name)) {
+                var _new_pass = _form.find('.js_new_password').val();
+                var _confirm_pass = _form.find('.js_con_password').val();
+                var user_id = _form.find('.js_user_id').val();
+                var _obj = {};
+
+                if(_new_pass === _confirm_pass) {
+                    _obj = {
+                        user_id :user_id,
+                        password:_new_pass
+                    };
+                    postRecResetPassword(_obj, _form);
+                } else {
+                    alert('Confirm password not matched!');
+                }
+            }
+            return false;
+        });
+
+    }
+
+    function postRecResetPassword(obj, formEle) {
+        var callback = function(data) {
+            if(!data.error && data.data) {
+                window.location.href = '/recruiter';
+            } else {
+                formEle.find('.js_server_error').removeClass('hide');
+                formEle.find('.js_server_error_msg').html(data.msg);
+            }
+        };
+        ApiUtil.makeAjaxRequest('/api/recruiter/reset-password/' + obj.user_id, '', 'POST', '', obj, callback);
+    }
+
+    return {
+        initRecruiterResetPassword:function() {
+            bindResetPasswordFormEvent();
+        }
+    };
+}
+
+module.exports = ResetHandler();
+},{"../utils/apiUtil":2,"../utils/formValidator":4}],20:[function(require,module,exports){
 (function (process,setImmediate){
 // MIT license (by Elan Shanker).
 (function(globals) {
@@ -2619,7 +2723,7 @@ module.exports = RecruiterProfileEditHandler();
 })(this);
 
 }).call(this,require('_process'),require("timers").setImmediate)
-},{"_process":21,"timers":25}],19:[function(require,module,exports){
+},{"_process":23,"timers":27}],21:[function(require,module,exports){
 (function (process,global,setImmediate){
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -8232,7 +8336,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 })));
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
-},{"_process":21,"timers":25}],20:[function(require,module,exports){
+},{"_process":23,"timers":27}],22:[function(require,module,exports){
 //! moment.js
 
 ;(function (global, factory) {
@@ -12836,7 +12940,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -13022,7 +13126,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],22:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -13108,7 +13212,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],23:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -13195,13 +13299,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],24:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":22,"./encode":23}],25:[function(require,module,exports){
+},{"./decode":24,"./encode":25}],27:[function(require,module,exports){
 (function (setImmediate,clearImmediate){
 var nextTick = require('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -13280,4 +13384,4 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
   delete immediateIds[id];
 };
 }).call(this,require("timers").setImmediate,require("timers").clearImmediate)
-},{"process/browser.js":21,"timers":25}]},{},[1]);
+},{"process/browser.js":23,"timers":27}]},{},[1]);
