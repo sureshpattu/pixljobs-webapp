@@ -48,7 +48,10 @@
                                         <div class="designation">{{applicant.designation}} at {{applicant.company}}
                                         </div>
                                         <div class="ex_cta_wrap">
-                                            <a class="cta_link">5 years</a>
+                                            {{#if applicant.exp}}
+                                                <a class="cta_link">{{applicant.exp}} years</a>
+                                            {{/if}}
+
                                             <a class="cta_link fresher">Fresher</a>
                                         </div>
                                     </div>
@@ -71,7 +74,7 @@
                                         <div class="label_val">{{applicant.email}}</div>
                                     </div>
                                     <div class="resume_cta_wrap">
-                                        <a class="cta_link">VIEW RESUME</a>
+                                        <a class="cta_link" href="/api/applicant/resume/{{data.resume}}">VIEW RESUME</a>
                                     </div>
                                 </div>
                             </div>

@@ -98,6 +98,9 @@ function RecruiterProfileEditHandler() {
                         window.location.href = '/recruiter'
                     });
             }
+            else{
+                updatePhoto(_form, user_id);
+            }
         }
     }
 
@@ -109,7 +112,7 @@ function RecruiterProfileEditHandler() {
             ApiUtil.makeFileUploadRequest('/api/recruiter/photo/upload/' + user_id, '', 'POST', '',
                 formData, function (err, results) {
                     // window.location.href = '/applicant-account'
-                    alert('Data updated successfully!');
+                    alert('Photo updated successfully!');
                 });
         }
     }
