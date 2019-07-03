@@ -1,14 +1,13 @@
-{{#each notifications}}
+{{#each data}}
     <div class="panel main_card_sec js_main_card_sec" >
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-12">
-                    <a data-toggle="collapse" class="panel-title collapsed js_panel_title unread" data-notification_id="{{id}}"
+                    <a data-toggle="collapse" class="panel-title collapsed js_panel_title {{status}}" data-notification_id="{{id}}"
                        data-parent="#accordion"
                        href="#collapse_{{@index}}">
                         <div class="title_sec">
-                            <span class="highlights">{{qa-job.name}}</span>
-                            <span class="small_txt">Status : {{status}}</span>
+                            <span class="highlights">{{subject}}</span>
                             <span class="small_txt"> {{#truncateText msg
                                     40 }} {{/truncateText}}</span>
                             <img src="/img/icons/arrow-down-small.svg" alt="" class="icon_arrow_down">
