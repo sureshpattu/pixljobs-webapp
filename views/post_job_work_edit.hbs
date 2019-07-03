@@ -32,7 +32,7 @@
                                         <label class="control-label">Title</label>
                                         <div class="box_sec">
                                             <input type="text" class="form-control required js_title"
-                                                   placeholder="Eg: Frontend Developer, UI Designer..." value="{{work_data.name}}">
+                                                   placeholder="Eg: Frontend Developer, UI Designer..." value="{{data.name}}">
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
@@ -69,7 +69,7 @@
                                             <select class="form-control js_select2 js_category" required="required">
                                                 <option value="0">Select Job Category</option>
                                                 {{#each categories}}
-                                                    {{#ifCond ../work_data.qa_job_categories.0.category.id '===' this.id}}
+                                                    {{#ifCond ../data.qa_job_categories.0.category.id '===' this.id}}
                                                         <option value="{{this.id}}" selected>{{this.name}}</option>
                                                     {{else}}
                                                         <option value="{{this.id}}">{{this.name}}</option>
@@ -83,7 +83,7 @@
                                         <label class="control-label">Type</label>
                                         <div class="box_sec">
                                             <select class="form-control js_select2 js_job_type" required>
-                                                <option value="{{work_data.job_type}}">{{work_data.job_type}}</option>
+                                                <option value="{{data.job_type}}">{{data.job_type}}</option>
                                                 <option value="">select</option>
                                                 <option value="FullTime">Full Time</option>
                                                 <option value="PartTime">Part Time</option>
@@ -101,7 +101,13 @@
                                             <select multiple="multiple"
                                                     class="form-control required js_job_requirements">
                                                 {{#each requirements}}
-                                                    <option value="{{this.id}}">{{this.name}}</option>
+                                                    {{#each ../data.qa_job_requirements}}
+                                                        {{#ifCond this.requirement.id '===' ../this.id}}
+                                                            <option value="{{../this.id}}" selected>{{../this.desc}}</option>
+                                                        {{/ifCond}}
+                                                    {{else}}
+                                                        <option value="{{this.id}}">{{this.desc}}</option>
+                                                    {{/each}}
                                                 {{/each}}
                                             </select>
                                         </div>

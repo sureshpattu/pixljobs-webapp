@@ -134,22 +134,21 @@ function PostJobHandler() {
         };
         ApiUtil.makeAjaxRequest('/api/qa-job/categories', '', 'POST', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
-                postJobRequirements(qa_job_id, _form);
-                // window.location.href = '/post-job/info/' + _job_id;
+                postJobRequirements(_job_id, _form);
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
         });
     }
 
-    function postJobRequirements(qa_job_id, _form) {
+    function postJobRequirements(_qa_job_id, _form) {
         var _obj = {
-            qa_job_id   :qa_job_id,
+            qa_job_id   :_qa_job_id,
             requirements:_form.find('.js_job_requirements').val() || []
         };
         ApiUtil.makeAjaxRequest('/api/requirements', '', 'POST', '', _obj, function(_res) {
-            if(!_res.error && _res.data) {
-                window.location.href = '/post-job/info/' + _job_id;
+            if(!_res.error) {
+                window.location.href = '/post-job/info/' + _qa_job_id;
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
