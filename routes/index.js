@@ -228,7 +228,12 @@ router.get('/recruiter/email/verify/:token', function (req, res) {
 router.get('/recruiter/forgot/password/:token', function (req, res) {
     req.body.reset_token = req.params.token;
     helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/forgot/password/token', function (_response) {
-        res.render('reset_password');
+        if (_response.error) {
+            res.render('login');
+        } else {
+            res.render('reset_password', {user_id: _response.data.id});
+        }
+
     });
 });
 
@@ -483,13 +488,8 @@ router.get('/recruiter/notification', verify.isRecruiterLoggedIn, function(req, 
             });
         },
         function (callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
-                function (_res) {
-                    callback(null, _res);
-                });
-        },
-        function (callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/notifications',
+            req.body.recruiter_id = req.cookies.pixljob_user_id;
+            helper_utils.makeApiRequest(req, 'POST', '/notifications/fetchAll',
                 function (_res) {
                     callback(null, _res);
                 });
@@ -503,7 +503,6 @@ router.get('/recruiter/notification', verify.isRecruiterLoggedIn, function(req, 
             companies: _companies,
             user: !results[0].error ? results[0].data : [],
             data: !results[1].error ? results[1].data : [],
-            notifications: !results[2].error ? results[2].data : []
         });
     });
 });
