@@ -48,11 +48,11 @@
                                         <div class="designation">{{applicant.designation}} at {{applicant.company}}
                                         </div>
                                         <div class="ex_cta_wrap">
-                                            {{#if applicant.exp}}
-                                                <a class="cta_link">{{applicant.exp}} years</a>
+                                            {{#if exp}}
+                                                <a class="cta_link">{{applicant.exp_year}}{{applicant.exp_month}}</a>
+                                            {{else}}
+                                                <a class="cta_link fresher">Fresher</a>
                                             {{/if}}
-
-                                            <a class="cta_link fresher">Fresher</a>
                                         </div>
                                     </div>
                                     <div class="basic_cont_sec">

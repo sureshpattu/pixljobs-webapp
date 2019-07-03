@@ -28,8 +28,8 @@ Handlebars.registerPartial("applicant_card_row", Handlebars.template({"1":functi
     + " at "
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.applicant : depth0)) != null ? stack1.company : stack1), depth0))
     + "\n                                        </div>\n                                        <div class=\"ex_cta_wrap\">\n"
-    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : (container.nullContext || {}),((stack1 = (depth0 != null ? depth0.applicant : depth0)) != null ? stack1.exp : stack1),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "\n                                            <a class=\"cta_link fresher\">Fresher</a>\n                                        </div>\n                                    </div>\n                                    <div class=\"basic_cont_sec\">\n                                        <div class=\"row\">\n                                            <div class=\"col-md-6\">\n                                                <div class=\"label_txt\">Current Salary</div>\n                                                <div class=\"label_val\">INR "
+    + ((stack1 = helpers["if"].call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.exp : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")
+    + "                                        </div>\n                                    </div>\n                                    <div class=\"basic_cont_sec\">\n                                        <div class=\"row\">\n                                            <div class=\"col-md-6\">\n                                                <div class=\"label_txt\">Current Salary</div>\n                                                <div class=\"label_val\">INR "
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.applicant : depth0)) != null ? stack1.current_salary : stack1), depth0))
     + " / yr</div>\n                                            </div>\n                                            <div class=\"col-md-6\">\n                                                <div class=\"label_txt\">Expected Salary</div>\n                                                <div class=\"label_val\">INR "
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.applicant : depth0)) != null ? stack1.expected_salary : stack1), depth0))
@@ -41,11 +41,14 @@ Handlebars.registerPartial("applicant_card_row", Handlebars.template({"1":functi
     + alias2(alias1(((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.resume : stack1), depth0))
     + "\">VIEW RESUME</a>\n                                    </div>\n                                </div>\n                            </div>\n";
 },"3":function(container,depth0,helpers,partials,data) {
-    var stack1;
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 
   return "                                                <a class=\"cta_link\">"
-    + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.applicant : depth0)) != null ? stack1.exp : stack1), depth0))
-    + " years</a>\n";
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.applicant : depth0)) != null ? stack1.exp_year : stack1), depth0))
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.applicant : depth0)) != null ? stack1.exp_month : stack1), depth0))
+    + "</a>\n";
+},"5":function(container,depth0,helpers,partials,data) {
+    return "                                                <a class=\"cta_link fresher\">Fresher</a>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
