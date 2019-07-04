@@ -146,7 +146,6 @@ function PostJobHandler() {
             requirements:_form.find('.js_job_requirements').val() || []
         };
         ApiUtil.makeAjaxRequest('/api/requirements', '', 'POST', '', _obj, function(_res) {
-
             if(!_res.error) {
                 window.location.href = '/post-job/info/' + _job_id;
             } else {
@@ -184,24 +183,17 @@ function PostJobHandler() {
 
     function postJobTechnologies(_job_id, _form) {
         var _technologies = _form.find('.js_technologies').val();
-        if(_technologies) {
-            waterfall(_technologies.map(function(arrayItem) {
-                return function(lastItemResult, CB) {
-                    if(!CB) {
-                        CB             = lastItemResult;
-                        lastItemResult = null;
-                    }
-                    var _obj = {
-                        qa_job_id    :_job_id,
-                        technology_id:arrayItem
-                    };
-
-                    ApiUtil.makeAjaxRequest('/api/qa-job/technologies', '', 'POST', '', _obj, function(_res) {
-                        CB(null, []);
-                    });
+        if(_technologies && _technologies.length) {
+            var _obj = {
+                qa_job_id   :_job_id,
+                technologies:_technologies
+            };
+            ApiUtil.makeAjaxRequest('/api/qa-job/technologies', '', 'POST', '', _obj, function(_res) {
+                if(!_res.error) {
+                    window.location.href = '/post-job/company/' + _job_id;
+                } else {
+                    alert(_res.message || 'Something went wrong!');
                 }
-            }), function(err, result) {
-                window.location.href = '/post-job/company/' + _job_id;
             });
         }
     }

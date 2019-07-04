@@ -101,8 +101,14 @@
                         <div class="box_sec">
                             <select multiple="multiple"
                                     class="form-control required js_company_benefit">
-                                {{#each benefits}}
-                                    <option value="{{this.id}}">{{this.name}}</option>
+                                {{#each ../benefits}}
+                                    {{#each ../company_benefits}}
+                                        {{#ifCond this.benefit.id '===' ../this.id}}
+                                            <option value="{{../this.id}}" selected>{{../this.name}}</option>
+                                        {{/ifCond}}
+                                    {{else}}
+                                        <option value="{{this.id}}">{{this.name}}</option>
+                                    {{/each}}
                                 {{/each}}
                             </select>
                             <div class="icon_wrap">

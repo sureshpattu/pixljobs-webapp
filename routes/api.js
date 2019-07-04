@@ -316,4 +316,16 @@ router.post('/admin-notifications', function(req, res, next) {
     });
 });
 
+router.post('/applicant/reset-password/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/reset-password/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/recruiter/reset-password/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter/reset-password/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;

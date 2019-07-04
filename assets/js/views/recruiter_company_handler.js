@@ -29,8 +29,8 @@ function RecruiterCompanyHandler() {
                 };
 
                 ApiUtil.makeAjaxRequest('/api/companies/' + _company_id, '', 'PUT', '', _company_obj, function(_res) {
-                    if(!_res.error && _res.data) {
-                       // postCompanyBenefits(_res.data.id, _form)
+                    if(!_res.error) {
+                        postCompanyBenefits(_company_id, _form)
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
