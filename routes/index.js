@@ -446,11 +446,17 @@ router.get('/recruiter/applications', verify.isRecruiterLoggedIn, function(req, 
         if(results[1] && !results[1].error && results[1].data) {
             _companies = results[1].data.companies;
         }
+
+        let is_experience = false;
+        if (results[0] && results[0].data && (results[0].data.exp_year > 0 || results[0].data.exp_month > 0)) {
+            is_experience = true;
+        }
         res.render('job_recruiter', {
-            companies:_companies,
-            user     :!results[0].error ? results[0].data : [],
-            data     :!results[1].error ? results[1].data : [],
-            jobs     :!results[2].error ? results[2].data : []
+            companies: _companies,
+            user: !results[0].error ? results[0].data : [],
+            data: !results[1].error ? results[1].data : [],
+            jobs: !results[2].error ? results[2].data : [],
+            exp:is_experience
         });
     });
 });

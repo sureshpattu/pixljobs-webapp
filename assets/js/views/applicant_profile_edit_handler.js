@@ -69,6 +69,8 @@ function ApplicantSignUpHandler() {
                         }
                         window.location.href = '/applicant-account'
                     });
+            }else{
+                updatePhoto(_form, applicant_id);
             }
         }
     }
@@ -90,6 +92,8 @@ function ApplicantSignUpHandler() {
                         }
                         window.location.href = '/applicant-account'
                     });
+            }else{
+                updateResume(_form, applicant_id);
             }
         }
     }
@@ -103,7 +107,7 @@ function ApplicantSignUpHandler() {
             ApiUtil.makeFileUploadRequest('/api/applicant/photo/upload/' + applicant_id, '', 'POST', '',
                 formData, function (err, results) {
                     // window.location.href = '/applicant-account'
-                    alert('Data updated successfully!');
+                    alert('Photo updated successfully!');
                 });
         }
     }
@@ -116,7 +120,7 @@ function ApplicantSignUpHandler() {
             ApiUtil.makeFileUploadRequest('/api/applicant/resume/upload/' + applicant_id, '', 'POST', '',
                 formData, function (err, results) {
                     // window.location.href = '/applicant-account'
-                    alert('Data updated successfully!');
+                    alert('Resume updated successfully!');
                 });
         }
     }
