@@ -251,63 +251,33 @@
                 </div>
             </div>
         </div>
-        <div class="similar_sec">
-            <div class="title">
-                Similar positions
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="similar_post_card">
-                        <div class="row">
-                            <div class="col-md-3 col-xs-3">
-                                <div class="profile_img_wrap">
-                                    <img src="https://via.placeholder.com/60" class="img_sec">
-                                </div>
-                            </div>
-                            <div class="col-md-9 col-xs-9">
-                                <div class="post_title">Product Designer</div>
-                                <div class="company">Google</div>
-                                <div class="place"><img src="/img/icons/location.svg" class="icons"> Los Angeles, US
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="similar_wrap">
+            <div class="similar_sec">
+                <div class="title">
+                    Similar positions
                 </div>
-                <div class="col-md-4">
-                    <div class="similar_post_card">
-                        <div class="row">
-                            <div class="col-md-3 col-xs-3">
-                                <div class="profile_img_wrap">
-                                    <img src="https://via.placeholder.com/60" class="img_sec">
+                <div class="row">
+                    {{#each similar_jobs.result}}
+                        <div class="col-md-4">
+                            <a class="similar_post_card" href="/job-info/{{this.id}}">
+                                <div class="row">
+                                    <div class="col-md-3 col-xs-3">
+                                        <div class="profile_img_wrap">
+                                            <img src="/img/user_icon.svg" class="img_sec">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 col-xs-9">
+                                        <div class="post_title">{{name}}</div>
+                                        <div class="company">{{company.name}}</div>
+                                        <div class="place"><img src="/img/icons/location.svg"
+                                                                class="icons"> {{company.city}}, {{company.state}}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-9 col-xs-9">
-                                <div class="post_title">Product Designer</div>
-                                <div class="company">Google</div>
-                                <div class="place"><img src="/img/icons/location.svg" class="icons"> Los Angeles, US
-                                </div>
-                            </div>
+                            </a>
                         </div>
-                    </div>
+                    {{/each}}
                 </div>
-                <div class="col-md-4">
-                    <div class="similar_post_card">
-                        <div class="row">
-                            <div class="col-md-3 col-xs-3">
-                                <div class="profile_img_wrap">
-                                    <img src="https://via.placeholder.com/60" class="img_sec">
-                                </div>
-                            </div>
-                            <div class="col-md-9 col-xs-9">
-                                <div class="post_title">Product Designer</div>
-                                <div class="company">Google</div>
-                                <div class="place"><img src="/img/icons/location.svg" class="icons"> Los Angeles, US
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
