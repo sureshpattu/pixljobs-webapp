@@ -506,6 +506,12 @@ router.get('/recruiter/notification', verify.isRecruiterLoggedIn, function(req, 
             });
         },
         function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
+                function(_res) {
+                    callback(null, _res);
+                });
+        },
+        function(callback) {
             req.body.recruiter_id = req.cookies.pixljob_user_id;
             helper_utils.makeApiRequest(req, 'POST', '/notifications/fetchAll',
                 function(_res) {
@@ -513,14 +519,10 @@ router.get('/recruiter/notification', verify.isRecruiterLoggedIn, function(req, 
                 });
         }
     ], function(err, results) {
-        var _companies = [];
-        if(results[1] && !results[1].error && results[1].data) {
-            _companies = results[1].data.companies;
-        }
         res.render('notifications', {
-            companies:_companies,
             user     :!results[0].error ? results[0].data : [],
-            data     :!results[1].error ? results[1].data : []
+            work_data:!results[1].error ? results[1].data : [],
+            data     :!results[2].error ? results[2].data : []
         });
     });
 });
