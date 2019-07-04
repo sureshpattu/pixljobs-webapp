@@ -42,14 +42,14 @@
                                 <div class="card_sec">
                                     <div class="c_user_wrap">
                                         <a class="u_img_wrap">
-                                            <img src="https://via.placeholder.com/150" class="img_sec">
+                                            <img src="/img/user_icon.svg" class="img_sec">
                                         </a>
                                         <div class="u_name">{{applicant.name}}</div>
                                         <div class="designation">{{applicant.designation}} at {{applicant.company}}
                                         </div>
                                         <div class="ex_cta_wrap">
-                                            {{#if exp}}
-                                                <a class="cta_link">{{applicant.exp_year}}{{applicant.exp_month}}</a>
+                                            {{#if applicant.exp_year}}
+                                                <a class="cta_link">{{applicant.exp_year}}Years {{applicant.exp_month}}Months</a>
                                             {{else}}
                                                 <a class="cta_link fresher">Fresher</a>
                                             {{/if}}

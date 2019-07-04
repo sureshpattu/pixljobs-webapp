@@ -87,7 +87,7 @@ function LoginHandler() {
         _recruiter_tab.on('click', function() {
             _applicant_tab.removeClass('active');
             _recruiter_tab.addClass('active');
-            isRecruiter = false;
+            isApplicant = false;
         });
     }
 
