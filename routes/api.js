@@ -48,9 +48,10 @@ router.post('/applicant', function(req, res, next) {
 });
 
 router.post('/applicant/reset-password/:id', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'POST', '/applicant/reset-password/' + req.cookies.pixljob_user_id, function(_response) {
-        res.json(_response);
-    });
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/reset-password/' + req.cookies.pixljob_user_id,
+        function(_response) {
+            res.json(_response);
+        });
 });
 
 router.put('/applicant', function(req, res, next) {
@@ -117,9 +118,10 @@ router.post('/recruiter-auth/forgot/password/token', function(req, res, next) {
 });
 
 router.post('/recruiter/reset-password/:id', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'POST', '/recruiter/reset-password/' + req.cookies.pixljob_user_id, function(_response) {
-        res.json(_response);
-    });
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter/reset-password/' + req.cookies.pixljob_user_id,
+        function(_response) {
+            res.json(_response);
+        });
 });
 
 router.post('/recruiter', function(req, res, next) {
@@ -156,8 +158,8 @@ router.post('/companies', function(req, res, next) {
     });
 });
 
-router.put('/companies', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'PUT', '/companies/' + req.cookies.pixljob_user_id, function(_response) {
+router.put('/companies/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/companies/' + req.params.id, function(_response) {
         res.json(_response);
     });
 });
@@ -290,6 +292,10 @@ router.post('/companies/photo/upload/:id', function(req, res, next) {
 
 router.get('/companies/photo/:image', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE', '/companies/photo/' + req.params.image, '', res);
+});
+
+router.delete('/companies/photo/:image', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'DELETE', '/companies/photo/' + req.params.image, '', res);
 });
 
 router.get('/notifications', function(req, res, next) {

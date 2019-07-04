@@ -59,13 +59,11 @@
                                             <select multiple="multiple"
                                                     class="form-control required js_technologies">
                                                 {{#each technologies}}
-                                                    {{#each ../job_data.qa_job_technologies}}
-                                                        {{#ifCond this.technology.id '===' ../this.id}}
-                                                            <option value="{{../this.id}}" selected>{{../this.name}}</option>
-                                                        {{/ifCond}}
+                                                    {{#checkArrayOfObjectVal id ../job_data.qa_job_technologies}}
+                                                        <option value="{{id}}" selected>{{name}}</option>
                                                     {{else}}
-                                                        <option value="{{this.id}}">{{this.name}}</option>
-                                                    {{/each}}
+                                                        <option value="{{id}}">{{name}}</option>
+                                                    {{/checkArrayOfObjectVal}}
                                                 {{/each}}
                                             </select>
                                         </div>

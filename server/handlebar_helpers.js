@@ -1,6 +1,7 @@
 'use strict';
 
 const moment = require('moment');
+const _      = require('underscore');
 
 exports.ifCond = function(v1, operator, v2, options) {
     switch(operator) {
@@ -88,5 +89,21 @@ exports.countDateTime = function(dateString) {
         return moment(dateString, 'YYYYMMDD').fromNow();
     } else {
         return ''
+    }
+};
+
+exports.checkArrayOfObjectVal = function(_id, arr, options) {
+    if(_id && arr && arr.length) {
+        var isPresent = false;
+        for(var i = 0; i < arr.length; i++) {
+            _.mapObject(arr[i], function(val, key) {
+                if(_id === val) {
+                    isPresent = true;
+                }
+            });
+        }
+        return isPresent ? options.fn(this) : options.inverse(this);
+    } else {
+        return options.inverse(this);
     }
 };

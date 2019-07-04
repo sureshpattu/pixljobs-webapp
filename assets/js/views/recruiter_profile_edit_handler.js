@@ -1,6 +1,6 @@
-var ApiUtil = require('../utils/apiUtil');
+var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
-var utils = require('../utils/common');
+var utils         = require('../utils/common');
 
 function RecruiterProfileEditHandler() {
     // function uploadImage(_ele, _cb) {
@@ -29,9 +29,9 @@ function RecruiterProfileEditHandler() {
     var _img_pre_holder = $('.js_img_pre_holder');
 
     function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
+        if(input.files && input.files[0]) {
+            var reader    = new FileReader();
+            reader.onload = function(e) {
                 _img_pre_holder.attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
@@ -41,19 +41,19 @@ function RecruiterProfileEditHandler() {
     function bindRecruiterEditEvent() {
         $('.js_select2').select2({});
         var _form_name = '#jsEditRecruitForm';
-        var _form = $(_form_name);
+        var _form      = $(_form_name);
 
-        _form.unbind().submit(function (e) {
+        _form.unbind().submit(function(e) {
             e.preventDefault();
-            if (FormValidator.validateForm(_form_name)) {
+            if(FormValidator.validateForm(_form_name)) {
 
                 var _job_id = _form.find('.js_data_id').val();
 
                 var _user_obj = {
-                    name: _form.find('.js_name').val(),
-                    designation: _form.find('.js_designation').val(),
-                    gender: _form.find('.js_gender').val(),
-                    mobile: _form.find('.js_mobile').val()
+                    name       :_form.find('.js_name').val(),
+                    designation:_form.find('.js_designation').val(),
+                    gender     :_form.find('.js_gender').val(),
+                    mobile     :_form.find('.js_mobile').val()
                 };
 
                 // var callback = function (_res) {
@@ -68,8 +68,8 @@ function RecruiterProfileEditHandler() {
                 // ApiUtil.makeAjaxRequest('/api/recruiter/' + _job_id, '', 'PUT', '', _user_obj, callback);
 
                 console.log(_user_obj);
-                var callback = function (_res) {
-                    if (!_res.error) {
+                var callback = function(_res) {
+                    if(!_res.error) {
                         uploadPhoto(_form, _res.data.id);
                         alert('Data updated successfully!');
                     } else {
@@ -83,22 +83,20 @@ function RecruiterProfileEditHandler() {
 
     function uploadPhoto(_form, user_id) {
         console.log(user_id);
-        var _input_file = _form.find('.js_input_profile_file');
+        var _input_file    = _form.find('.js_input_profile_file');
         var _existing_file = _form.find('.js_existing_profile_photo');
-        if (_input_file.val()) {
+        if(_input_file.val()) {
             console.log(_input_file.val());
-            if (_existing_file.val()) {
+            if(_existing_file.val()) {
                 ApiUtil.makeAjaxRequest('/api/recruiter/photo/' + _existing_file.val(), '', 'DELETE', '', '',
-                    function (_res_path) {
-                        if (_res_path.error) {
+                    function(_res_path) {
+                        if(_res_path.error) {
                             updatePhoto(_form, user_id);
                         } else {
                             updatePhoto(_form, user_id);
                         }
-                        window.location.href = '/recruiter'
                     });
-            }
-            else{
+            } else {
                 updatePhoto(_form, user_id);
             }
         }
@@ -106,13 +104,12 @@ function RecruiterProfileEditHandler() {
 
     function updatePhoto(_form, user_id) {
         var _input_file = _form.find('.js_input_profile_file');
-        if (_input_file.val()) {
+        if(_input_file.val()) {
             var formData = new FormData();
             formData.append('photo', _input_file[0].files[0]);
             ApiUtil.makeFileUploadRequest('/api/recruiter/photo/upload/' + user_id, '', 'POST', '',
-                formData, function (err, results) {
-                    // window.location.href = '/applicant-account'
-                    alert('Photo updated successfully!');
+                formData, function(err, results) {
+                    alert('data updated successfully!');
                 });
         }
     }
@@ -144,12 +141,12 @@ function RecruiterProfileEditHandler() {
 
     function updateCompanyBenefits(company_id, _form) {
         var _company_obj = {
-            company_id: company_id,
-            benefits: _form.find('.js_company_benefit').val() || []
+            company_id:company_id,
+            benefits  :_form.find('.js_company_benefit').val() || []
         };
 
-        ApiUtil.makeAjaxRequest('/api/benefits', '', 'PUT', '', _company_obj, function (_res) {
-            if (!_res.error) {
+        ApiUtil.makeAjaxRequest('/api/benefits', '', 'PUT', '', _company_obj, function(_res) {
+            if(!_res.error) {
                 window.location.href = '/recruiter'
             } else {
                 alert(_res.message || 'Something went wrong!');
@@ -159,18 +156,18 @@ function RecruiterProfileEditHandler() {
 
     function bindCommonClickEvents() {
 
-        $('.js_input_profile_file').change(function () {
+        $('.js_input_profile_file').change(function() {
             readURL(this);
         });
 
         $('.js_company_benefit').select2({
-            tags: true,
-            tokenSeparators: [',']
+            tags           :true,
+            tokenSeparators:[',']
         });
     }
 
     return {
-        initEdit: function () {
+        initEdit:function() {
             bindCommonClickEvents();
             bindRecruiterEditEvent();
         }

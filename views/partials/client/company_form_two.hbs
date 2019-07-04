@@ -53,6 +53,7 @@
                             <span>Drag & drop Image or </span>
                             <a class="upload_txt">Upload file</a>
                             <input type="file" class="input_file js_input_c_logo_file">
+                            <input type="hidden" class="js_existing_logo" value="{{logo}}">
                         </div>
                     </div>
                     <div class="form-group pixl_form_group">
@@ -102,13 +103,11 @@
                             <select multiple="multiple"
                                     class="form-control required js_company_benefit">
                                 {{#each ../benefits}}
-                                    {{#each ../company_benefits}}
-                                        {{#ifCond this.benefit.id '===' ../this.id}}
-                                            <option value="{{../this.id}}" selected>{{../this.name}}</option>
-                                        {{/ifCond}}
+                                    {{#checkArrayOfObjectVal id ../company_benefits}}
+                                        <option value="{{id}}" selected>{{name}}</option>
                                     {{else}}
-                                        <option value="{{this.id}}">{{this.name}}</option>
-                                    {{/each}}
+                                        <option value="{{id}}">{{name}}</option>
+                                    {{/checkArrayOfObjectVal}}
                                 {{/each}}
                             </select>
                             <div class="icon_wrap">
@@ -119,8 +118,8 @@
                     <div class="form-group pixl_form_group">
                         <label class="control-label">Email for candidates</label>
                         <div class="box_sec">
-                            <input type="email" class="form-control required js_candidate_email" value="{{this.email}}"
-                                   placeholder=" careers@pixlcoders.com">
+                            <input type="email" class="form-control required js_email" value="{{this.email}}"
+                                   placeholder="careers@pixlcoders.com">
                         </div>
                     </div>
                     <div class="row">
