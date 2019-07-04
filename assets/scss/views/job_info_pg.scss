@@ -404,10 +404,16 @@
 
     }
 
+    .similar_wrap {
+        position: relative;
+    }
+
     .similar_sec {
         padding-top: 54px;
         padding-bottom: 30px;
         position: absolute;
+        left: 0;
+        width: 100%;
 
 
         .title {
@@ -419,7 +425,9 @@
         }
 
         .similar_post_card {
-            width: 346px;
+            display: block;
+            cursor: pointer;
+            text-decoration: none;
             height: 149px;
             padding: 31px 28px;
             box-shadow: 0 26px 38px 0 rgba(0, 0, 0, 0.22);
@@ -428,6 +436,9 @@
 
             .profile_img_wrap {
                 padding-top: 18px;
+            }
+            .img_sec{
+                width: 45px;
             }
 
             .post_title {
@@ -453,6 +464,7 @@
 
         }
     }
+
 
     .back_sec {
         background-color: #4a6fdf;
