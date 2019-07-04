@@ -19,10 +19,11 @@
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="profile_img_wrap">
-                                        <img src="/img/user_icon.svg" class="img_sec">
-                                    <div class="icon_wrap">
-                                        <span class="fa fa-pencil"></span>
-                                    </div>
+                                    {{#if data.photo}}
+                                        <img src="/api/recruiter/photo/{{data.photo}}" class="img_sec">
+                                    {{else}}
+                                        <img src="/img/user_icon.svg" class="img_sec js_img_pre_holder">
+                                    {{/if}}
                                 </div>
                             </div>
                             <div class="col-md-10">

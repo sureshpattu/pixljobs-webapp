@@ -186,7 +186,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6 js_fresh_detail_sec {{#if exp}}hide{{else}}{{/if}}">
+                                <div class="col-md-6 js_fresh_detail_sec {{#if data.qualification}}{{else}}hide{{/if}}">
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Qualification</label>
                                         <div class="box_sec">
@@ -196,7 +196,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 js_exp_detail_sec {{#if exp}}{{else}}hide{{/if}} ">
+                                <div class="col-md-6 js_exp_detail_sec {{#if data.designation}}{{else}}hide{{/if}} ">
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Designation</label>
                                         <div class="box_sec">
@@ -206,7 +206,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 js_exp_detail_sec {{#if exp}}{{else}}hide{{/if}}">
+                                <div class="col-md-6 js_exp_detail_sec {{#if data.company}}{{else}}hide{{/if}}">
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Company Name</label>
                                         <div class="box_sec">
@@ -216,7 +216,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 js_exp_detail_sec {{#if exp}}{{else}}hide{{/if}}">
+                                <div class="col-md-6 js_exp_detail_sec {{#if data.current_salary}}{{else}}hide{{/if}}">
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Current Annual Salary</label>
                                         <div class="box_sec">
@@ -228,7 +228,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
+                                    <div class="form-group pixl_form_group {{#if
+                                            data.expected_salary}}{{else}}hide{{/if}}">
                                         <label class="control-label">Expected Annual Salary</label>
                                         <div class="box_sec">
                                             <input type="text" class="form-control js_anual_salary"
@@ -240,7 +241,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 js_fresh_detail_sec">
+                                <div class="col-md-12 js_fresh_detail_sec {{#if data.institution}}{{else}}hide{{/if}}">
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Institution</label>
                                         <div class="box_sec">
@@ -288,7 +289,7 @@
                                         <div class="box_sec">
                                             <input type="text" class="form-control required js_email"
                                                    autocomplete="nope" placeholder="Your current Email ID"
-                                                   value="{{data.email}}">
+                                                   value="{{data.email}}" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -301,7 +302,8 @@
                                             <img src="/img/icons/upload-doc.svg" alt="" class="icon_sec">
                                             <span>Drag & drop file or </span>
                                             <a class="upload_txt">Upload file</a>
-                                            <input type="file" class="input_file js_input_resume_file" accept=".doc, .docx,.pdf">
+                                            <input type="file" class="input_file js_input_resume_file"
+                                                   accept=".doc, .docx,.pdf">
                                             <input type="hidden" class="input_file js_existing_resume_file"
                                                    value="{{data.resume}}">
                                         </div>
@@ -310,7 +312,7 @@
                             </div>
                             {{#if data.resume}}
                                 <div class="resume_view_wrap">
-                                    <a href="/api/applicant/resume/{{data.resume}}" class="resume_link">
+                                    <a href="/api/applicant/resume/{{data.resume}}" class="resume_link" target="_blank">
                                         View resume
                                     </a>
                                 </div>

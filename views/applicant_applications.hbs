@@ -19,9 +19,15 @@
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="profile_img_wrap">
-                                    <img src="img/user_icon.svg" class="img_sec">
+                                    {{#if data.photo}}
+                                        <img src="/api/applicant/photo/{{data.photo}}"
+                                             class="img_sec js_img_pre_holder">
+                                    {{else}}
+                                        <img src="/img/user_icon.svg"
+                                             class="img_sec js_img_pre_holder">
+                                    {{/if}}
                                     <!--<div class="icon_wrap">-->
-                                        <!--<span class="fa fa-pencil"></span>-->
+                                    <!--<span class="fa fa-pencil"></span>-->
                                     <!--</div>-->
                                 </div>
                             </div>
