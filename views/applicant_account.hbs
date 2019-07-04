@@ -97,7 +97,7 @@
                                                         </option>
                                                         <option value="5"
                                                             {{#ifCond data.exp_year '===' '5'}}
-                                                                selected    
+                                                                selected
                                                             {{/ifCond}}>
                                                             5 Years
                                                         </option>
@@ -216,7 +216,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                    <div class="col-md-6 js_exp_detail_sec {{#if data.current_salary}}{{else}}hide{{/if}}">
+                                <div class="col-md-6 js_exp_detail_sec {{#if data.current_salary}}{{else}}hide{{/if}}">
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Current Annual Salary</label>
                                         <div class="box_sec">
@@ -228,7 +228,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group pixl_form_group {{#if data.expected_salary}}{{else}}hide{{/if}}">
+                                    <div class="form-group pixl_form_group {{#if
+                                            data.expected_salary}}{{else}}hide{{/if}}">
                                         <label class="control-label">Expected Annual Salary</label>
                                         <div class="box_sec">
                                             <input type="text" class="form-control js_anual_salary"
@@ -301,7 +302,8 @@
                                             <img src="/img/icons/upload-doc.svg" alt="" class="icon_sec">
                                             <span>Drag & drop file or </span>
                                             <a class="upload_txt">Upload file</a>
-                                            <input type="file" class="input_file js_input_resume_file" accept=".doc, .docx,.pdf">
+                                            <input type="file" class="input_file js_input_resume_file"
+                                                   accept=".doc, .docx,.pdf">
                                             <input type="hidden" class="input_file js_existing_resume_file"
                                                    value="{{data.resume}}">
                                         </div>
@@ -310,7 +312,7 @@
                             </div>
                             {{#if data.resume}}
                                 <div class="resume_view_wrap">
-                                    <a href="/api/applicant/resume/{{data.resume}}" class="resume_link">
+                                    <a href="/api/applicant/resume/{{data.resume}}" class="resume_link" target="_blank">
                                         View resume
                                     </a>
                                 </div>
