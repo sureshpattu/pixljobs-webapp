@@ -28,6 +28,26 @@ function ResetHandler() {
 
     }
 
+    function bindChangeEmailFormEvent() {
+        var _form_name = '#changeEmailForm';
+        var _form      = $(_form_name);
+        _form.submit(function(e) {
+            e.preventDefault();
+            if(FormValidator.validateForm(_form_name)) {
+                var _old_email = _form.find('.js_email').val();
+                var _new_email = _form.find('.js_new_email').val();
+                var user_id    = _form.find('.js_data_id').val();
+                var _obj       = {
+                    user_id:user_id,
+                    email  :_new_email
+                };
+                postRecruiterChangeEmail(_obj, _form);
+            }
+            return false;
+        });
+
+    }
+
     function postRecResetPassword(obj, formEle) {
         var callback = function(data) {
             if(!data.error && data.data) {
@@ -40,9 +60,23 @@ function ResetHandler() {
         ApiUtil.makeAjaxRequest('/api/recruiter/reset-password/' + obj.user_id, '', 'POST', '', obj, callback);
     }
 
+    function postRecruiterChangeEmail(obj, formEle) {
+        var callback = function(data) {
+            if(!data.error && data.data) {
+                //window.location.href = '/applicant-account';
+            } else {
+                alert("something went wrong   ");
+            }
+        };
+        ApiUtil.makeAjaxRequest('/api/recruiter/change-email/' + obj.user_id, '', 'POST', '', obj, callback);
+    }
+
     return {
         initRecruiterResetPassword:function() {
             bindResetPasswordFormEvent();
+        },
+        initEmailChange     :function() {
+            bindChangeEmailFormEvent();
         }
     };
 }

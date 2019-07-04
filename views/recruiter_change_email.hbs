@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="common_form_sec">
-                    <form class="form_wrap" id="jsEditRecruitForm" action="/">
+                    <form class="form_wrap" id="changeEmailForm" >
                         <div class="name_info_sec">
                             <div class="row">
                                 <div class="col-md-3">
@@ -50,7 +50,7 @@
                                         <label class="control-label">Email</label>
                                         <div class="box_sec">
                                             <input type="email"
-                                                   class="form-control gl_input_box required js_password"
+                                                   class="form-control gl_input_box required js_email"
                                                    autocomplete="nope"
                                                    placeholder="Enter previous email"
                                                    value="">
@@ -62,7 +62,7 @@
                                         <label class="control-label">New Email</label>
                                         <div class="box_sec">
                                             <input type="email"
-                                                   class="form-control gl_input_box required js_new_password"
+                                                   class="form-control gl_input_box required js_new_email"
                                                    autocomplete="nope"
                                                    placeholder="Enter new email"
                                                    value="">
@@ -89,8 +89,7 @@
 </body>
 <script type="application/javascript">
     $(function() {
-
+        ResetAppPasswordHandler.initEmailChange();
     });
-
 </script>
 </html>
