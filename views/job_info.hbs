@@ -70,13 +70,13 @@
                                     <div class="col-md-4 col_bordered">
                                         <div class="option">
                                             WORKWEEK:
-                                            <span class="option_val">{{data.work_week}} hours</span>
+                                            <span class="option_val">{{data.work_week}}</span>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col_bordered">
                                         <div class="option">
                                             HOLIDAY:
-                                            <span class="option_val">{{data.holidays}} days</span>
+                                            <span class="option_val">{{data.holidays}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -187,16 +187,22 @@
                 </div>
                 <div class="col-md-3">
                     <div class="apply_sec">
-                        {{#if is_applied}}{{else}}
-
-
+                        {{#if is_applied}}
+                            <div class="js_apply_cta_wrap">
+                                <button type="button"
+                                        class="btn btn-apply applied">
+                                    You applied for this Job
+                                </button>
+                                <input type="hidden" class="js_applicant_id" value="{{applicant_id}}">
+                                <input type="hidden" class="js_job_id" value="{{job_id}}">
+                            </div>
+                        {{else}}
                             <div class="js_apply_cta_wrap">
                                 {{#if user.is_recruiter}}
                                     <div class="link_sec">
                                         <a class="link" href="">{{data.company.email}}</a>
                                     </div>
                                 {{else}}
-
                                     <button type="button"
                                             class="btn btn-apply js_apply_job">
                                         Apply for this position now
@@ -213,10 +219,7 @@
                                         </div>
                                     </div>
                                 {{/if}}
-
-
                             </div>
-
                         {{/if}}
                         <div class="social_link_wrap">
                             <div class="row">
