@@ -190,29 +190,32 @@
                         {{#if is_applied}}{{else}}
 
 
-                                <div class="js_apply_cta_wrap">
-                                    {{#if user.is_recruiter}}
+                            <div class="js_apply_cta_wrap">
+                                {{#if user.is_recruiter}}
+                                    <div class="link_sec">
+                                        <a class="link" href="">{{data.company.email}}</a>
+                                    </div>
+                                {{else}}
+
+                                    <button type="button"
+                                            class="btn btn-apply js_apply_job">
+                                        Apply for this position now
+                                    </button>
+                                    <input type="hidden" class="js_applicant_id" value="{{applicant_id}}">
+                                    <input type="hidden" class="js_job_id" value="{{job_id}}">
+                                    <div class="links_part">
+                                        <div class="link_txt">
+                                            or <br/>
+                                            copy and apply by email
+                                        </div>
                                         <div class="link_sec">
                                             <a class="link" href="">{{data.company.email}}</a>
                                         </div>
-                                    {{else}}
-
-                                        <button type="button"
-                                                class="btn btn-apply js_apply_job">
-                                            Apply for this position now
-                                        </button>
-                                        <input type="hidden" class="js_applicant_id" value="{{applicant_id}}">
-                                        <input type="hidden" class="js_job_id" value="{{job_id}}">
-                                        <div class="links_part">
-                                            <div class="link_txt">
-                                                or <br/>
-                                                copy and apply by email
-                                            </div>
-                                        </div>
-                                    {{/if}}
+                                    </div>
+                                {{/if}}
 
 
-                                </div>
+                            </div>
 
                         {{/if}}
                         <div class="social_link_wrap">
