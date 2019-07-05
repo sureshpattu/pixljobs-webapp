@@ -8,9 +8,10 @@
                        href="#collapse_{{@index}}">
                         <div class="title_sec">
                             <span class="highlights">{{subject}}</span>
-                            <span class="small_txt"> {{#truncateText msg
-                                    40 }} {{/truncateText}}</span>
+
                             <img src="/img/icons/arrow-down-small.svg" alt="" class="icon_arrow_down">
+                            <span class="small_txt"> {{#truncateText msg
+                                                                     20 }} {{/truncateText}}</span>
                         </div>
                     </a>
                 </div>
@@ -18,7 +19,7 @@
         </div>
         <div id="collapse_{{@index}}" class="panel-collapse collapse">
             <div class="panel-body">
-                <span class="small_txt">{{msg}}</span>
+                <span class="small_txt desc_txt">{{msg}}</span>
             </div>
         </div>
     </div>
