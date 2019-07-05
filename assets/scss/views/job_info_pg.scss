@@ -319,7 +319,15 @@
             color: #ffffff;
             width: 329px;
             height: 64px;
+
+
         }
+
+        .btn-apply.applied{
+            background-image: linear-gradient(to left, #25de8c, #25de8c);
+        }
+
+
 
         .link_txt {
             font-size: 18px;
