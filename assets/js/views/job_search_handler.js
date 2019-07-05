@@ -54,10 +54,10 @@ function JobSearchHandler() {
                     _job_list_wrap.append(_html);
                 }
 
-                if(resData.data.pages > _query.page) {
-                    $('.js_load_more_btn').removeClass('hide');
-                } else {
+                if(resData.data.pages >= (_query.page + 1)) {
                     $('.js_load_more_btn').addClass('hide');
+                } else {
+                    $('.js_load_more_btn').removeClass('hide');
                 }
 
             }

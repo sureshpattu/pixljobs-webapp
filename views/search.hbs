@@ -30,7 +30,8 @@
                     {{>client/job_search_card data=data.result}}
                 </div>
                 <div class="bottom_cta_wrap">
-                    <a class="cta_load_more_link {{#ifCond data.result.pages '>' '1'}}hide{{/ifCond}} js_load_more_btn">
+                    <a class="cta_load_more_link js_load_more_btn {{#ifCond data.pages '>' '1'}}
+                    {{else}}hide{{/ifCond}}">
                         Show 10 more job offers
                         <img src="/img/icons/arrow-down.svg" class="fa" alt="">
                     </a>
