@@ -26,14 +26,21 @@
                                             <img src="/api/applicant/photo/{{data.photo}}"
                                                  class="img_sec js_img_pre_holder">
                                         {{else}}
-                                            <img src="img/user_icon.svg"
+                                            <img src="/img/user_icon.svg"
                                                  class="img_sec js_img_pre_holder">
                                         {{/if}}
                                     </div>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="name_txt">{{data.name}}</div>
-                                    <div class="qualification_txt">{{data.designation}}</div>
+                                    {{#if data.designation}}
+                                        {{data.designation}},
+                                        {{data.exp_year}}.{{data.exp_month}}yrs Exp
+                                    {{else}}
+                                        {{data.qualification}}
+                                        {{data.institution}}
+                                    {{/if}}
+
                                 </div>
                             </div>
                         </div>
