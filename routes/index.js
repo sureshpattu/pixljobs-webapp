@@ -3,7 +3,7 @@ const router = express.Router();
 const verify = require('../config/verify');
 const async = require('async');
 const helper_utils = require('./util/common');
-const _            = require('underscore');
+const _ = require('underscore');
 
 router.get('/login', function(req, res) {
     res.render('login');
@@ -203,14 +203,20 @@ router.get('/applicant/preferences', function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
-            req.body.token   = req.cookies.pixljob_user_token;
+            req.body.token = req.cookies.pixljob_user_token;
             helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_res) {
                 callback(null, _res);
             });
         }
     ], function(err, results) {
         res.render('applicant_preferences', {
-            user:!results[0].error ? results[0].data : null
+            user:!results[0].error ? results[0].data : null,
+            data:!results[1].error ? results[1].data : null
         });
     });
 });
@@ -219,14 +225,20 @@ router.get('/applicant/change-password', function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
-            req.body.token   = req.cookies.pixljob_user_token;
+            req.body.token = req.cookies.pixljob_user_token;
             helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_res) {
                 callback(null, _res);
             });
         }
     ], function(err, results) {
         res.render('applicant_change_password', {
             user   :!results[0].error ? results[0].data : null,
+            data   :!results[1].error ? results[1].data : null,
             user_id:req.cookies.pixljob_user_id
         });
     });
@@ -236,14 +248,20 @@ router.get('/applicant/change-email', function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
-            req.body.token   = req.cookies.pixljob_user_token;
+            req.body.token = req.cookies.pixljob_user_token;
             helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id, function(_res) {
                 callback(null, _res);
             });
         }
     ], function(err, results) {
         res.render('applicant_change_email', {
             user   :!results[0].error ? results[0].data : null,
+            data   :!results[1].error ? results[1].data : null,
             user_id:req.cookies.pixljob_user_id
         });
     });
@@ -589,7 +607,7 @@ router.get('/recruiter/change-password', function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
-            req.body.token   = req.cookies.pixljob_user_token;
+            req.body.token = req.cookies.pixljob_user_token;
             helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
                 callback(null, _res);
             });
@@ -603,6 +621,7 @@ router.get('/recruiter/change-password', function(req, res) {
     ], function(err, results) {
         res.render('recruiter_change_password', {
             user   :!results[0].error ? results[0].data : null,
+            data   :!results[1].error ? results[1].data : null,
             user_id:req.cookies.pixljob_user_id
         });
     });
@@ -612,13 +631,13 @@ router.get('/recruiter/change-email', function(req, res) {
     async.parallel([
         function(callback) {
             req.body.user_id = req.cookies.pixljob_user_id;
-            req.body.token   = req.cookies.pixljob_user_token;
+            req.body.token = req.cookies.pixljob_user_token;
             helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
                 callback(null, _res);
             });
         },
         function(callback) {
-            helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.cookies.pixljob_user_id,
+            helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
                 function(_res) {
                     callback(null, _res);
                 });
@@ -626,6 +645,7 @@ router.get('/recruiter/change-email', function(req, res) {
     ], function(err, results) {
         res.render('recruiter_change_email', {
             user   :!results[0].error ? results[0].data : null,
+            data   :!results[1].error ? results[1].data : null,
             user_id:req.cookies.pixljob_user_id
         });
     });
