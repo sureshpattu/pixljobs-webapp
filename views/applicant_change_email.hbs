@@ -33,14 +33,15 @@
                                 </div>
                                 <div class="col-md-9">
                                     <div class="name_txt">{{data.name}}</div>
-                                    {{#if data.designation}}
-                                        {{data.designation}},
-                                        {{data.exp_year}}.{{data.exp_month}}yrs Exp
-                                    {{else}}
-                                        {{data.qualification}}
-                                        {{data.institution}}
-                                    {{/if}}
-
+                                    <div class="designation">
+                                        {{#if data.designation}}
+                                            {{data.designation}},
+                                            {{data.exp_year}}.{{data.exp_month}}yrs Exp
+                                        {{else}}
+                                            {{data.qualification}}
+                                            {{data.institution}}
+                                        {{/if}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
