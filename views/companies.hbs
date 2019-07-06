@@ -36,61 +36,6 @@
                             </div>
                         </div>
                         <div class="detail_sec">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Full Name</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control gl_input_box required js_name"
-                                                   autocomplete="nope"
-                                                   placeholder="Enter your first name and last name"
-                                                   value="{{data.name}}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Designation</label>
-                                        <div class="box_sec">
-                                            <input type="text"
-                                                   class="form-control gl_input_box required js_designation"
-                                                   autocomplete="nope" placeholder="Mention about your role"
-                                                   value="{{data.designation}}">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Gender</label>
-                                        <div class="box_sec">
-                                            <select name="exp_select"
-                                                    class="form-control required js_gender js_select2">
-                                                <option value="male"
-                                                        {{#ifCond data.gender '===' 'male'}}selected{{/ifCond}}>Male
-                                                </option>
-                                                <option value="female"
-                                                        {{#ifCond data.gender '===' 'female'}}selected{{/ifCond}}>
-                                                    Female
-                                                </option>
-                                            </select>
-                                            <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Mobile</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control required js_mobile"
-                                                   autocomplete="nope" placeholder="Enter mobile"
-                                                   value="{{data.mobile}}">
-                                            <input type="hidden" class="js_recruiter_id" value="{{data.id}}">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="cards_wrap company_sec js_cards_wrap no_pad">
                                 {{>client/company_form_two data=data.companies default_company_id=data.default_company_id}}
                             </div>
