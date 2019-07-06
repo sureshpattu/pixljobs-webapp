@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Pixlcoders</title>
+    <title>Pixlcoders - About Info</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{>header_assets swiper=true  select2=true}}
@@ -32,7 +32,7 @@
                                         <label class="control-label">Work Week <span
                                                 class="fade_txt">(hours)</span></label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control js_work_week"
+                                            <input type="text" class="form-control js_work_week required"
                                                    placeholder="Type in Numbers Eg: 40 Hrs"
                                                    value="{{job_data.work_week}}">
                                         </div>
@@ -41,7 +41,7 @@
                                         <label class="control-label">Holidays <span
                                                 class="fade_txt">(days - per year)</span></label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control js_holidays"
+                                            <input type="text" class="form-control js_holidays required"
                                                    placeholder="Type in Numbers Eg: 20 days"
                                                    value="{{job_data.holidays}}">
                                         </div>
@@ -49,7 +49,7 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Description <span>(max 320 chars)</span></label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control js_desc" placeholder="Type here"
+                                            <input type="text" class="form-control js_desc required" placeholder="Type here"
                                                    value="{{job_data.desc}}">
                                         </div>
                                     </div>
