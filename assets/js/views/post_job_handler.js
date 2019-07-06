@@ -254,7 +254,7 @@ function PostJobHandler() {
         };
         ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
-                alert('Job posted successfully!');
+                alert('Your job post request received it will be verified by our admin we will update you soon!');
                 window.location.href = '/';
             } else {
                 alert(_res.message || 'Something went wrong!');
