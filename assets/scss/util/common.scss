@@ -1209,3 +1209,25 @@ a.btn {
         }
     }
 }
+
+.select2-container--default {
+    .select2-selection--single .select2-selection__arrow {
+        background-image: url(/img/icons/arrow-down-dark.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+
+        b {
+            display: none;
+        }
+
+    }
+    &.select2-container--open{
+        .select2-selection--single .select2-selection__arrow {
+            transform: rotate(180deg);
+
+            b {
+                display: none;
+            }
+        }
+    }
+}
