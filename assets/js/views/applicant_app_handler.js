@@ -2,7 +2,7 @@ var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
 
-function ApplicantApplicationHandler() {
+function ApplicantAppHandler() {
 
     function bindCommonClickEvents() {
 
@@ -15,4 +15,4 @@ function ApplicantApplicationHandler() {
     }
 }
 
-module.exports = ApplicantApplicationHandler();
+module.exports = ApplicantAppHandler();

@@ -1,0 +1,14 @@
+<div class="box_sec upload_sec {{#if data.resume}}preview{{/if}}">
+    <div class="file_txt_wrap">
+        <img src="/img/icons/upload-doc.svg" alt="" class="icon_sec">
+        <span>Drag & drop file or </span>
+        <a class="upload_txt">Upload file</a>
+    </div>
+    <div class="file_preview_txt_wrap">
+        <img src="/img/icons/doc_file.svg" class="icon_sec">
+        <div class="file_name">{{#truncateTextSpace data.name 10}}{{/truncateTextSpace}}.{{#getFileExtension data.resume}}{{/getFileExtension}}</div>
+    </div>
+    <input type="file" class="input_file js_resume_file"
+           accept=".doc, .docx,.pdf">
+    <span class="fa fa-times close_icon js_remove_file"></span>
+</div>

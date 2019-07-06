@@ -107,3 +107,25 @@ exports.checkArrayOfObjectVal = function(_id, arr, options) {
         return options.inverse(this);
     }
 };
+
+exports.getFileExtension = function(filename) {
+    if(filename) {
+        var _split = filename.split('.');
+        return _split[1];
+    } else {
+        return '';
+    }
+};
+
+exports.truncateTextSpace = function(text, max) {
+    if(text) {
+        text = text.replace(/\s/g, '');
+        max  = Number(max);
+        if(text.length > max)
+            return text.substring(0, max) + '...';
+        else
+            return text;
+    } else {
+        return '';
+    }
+};

@@ -131,7 +131,7 @@
     }
 
     .cards_wrap {
-        padding: 5px 6px 300px;
+        padding: 5px 6px;
 
         &.company_sec {
             padding: 0;
@@ -406,5 +406,9 @@
     .check_box_wrap {
         padding: 33px 0 0;
         text-align: right;
+    }
+
+    .common_load_more_wrap{
+        padding: 50px 0;
     }
 }

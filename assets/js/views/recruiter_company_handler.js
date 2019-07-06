@@ -87,11 +87,19 @@ function RecruiterCompanyHandler() {
     }
 
     function bindClickEvents() {
-        $('.js_company_benefit').select2({
+
+        var _select2         = $('.js_select2');
+        var _company_benefit = $('.js_company_benefit');
+        _select2.select2({});
+        _company_benefit.select2({
             tags           :true,
             tokenSeparators:[',']
         });
-        $('.js_gender').select2();
+        $('.js_panel_title').click(function() {
+            $('.select2-container--default').css({
+                width:'100%'
+            });
+        });
         var _company_check_box = $('.js_company_checkbox');
         _company_check_box.click(function() {
             var _this = $(this);

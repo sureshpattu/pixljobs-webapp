@@ -45,13 +45,24 @@
                                             <img src="/img/user_icon.svg" class="img_sec">
                                         </a>
                                         <div class="u_name">{{applicant.name}}</div>
-                                        <div class="designation">{{applicant.designation}} at {{applicant.company}}
+                                        <div class="designation">
+                                            {{#if applicant.designation}}
+                                                {{applicant.designation}} at {{applicant.company}}
+                                            {{/if}}
                                         </div>
                                         <div class="ex_cta_wrap">
                                             {{#if applicant.exp_year}}
-                                                <a class="cta_link">{{applicant.exp_year}}Years {{applicant.exp_month}}Months</a>
+                                                <a class="cta_link">
+                                                    {{applicant.exp_year}}.{{applicant.exp_month}} years
+                                                </a>
                                             {{else}}
-                                                <a class="cta_link fresher">Fresher</a>
+                                                {{#if applicant.exp_month}}
+                                                    <a class="cta_link">
+                                                        {{applicant.exp_year}}.{{applicant.exp_month}} years
+                                                    </a>
+                                                {{else}}
+                                                    <a class="cta_link fresher">Fresher</a>
+                                                {{/if}}
                                             {{/if}}
                                         </div>
                                     </div>
@@ -74,7 +85,8 @@
                                         <div class="label_val">{{applicant.email}}</div>
                                     </div>
                                     <div class="resume_cta_wrap">
-                                        <a class="cta_link" href="/api/applicant/resume/{{applicant.resume}}" target="_blank">VIEW RESUME</a>
+                                        <a class="cta_link" href="/api/applicant/resume/{{applicant.resume}}"
+                                           target="_blank">VIEW RESUME</a>
                                     </div>
                                 </div>
                             </div>
