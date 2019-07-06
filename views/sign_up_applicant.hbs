@@ -28,12 +28,13 @@
                                         <div class="form-group pixl_form_group">
                                             <label for="" class="control-label">Select a role</label>
                                             <div class="role_row">
-                                                <a class="btn signup-recruit role " href="/sign-up/recruiter">
-                                                    <img src="/img/icons/recruiter.svg" alt="" class="role_icon">
-                                                    Recruiter</a>
+
                                                 <a class="btn signup-applicant role active" href="/sign-up/applicant">
                                                     <img src="/img/icons/applicant.svg" alt="" class="role_icon">
                                                     Applicant</a>
+                                                <a class="btn signup-recruit role " href="/sign-up/recruiter">
+                                                    <img src="/img/icons/recruiter.svg" alt="" class="role_icon">
+                                                    Recruiter</a>
                                             </div>
                                         </div>
                                     </div>
@@ -186,16 +187,30 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Contact No.</label><a href=""
                                                                                            class="non_verify_link">VERIFY</a>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control required js_mobile"
-                                                   autocomplete="nope" placeholder="Your 10 digit mobile No.">
+                                        <div class="row">
+                                            <div class="col-md-4 col-xs-6">
+                                                <div class="box_sec">
+                                                    <select id="selectExpMonth"
+                                                            class="form-control js_exp_month js_select2">
+                                                        <option value="91">+91</option>
+                                                        <option value="001">+001</option>
+                                                        <option value="222">222</option>
+                                                    </select>
+                                                    <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control required js_mobile"
+                                                           autocomplete="nope" placeholder="Your 10 digit mobile No.">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Email ID</label><a href=""
-                                                                                        class="verify_link">VERIFY</a>
+                                        <label class="control-label">Email ID</label>
                                         <div class="box_sec">
                                             <input type="text" class="form-control required js_email"
                                                    autocomplete="nope" placeholder="Your current Email ID">
@@ -220,13 +235,13 @@
                                             <img src="/img/icons/upload-doc.svg" alt="" class="icon_sec">
                                             <span>Drag & drop file or </span>
                                             <a class="upload_txt">Upload file</a>
-                                            <input type="file" class="input_file js_resume_file" accept=".doc, .docx,.pdf">
+                                            <input type="file" class="input_file js_resume_file"
+                                                   accept=".doc, .docx,.pdf">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="cta_wrap">
-                                <button class="btn btn_big btn_preview">PREVIEW</button>
                                 <button class="btn btn_big btn_blue" type="submit">
                                     PROCEED
                                     <img src="/img/icons/full-arrow-blue.svg" alt="" class="right_icon">

@@ -115,9 +115,15 @@
     .cards_wrap {
         padding: 5px 6px 300px;
 
+        .profile_links{
+            padding-top: 30px;
+        }
+
 
         .panel {
             margin-bottom: 8px;
+
+
         }
 
         .panel-heading {
@@ -332,6 +338,14 @@
                     @extend %active-shared;
                 }
             }
+        }
+        .cta_links {
+            text-transform: uppercase;
+            opacity: .8;
+            text-align: right;
+            color: #4a58ff;
+            padding: 0 0 0 20px;
+
         }
 
         .card_status_two_wrap {
