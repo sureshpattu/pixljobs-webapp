@@ -13,11 +13,19 @@
     </div>
     <div class="form-group pixl_form_group">
         <label class="control-label">Company Logo</label>
-        <div class="box_sec upload_sec">
-            <img src="/img/icons/upload-doc.svg" alt="" class="icon_sec">
-            <span>Drag & drop Image or </span>
-            <a class="upload_txt">Upload file</a>
-            <input type="file" class="input_file js_input_c_logo_file">
+        <div class="box_sec upload_sec {{#if data.logo}}preview{{/if}}">
+            <div class="file_txt_wrap">
+                <img src="/img/icons/upload-doc.svg" alt="" class="icon_sec">
+                <span>Drag & drop image or </span>
+                <a class="upload_txt">Upload file</a>
+            </div>
+            <div class="file_preview_txt_wrap">
+                <img src="/api/companies/photo/{{data.logo}}" class="icon_sec js_company_logo_preview">
+                <div class="file_name">{{#truncateTextSpace data.name 10}}{{/truncateTextSpace}}.{{#getFileExtension
+                        data.logo}}{{/getFileExtension}}</div>
+            </div>
+            <input type="file" class="input_file js_input_c_logo_file" accept="image/*">
+            <span class="fa fa-times close_icon js_remove_file"></span>
         </div>
     </div>
     <div class="form-group pixl_form_group">
@@ -65,9 +73,6 @@
                     <option value="{{this.id}}">{{this.name}}</option>
                 {{/each}}
             </select>
-            <!--<div class="icon_wrap">-->
-                <!--<img src="/img/icons/plus-green.svg" alt="" class="icon_sec">-->
-            <!--</div>-->
         </div>
     </div>
     <div class="form-group pixl_form_group">

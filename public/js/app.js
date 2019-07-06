@@ -450,6 +450,16 @@ Handlebars.registerHelper('countDateTime', function(dateString) {
     }
 });
 
+Handlebars.registerHelper('ifDateDiff', function(date1, _diff,options) {
+    if(date1) {
+        var a = moment(date1);
+        var b = moment(new Date());
+        return (b.diff(a, 'days') <= _diff) ? options.fn(this) : options.inverse(this);
+    } else {
+        return options.inverse(this);
+    }
+});
+
 exports.checkArrayOfObjectVal = function(_id, arr, options) {
     if(_id && arr && arr.length) {
         var isPresent = false;
@@ -463,6 +473,57 @@ exports.checkArrayOfObjectVal = function(_id, arr, options) {
         return isPresent ? options.fn(this) : options.inverse(this);
     } else {
         return options.inverse(this);
+    }
+};
+
+exports.getFileExtension = function(filename) {
+    if(filename) {
+        var _split = filename.split('.');
+        return _split[1];
+    } else {
+        return '';
+    }
+};
+
+exports.truncateTextSpace = function(text, max) {
+    if(text) {
+        text = text.replace(/\s/g, '');
+        max  = Number(max);
+        if(text.length > max)
+            return text.substring(0, max);
+        else
+            return text;
+    } else {
+        return '';
+    }
+};
+
+exports.truncateMsgTitle = function(text, max) {
+    if(text) {
+        var regex_1    = /- PUBLISHED/i;
+        var regex_2    = /- UNPUBLISHED/i;
+        var regex_3    = /- REJECTED/i;
+        var _splitTxt  = [];
+        var _searchTxt = '';
+
+        if(regex_1.test(text)) {
+            _searchTxt = '- PUBLISHED';
+        } else if(regex_2.test(text)) {
+            _searchTxt = '- UNPUBLISHED';
+        } else if(regex_3.test(text)) {
+            _searchTxt = '- REJECTED';
+        }
+
+        _splitTxt = text.split(_searchTxt);
+
+        max = Number(max);
+        if(_splitTxt[0].length > max)
+            return _splitTxt[0].substring(0, max) + '... ' + _searchTxt;
+        else
+            return text;
+
+    } else {
+        return '';
     }
 };
 },{"moment":23,"underscore":29}],6:[function(require,module,exports){
@@ -1559,6 +1620,8 @@ function PostJobHandler() {
                     job_type     :_form.find('.js_job_type').val(),
                     salary_min   :_form.find('.js-input-from').val(),
                     salary_max   :_form.find('.js-input-to').val(),
+                    exp_year     :_form.find('.js_exp_year').val(),
+                    exp_month    :_form.find('.js_exp_month').val(),
                     location_type:_location_type
                 };
 
@@ -1608,177 +1671,12 @@ function PostJobHandler() {
         });
     }
 
-    function bindPostJobWorkInfoEvent() {
-        var _form_name = '#jsJobInfoForm';
-        var _form      = $(_form_name);
 
-        _form.unbind().submit(function(e) {
-            e.preventDefault();
-            if(FormValidator.validateForm(_form_name)) {
-                var _job_id = _form.find('.js_job_id').val();
-
-                var _obj = {
-                    work_week:_form.find('.js_work_week').val(),
-                    holidays :_form.find('.js_holidays').val(),
-                    desc     :_form.find('.js_desc').val()
-                };
-
-                ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
-                    if(!_res.error && _res.data) {
-
-                        postJobTechnologies(_job_id, _form)
-                    } else {
-                        alert(_res.message || 'Something went wrong!');
-                    }
-                });
-            }
-        });
-    }
-
-    function postJobTechnologies(_job_id, _form) {
-        var _technologies = _form.find('.js_technologies').val();
-        if(_technologies) {
-            waterfall(_technologies.map(function(arrayItem) {
-                return function(lastItemResult, CB) {
-                    if(!CB) {
-                        CB             = lastItemResult;
-                        lastItemResult = null;
-                    }
-                    var _obj = {
-                        qa_job_id    :_job_id,
-                        technology_id:arrayItem
-                    };
-
-                    ApiUtil.makeAjaxRequest('/api/qa-job/technologies', '', 'POST', '', _obj, function(_res) {
-                        CB(null, []);
-                    });
-                }
-            }), function(err, result) {
-                window.location.href = '/post-job/company/' + _job_id;
-            });
-        }
-    }
-
-    function bindPostJobCompanyEvent() {
-
-        $('.js_company_benefit').select2({
-            tags           :true,
-            tokenSeparators:[',']
-        });
-        $('.js_select2').select2({});
-
-        var _company_check_box = $('.js_company_check_box');
-        _company_check_box.click(function() {
-            var _this = $(this);
-            if(_this.prop('checked')) {
-                _company_check_box.prop('checked', false);
-                _this.prop('checked', true);
-            } else {
-                _company_check_box.prop('checked', false);
-                _this.prop('checked', false);
-            }
-        });
-
-        $('.js_add_new_company_btn').click(function() {
-            _company_check_box.prop('checked', false);
-            $('.js_forms_wrap').removeClass('hide');
-            $(this).addClass('hide');
-        });
-
-        $('.jsSubmitCompanyFormBtn').click(function() {
-            var _isNewCompany = false;
-            _company_check_box.each(function(index, ele) {
-                if(ele.prop('checked' && ele.data('id'))) {
-                    var _company_id = ele.data('id');
-                    updateJobCompany(_company_id);
-                    return false;
-                } else {
-                    _isNewCompany = true;
-                }
-            });
-            if(_isNewCompany) {
-                postCompanyDetails();
-            }
-        });
-    }
-
-    function updateJobCompany(_company_id) {
-        var _job_id = $('.js_job_id').val();
-
-        var _obj = {
-            company_id:_company_id
-        };
-        ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
-            if(!_res.error && _res.data) {
-                window.location.href = '/';
-            } else {
-                alert(_res.message || 'Something went wrong!');
-            }
-        });
-    }
-
-    function postCompanyDetails() {
-        var _form_name = '.jsJobCompanyForm';
-        var _form      = $(_form_name);
-
-        _form.unbind().submit(function(e) {
-            e.preventDefault();
-            if(FormValidator.validateForm(_form_name)) {
-                var _company_obj = {
-                    recruiter_id:$('.js_user_id').val(),
-                    name        :_form.find('.js_company_name').val() || '0',
-                    industry_id :_form.find('.js_industry').val(),
-                    size        :_form.find('.js_company_size').val(),
-                    url         :_form.find('.js_company_url').val(),
-                    about       :_form.find('.js_about_company').val()
-                    //street      :_form.find('.js_street').val(),
-                    //area        :_form.find('.js_area').val(),
-                    //city        :_form.find('.js_city').val(),
-                    //state       :_form.find('.js_state').val(),
-                    //pin         :_form.find('.js_pin').val(),
-                    //country     :_form.find('.js_country').val()
-                };
-
-                ApiUtil.makeAjaxRequest('/api/companies', '', 'POST', '', _company_obj, function(_res) {
-                    if(!_res.error && _res.data) {
-                        postCompanyBenefits(_res.data.id, _form)
-                    } else {
-                        alert(_res.message || 'Something went wrong!');
-                    }
-                });
-            }
-        });
-    }
-
-    function postCompanyBenefits(company_id, _form) {
-        var _company_obj = {
-            company_id:company_id,
-            benefits  :_form.find('.js_company_benefit').val() || []
-        };
-
-        ApiUtil.makeAjaxRequest('/api/benefits', '', 'POST', '', _company_obj, function(_res) {
-            if(!_res.error) {
-                window.location.href = '/';
-            } else {
-                alert(_res.message || 'Something went wrong!');
-            }
-        });
-    }
 
     return {
         init        :function() {
             bindCommonClickEvents();
             bindPostJobEvent();
-        },
-        initWorkInfo:function() {
-            bindPostJobWorkInfoEvent();
-            $('.js_technologies').select2({
-                tags           :true,
-                tokenSeparators:[',']
-            });
-        },
-        initCompany :function() {
-            bindPostJobCompanyEvent();
         }
     }
 }
@@ -1892,6 +1790,8 @@ function PostJobHandler() {
                     job_type     :_form.find('.js_job_type').val(),
                     salary_min   :_form.find('.js-input-from').val(),
                     salary_max   :_form.find('.js-input-to').val(),
+                    exp_year     :_form.find('.js_exp_year').val(),
+                    exp_month    :_form.find('.js_exp_month').val(),
                     location_type:_location_type
                 };
 
@@ -2031,6 +1931,28 @@ function PostJobHandler() {
             });
         }
 
+        $('.js_input_c_logo_file').change(function() {
+            var _this      = $(this);
+            var _parent    = _this.closest('.upload_sec');
+            var _file_name = _this.val().replace(/.*[\/\\]/, '');
+
+            if(_this.val()) {
+                _parent.addClass('preview');
+                _parent.find('.file_name').html(_file_name);
+            }
+            readURL(this);
+        });
+    }
+
+    function readURL(input) {
+        if(input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.js_company_logo_preview').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
     }
 
     function updateJobCompany(_company_id) {
@@ -2380,6 +2302,29 @@ function RecruiterCompanyHandler() {
                 });
 
         });
+
+        $('.js_input_c_logo_file').change(function() {
+            var _this      = $(this);
+            var _parent    = _this.closest('.upload_sec');
+            var _file_name = _this.val().replace(/.*[\/\\]/, '');
+
+            if(_this.val()) {
+                _parent.addClass('preview');
+                _parent.find('.file_name').html(_file_name);
+            }
+            readURL(this);
+        });
+    }
+
+    function readURL(input) {
+        if(input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.js_company_logo_preview').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
     }
 
     return {

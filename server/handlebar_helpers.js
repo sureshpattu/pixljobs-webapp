@@ -92,6 +92,16 @@ exports.countDateTime = function(dateString) {
     }
 };
 
+exports.ifDateDiff = function(date1, _diff, options) {
+    if(date1) {
+        var a = moment(date1);
+        var b = moment(new Date());
+        return (b.diff(a, 'days') <= _diff) ? options.fn(this) : options.inverse(this);
+    } else {
+        return options.inverse(this);
+    }
+};
+
 exports.checkArrayOfObjectVal = function(_id, arr, options) {
     if(_id && arr && arr.length) {
         var isPresent = false;
@@ -122,9 +132,38 @@ exports.truncateTextSpace = function(text, max) {
         text = text.replace(/\s/g, '');
         max  = Number(max);
         if(text.length > max)
-            return text.substring(0, max) + '...';
+            return text.substring(0, max);
         else
             return text;
+    } else {
+        return '';
+    }
+};
+
+exports.truncateMsgTitle = function(text, max) {
+    if(text) {
+        var regex_1    = /- PUBLISHED/i;
+        var regex_2    = /- UNPUBLISHED/i;
+        var regex_3    = /- REJECTED/i;
+        var _splitTxt  = [];
+        var _searchTxt = '';
+
+        if(regex_1.test(text)) {
+            _searchTxt = '- PUBLISHED';
+        } else if(regex_2.test(text)) {
+            _searchTxt = '- UNPUBLISHED';
+        } else if(regex_3.test(text)) {
+            _searchTxt = '- REJECTED';
+        }
+
+        _splitTxt = text.split(_searchTxt);
+
+        max = Number(max);
+        if(_splitTxt[0].length > max)
+            return _splitTxt[0].substring(0, max) + '... ' + _searchTxt;
+        else
+            return text;
+
     } else {
         return '';
     }

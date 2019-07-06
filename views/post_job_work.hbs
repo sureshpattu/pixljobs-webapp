@@ -64,28 +64,73 @@
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Category</label>
-                                        <div class="box_sec">
-                                            <select class="form-control js_select2 js_category">
-                                                <option value="0">Select Job Category</option>
-                                                {{#each categories}}
-                                                    <option value="{{this.id}}">{{this.name}}</option>
-                                                {{/each}}
-                                            </select>
+                                        <label class="control-label">Experience</label>
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="box_sec">
+                                                    <select id="selectExpYear"
+                                                            class="form-control js_select2 js_exp_year">
+                                                        <option value="0">0 Years</option>
+                                                        <option value="1">1 Years</option>
+                                                        <option value="2">2 Years</option>
+                                                        <option value="3">3 Years</option>
+                                                        <option value="4">4 Years</option>
+                                                        <option value="5">5 Years</option>
+                                                        <option value="6">6 Years</option>
+                                                        <option value="6+">6+ Years</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="box_sec">
+                                                    <select id="selectExpMonth"
+                                                            class="form-control js_exp_month js_select2">
+                                                        <option value="0">0 Months</option>
+                                                        <option value="1">1 Months</option>
+                                                        <option value="2">2 Months</option>
+                                                        <option value="3">3 Months</option>
+                                                        <option value="4">4 Months</option>
+                                                        <option value="5">5 Months</option>
+                                                        <option value="6">6 Months</option>
+                                                        <option value="7">7 Months</option>
+                                                        <option value="8">8 Months</option>
+                                                        <option value="9">9 Months</option>
+                                                        <option value="10">10 Months</option>
+                                                        <option value="11">11 Months</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Type</label>
-                                        <div class="box_sec">
-                                            <select class="form-control js_select2 js_job_type">
-                                                <option value="">select</option>
-                                                <option value="FullTime">Full Time</option>
-                                                <option value="PartTime">Part Time</option>
-                                                <option value="Internship">Internship</option>
-                                                <option value="Contract">Contract</option>
-                                                <option value="Volunteer">Volunteer</option>
-                                                <option value="Temporary">Temporary</option>
-                                            </select>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Category</label>
+                                                <div class="box_sec">
+                                                    <select class="form-control js_select2 js_category">
+                                                        <option value="0">Select Job Category</option>
+                                                        {{#each categories}}
+                                                            <option value="{{this.id}}">{{this.name}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Type</label>
+                                                <div class="box_sec">
+                                                    <select class="form-control js_select2 js_job_type">
+                                                        <option value="">select</option>
+                                                        <option value="FullTime">Full Time</option>
+                                                        <option value="PartTime">Part Time</option>
+                                                        <option value="Internship">Internship</option>
+                                                        <option value="Contract">Contract</option>
+                                                        <option value="Volunteer">Volunteer</option>
+                                                        <option value="Temporary">Temporary</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">

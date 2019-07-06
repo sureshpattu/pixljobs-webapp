@@ -131,6 +131,29 @@ function RecruiterCompanyHandler() {
                 });
 
         });
+
+        $('.js_input_c_logo_file').change(function() {
+            var _this      = $(this);
+            var _parent    = _this.closest('.upload_sec');
+            var _file_name = _this.val().replace(/.*[\/\\]/, '');
+
+            if(_this.val()) {
+                _parent.addClass('preview');
+                _parent.find('.file_name').html(_file_name);
+            }
+            readURL(this);
+        });
+    }
+
+    function readURL(input) {
+        if(input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.js_company_logo_preview').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
     }
 
     return {
