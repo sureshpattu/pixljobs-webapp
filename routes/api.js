@@ -47,20 +47,55 @@ router.post('/applicant', function(req, res, next) {
     });
 });
 
+router.post('/applicant/reset-password/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/reset-password/' + req.cookies.pixljob_user_id,
+        function(_response) {
+            res.json(_response);
+        });
+});
+
+router.post('/applicant/change-email/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/change-email/' + req.cookies.pixljob_user_id, function(_response) {
+        res.json(_response);
+    });
+});
+
 router.put('/applicant', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'PUT', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
         res.json(_response);
     });
 });
 
-router.post('/applicant/photo/upload', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/applicant/photo/upload', function(_response) {
+router.post('/applicant/photo/upload/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/applicant/photo/upload/' + req.params.id, function(_response) {
         res.json(_response);
     });
 });
 
 router.get('/applicant/photo/:image', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE', '/applicant/photo/' + req.params.image, '', res);
+});
+
+router.delete('/applicant/photo/:image', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'DELETE', '/applicant/photo/' + req.params.image, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/applicant/resume/upload/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/applicant/resume/upload/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.delete('/applicant/resume/:file', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'DELETE', '/applicant/resume/' + req.params.file, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.get('/applicant/resume/:file', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'IMAGE', '/applicant/resume/' + req.params.file, '', res);
 });
 
 //Recruiters APIs-----------------------------------------------------------------------------------------------------
@@ -88,20 +123,33 @@ router.post('/recruiter-auth/forgot/password/token', function(req, res, next) {
     });
 });
 
+router.post('/recruiter/reset-password/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter/reset-password/' + req.cookies.pixljob_user_id,
+        function(_response) {
+            res.json(_response);
+        });
+});
+
+router.post('/recruiter/change-email/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter/change-email/' + req.cookies.pixljob_user_id, function(_response) {
+        res.json(_response);
+    });
+});
+
 router.post('/recruiter', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/recruiter/' + req.cookies.pixljob_user_id, function(_response) {
         res.json(_response);
     });
 });
 
-router.put('/recruiter', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'PUT', '/recruiter/' + req.cookies.pixljob_user_id, function(_response) {
+router.put('/recruiter/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/recruiter/' + req.params.id, function(_response) {
         res.json(_response);
     });
 });
 
-router.post('/recruiter/photo/upload', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/recruiter/photo/upload', function(_response) {
+router.post('/recruiter/photo/upload/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/recruiter/photo/upload/' + req.params.id, function(_response) {
         res.json(_response);
     });
 });
@@ -110,14 +158,20 @@ router.get('/recruiter/photo/:image', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE', '/recruiter/photo/' + req.params.image, '', res);
 });
 
+router.delete('/recruiter/photo/:image', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'DELETE', '/recruiter/photo/' + req.params.image, function(_response) {
+        res.json(_response);
+    });
+});
+
 router.post('/companies', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/companies', function(_response) {
         res.json(_response);
     });
 });
 
-router.put('/companies', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'PUT', '/companies/' + req.cookies.pixljob_user_id, function(_response) {
+router.put('/companies/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/companies/' + req.params.id, function(_response) {
         res.json(_response);
     });
 });
@@ -160,6 +214,134 @@ router.post('/qa-job/technologies', function(req, res, next) {
 
 router.post('/qa-job/categories', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/qa-job/categories', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/job-applications', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/job-applications', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/job-applications/check', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/job-applications/check', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.get('/job-applications/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'GET', '/job-applications/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/jobs', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/jobs', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/jobs/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/jobs/search', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.put('/jobs/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/jobs/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/job/technologies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/job/technologies', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/job/categories', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/job/categories', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/requirements', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/requirements', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.put('/requirements', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/requirements/' + req.cookies.pixljob_user_id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/qa-job/requirements', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/qa-job/requirements', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.put('/qa-job/requirements', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/qa-job/requirements/' + req.cookies.pixljob_user_id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/jobs/recruiter/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/jobs/recruiter/search', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/companies/photo/upload/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'IMAGE-UPLOAD', '/companies/photo/upload/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.get('/companies/photo/:image', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'IMAGE', '/companies/photo/' + req.params.image, '', res);
+});
+
+router.delete('/companies/photo/:image', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'DELETE', '/companies/photo/' + req.params.image, '', res);
+});
+
+router.get('/notifications', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'GET', '/notifications', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.put('/notifications/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'PUT', '/notifications/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/notifications/fetchAll', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/notifications/fetchAll', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/admin-notifications', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/admin-notifications', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/applicant/reset-password/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/reset-password/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/recruiter/reset-password/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter/reset-password/' + req.params.id, function(_response) {
         res.json(_response);
     });
 });

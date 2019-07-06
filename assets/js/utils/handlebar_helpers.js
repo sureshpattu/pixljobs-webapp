@@ -1,4 +1,5 @@
 var moment = require('moment');
+var _      = require('underscore');
 
 Handlebars.registerHelper('ifCond', function(v1, operator, v2, options) {
     switch(operator) {
@@ -147,3 +148,19 @@ Handlebars.registerHelper('countDateTime', function(dateString) {
         return ''
     }
 });
+
+exports.checkArrayOfObjectVal = function(_id, arr, options) {
+    if(_id && arr && arr.length) {
+        var isPresent = false;
+        for(var i = 0; i < arr.length; i++) {
+            _.mapObject(arr[i], function(val, key) {
+                if(_id === val) {
+                    isPresent = true;
+                }
+            });
+        }
+        return isPresent ? options.fn(this) : options.inverse(this);
+    } else {
+        return options.inverse(this);
+    }
+};

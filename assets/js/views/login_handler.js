@@ -107,7 +107,7 @@ function LoginHandler() {
                     _obj = {
                         password: _new_pass,
                     };
-                    postResetPassword(_obj, _form);
+                    postResetPassword(_obj, _form,user_id);
                 } else {
                     _form.find('.js_server_error').removeClass('hide');
                     _form.find('.js_server_error_msg').html('Confirm password not matched!');
@@ -119,7 +119,7 @@ function LoginHandler() {
 
     }
 
-    function postResetPassword(obj, formEle) {
+    function postResetPassword(obj, formEle,user_id) {
         var callback = function (data) {
             if (data && data._id) {
                 window.location.href = '/logout';
@@ -128,7 +128,8 @@ function LoginHandler() {
                 formEle.find('.js_server_error_msg').html(data.msg);
             }
         };
-        ApiUtil.makeAjaxRequest('/api/applicant/reset-password/' + obj.user_id, '', 'POST', '', obj, callback);
+        ApiUtil.makeAjaxRequest('/api/applicant/reset-password/' + user_id, '', 'POST', '', obj, callback);
+        window.location.href = '/login';
     }
 
     function bindCommonClickEvents() {

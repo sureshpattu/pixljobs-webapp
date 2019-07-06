@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Recruiter</title>
+    <title>Account Applications</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{>header_assets swiper=true  select2=true}}
@@ -11,13 +11,7 @@
 <section class="common_main_sec">
     {{>common_hero_sec}}
     <div class="container">
-        <div class="common_tab_links_wrap">
-            <ul>
-                <li><a class="cta_link " href="#">Profile</a></li>
-                <li><a class="cta_link active" href="#">Applications</a></li>
-                <li><a class="cta_link" href="#">Preferences</a></li>
-            </ul>
-        </div>
+        {{>recruiter_tab_link active="applications"}}
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="common_form_sec">
@@ -25,28 +19,27 @@
                         <div class="row">
                             <div class="col-md-2">
                                 <div class="profile_img_wrap">
-                                    <img src="https://via.placeholder.com/150" class="img_sec">
-                                    <div class="icon_wrap">
-                                        <span class="fa fa-pencil"></span>
-                                    </div>
+                                    {{#if data.photo}}
+                                        <img src="/api/recruiter/photo/{{data.photo}}" class="img_sec">
+                                    {{else}}
+                                        <img src="/img/user_icon.svg" class="img_sec js_img_pre_holder">
+                                    {{/if}}
                                 </div>
                             </div>
                             <div class="col-md-10">
                                 <div class="details_sec">
                                     <div class="name">
-                                        Pattu Technologies
+                                        {{companies.0.name}}
                                     </div>
                                     <div class="designation">
-                                        Bangalore, www.pixlcoders.com
+                                        {{companies.0.city}} {{companies.0.url}}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="cards_wrap js_cards_wrap">
-                        {{#each data}}
-                            {{>client/applicant_card_row}}
-                        {{/each}}
+                        {{>client/applicant_card_row data=jobs.result}}
                     </div>
                 </div>
             </div>

@@ -22,7 +22,6 @@
                 list-style: none;
                 padding: 0;
             }
-        ;
         }
 
         .cta_link {
@@ -56,6 +55,10 @@
         }
     }
 
+    .read{
+        background-color: #e2e6ea;
+    }
+
 
     .user_wrap {
         box-shadow: 0 14px 37px 0 rgba(0, 0, 0, 0.15);
@@ -77,12 +80,27 @@
         .details_sec {
             padding: 32px 0 0 40px;
         }
+        .checkbox_sec{
+            margin-top: 110px;
+            position: absolute;
+        }
     }
 
     .profile_img_wrap {
         position: relative;
         width: 110px;
         height: 110px;
+
+        input[type='file'] {
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            display: none;
+        }
 
 
         .icon_wrap {
@@ -115,6 +133,14 @@
     .cards_wrap {
         padding: 5px 6px 300px;
 
+        &.company_sec {
+            padding: 0;
+        }
+
+        .check_box{
+            margin-left: 10px;
+            margin-bottom: -30px;
+        }
 
         .panel {
             margin-bottom: 8px;
@@ -126,7 +152,11 @@
 
         .panel-body {
             border: none !important;
-            padding: 0 0 40px 40px;
+            padding: 20px 0 40px 40px;
+
+            &.company_sec {
+                padding: 0 15px 40px;
+            }
         }
 
         .panel-title {
@@ -138,6 +168,10 @@
             color: #2e3d4e;
             padding: 18px 40px 18px;
 
+            &.company_sec {
+                padding: 18px 15px 18px;
+            }
+
             .highlights {
                 font-size: 18px;
                 font-weight: 600;
@@ -145,6 +179,9 @@
 
             .small_txt {
                 margin: 0 10px 0 0;
+            }
+            .desc_txt{
+                margin-top: 90px;
             }
 
             &.collapsed {
@@ -364,5 +401,10 @@
                 width: 182px;
             }
         }
+    }
+
+    .check_box_wrap {
+        padding: 33px 0 0;
+        text-align: right;
     }
 }

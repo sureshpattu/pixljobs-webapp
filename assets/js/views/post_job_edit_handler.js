@@ -2,7 +2,6 @@ var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
 var waterfall     = require('async-waterfall');
-var async         = require('async');
 
 function PostJobHandler() {
 
@@ -99,6 +98,8 @@ function PostJobHandler() {
                     _location_type = locationType2.val();
                 }
 
+                var _job_id = _form.find('.js_job_id').val();
+
                 var _obj = {
                     name         :_form.find('.js_title').val(),
                     recruiter_id :_recruiter_id,
@@ -108,12 +109,12 @@ function PostJobHandler() {
                     location_type:_location_type
                 };
 
-                ApiUtil.makeAjaxRequest('/api/qa-jobs', '', 'POST', '', _obj, function(_qaJobRes) {
+                ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_qaJobRes) {
                     if(!_qaJobRes.error && _qaJobRes.data) {
                         var _adminObj = {
                             recruiter_id:_recruiter_id,
                             qa_job_id   :_qaJobRes.data.id,
-                            msg         :'New job posted'
+                            msg         :'Job details updated'
                         };
                         ApiUtil.makeAjaxRequest('/api/admin-notifications', '', 'POST', '', _adminObj, function(_res) {
                             postJobCategory(_qaJobRes.data.id, _form);
@@ -140,14 +141,14 @@ function PostJobHandler() {
         });
     }
 
-    function postJobRequirements(_job_id, _form) {
+    function postJobRequirements(_qa_job_id, _form) {
         var _obj = {
-            qa_job_id   :_job_id,
+            qa_job_id   :_qa_job_id,
             requirements:_form.find('.js_job_requirements').val() || []
         };
         ApiUtil.makeAjaxRequest('/api/requirements', '', 'POST', '', _obj, function(_res) {
             if(!_res.error) {
-                window.location.href = '/post-job/info/' + _job_id;
+                window.location.href = '/post-job/info/' + _qa_job_id;
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
@@ -183,67 +184,69 @@ function PostJobHandler() {
 
     function postJobTechnologies(_job_id, _form) {
         var _technologies = _form.find('.js_technologies').val();
-        if(_technologies && _technologies.length) {
-            var _obj = {
-                qa_job_id   :_job_id,
-                technologies:_technologies
-            };
-            ApiUtil.makeAjaxRequest('/api/qa-job/technologies', '', 'POST', '', _obj, function(_res) {
-                if(!_res.error) {
-                    window.location.href = '/post-job/company/' + _job_id;
-                } else {
-                    alert(_res.message || 'Something went wrong!');
+        if(_technologies) {
+            waterfall(_technologies.map(function(arrayItem) {
+                return function(lastItemResult, CB) {
+                    if(!CB) {
+                        CB             = lastItemResult;
+                        lastItemResult = null;
+                    }
+                    var _obj = {
+                        qa_job_id    :_job_id,
+                        technology_id:arrayItem
+                    };
+
+                    ApiUtil.makeAjaxRequest('/api/qa-job/technologies', '', 'POST', '', _obj, function(_res) {
+                        CB(null, []);
+                    });
                 }
+            }), function(err, result) {
+                window.location.href = '/post-job/company/' + _job_id;
             });
         }
     }
 
     function bindPostJobCompanyEvent() {
+
         $('.js_company_benefit').select2({
             tags           :true,
             tokenSeparators:[',']
         });
-
-        $('.jsSubmitExistingCompanyBtn').click(function() {
-            _company_check_box.each(function(index, ele) {
-                console.log(index, ele);
-                var _this = $(ele);
-                if(_this.prop('checked')) {
-                    var _company_id = _this.data('cid');
-                    updateJobCompany(_company_id);
-                    return false;
-                }
-            });
-        });
-
-        $('.jsSubmitCompanyBtn').click(function() {
-            $('#jsJobCompanyForm').submit();
-        });
+        $('.js_select2').select2({});
 
         var _company_check_box = $('.js_company_check_box');
-        if(_company_check_box) {
-            _company_check_box.click(function() {
-                var _this = $(this);
-                if(_this.prop('checked')) {
-                    _company_check_box.prop('checked', false);
-                    _this.prop('checked', true);
+        _company_check_box.click(function() {
+            var _this = $(this);
+            if(_this.prop('checked')) {
+                _company_check_box.prop('checked', false);
+                _this.prop('checked', true);
+            } else {
+                _company_check_box.prop('checked', false);
+                _this.prop('checked', false);
+            }
+        });
+
+        $('.js_add_new_company_btn').click(function() {
+            _company_check_box.prop('checked', false);
+            $('.js_forms_wrap').removeClass('hide');
+            $(this).addClass('hide');
+        });
+
+        $('.jsSubmitCompanyFormBtn').click(function() {
+            var _isNewCompany = false;
+            _company_check_box.each(function(index, ele) {
+                if(ele.prop('checked' && ele.data('id'))) {
+                    var _company_id = ele.data('id');
+                    updateJobCompany(_company_id);
+                    return false;
                 } else {
-                    _company_check_box.prop('checked', false);
-                    _this.prop('checked', false);
+                    _isNewCompany = true;
                 }
             });
-
-            $('.js_add_new_company_btn').click(function() {
-                _company_check_box.prop('checked', false);
-                $('.js_forms_wrap').removeClass('hide');
-                $(this).addClass('hide');
-
-                $('.jsSubmitCompanyBtn').removeClass('hide');
-                $('.jsSubmitExistingCompanyBtn').addClass('hide');
-                $('.js_select2').select2({});
-            });
-        }
-
+            if(_isNewCompany) {
+                postCompanyDetails();
+            }
+        });
     }
 
     function updateJobCompany(_company_id) {
@@ -254,7 +257,6 @@ function PostJobHandler() {
         };
         ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
-                alert('Job posted successfully!');
                 window.location.href = '/';
             } else {
                 alert(_res.message || 'Something went wrong!');
@@ -262,13 +264,12 @@ function PostJobHandler() {
         });
     }
 
-    function bindPostJobCompanyFormEvent() {
-        var _form_name = '#jsJobCompanyForm';
+    function postCompanyDetails() {
+        var _form_name = '.jsJobCompanyForm';
         var _form      = $(_form_name);
 
         _form.unbind().submit(function(e) {
             e.preventDefault();
-            //console.log('hi');
             if(FormValidator.validateForm(_form_name)) {
                 var _company_obj = {
                     recruiter_id:$('.js_user_id').val(),
@@ -276,40 +277,24 @@ function PostJobHandler() {
                     industry_id :_form.find('.js_industry').val(),
                     size        :_form.find('.js_company_size').val(),
                     url         :_form.find('.js_company_url').val(),
-                    about       :_form.find('.js_about_company').val(),
-                    street      :_form.find('.js_street').val(),
-                    area        :_form.find('.js_area').val(),
-                    city        :_form.find('.js_city').val(),
-                    state       :_form.find('.js_state').val(),
-                    pin         :_form.find('.js_pin').val(),
-                    country     :_form.find('.js_country').val(),
-                    email       :_form.find('.js_candidate_email').val()
+                    about       :_form.find('.js_about_company').val()
+                    //street      :_form.find('.js_street').val(),
+                    //area        :_form.find('.js_area').val(),
+                    //city        :_form.find('.js_city').val(),
+                    //state       :_form.find('.js_state').val(),
+                    //pin         :_form.find('.js_pin').val(),
+                    //country     :_form.find('.js_country').val()
                 };
 
                 ApiUtil.makeAjaxRequest('/api/companies', '', 'POST', '', _company_obj, function(_res) {
                     if(!_res.error && _res.data) {
-                        uploadFiles(_res.data.id, _form)
+                        postCompanyBenefits(_res.data.id, _form)
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
                 });
             }
         });
-    }
-
-    function uploadFiles(company_id, _form) {
-        var _input_file = _form.find('.js_input_c_logo_file');
-        if(_input_file.val()) {
-            var formData = new FormData();
-            formData.append('photo', _input_file[0].files[0]);
-            ApiUtil.makeFileUploadRequest('/api/companies/photo/upload/' + company_id, '', 'POST', '',
-                formData,
-                function(_res_path) {
-                    postCompanyBenefits(company_id, _form);
-                });
-        } else {
-            postCompanyBenefits(company_id, _form);
-        }
     }
 
     function postCompanyBenefits(company_id, _form) {
@@ -320,7 +305,7 @@ function PostJobHandler() {
 
         ApiUtil.makeAjaxRequest('/api/benefits', '', 'POST', '', _company_obj, function(_res) {
             if(!_res.error) {
-                updateJobCompany(company_id);
+                window.location.href = '/';
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
@@ -341,9 +326,6 @@ function PostJobHandler() {
         },
         initCompany :function() {
             bindPostJobCompanyEvent();
-            bindPostJobCompanyFormEvent();
-            $('.js_industry').select2();
-            $('.js_company_size').select2();
         }
     }
 }

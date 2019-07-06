@@ -32,7 +32,8 @@
                                         <label class="control-label">Title</label>
                                         <div class="box_sec">
                                             <input type="text" class="form-control required js_title"
-                                                   placeholder="Eg: Frontend Developer, UI Designer...">
+                                                   placeholder="Eg: Frontend Developer, UI Designer..."
+                                                   value="{{data.name}}">
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
@@ -45,7 +46,9 @@
                                                                name="locationType"
                                                                type="radio"
                                                                value="office"
-                                                               checked>
+                                                            {{#ifCond data.location_type '===''office'}}
+                                                               checked
+                                                            {{/ifCond}}>
                                                         <label for="locationType1" class="radio-label">On Site</label>
                                                     </div>
                                                 </div>
@@ -56,7 +59,10 @@
                                                         <input id="locationType2"
                                                                name="locationType"
                                                                value="remote"
-                                                               type="radio">
+                                                               type="radio"
+                                                            {{#ifCond data.location_type '===''remote'}}
+                                                               checked
+                                                            {{/ifCond}}>
                                                         <label for="locationType2" class="radio-label">Remote</label>
                                                     </div>
                                                 </div>
@@ -66,10 +72,14 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Category</label>
                                         <div class="box_sec">
-                                            <select class="form-control js_select2 js_category">
+                                            <select class="form-control js_select2 js_category" required="required">
                                                 <option value="0">Select Job Category</option>
                                                 {{#each categories}}
-                                                    <option value="{{this.id}}">{{this.name}}</option>
+                                                    {{#ifCond ../data.qa_job_categories.0.category.id '===' this.id}}
+                                                        <option value="{{this.id}}" selected>{{this.name}}</option>
+                                                    {{else}}
+                                                        <option value="{{this.id}}">{{this.name}}</option>
+                                                    {{/ifCond}}
                                                 {{/each}}
                                             </select>
                                             <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
@@ -78,7 +88,8 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Type</label>
                                         <div class="box_sec">
-                                            <select class="form-control js_select2 js_job_type">
+                                            <select class="form-control js_select2 js_job_type" required>
+                                                <option value="{{data.job_type}}">{{data.job_type}}</option>
                                                 <option value="">select</option>
                                                 <option value="FullTime">Full Time</option>
                                                 <option value="PartTime">Part Time</option>
@@ -96,7 +107,11 @@
                                             <select multiple="multiple"
                                                     class="form-control required js_job_requirements">
                                                 {{#each requirements}}
-                                                    <option value="{{this.id}}">{{this.desc}}</option>
+                                                    {{#checkArrayOfObjectVal id ../data.qa_job_requirements}}
+                                                        <option value="{{id}}" selected>{{desc}}</option>
+                                                    {{else}}
+                                                        <option value="{{id}}">{{desc}}</option>
+                                                    {{/checkArrayOfObjectVal}}
                                                 {{/each}}
                                             </select>
                                         </div>
@@ -124,6 +139,7 @@
                                             <img src="/img/icons/full-arrow-blue.svg" alt="" class="right_icon">
                                         </button>
                                         <input type="hidden" value="{{recruiter_id}}" class="js_recruiter_id">
+                                        <input type="hidden" class="js_job_id" value="{{job_id}}">
                                     </div>
                                 </form>
                             </div>
@@ -137,8 +153,8 @@
 {{>footer swiper=true select2=true ranger=true}}
 </body>
 <script type="text/javascript">
-    $(function () {
-        PostJobHandler.init();
+    $(function() {
+        PostJobEditHandler.init();
     });
 </script>
 </html>

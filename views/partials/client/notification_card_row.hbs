@@ -1,0 +1,30 @@
+{{#each data}}
+    <div class="panel main_card_sec js_main_card_sec" >
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-12">
+                    <label class="check_box">
+                        <input type="checkbox" class="js_check_notification" value="{{this.id}}">
+                        <span class="checkmark"></span>
+                    </label>
+                    <a data-toggle="collapse" class="panel-title collapsed js_panel_title {{status}}" data-notification_id="{{id}}"
+                       data-parent="#accordion"
+                       href="#collapse_{{@index}}">
+                        <div class="title_sec">
+                            <span class="highlights">{{subject}}</span>
+
+                            <img src="/img/icons/arrow-down-small.svg" alt="" class="icon_arrow_down">
+                            <span class="small_txt"> {{#truncateText msg
+                                                                     20 }} {{/truncateText}}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="collapse_{{@index}}" class="panel-collapse collapse">
+            <div class="panel-body">
+                <span class="small_txt desc_txt">{{msg}}</span>
+            </div>
+        </div>
+    </div>
+{{/each}}

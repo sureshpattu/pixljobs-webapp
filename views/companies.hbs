@@ -7,32 +7,26 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
     {{>header_assets swiper=true  select2=true cropper=true}}
 </head>
-<body class="profile_pg">
+<body class="profile_pg job_recruiter_pg">
 {{>header}}
 
 <section class="common_main_sec">
     {{>common_hero_sec}}
     <div class="container">
-        {{>recruiter_tab_link active='recruiter_profile'}}
+        {{>recruiter_tab_link active="companies"}}
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="common_form_sec">
-                    <form class="form_wrap" id="jsEditRecruitForm" action="/">
+                    <div class="form_wrap">
                         <div class="name_info_sec">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="profile_img_wrap">
                                         {{#if data.photo}}
-                                            <img src="/api/recruiter/photo/{{data.photo}}" class="img_sec js_img_pre_holder">
+                                            <img src="/api/recruiter/photo/{{data.photo}}" class="img_sec">
                                         {{else}}
-                                            <img src="/img/user_icon.svg" class="img_sec js_img_pre_holder">
+                                            <img src="/img/user_icon.svg" class="img_sec">
                                         {{/if}}
-                                        <input type="file" class="js_input_profile_file" accept="image/*">
-                                        <input type="hidden" class="js_existing_profile_photo" accept="image/*"
-                                               value="{{data.photo}}">
-                                        <div class="icon_wrap">
-                                            <span class="fa fa-pencil"></span>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-9">
@@ -92,30 +86,16 @@
                                             <input type="text" class="form-control required js_mobile"
                                                    autocomplete="nope" placeholder="Enter mobile"
                                                    value="{{data.mobile}}">
+                                            <input type="hidden" class="js_recruiter_id" value="{{data.id}}">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group pixl_form_group">
-                                        <a href="/recruiter/change-password" class="cta_links">Change Password</a>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group pixl_form_group">
-                                        <a href="/recruiter/change-email" class="cta_links">Change Email</a>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="cta_wrap">
-                                <button class="btn btn_big btn_preview">PREVIEW</button>
-                                <button class="btn btn_big btn_blue" type="submit">
-                                    SAVE
-                                    <img src="/img/icons/tick.svg" alt="" class="tick_icon">
-                                </button>
-                                <input type="hidden" class="js_data_id" value="{{user_id}}">
+                            <div class="cards_wrap company_sec js_cards_wrap no_pad">
+                                {{>client/company_form_two data=data.companies default_company_id=data.default_company_id}}
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -124,8 +104,9 @@
 {{>footer swiper=true select2=true cropper=true}}
 </body>
 <script type="application/javascript">
-    $(function () {
-        RecruiterProfileEditHandler.initEdit();
+    $(function() {
+        RecruiterCompanyHandler.init();
     });
+
 </script>
 </html>
