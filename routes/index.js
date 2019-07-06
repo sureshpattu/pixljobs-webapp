@@ -618,6 +618,48 @@ router.get('/recruiter/notification', verify.isRecruiterLoggedIn, function(req, 
     });
 });
 
+router.get('/recruiter/jobs', verify.isRecruiterLoggedIn, function(req, res) {
+    async.parallel([
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/recruiter/fetch-full/' + req.cookies.pixljob_user_id,
+                function(_res) {
+                    callback(null, _res);
+                });
+        },
+        function(callback) {
+            req.body.recruiter_id = req.cookies.pixljob_user_id;
+            helper_utils.makeApiRequest(req, 'POST', '/qa-jobs/search',
+                function(_res) {
+                    callback(null, _res);
+                });
+        }
+    ], function(err, results) {
+        var _companies = [];
+        if(results[1] && !results[1].error && results[1].data) {
+            _companies = results[1].data.companies;
+        }
+
+        let is_experience = false;
+        if(results[0] && results[0].data && (results[0].data.exp_year > 0 || results[0].data.exp_month > 0)) {
+            is_experience = true;
+        }
+        res.render('recruiter_jobs', {
+            companies:_companies,
+            user     :!results[0].error ? results[0].data : [],
+            data     :!results[1].error ? results[1].data : [],
+            jobs     :!results[2].error ? results[2].data : [],
+            exp      :is_experience
+        });
+    });
+});
+
 router.get('/recruiter/change-password', function(req, res) {
     async.parallel([
         function(callback) {

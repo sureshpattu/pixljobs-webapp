@@ -60,31 +60,20 @@ function NotificationHandler() {
             var _obj = {
                 status:'read'
             };
-            ApiUtil.makeAjaxRequest('/api/notifications/' + _notification_id, '', 'PUT', '', _obj, function(_res) {
-                if(!_res.error && _res.data) {
-                    //window.location.href = '/notifications';
-                    //alert('message read');
-                } else {
-                    alert(_res.message || 'Something went wrong!');
-                }
-            });
-        });
+            if(_this.hasClass('unread')) {
+                ApiUtil.makeAjaxRequest('/api/notifications/' + _notification_id, '', 'PUT', '', _obj, function(_res) {
+                    if(!_res.error && _res.data) {
+                        _this.addClass('read');
+                        _this.removeClass('unread');
 
-        $('.js_panel_title').click(function() {
-            var _this            = $(this);
-            var _parent          = $(this).closest('.js_main_card_sec');
-            var _swiperContainer = _parent.find('.swiper-container');
-            var _swiperData      = _swiperContainer.data('swiper');
+                    } else {
+                        _this.addClass('unread');
+                        alert(_res.message || 'Something went wrong!');
+                    }
+                });
 
-            if(!_this.hasClass('collapsed')) {
-                _parent.find('.js_panel_title').addClass('read');
-
-            } else {
-                _parent.find('.js_more_btn_link').removeClass('hide');
-                _parent.find('.js_open_card').addClass('hide');
-                _parent.find('.js_reopen_card').addClass('hide');
-                _parent.find('.js_total_application_txt').addClass('application');
             }
+
         });
 
     }

@@ -3,27 +3,39 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-12">
-                    <label class="check_box check_notifications">
-                        <input type="checkbox" class="js_check_notification {{status}}" value="{{this.id}}">
-                        <span class="checkmark"></span>
-                    </label>
-                    <a data-toggle="collapse" class="panel-title collapsed js_panel_title {{status}}" data-notification_id="{{id}}"
-                       data-parent="#accordion"
-                       href="#collapse_{{@index}}">
-                        <div class="title_sec">
-                            <span class="highlights">{{subject}}</span>
+                    <div class="notification_wrap">
 
-                            <img src="/img/icons/arrow-down-small.svg" alt="" class="icon_arrow_down">
-                            <span class="small_txt"> {{#truncateText msg
-                                                                     20 }} {{/truncateText}}</span>
-                        </div>
-                    </a>
+                        <label class="check_box notifications check_notifications">
+                            <input type="checkbox" class="js_check_notification {{status}}" value="{{this.id}}">
+                            <span class="checkmark"></span>
+                        </label>
+                        <a data-toggle="collapse" class="panel-title collapsed js_panel_title {{status}}" data-notification_id="{{id}}"
+                           data-parent="#accordion"
+                           href="#collapse_{{@index}}">
+                            <div class="title_sec">
+                                <span class="highlights">{{subject}}</span>
+
+                                <img src="/img/icons/arrow-down-small.svg" alt="" class="icon_arrow_down">
+                                <span class="small_txt"> {{#truncateText msg
+                                                                         20 }} {{/truncateText}}</span>
+                            </div>
+                        </a>
+
+                    </div>
+
+
                 </div>
             </div>
         </div>
         <div id="collapse_{{@index}}" class="panel-collapse collapse">
             <div class="panel-body">
                 <span class="small_txt desc_txt">{{msg}}</span>
+
+                <div class="admin_txt">
+                    <div class="from_txt sender_detail_txt">From ,</div>
+                    <div class=" sender_detail_txt">PixlJobs - Team.</div>
+                </div>
+
             </div>
         </div>
     </div>

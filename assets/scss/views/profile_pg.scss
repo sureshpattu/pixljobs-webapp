@@ -223,10 +223,13 @@
         }
 
         .cta_links {
+            font-size: 14px;
             text-transform: uppercase;
             opacity: .8;
             text-align: right;
             color: #4a58ff;
+            text-decoration: underline;
+            cursor: pointer;
         }
 
         .updated_txt {
