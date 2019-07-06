@@ -1295,6 +1295,19 @@ a.btn {
     }
 }
 
+.notification_count{
+    margin-left: 10px;
+    background-color:red;
+}
+
+.notification_head_count{
+    margin-left: 10px;
+    background-color:red;
+    position: absolute;
+    left: 17px;
+    top: 4px;
+}
+
 
 .select2-container--default {
     .select2-selection--single .select2-selection__arrow {

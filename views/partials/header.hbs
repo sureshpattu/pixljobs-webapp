@@ -20,6 +20,9 @@
                                 {{#if user.photo}}
                                     {{#if user.is_recruiter}}
                                         <img src="/api/recruiter/photo/{{user.photo}}" class="user_img">
+                                        <span class="badge notification_head_count">{{#ifCond user.total_notifications ">" 0}}
+                                            {{user.total_notifications}}
+                                        {{/ifCond}}</span>
                                     {{else}}
                                         <img src="/api/applicant/photo/{{user.photo}}" class="user_img">
                                     {{/if}}
@@ -32,7 +35,7 @@
                                     <li><a href="/recruiter">Profile</a></li>
                                     <li><a href="/recruiter/companies">Companies</a></li>
                                     <li><a href="/recruiter/applications">Applications</a></li>
-                                    <li><a href="/recruiter/notification">Notification</a></li>
+                                    <li><a href="/recruiter/notification">Notification<span class="badge notification_count">{{user.total_notifications}}</span></a></li>
                                 {{else}}
                                     <li><a href="/applicant-account">Profile</a></li>
                                     <li><a href="/applicant/applications">Applied Jobs</a></li>
