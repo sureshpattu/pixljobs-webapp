@@ -29,7 +29,7 @@
                                            value="{{work_data.photo}}">
                                 </div>
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-6">
                                 <div class="details_sec">
                                     <div class="name">
                                         {{work_data.name}}
@@ -40,12 +40,13 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="checkbox_sec">
                                     <label class="check_box">
-                                        <input type="checkbox" class="js_check_notification" value="{{this.id}}">
+                                        <input type="checkbox" class="js_check_all_notifications" value="{{this.id}}">
                                         <span class="checkmark"></span>
-                                        Mark as read
+                                        Select All
+                                        <a href="" class="btn btn-apply btn_mark"> Mark as read</a>
                                     </label>
                                 </div>
                             </div>
@@ -53,7 +54,16 @@
                     </div>
                     <div class="cards_wrap js_cards_wrap">
                         {{>client/notification_card_row data=data.result}}
+
+                        <div class="bottom_cta_wrap">
+                            <a class="cta_load_more_link js_load_more_btn {{#ifCond data.pages '>' '1'}}
+                            {{else}}hide{{/ifCond}}">
+                                Show more notifications
+                                <img src="/img/icons/arrow-down.svg" class="fa" alt="">
+                            </a>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>

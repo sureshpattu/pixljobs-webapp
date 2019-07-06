@@ -61,6 +61,12 @@
             }
         }
     }
+    .gl_input_text {
+        opacity: .56;
+        font-size: 12px;
+        color: #637282;
+        margin-left: 16px;
+    }
 }
 
 @media all and (max-width: 767px) {
