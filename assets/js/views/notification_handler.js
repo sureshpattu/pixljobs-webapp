@@ -31,6 +31,7 @@ function NotificationHandler() {
             _check_all_notification.prop('checked', false);
             if($(this).prop('checked')) {
                 _checkedArr.push($(this).val());
+                $('.js_read_btn').removeClass("hide")
             } else {
                 var _index = _checkedArr.indexOf($(this).val());
                 if(_index !== -1) {
@@ -42,8 +43,10 @@ function NotificationHandler() {
         $('.js_check_all_notifications ').change(function() {
             if($(this).prop('checked')) {
                 $('.js_check_notification.unread').prop('checked', true);
+                $('.js_read_btn').removeClass("hide")
             } else {
                 $('.js_check_notification.unread').prop('checked', false);
+                $('.js_read_btn').addClass("hide")
             }
         });
 

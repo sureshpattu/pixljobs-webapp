@@ -50,8 +50,15 @@
                                 </div>
                                 <div class="col-md-5">
                                     <div class="cta_wrap">
-                                        <a class="btn btn_blue js_shortlist" data-type="shortlisted">Shortlist</a>
-                                        <a class="btn js_reject" data-type="rejected">Reject</a>
+                                        {{#ifCond applications.status '===' 'shortlisted'}}
+                                            <a class="btn btn-success js_shortlist" data-type="shortlisted">Shortlisted</a>
+                                            {{else}}
+                                            <a class="btn btn_blue js_shortlist" data-type="shortlisted">Shortlist</a>
+                                            <input type="hidden" class="js_application_id" value="{{application_id}}">
+                                            <a class="btn js_reject" data-type="rejected">Reject</a>
+                                        {{/ifCond}}
+
+
                                     </div>
                                 </div>
                             </div>
@@ -61,130 +68,23 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Full Name</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control js_name required"
-                                                   autocomplete="nope"
-                                                   placeholder="Enter your first name and last name"
-                                                   value="{{data.name}}" disabled>
-                                        </div>
+                                        <label class="control-label label_new">Full Name</label>
+                                        <div class="label_value">{{data.name}}</div>
                                     </div>
+
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Experience</label>
+                                        <label class="control-label label_new">Experience</label>
                                         <div class="row">
-                                            <div class="col-md-6 col-xs-6">
-                                                <div class="box_sec">
-                                                    <select id="selectExpYear"
-                                                            class="form-control js_select2 js_exp_year" disabled>
-                                                        <option value="0"
-                                                            {{#ifCond data.exp_year '===' '0'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            0 Years
-                                                        </option>
-                                                        <option value="1"
-                                                            {{#ifCond data.exp_year '===' '1'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            1 Years
-                                                        </option>
-                                                        <option value="2"{{#ifCond data.exp_year '===' '2'}}
-                                                                selected{{/ifCond}}>2 Years
-                                                        </option>
-                                                        <option value="3"
-                                                            {{#ifCond data.exp_year '===' '3'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            3 Years
-                                                        </option>
-                                                        <option value="4"
-                                                            {{#ifCond data.exp_year '===' '4'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            4 Years
-                                                        </option>
-                                                        <option value="5"
-                                                            {{#ifCond data.exp_year '===' '5'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            5 Years
-                                                        </option>
-                                                        <option value="6"
-                                                            {{#ifCond data.exp_year '===' '6'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            6 Years
-                                                        </option>
-                                                    </select>
+                                            <div class="col-md-4 col-xs-6">
+                                                <div class="label_value">{{data.exp_year}}
+                                                    Years
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-xs-6">
-                                                <div class="box_sec">
-                                                    <select id="selectExpMonth"
-                                                            class="form-control js_exp_month js_select2" disabled>
-                                                        <option value="0"
-                                                            {{#ifCond data.exp_month '===' '0'}}
-                                                                selected
-                                                            {{/ifCond}}>0 Months
-                                                        </option>
-                                                        <option value="1"
-                                                            {{#ifCond data.exp_month '===' '1'}}
-                                                                selected
-                                                            {{/ifCond}}>1 Months
-                                                        </option>
-                                                        <option value="2"
-                                                            {{#ifCond data.exp_month '===' '2'}}
-                                                                selected
-                                                            {{/ifCond}}>2 Months
-                                                        </option>
-                                                        <option value="3"
-                                                            {{#ifCond data.exp_month '===' '3'}}
-                                                                selected
-                                                            {{/ifCond}}>3 Months
-                                                        </option>
-                                                        <option value="4"
-                                                            {{#ifCond data.exp_month '===' '4'}}
-                                                                selected
-                                                            {{/ifCond}}>4 Months
-                                                        </option>
-                                                        <option value="5"
-                                                            {{#ifCond data.exp_month '===' '5'}}
-                                                                selected
-                                                            {{/ifCond}}>5 Months
-                                                        </option>
-                                                        <option value="6"
-                                                            {{#ifCond data.exp_month '===' '6'}}
-                                                                selected
-                                                            {{/ifCond}}>6 Months
-                                                        </option>
-                                                        <option value="7"
-                                                            {{#ifCond data.exp_month '===' '7'}}
-                                                                selected
-                                                            {{/ifCond}}>7 Months
-                                                        </option>
-                                                        <option value="8"
-                                                            {{#ifCond data.exp_month '===' '8'}}
-                                                                selected
-                                                            {{/ifCond}}>8 Months
-                                                        </option>
-                                                        <option value="9"
-                                                            {{#ifCond data.exp_month '===' '9'}}
-                                                                selected
-                                                            {{/ifCond}}>9 Months
-                                                        </option>
-                                                        <option value="10"
-                                                            {{#ifCond data.exp_month '===' '10'}}
-                                                                selected
-                                                            {{/ifCond}}>10 Months
-                                                        </option>
-                                                        <option value="11"
-                                                            {{#ifCond data.exp_month '===' '11'}}
-                                                                selected
-                                                            {{/ifCond}}>11 Months
-                                                        </option>
-                                                    </select>
+                                            <div class="col-md-8 col-xs-6">
+                                                <div class="label_value">{{data.exp_month}}
+                                                    Months
                                                 </div>
                                             </div>
                                         </div>
@@ -194,128 +94,86 @@
                             <div class="row">
                                 <div class="col-md-6 js_fresh_detail_sec {{#if data.qualification}}{{else}}hide{{/if}}">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Qualification</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control js_qualification"
-                                                   autocomplete="nope" placeholder="Highest academic qualification"
-                                                   value="{{data.qualification}}" disabled>
-                                        </div>
+                                        <label class="control-label label_new">Qualification</label>
+                                        <div class="label_value">{{data.qualification}}</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 js_exp_detail_sec {{#if data.designation}}{{else}}hide{{/if}} ">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Designation</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control js_designation"
-                                                   autocomplete="nope" placeholder="Mention about your role"
-                                                   value="{{data.designation}}" disabled>
-                                        </div>
+                                        <label class="control-label label_new">Designation</label>
+                                        <div class="label_value">{{data.designation}}</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 js_exp_detail_sec {{#if data.company}}{{else}}hide{{/if}}">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Company Name</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control js_company"
-                                                   autocomplete="nope" placeholder="Enter your company's name"
-                                                   value="{{data.company}}" disabled>
-                                        </div>
+                                        <label class="control-label label_new">Company Name</label>
+                                        <div class="label_value">{{data.company}}</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 js_exp_detail_sec {{#if data.current_salary}}{{else}}hide{{/if}}">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Current Annual Salary</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control js_cur_salary"
-                                                   autocomplete="nope" placeholder="Enter Amt in No.s only"
-                                                   value="{{data.current_salary}}" disabled>
-                                            <span class="inr_txt">INR</span>
-                                        </div>
+                                        <label class="control-label label_new">Current Annual Salary</label>
+                                        <div class="label_value">{{data.current_salary}}<span
+                                                class="currancy_txt">INR</span></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group {{#if
                                             data.expected_salary}}{{else}}hide{{/if}}">
-                                        <label class="control-label">Expected Annual Salary</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control js_anual_salary"
-                                                   autocomplete="nope" placeholder="Enter Amt in No.s only"
-                                                   value="{{data.expected_salary}}" disabled>
-                                            <span class="inr_txt">INR</span>
-                                        </div>
+                                        <label class="control-label label_new">Expected Annual Salary</label>
+                                        <div class="label_value">{{data.expected_salary}}<span
+                                                class="currancy_txt">INR</span></div>
+
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 js_fresh_detail_sec {{#if data.institution}}{{else}}hide{{/if}}">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Institution</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control js_institution"
-                                                   autocomplete="nope"
-                                                   placeholder="Last academic institution attended"
-                                                   value="{{data.institution}}" disabled>
-                                        </div>
+                                        <label class="control-label label_new">Institution</label>
+                                        <div class="label_value">{{data.institution}}</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Gender</label>
-                                        <div class="box_sec">
-                                            <select class="form-control js_gender required js_select2" disabled>
-                                                <option value="male"
-                                                        {{#ifCond data.gender '===' 'male'}}selected{{/ifCond}}>Male
-                                                </option>
-                                                <option value="female"
-                                                        {{#ifCond data.gender '===' 'female'}}selected{{/ifCond}}>
-                                                    Female
-                                                </option>
-                                            </select>
-                                        </div>
+                                        <label class="control-label label_new">Gender</label>
+                                        <div class="label_value">{{data.gender}}</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Contact No.</label><a href=""
-                                                                                           class="verify_link">VERIFY</a>
-
+                                        <label class="control-label label_new">Contact No.</label><a href=""
+                                                                                                     class="verify_link">VERIFY</a>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <div class="box_sec">
-                                                    <select class="form-control js_mobile_code required js_select2" disabled>
-                                                        <option value="">Select</option>
-                                                        {{#each country_code}}
-                                                            <option value="{{code}}"
-                                                                {{#ifCond ../data.mobile_code '===' code}}
-                                                                    selected
-                                                                {{/ifCond}}>
-                                                                {{name}} {{code}}
-                                                            </option>
-                                                        {{/each}}
-                                                    </select>
+                                                <div class="label_value">
+                                                    {{#each country_code}}
+
+                                                    {{/each}}
                                                 </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <div class="box_sec">
-                                                    <input type="text" class="form-control required js_mobile"
-                                                           autocomplete="nope" placeholder="Your 10 digit mobile No."
-                                                           value="{{data.mobile}}" disabled>
-                                                </div>
+                                                <div class="label_value">{{data.mobile}}</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Email ID</label>
-                                        <a class="verify_link">VERIFY</a>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control required js_email"
-                                                   autocomplete="nope" placeholder="Your current Email ID"
-                                                   value="{{data.email}}" disabled>
-                                        </div>
+                                        <label class="control-label label_new">Email ID</label>
+                                        {{#if data.is_email_verified}}
+                                            <div class="verified_wrap">
+                                                <div class="verified_email">
+                                                    <img src="/img/icons/tick-green.svg" alt="">
+                                                </div>
+                                                <span class="verified_txt">Verified</span>
+                                            </div>
+                                        {{else}}
+                                            <a class="verify_link js_verify_email">VERIFY</a>
+                                        {{/if}}
+                                        <div class="label_value">{{data.email}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -330,7 +188,7 @@
 </body>
 <script type="application/javascript">
     $(function() {
-        ApplicantEditHandler.init();
+        RecruiterApplicatiobsHandler.init();
     });
 </script>
 </html>
