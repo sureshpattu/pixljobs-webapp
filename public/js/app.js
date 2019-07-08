@@ -584,17 +584,17 @@ function PopupPage() {
 module.exports = PopupPage();
 
 },{}],7:[function(require,module,exports){
-var ApiUtil       = require('../utils/apiUtil');
+var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
-var utils         = require('../utils/common');
-var async         = require('async');
+var utils = require('../utils/common');
+var async = require('async');
 
 function ApplicantSignUpHandler() {
     var _img_pre_holder = $('.js_img_pre_holder');
 
     function readURL(input) {
         if(input.files && input.files[0]) {
-            var reader    = new FileReader();
+            var reader = new FileReader();
             reader.onload = function(e) {
                 _img_pre_holder.attr('src', e.target.result);
                 _img_pre_holder.removeClass('hide');
@@ -606,7 +606,7 @@ function ApplicantSignUpHandler() {
 
     function bindApplicantSignUpEvent() {
         var _form_name = '#jsSignUpApplicantForm';
-        var _form      = $(_form_name);
+        var _form = $(_form_name);
         _form.unbind().submit(function(e) {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
@@ -676,18 +676,7 @@ function ApplicantSignUpHandler() {
                 }
             }
         ], function(err, results) {
-            var _obj = {
-                email   :_form.find('.js_email').val(),
-                password:_form.find('.js_password').val()
-            };
-            ApiUtil.makeAjaxRequest('/api/applicant-auth/login', '', 'POST', '', _obj,
-                function(_res) {
-                    if(!_res.error) {
-                        window.location.href = '/applicant-account';
-                    } else {
-                        alert(_res.message || 'Something went wrong!');
-                    }
-                });
+            window.location.href = '/applicant-account';
         });
     }
 
@@ -759,8 +748,8 @@ function ApplicantSignUpHandler() {
         });
 
         $('.js_resume_file').change(function() {
-            var _this      = $(this);
-            var _parent    = _this.closest('.upload_sec');
+            var _this = $(this);
+            var _parent = _this.closest('.upload_sec');
             var _file_name = _this.val().replace(/.*[\/\\]/, '');
 
             if(_this.val()) {
@@ -2442,19 +2431,7 @@ function RecruiterHandler() {
 
         ApiUtil.makeAjaxRequest('/api/benefits', '', 'POST', '', _company_obj, function(_res) {
             if(!_res.error) {
-                //window.location.href = '/recruiter'
-                var _obj = {
-                    email   :_form.find('.js_email').val(),
-                    password:_form.find('.js_password').val()
-                };
-                ApiUtil.makeAjaxRequest('/api/recruiter-auth/login', '', 'POST', '', _obj,
-                    function(_res) {
-                        if(!_res.error) {
-                            window.location.href = '/recruiter';
-                        } else {
-                            alert(_res.message || 'Something went wrong!');
-                        }
-                    });
+                window.location.href = '/recruiter'
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
