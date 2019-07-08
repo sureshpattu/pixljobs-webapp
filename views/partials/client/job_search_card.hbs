@@ -1,5 +1,5 @@
 {{#each data}}
-    <a class="card_sec new_card" href="/job-info/{{this.id}}">
+    <a class="card_sec {{#ifDateDiff created_at 3}}new_card{{/ifDateDiff}}" href="/job-info/{{this.id}}">
         <div class="new_sec">
             <span class="fa fa-certificate"></span>
             <span class="new_txt">NEW</span>

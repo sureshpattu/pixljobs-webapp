@@ -1,15 +1,15 @@
-var ApiUtil = require('../utils/apiUtil');
+var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
-var utils = require('../utils/common');
-var async = require('async');
+var utils         = require('../utils/common');
+var async         = require('async');
 
 function ApplicantSignUpHandler() {
     var _img_pre_holder = $('.js_img_pre_holder');
 
     function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
+        if(input.files && input.files[0]) {
+            var reader    = new FileReader();
+            reader.onload = function(e) {
                 _img_pre_holder.attr('src', e.target.result);
             };
             reader.readAsDataURL(input.files[0]);
@@ -18,33 +18,31 @@ function ApplicantSignUpHandler() {
 
     function bindApplicantEditEvent() {
         var _form_name = '#jsApplicantEditForm';
-        var _form = $(_form_name);
+        var _form      = $(_form_name);
 
-        _form.unbind().submit(function (e) {
+        _form.unbind().submit(function(e) {
             e.preventDefault();
-            if (FormValidator.validateForm(_form_name)) {
+            if(FormValidator.validateForm(_form_name)) {
                 var obj = {
-                    name: _form.find('.js_name').val(),
-                    qualification: _form.find('.js_qualification').val(),
-                    institution: _form.find('.js_institution').val(),
-                    designation: _form.find('.js_designation').val(),
-                    company: _form.find('.js_company').val(),
-                    current_salary: _form.find('.js_cur_salary').val(),
-                    expected_salary: _form.find('.js_anual_salary').val(),
-                    mobile: _form.find('.js_mobile').val() || '0',
-                    email: _form.find('.js_email').val(),
-                    password: _form.find('.js_password').val(),
-                    gender: _form.find('.js_gender').val(),
-                    exp_month: _form.find('.js_exp_month').val(),
-                    exp_year: _form.find('.js_exp_year').val()
+                    name           :_form.find('.js_name').val(),
+                    qualification  :_form.find('.js_qualification').val(),
+                    institution    :_form.find('.js_institution').val(),
+                    designation    :_form.find('.js_designation').val(),
+                    company        :_form.find('.js_company').val(),
+                    current_salary :_form.find('.js_cur_salary').val(),
+                    expected_salary:_form.find('.js_anual_salary').val(),
+                    mobile         :_form.find('.js_mobile').val() || '0',
+                    mobile_code    :_form.find('.js_mobile_code').val(),
+                    email          :_form.find('.js_email').val(),
+                    password       :_form.find('.js_password').val(),
+                    gender         :_form.find('.js_gender').val(),
+                    exp_month      :_form.find('.js_exp_month').val(),
+                    exp_year       :_form.find('.js_exp_year').val()
                 };
 
-                console.log(obj);
-                var callback = function (_res) {
-                    if (!_res.error) {
+                var callback = function(_res) {
+                    if(!_res.error) {
                         uploadPhoto(_form, _res.data.id);
-                        uploadResume(_form, _res.data.id);
-                        alert('Data updated successfully!');
                     } else {
                         alert(_res.message || 'Something went wrong!');
                     }
@@ -55,83 +53,84 @@ function ApplicantSignUpHandler() {
     }
 
     function uploadPhoto(_form, applicant_id) {
-        var _input_file = _form.find('.js_input_profile_file');
+        var _input_file    = _form.find('.js_input_profile_file');
         var _existing_file = _form.find('.js_existing_profile_photo');
-        if (_input_file.val()) {
-            if (_existing_file.val()) {
-                ApiUtil.makeAjaxRequest('/api/applicant/photo/' + _existing_file.val(), '', 'DELETE', '','',
-                    function (_res_path) {
-                        if (_res_path.error) {
+        if(_input_file.val()) {
+            if(_existing_file.val()) {
+                ApiUtil.makeAjaxRequest('/api/applicant/photo/' + _existing_file.val(), '', 'DELETE', '', '',
+                    function(_res_path) {
+                        if(_res_path.error) {
+                            updatePhoto(_form, applicant_id);
+                        } else {
                             updatePhoto(_form, applicant_id);
                         }
-                        else {
-                            updatePhoto(_form, applicant_id);
-                        }
-                        window.location.href = '/applicant-account'
                     });
-            }else{
+            } else {
                 updatePhoto(_form, applicant_id);
             }
+        } else {
+            uploadResume(_form, applicant_id);
+        }
+    }
+
+    function updatePhoto(_form, applicant_id) {
+        var _input_file = _form.find('.js_input_profile_file');
+        if(_input_file.val()) {
+            var formData = new FormData();
+            formData.append('photo', _input_file[0].files[0]);
+            ApiUtil.makeFileUploadRequest('/api/applicant/photo/upload/' + applicant_id, '', 'POST', '',
+                formData, function(err, results) {
+                    window.location.href = '/applicant-account';
+                    uploadResume(_form, applicant_id);
+                });
+        } else {
+            uploadResume(_form, applicant_id);
         }
     }
 
     function uploadResume(_form, applicant_id) {
-        var _input_file = _form.find('.js_input_resume_file');
+        var _input_file    = _form.find('.js_input_resume_file');
         var _existing_file = _form.find('.js_existing_resume_file');
-        if (_input_file.val()) {
-            console.log(_input_file.val());
-            if (_existing_file.val()) {
-                console.log(_existing_file.val());
-                ApiUtil.makeAjaxRequest('/api/applicant/resume/' + _existing_file.val(), '', 'DELETE', '','',
-                    function (_res_path) {
-                        if (_res_path.error) {
+        if(_input_file.val()) {
+            if(_existing_file.val()) {
+                ApiUtil.makeAjaxRequest('/api/applicant/resume/' + _existing_file.val(), '', 'DELETE', '', '',
+                    function(_res_path) {
+                        if(_res_path.error) {
+                            updateResume(_form, applicant_id);
+                        } else {
                             updateResume(_form, applicant_id);
                         }
-                        else {
-                            updateResume(_form, applicant_id);
-                        }
-                        window.location.href = '/applicant-account'
                     });
-            }else{
+            } else {
                 updateResume(_form, applicant_id);
             }
-        }
-    }
-
-
-    function updatePhoto(_form, applicant_id) {
-        var _input_file = _form.find('.js_input_profile_file');
-        if (_input_file.val()) {
-            var formData = new FormData();
-            formData.append('photo', _input_file[0].files[0]);
-            ApiUtil.makeFileUploadRequest('/api/applicant/photo/upload/' + applicant_id, '', 'POST', '',
-                formData, function (err, results) {
-                    // window.location.href = '/applicant-account'
-                    alert('Photo updated successfully!');
-                });
+        } else {
+            alert('Data updated successfully.');
+            window.location.href = '/applicant-account'
         }
     }
 
     function updateResume(_form, applicant_id) {
         var _input_file = _form.find('.js_input_resume_file');
-        if (_input_file.val()) {
+        if(_input_file.val()) {
             var formData = new FormData();
             formData.append('photo', _input_file[0].files[0]);
             ApiUtil.makeFileUploadRequest('/api/applicant/resume/upload/' + applicant_id, '', 'POST', '',
-                formData, function (err, results) {
-                    // window.location.href = '/applicant-account'
-                    alert('Resume updated successfully!');
+                formData, function(err, results) {
+                    window.location.href = '/applicant-account'
                 });
+        } else {
+            alert('Data updated successfully.');
+            window.location.href = '/applicant-account'
         }
     }
-
 
     function bindCommonClickEvents() {
         $('.js_select2').select2({});
 
-        $('#selectExpMonth').change(function () {
+        $('#selectExpMonth').change(function() {
             var selectedItem = $(this).val();
-            if (selectedItem > 0) {
+            if(selectedItem > 0) {
                 $('#freshDetails').addClass('hide');
                 $('#expDetails').removeClass('hide');
 
@@ -159,9 +158,9 @@ function ApplicantSignUpHandler() {
             }
         });
 
-        $('#selectExpYear').change(function () {
+        $('#selectExpYear').change(function() {
             var selectedItem = $(this).val();
-            if (selectedItem.valueOf() > 0) {
+            if(selectedItem.valueOf() > 0) {
                 $('#freshDetails').addClass('hide');
                 $('#expDetails').removeClass('hide');
 
@@ -189,17 +188,24 @@ function ApplicantSignUpHandler() {
             }
         });
 
-        $('.js_input_profile_file').change(function () {
+        $('.js_input_profile_file').change(function() {
             readURL(this);
         });
 
-        $('.js_input_resume_file').change(function () {
-            readURL(this);
+        $('.js_resume_file').change(function() {
+            var _this      = $(this);
+            var _parent    = _this.closest('.upload_sec');
+            var _file_name = _this.val().replace(/.*[\/\\]/, '');
+
+            if(_this.val()) {
+                _parent.addClass('preview');
+                _parent.find('.file_name').html(_file_name);
+            }
         });
     }
 
     return {
-        init: function () {
+        init:function() {
             bindCommonClickEvents();
             bindApplicantEditEvent();
             $('.js_select2').select2({});

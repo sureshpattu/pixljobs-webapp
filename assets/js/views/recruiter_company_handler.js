@@ -87,11 +87,19 @@ function RecruiterCompanyHandler() {
     }
 
     function bindClickEvents() {
-        $('.js_company_benefit').select2({
+
+        var _select2         = $('.js_select2');
+        var _company_benefit = $('.js_company_benefit');
+        _select2.select2({});
+        _company_benefit.select2({
             tags           :true,
             tokenSeparators:[',']
         });
-        $('.js_gender').select2();
+        $('.js_panel_title').click(function() {
+            $('.select2-container--default').css({
+                width:'100%'
+            });
+        });
         var _company_check_box = $('.js_company_checkbox');
         _company_check_box.click(function() {
             var _this = $(this);
@@ -123,6 +131,29 @@ function RecruiterCompanyHandler() {
                 });
 
         });
+
+        $('.js_input_c_logo_file').change(function() {
+            var _this      = $(this);
+            var _parent    = _this.closest('.upload_sec');
+            var _file_name = _this.val().replace(/.*[\/\\]/, '');
+
+            if(_this.val()) {
+                _parent.addClass('preview');
+                _parent.find('.file_name').html(_file_name);
+            }
+            readURL(this);
+        });
+    }
+
+    function readURL(input) {
+        if(input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.js_company_logo_preview').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
     }
 
     return {

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Account Applications</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{>header_assets swiper=true  select2=true}}
+</head>
+<body class="profile_pg recruiters_job_pg">
+{{>header}}
+<section class="common_main_sec">
+    {{>common_hero_sec}}
+    <div class="container">
+        {{>recruiter_tab_link active="jobs"}}
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="common_form_sec">
+                    <div class="form_wrap">
+                        <div class="detail_sec cards_wrap js_cards_wrap">
+                            {{>client/job_card_row data=jobs.result}}
+                        </div>
+                        <div class="common_load_more_wrap">
+                            <a class="load_more_link js_load_more_btn {{#ifCond data.pages '>' '1'}}
+                            {{else}}hide{{/ifCond}}">
+                                Load more
+                                <img src="/img/icons/arrow-down.svg" class="fa" alt="">
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{>footer swiper=true select2=true}}
+</body>
+<script type="application/javascript">
+    $(function() {
+        RecruiterAppHandler.init();
+    });
+</script>
+</html>

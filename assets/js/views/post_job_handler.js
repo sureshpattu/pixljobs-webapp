@@ -105,6 +105,8 @@ function PostJobHandler() {
                     job_type     :_form.find('.js_job_type').val(),
                     salary_min   :_form.find('.js-input-from').val(),
                     salary_max   :_form.find('.js-input-to').val(),
+                    exp_year     :_form.find('.js_exp_year').val(),
+                    exp_month    :_form.find('.js_exp_month').val(),
                     location_type:_location_type
                 };
 
@@ -244,6 +246,28 @@ function PostJobHandler() {
             });
         }
 
+        $('.js_input_c_logo_file').change(function() {
+            var _this      = $(this);
+            var _parent    = _this.closest('.upload_sec');
+            var _file_name = _this.val().replace(/.*[\/\\]/, '');
+
+            if(_this.val()) {
+                _parent.addClass('preview');
+                _parent.find('.file_name').html(_file_name);
+            }
+            readURL(this);
+        });
+    }
+
+    function readURL(input) {
+        if(input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.js_company_logo_preview').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
     }
 
     function updateJobCompany(_company_id) {
@@ -254,7 +278,7 @@ function PostJobHandler() {
         };
         ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
             if(!_res.error && _res.data) {
-                alert('Job posted successfully!');
+                alert('Your job post request received it will be verified by our admin we will update you soon!');
                 window.location.href = '/';
             } else {
                 alert(_res.message || 'Something went wrong!');

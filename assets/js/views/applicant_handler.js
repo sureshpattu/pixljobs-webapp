@@ -33,6 +33,7 @@ function ApplicantSignUpHandler() {
                     current_salary :_form.find('.js_cur_salary').val(),
                     expected_salary:_form.find('.js_anual_salary').val(),
                     mobile         :_form.find('.js_mobile').val() || '0',
+                    mobile_code    :_form.find('.js_mobile_code').val(),
                     email          :_form.find('.js_email').val(),
                     password       :_form.find('.js_password').val(),
                     gender         :_form.find('.js_gender').val(),
@@ -90,43 +91,6 @@ function ApplicantSignUpHandler() {
             }
         ], function(err, results) {
             window.location.href = '/applicant-account'
-        });
-    }
-
-    function bindApplicantEditEvent() {
-        var _form_name = '#jsApplicantEditForm';
-        var _form      = $(_form_name);
-        console.log(_form);
-
-        _form.unbind().submit(function(e) {
-            e.preventDefault();
-            console.log(_form_name);
-            if(FormValidator.validateForm(_form_name)) {
-                var obj      = {
-                    name           :_form.find('.js_name').val(),
-                    qualification  :_form.find('.js_qualification').val(),
-                    institution    :_form.find('.js_institution').val(),
-                    designation    :_form.find('.js_designation').val(),
-                    company        :_form.find('.js_company').val(),
-                    current_salary :_form.find('.js_cur_salary').val(),
-                    expected_salary:_form.find('.js_anual_salary').val(),
-                    mobile         :_form.find('.js_mobile').val() || '0',
-                    email          :_form.find('.js_email').val(),
-                    password       :_form.find('.js_password').val(),
-                    gender         :_form.find('.js_gender').val(),
-                    exp_month      :_form.find('.js_exp_month').val(),
-                    exp_year       :_form.find('.js_exp_year').val()
-                };
-                var callback = function(_res) {
-                    if(!_res.error) {
-                        alert('Data updated successfully!');
-                        window.location.href = '/applicant-account'
-                    } else {
-                        alert(_res.message || 'Something went wrong!');
-                    }
-                };
-                ApiUtil.makeAjaxRequest('/api/applicant', '', 'PUT', '', obj, callback);
-            }
         });
     }
 
@@ -195,6 +159,17 @@ function ApplicantSignUpHandler() {
 
         $('.js_input_profile_file').change(function() {
             readURL(this);
+        });
+
+        $('.js_resume_file').change(function() {
+            var _this      = $(this);
+            var _parent    = _this.closest('.upload_sec');
+            var _file_name = _this.val().replace(/.*[\/\\]/, '');
+
+            if(_this.val()) {
+                _parent.addClass('preview');
+                _parent.find('.file_name').html(_file_name);
+            }
         });
 
     }

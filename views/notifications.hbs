@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{>header_assets swiper=true  select2=true}}
 </head>
-<body class="job_recruiter_pg">
+<body class="profile_pg job_recruiter_pg">
 {{>header}}
 <section class="common_main_sec">
     {{>common_hero_sec}}
@@ -15,44 +15,26 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="common_form_sec">
-                    <div class="user_wrap">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <div class="profile_img_wrap">
-                                    {{#if work_data.photo}}
-                                        <img src="/api/recruiter/photo/{{work_data.photo}}" class="img_sec js_img_pre_holder">
-                                    {{else}}
-                                        <img src="/img/user_icon.svg" class="img_sec js_img_pre_holder">
-                                    {{/if}}
-                                    <input type="file" class="js_input_profile_file" accept="image/*">
-                                    <input type="hidden" class="js_existing_profile_photo" accept="image/*"
-                                           value="{{work_data.photo}}">
-                                </div>
+                    <div class="form_wrap">
+                        <div class="details_sec cards_wrap js_cards_wrap">
+                            <div class="checkbox_sec text-right">
+                                <label class="check_box">
+                                    <input type="checkbox" class="js_check_all_notifications" value="{{this.id}}">
+                                    <span class="checkmark"></span>
+                                    Select All
+                                    <a href="" class="btn btn-apply btn_mark"> Mark as read</a>
+                                </label>
                             </div>
-                            <div class="col-md-7">
-                                <div class="details_sec">
-                                    <div class="name">
-                                        {{work_data.name}}
-                                    </div>
-                                    <div class="designation">
-                                        {{work_data.city}} {{work_data.url}}
-                                    </div>
-                                </div>
+                            {{>client/notification_card_row data=data.result}}
 
-                            </div>
-                            <div class="col-md-3">
-                                <div class="checkbox_sec">
-                                    <label class="check_box">
-                                        <input type="checkbox" class="js_check_notification" value="{{this.id}}">
-                                        <span class="checkmark"></span>
-                                        Mark as read
-                                    </label>
-                                </div>
+                            <div class="bottom_cta_wrap">
+                                <a class="cta_load_more_link js_load_more_btn {{#ifCond data.pages '>' '1'}}
+                                {{else}}hide{{/ifCond}}">
+                                    Show more notifications
+                                    <img src="/img/icons/arrow-down.svg" class="fa" alt="">
+                                </a>
                             </div>
                         </div>
-                    </div>
-                    <div class="cards_wrap js_cards_wrap">
-                        {{>client/notification_card_row data=data.result}}
                     </div>
                 </div>
             </div>
@@ -65,7 +47,6 @@
     $(function() {
 
         NotificationHandler.init();
-
 
     });
 </script>

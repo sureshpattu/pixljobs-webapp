@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Pixlcoders</title>
+    <title>Pixlcoders - About Work</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{>header_assets swiper=true  select2=true ranger=true}}
@@ -70,35 +70,141 @@
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Category</label>
-                                        <div class="box_sec">
-                                            <select class="form-control js_select2 js_category" required="required">
-                                                <option value="0">Select Job Category</option>
-                                                {{#each categories}}
-                                                    {{#ifCond ../data.qa_job_categories.0.category.id '===' this.id}}
-                                                        <option value="{{this.id}}" selected>{{this.name}}</option>
-                                                    {{else}}
-                                                        <option value="{{this.id}}">{{this.name}}</option>
-                                                    {{/ifCond}}
-                                                {{/each}}
-                                            </select>
-                                            <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
+                                        <label class="control-label">Experience</label>
+                                        <div class="row">
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="box_sec">
+                                                    <select id="selectExpYear"
+                                                            class="form-control js_select2 js_exp_year">
+                                                        <option value="0"
+                                                                {{#ifCond data.exp_year '===' '0'}}selected{{/ifCond}}>
+                                                            0 Years
+                                                        </option>
+                                                        <option value="1"
+                                                                {{#ifCond data.exp_year '===' '1'}}selected{{/ifCond}}>
+                                                            1 Years
+                                                        </option>
+                                                        <option value="2"
+                                                                {{#ifCond data.exp_year '===' '2'}}selected{{/ifCond}}>
+                                                            2 Years
+                                                        </option>
+                                                        <option value="3"
+                                                                {{#ifCond data.exp_year '===' '3'}}selected{{/ifCond}}>
+                                                            3 Years
+                                                        </option>
+                                                        <option value="4"
+                                                                {{#ifCond data.exp_year '===' '4'}}selected{{/ifCond}}>
+                                                            4 Years
+                                                        </option>
+                                                        <option value="5"
+                                                                {{#ifCond data.exp_year '===' '5'}}selected{{/ifCond}}>
+                                                            5 Years
+                                                        </option>
+                                                        <option value="6"
+                                                                {{#ifCond data.exp_year '===' '6'}}selected{{/ifCond}}>
+                                                            6 Years
+                                                        </option>
+                                                        <option value="6+"
+                                                                {{#ifCond data.exp_year '===' '6+'}}selected{{/ifCond}}>
+                                                            6+ Years
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-xs-6">
+                                                <div class="box_sec">
+                                                    <select id="selectExpMonth"
+                                                            class="form-control js_exp_month js_select2">
+                                                        <option value="0"
+                                                                {{#ifCond data.exp_month '===' '0'}}selected{{/ifCond}}>
+                                                            0 Months
+                                                        </option>
+                                                        <option value="1"
+                                                                {{#ifCond data.exp_month '===' '1'}}selected{{/ifCond}}>
+                                                            1 Months
+                                                        </option>
+                                                        <option value="2"
+                                                                {{#ifCond data.exp_month '===' '2'}}selected{{/ifCond}}>
+                                                            2 Months
+                                                        </option>
+                                                        <option value="3"
+                                                                {{#ifCond data.exp_month '===' '3'}}selected{{/ifCond}}>
+                                                            3 Months
+                                                        </option>
+                                                        <option value="4"
+                                                                {{#ifCond data.exp_month '===' '4'}}selected{{/ifCond}}>
+                                                            4 Months
+                                                        </option>
+                                                        <option value="5"
+                                                                {{#ifCond data.exp_month '===' '5'}}selected{{/ifCond}}>
+                                                            5 Months
+                                                        </option>
+                                                        <option value="6"
+                                                                {{#ifCond data.exp_month '===' '6'}}selected{{/ifCond}}>
+                                                            6 Months
+                                                        </option>
+                                                        <option value="7"
+                                                                {{#ifCond data.exp_month '===' '7'}}selected{{/ifCond}}>
+                                                            7 Months
+                                                        </option>
+                                                        <option value="8"
+                                                                {{#ifCond data.exp_month '===' '8'}}selected{{/ifCond}}>
+                                                            8 Months
+                                                        </option>
+                                                        <option value="9"
+                                                                {{#ifCond data.exp_month '===' '9'}}selected{{/ifCond}}>
+                                                            9 Months
+                                                        </option>
+                                                        <option value="10"
+                                                                {{#ifCond data.exp_month '===' '10'}}selected{{/ifCond}}>
+                                                            10 Months
+                                                        </option>
+                                                        <option value="11"
+                                                                {{#ifCond data.exp_month '===' '11'}}selected{{/ifCond}}>
+                                                            11 Months
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Type</label>
-                                        <div class="box_sec">
-                                            <select class="form-control js_select2 js_job_type" required>
-                                                <option value="{{data.job_type}}">{{data.job_type}}</option>
-                                                <option value="">select</option>
-                                                <option value="FullTime">Full Time</option>
-                                                <option value="PartTime">Part Time</option>
-                                                <option value="Internship">Internship</option>
-                                                <option value="Contract">Contract</option>
-                                                <option value="Volunteer">Volunteer</option>
-                                                <option value="Temporary">Temporary</option>
-                                            </select>
-                                            <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Category</label>
+                                                <div class="box_sec">
+                                                    <select class="form-control js_select2 js_category"
+                                                            required="required">
+                                                        <option value="0">Select Job Category</option>
+                                                        {{#each categories}}
+                                                            {{#ifCond ../data.qa_job_categories.0.category.id '==='
+                                                                      this.id}}
+                                                                <option value="{{this.id}}"
+                                                                        selected>{{this.name}}</option>
+                                                            {{else}}
+                                                                <option value="{{this.id}}">{{this.name}}</option>
+                                                            {{/ifCond}}
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Type</label>
+                                                <div class="box_sec">
+                                                    <select class="form-control js_select2 js_job_type" required>
+                                                        <option value="{{data.job_type}}">{{data.job_type}}</option>
+                                                        <option value="">select</option>
+                                                        <option value="FullTime">Full Time</option>
+                                                        <option value="PartTime">Part Time</option>
+                                                        <option value="Internship">Internship</option>
+                                                        <option value="Contract">Contract</option>
+                                                        <option value="Volunteer">Volunteer</option>
+                                                        <option value="Temporary">Temporary</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">

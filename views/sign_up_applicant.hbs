@@ -28,12 +28,12 @@
                                         <div class="form-group pixl_form_group">
                                             <label for="" class="control-label">Select a role</label>
                                             <div class="role_row">
-                                                <a class="btn signup-recruit role " href="/sign-up/recruiter">
-                                                    <img src="/img/icons/recruiter.svg" alt="" class="role_icon">
-                                                    Recruiter</a>
                                                 <a class="btn signup-applicant role active" href="/sign-up/applicant">
                                                     <img src="/img/icons/applicant.svg" alt="" class="role_icon">
                                                     Applicant</a>
+                                                <a class="btn signup-recruit role " href="/sign-up/recruiter">
+                                                    <img src="/img/icons/recruiter.svg" alt="" class="role_icon">
+                                                    Recruiter</a>
                                             </div>
                                         </div>
                                     </div>
@@ -45,8 +45,8 @@
                                         </div>
                                         <div class="icon_wrap js_profile_img_txt">
                                             <div class="upload_pic"></div>
-                                            <div class="upload_txt">Upload Company</div>
-                                            <div class="upload_txt">Logo</div>
+                                            <div class="upload_txt">Upload Profile</div>
+                                            <div class="upload_txt">photo</div>
                                         </div>
                                         <input type="file" class="js_input_profile_file" accept="image/*">
                                     </div>
@@ -80,7 +80,6 @@
                                                         <option value="5">5 Years</option>
                                                         <option value="6">6 Years</option>
                                                     </select>
-                                                    <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-xs-6">
@@ -100,7 +99,6 @@
                                                         <option value="10">10 Months</option>
                                                         <option value="11">11 Months</option>
                                                     </select>
-                                                    <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                                 </div>
                                             </div>
                                         </div>
@@ -178,24 +176,35 @@
                                                 <option value="female">Female</option>
                                                 <option value="other">Others</option>
                                             </select>
-                                            <img src="/img/icons/arrow-down-dark.svg" alt="" class="arrow_down">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Contact No.</label><a href=""
-                                                                                           class="non_verify_link">VERIFY</a>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control required js_mobile"
-                                                   autocomplete="nope" placeholder="Your 10 digit mobile No.">
+                                        <label class="control-label">Contact No.</label><a class="non_verify_link">VERIFY</a>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="box_sec">
+                                                    <select class="form-control js_mobile_code required js_select2">
+                                                        <option value="">Select</option>
+                                                        {{#each country_code}}
+                                                            <option value="{{code}}">{{name}} {{code}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control required js_mobile"
+                                                           autocomplete="nope" placeholder="Your 10 digit mobile No.">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Email ID</label><a href=""
-                                                                                        class="verify_link">VERIFY</a>
+                                        <label class="control-label">Email ID</label>
                                         <div class="box_sec">
                                             <input type="text" class="form-control required js_email"
                                                    autocomplete="nope" placeholder="Your current Email ID">
@@ -216,17 +225,11 @@
                                 <div class="col-md-12">
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Upload Resume</label>
-                                        <div class="box_sec upload_sec">
-                                            <img src="/img/icons/upload-doc.svg" alt="" class="icon_sec">
-                                            <span>Drag & drop file or </span>
-                                            <a class="upload_txt">Upload file</a>
-                                            <input type="file" class="input_file js_resume_file" accept=".doc, .docx,.pdf">
-                                        </div>
+                                        {{>client/doc_upload data=null}}
                                     </div>
                                 </div>
                             </div>
                             <div class="cta_wrap">
-                                <button class="btn btn_big btn_preview">PREVIEW</button>
                                 <button class="btn btn_big btn_blue" type="submit">
                                     PROCEED
                                     <img src="/img/icons/full-arrow-blue.svg" alt="" class="right_icon">

@@ -141,6 +141,7 @@
             }
         }
     }
+
     .gl_input_text {
         opacity: .56;
         font-size: 12px;
@@ -179,6 +180,10 @@
     .checkbox label, .radio label {
         display: block;
         padding: 24px;
+    }
+
+    .salary_box {
+        padding-top: 25px;
     }
 
 }
