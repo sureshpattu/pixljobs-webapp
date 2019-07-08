@@ -287,11 +287,17 @@ router.get('/sign-up/recruiter', function(req, res) {
             helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
                 callback(null, _res);
             });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/country-code', function(_res) {
+                callback(null, _res);
+            });
         }
     ], function(err, results) {
         res.render('sign_up_recruiter', {
-            industries:!results[0].error ? results[0].data : [],
-            benefits  :!results[1].error ? results[1].data : []
+            industries  :!results[0].error ? results[0].data : [],
+            benefits    :!results[1].error ? results[1].data : [],
+            country_code:!results[2].error ? results[2].data : []
         });
     });
 });

@@ -74,45 +74,9 @@
                                                 <div class="box_sec">
                                                     <select id="selectExpYear"
                                                             class="form-control js_select2 js_exp_year">
-                                                        <option value="0"
-                                                            {{#ifCond data.exp_year '===' '0'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            0 Years
-                                                        </option>
-                                                        <option value="1"
-                                                            {{#ifCond data.exp_year '===' '1'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            1 Years
-                                                        </option>
-                                                        <option value="2"{{#ifCond data.exp_year '===' '2'}}
-                                                                selected{{/ifCond}}>2 Years
-                                                        </option>
-                                                        <option value="3"
-                                                            {{#ifCond data.exp_year '===' '3'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            3 Years
-                                                        </option>
-                                                        <option value="4"
-                                                            {{#ifCond data.exp_year '===' '4'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            4 Years
-                                                        </option>
-                                                        <option value="5"
-                                                            {{#ifCond data.exp_year '===' '5'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            5 Years
-                                                        </option>
-                                                        <option value="6"
-                                                            {{#ifCond data.exp_year '===' '6'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            6 Years
-                                                        </option>
+                                                        {{#counter 0 50}}
+                                                            <option value="{{this}}">{{this}} Years</option>
+                                                        {{/counter}}
                                                     </select>
                                                 </div>
                                             </div>

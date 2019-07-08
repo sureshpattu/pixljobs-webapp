@@ -9,7 +9,7 @@
         <li><a class="cta_link {{#ifCond active '===' 'applications'}} active {{/ifCond}}"
                href="/recruiter/applications">My Applications</a></li>
 
-        <li><a class="cta_link {{#ifCond active '===' 'notification'}} active {{/ifCond}}" href="/recruiter/notification">Notifications<span class="badge notification_count">{{user.total_notifications}}</span></a>
+        <li><a class="cta_link {{#ifCond active '===' 'notification'}} active {{/ifCond}}" href="/recruiter/notification">Notifications{{#if user.total_notifications}}<span class="badge notification_count">{{user.total_notifications}}</span>{{/if}} </a>
         </li>
     </ul>
 </div>
