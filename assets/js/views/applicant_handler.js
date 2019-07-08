@@ -90,7 +90,18 @@ function ApplicantSignUpHandler() {
                 }
             }
         ], function(err, results) {
-            window.location.href = '/applicant-account'
+            var _obj = {
+                email   :_form.find('.js_email').val(),
+                password:_form.find('.js_password').val()
+            };
+            ApiUtil.makeAjaxRequest('/api/applicant-auth/login', '', 'POST', '', _obj,
+                function(_res) {
+                    if(!_res.error) {
+                        window.location.href = '/applicant-account';
+                    } else {
+                        alert(_res.message || 'Something went wrong!');
+                    }
+                });
         });
     }
 
