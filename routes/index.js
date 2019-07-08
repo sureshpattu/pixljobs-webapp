@@ -146,6 +146,40 @@ router.get('/applicant-account', verify.isApplicantLoggedIn, function(req, res) 
     });
 });
 
+router.get('/applicant/:id', verify.isRecruiterLoggedIn, function(req, res) {
+    async.parallel([
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.params.id,
+                function(_res) {
+                    callback(null, _res);
+                });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/country-code', function(_res) {
+                callback(null, _res);
+            });
+        }
+    ], function(err, results) {
+        let is_experience = false;
+        if(results[0] && results[0].data && (results[0].data.exp_year > 0 || results[0].data.exp_month > 0)) {
+            is_experience = true;
+        }
+        res.render('applicant_details', {
+            user        :!results[0].error ? results[0].data : [],
+            data        :!results[1].error ? results[1].data : [],
+            country_code:!results[2].error ? results[2].data : [],
+            exp         :is_experience
+        });
+    });
+});
+
 router.get('/applicant/applications', verify.isApplicantLoggedIn, function(req, res) {
     async.parallel([
         function(callback) {
