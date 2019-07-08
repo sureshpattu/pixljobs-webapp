@@ -25,20 +25,23 @@ function ApplicantSignUpHandler() {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
                 var _obj = {
-                    name           :_form.find('.js_name').val(),
-                    qualification  :_form.find('.js_qualification').val(),
-                    institution    :_form.find('.js_institution').val(),
-                    designation    :_form.find('.js_designation').val(),
-                    company        :_form.find('.js_company').val(),
-                    current_salary :_form.find('.js_cur_salary').val(),
-                    expected_salary:_form.find('.js_anual_salary').val(),
-                    mobile         :_form.find('.js_mobile').val() || '0',
-                    mobile_code    :_form.find('.js_mobile_code').val(),
-                    email          :_form.find('.js_email').val(),
-                    password       :_form.find('.js_password').val(),
-                    gender         :_form.find('.js_gender').val(),
-                    exp_month      :_form.find('.js_exp_month').val(),
-                    exp_year       :_form.find('.js_exp_year').val()
+                    name            :_form.find('.js_name').val(),
+                    qualification   :_form.find('.js_qualification').val(),
+                    institution     :_form.find('.js_institution').val(),
+                    designation     :_form.find('.js_designation').val(),
+                    company         :_form.find('.js_company').val(),
+                    current_salary  :_form.find('.js_cur_salary').val(),
+                    expected_salary :_form.find('.js_anual_salary').val(),
+                    mobile          :_form.find('.js_mobile').val() || '0',
+                    mobile_code     :_form.find('.js_mobile_code').val(),
+                    email           :_form.find('.js_email').val(),
+                    password        :_form.find('.js_password').val(),
+                    gender          :_form.find('.js_gender').val(),
+                    exp_month       :_form.find('.js_exp_month').val(),
+                    exp_year        :_form.find('.js_exp_year').val(),
+                    institution_city:_form.find('.js_institution_city').val(),
+                    current_city    :_form.find('.js_current_city').val(),
+                    relocation      :_form.find('.js_relocation_checkbox').prop('checked')
                 };
                 ApiUtil.makeAjaxRequest('/api/applicant-auth/register', '', 'POST', '', _obj, function(_res) {
                     if(!_res.error) {

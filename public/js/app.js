@@ -611,20 +611,23 @@ function ApplicantSignUpHandler() {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
                 var _obj = {
-                    name           :_form.find('.js_name').val(),
-                    qualification  :_form.find('.js_qualification').val(),
-                    institution    :_form.find('.js_institution').val(),
-                    designation    :_form.find('.js_designation').val(),
-                    company        :_form.find('.js_company').val(),
-                    current_salary :_form.find('.js_cur_salary').val(),
-                    expected_salary:_form.find('.js_anual_salary').val(),
-                    mobile         :_form.find('.js_mobile').val() || '0',
-                    mobile_code    :_form.find('.js_mobile_code').val(),
-                    email          :_form.find('.js_email').val(),
-                    password       :_form.find('.js_password').val(),
-                    gender         :_form.find('.js_gender').val(),
-                    exp_month      :_form.find('.js_exp_month').val(),
-                    exp_year       :_form.find('.js_exp_year').val()
+                    name            :_form.find('.js_name').val(),
+                    qualification   :_form.find('.js_qualification').val(),
+                    institution     :_form.find('.js_institution').val(),
+                    designation     :_form.find('.js_designation').val(),
+                    company         :_form.find('.js_company').val(),
+                    current_salary  :_form.find('.js_cur_salary').val(),
+                    expected_salary :_form.find('.js_anual_salary').val(),
+                    mobile          :_form.find('.js_mobile').val() || '0',
+                    mobile_code     :_form.find('.js_mobile_code').val(),
+                    email           :_form.find('.js_email').val(),
+                    password        :_form.find('.js_password').val(),
+                    gender          :_form.find('.js_gender').val(),
+                    exp_month       :_form.find('.js_exp_month').val(),
+                    exp_year        :_form.find('.js_exp_year').val(),
+                    institution_city:_form.find('.js_institution_city').val(),
+                    current_city    :_form.find('.js_current_city').val(),
+                    relocation      :_form.find('.js_relocation_checkbox').prop('checked')
                 };
                 ApiUtil.makeAjaxRequest('/api/applicant-auth/register', '', 'POST', '', _obj, function(_res) {
                     if(!_res.error) {
@@ -1082,8 +1085,11 @@ function JobSearchHandler() {
     function searchJobs() {
         if(_jobTypeArr.length) {
             _query.job_type = _jobTypeArr;
+        } else {
+            delete _query.job_type;
         }
-        _query.page  = 0;
+        _query.page = 0;
+        console.log(_query);
         var callback = function(resData) {
             if(!resData.error) {
                 var _length = resData.data.result.length;
@@ -1092,6 +1098,7 @@ function JobSearchHandler() {
                 });
                 _job_list_wrap.html(_html);
 
+                $('.js_total_jobs_txt').html(resData.data.total);
                 if(_length >= 10) {
                     $('.js_load_more_btn').removeClass('hide');
                 } else {
@@ -1170,6 +1177,23 @@ function JobSearchHandler() {
 
         $('.js_load_more_btn').click(function() {
             loadMoreJobs();
+        });
+
+        $('.js_reset_category').click(function() {
+            $('.js_category').val('');
+            delete _query.category_id;
+            searchJobs();
+        });
+
+        $('.js_reset_location').click(function() {
+            $('.js_location').val('');
+            $('.js_remote_loc').prop('checked', false);
+        });
+
+        $('.js_reset_jobType').click(function() {
+            $('.js_job_type_checkbox').prop('checked', false);
+            _jobTypeArr = [];
+            searchJobs();
         });
     }
 

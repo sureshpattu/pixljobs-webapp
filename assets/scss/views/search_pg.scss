@@ -319,6 +319,18 @@
 
     }
 
+    .refresh_icon_sec {
+        float: right;
+        margin: 4px 0;
+        color: #4a58ff;
+        cursor: pointer;
+        display: inline-block;
+
+        &:after {
+            clear: both;
+        }
+    }
+
     .irs--flat .irs-bar {
         cursor: pointer;
         background-color: rgb(102, 223, 141);
