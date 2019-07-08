@@ -1453,7 +1453,45 @@ var async         = require('async');
 function NotificationHandler() {
     var _checkedArr = [];
 
+    var notify_list_wrap = $('.notify_list_wrap'),
+        _query         = {
+            page :0,
+            limit:10
+        },
+        _notifyTypeArr    = []
+    function loadMoreNotifications() {
+        if(_notifyTypeArr.length) {
+            _query.job_type = _notifyTypeArr;
+        }
+        _query.page = _query.page + 1;
+
+        var callback = function(resData) {
+            if(!resData.error) {
+                var _length = resData.data.result.length;
+
+                if(_length) {
+                    var _html = Handlebars.partials['notification_card_row']({
+                        data:resData.data.result
+                    });
+                    notify_list_wrap.append(_html);
+                }
+
+                if(resData.data.pages >= (_query.page + 1)) {
+                    $('.js_load_more_btn').addClass('hide');
+                } else {
+                    $('.js_load_more_btn').removeClass('hide');
+                }
+
+            }
+        };
+        ApiUtil.makeAjaxRequest('/api/notifications/fetchAll', '', 'POST', '', _query, callback);
+    }
+
     function bindCommonClickEvents() {
+
+        $('.js_load_more_btn').click(function() {
+            loadMoreNotifications();
+        });
 
         var _check_all_notification = $('.js_check_all_notifications');
         var _check_notification     = $('.js_check_notification');
