@@ -84,6 +84,17 @@ exports.counterReverse = function(start, end, block) {
     return accum;
 };
 
+exports.counter = function(start, end, block) {
+    var accum = '';
+    var i;
+
+    for(i = start; i >= end; i++) {
+        accum = accum + block.fn(i);
+    }
+
+    return accum;
+};
+
 exports.countDateTime = function(dateString) {
     if(dateString) {
         return moment(dateString, 'YYYYMMDD').fromNow();
