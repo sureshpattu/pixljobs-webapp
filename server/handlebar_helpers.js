@@ -88,7 +88,7 @@ exports.counter = function(start, end, block) {
     var accum = '';
     var i;
 
-    for(i = start; i >= end; i++) {
+    for(i = start; i <= end; i++) {
         accum = accum + block.fn(i);
     }
 
