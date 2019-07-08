@@ -66,16 +66,9 @@ router.get('/applicant/forgot/password/:token', function(req, res) {
 });
 
 router.get('/applicant/email/verify/:token', function(req, res) {
-    req.email_token = req.params.token;
+    req.body.email_token = req.params.token;
     helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/verify/email/token', function(_response) {
-        var is_email_verified = false;
-        if(!_response.error && _response.data) {
-            is_email_verified = _response.data.is_email_verified;
-        }
-        res.render('login', {
-            is_email_verified:is_email_verified
-        });
-
+        res.redirect('/applicant-account');
     });
 });
 router.get('/', function(req, res) {
@@ -304,13 +297,13 @@ router.get('/sign-up/recruiter', function(req, res) {
 });
 
 router.get('/recruiter/email/verify/:token', function(req, res) {
-    req.email_token = req.params.token;
+    req.body.email_token = req.params.token;
     helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/verify/email/token', function(_response) {
         var is_email_verified = false;
         if(!_response.error && _response.data) {
             is_email_verified = _response.data.is_email_verified;
         }
-        res.render('login', {
+        res.render('recruiter_profile', {
             is_email_verified:is_email_verified
         });
     });
