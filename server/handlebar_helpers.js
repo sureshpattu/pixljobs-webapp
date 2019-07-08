@@ -64,6 +64,7 @@ exports.formatDate = function(dateString, format) {
 
 exports.formatCurrency = function(amount) {
     if(amount) {
+        amount = parseFloat(amount);
         return Number(amount.toFixed(0)).toLocaleString();
     } else {
         return '0';
