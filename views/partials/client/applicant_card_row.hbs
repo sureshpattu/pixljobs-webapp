@@ -39,7 +39,7 @@
                     <div class="swiper-wrapper">
                         {{#each job_applications}}
                             <div class="swiper-slide">
-                                <div class="card_sec">
+                                <div class="card_sec js_match_height">
                                     <div class="c_user_wrap">
                                         <a class="u_img_wrap">
                                             <img src="/img/user_icon.svg" class="img_sec">
@@ -51,19 +51,19 @@
                                             {{/if}}
                                         </div>
                                         <div class="ex_cta_wrap">
-                                            {{#if applicant.exp_year}}
+                                            {{#ifCond applicant.exp_year '!==' '0'}}
                                                 <a class="cta_link">
                                                     {{applicant.exp_year}}.{{applicant.exp_month}} years
                                                 </a>
                                             {{else}}
-                                                {{#if applicant.exp_month}}
+                                                {{#ifCond applicant.exp_month '!==' '0'}}
                                                     <a class="cta_link">
                                                         {{applicant.exp_year}}.{{applicant.exp_month}} years
                                                     </a>
                                                 {{else}}
                                                     <a class="cta_link fresher">Fresher</a>
-                                                {{/if}}
-                                            {{/if}}
+                                                {{/ifCond}}
+                                            {{/ifCond}}
                                         </div>
                                     </div>
                                     <div class="basic_cont_sec">
