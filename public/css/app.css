@@ -2892,6 +2892,7 @@ body.popup-visible {
   background-color: #f5a623;
   padding: 3px 5px 2px 5px;
   margin-left: 4px;
+  cursor: pointer;
 }
 .profile_pg .pixl_form_group .non_verify_link {
   font-size: 12px;
@@ -3387,6 +3388,7 @@ body.popup-visible {
   text-align: right;
   color: #4a58ff;
   padding: 0 0 0 20px;
+  text-decoration: underline;
 }
 .job_applicant_pg .cards_wrap .card_status_two_wrap {
   padding: 0 30px 20px;
