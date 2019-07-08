@@ -2503,6 +2503,9 @@ body.popup-visible {
 .postjob_info .hero_sec .pixl_form_group {
   margin-bottom: 35px;
 }
+.postjob_info .hero_sec .pixl_form_group .input_desc {
+  height: 128px;
+}
 .postjob_info .hero_sec .title_wrap {
   padding: 40px 0 35px;
 }
@@ -4388,8 +4391,10 @@ body.popup-visible {
 .login_pg .cont_sec .cta_link {
   text-transform: uppercase;
   opacity: .8;
-  text-align: right;
   color: #4a58ff;
+  position: absolute;
+  right: 0px;
+  top: 4px;
 }
 .login_pg .cont_sec .cta_txt {
   padding: 20px 0 0;

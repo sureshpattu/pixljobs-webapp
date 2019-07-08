@@ -36,8 +36,10 @@
         .cta_link {
             text-transform: uppercase;
             opacity: .8;
-            text-align: right;
             color: #4a58ff;
+            position: absolute;
+            right: 0px;
+            top: 4px;
         }
         .cta_txt{
             padding: 20px 0 0;
