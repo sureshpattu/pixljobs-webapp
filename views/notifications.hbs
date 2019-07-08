@@ -24,14 +24,14 @@
                                         <input type="checkbox" class="js_check_all_notifications" value="{{this.id}}">
                                         <span class="checkmark"></span>
                                         Select All
-
                                     </label>
-                                    <a href="" class="btn btn-apply btn_mark btn_mark_read js_read_btn hide"> Mark as read</a>
+                                    <a href="" class="btn btn-apply btn_mark btn_mark_read js_read_btn hide"> Mark as
+                                        read</a>
                                 </div>
                             </div>
-
-                            {{>client/notification_card_row data=data.result}}
-
+                            <div class="notify_list_wrap">
+                                {{>client/notification_card_row data=data.result}}
+                            </div>
                             <div class="bottom_cta_wrap">
                                 <a class="cta_load_more_link js_load_more_btn {{#ifCond data.pages '>' '1'}}
                                 {{else}}hide{{/ifCond}}">
