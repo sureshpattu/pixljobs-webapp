@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Applicant Application</title>
+    <title>Applicant Applications</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{>header_assets select2=true}}
 </head>
-<body class="job_applicant_pg">
+<body class="job_applicant_pg profile_pg">
 {{>header user=user}}
 <section class="common_main_sec">
     {{>common_hero_sec}}
@@ -26,9 +26,6 @@
                                         <img src="/img/user_icon.svg"
                                              class="img_sec js_img_pre_holder">
                                     {{/if}}
-                                    <!--<div class="icon_wrap">-->
-                                    <!--<span class="fa fa-pencil"></span>-->
-                                    <!--</div>-->
                                 </div>
                             </div>
                             <div class="col-md-10">
@@ -49,8 +46,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="cards_wrap js_applications_wrap">
-                        {{>client/job_application data=applications.result}}
+                    <div class="form_wrap">
+                        <div class="cards_wrap js_applications_wrap">
+                            {{>client/job_application data=applications.result}}
+                        </div>
                     </div>
                 </div>
             </div>

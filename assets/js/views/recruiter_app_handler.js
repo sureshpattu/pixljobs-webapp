@@ -38,6 +38,8 @@ function RecruiterAppHandler() {
             loadMoreApplications();
         });
 
+        $('.js_match_height').matchHeight({byRow:true});
+
         $('.js_more_btn_link').click(function() {
             var _this   = $(this);
             var _parent = $(this).closest('.js_main_card_sec');
@@ -63,7 +65,9 @@ function RecruiterAppHandler() {
                 _parent.find('.js_reopen_card').addClass('hide');
                 _parent.find('.js_total_application_txt').addClass('application');
             }
-
+            $('.js_match_height').matchHeight({ remove: true });
+            $('.js_match_height').matchHeight({byRow:true});
+            $.fn.matchHeight._update();
         });
 
         $('.js_open_card').click(function() {

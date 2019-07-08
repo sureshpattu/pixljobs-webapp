@@ -1,13 +1,14 @@
 <div class="common_tab_links_wrap">
     <ul>
         <li><a class="cta_link {{#ifCond active '===' 'recruiter_profile'}} active {{/ifCond}}" href="/recruiter">Profile</a>
+        <li><a class="cta_link {{#ifCond active '===' 'jobs'}} active {{/ifCond}}"
+               href="/recruiter/jobs">My Jobs</a></li>
         </li>
-        <li><a class="cta_link {{#ifCond active '===' 'companies'}} active {{/ifCond}}" href="/recruiter/companies">Companies</a>
+        <li><a class="cta_link {{#ifCond active '===' 'companies'}} active {{/ifCond}}" href="/recruiter/companies">My Companies</a>
         </li>
         <li><a class="cta_link {{#ifCond active '===' 'applications'}} active {{/ifCond}}"
-               href="/recruiter/applications">Applications</a></li>
-        <li><a class="cta_link {{#ifCond active '===' 'jobs'}} active {{/ifCond}}"
-               href="/recruiter/jobs">Jobs</a></li>
+               href="/recruiter/applications">My Applications</a></li>
+
         <li><a class="cta_link {{#ifCond active '===' 'notification'}} active {{/ifCond}}" href="/recruiter/notification">Notifications<span class="badge notification_count">{{user.total_notifications}}</span></a>
         </li>
     </ul>

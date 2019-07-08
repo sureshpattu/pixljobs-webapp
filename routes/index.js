@@ -66,16 +66,9 @@ router.get('/applicant/forgot/password/:token', function(req, res) {
 });
 
 router.get('/applicant/email/verify/:token', function(req, res) {
-    req.email_token = req.params.token;
+    req.body.email_token = req.params.token;
     helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/verify/email/token', function(_response) {
-        var is_email_verified = false;
-        if(!_response.error && _response.data) {
-            is_email_verified = _response.data.is_email_verified;
-        }
-        res.render('login', {
-            is_email_verified:is_email_verified
-        });
-
+        res.redirect('/applicant-account');
     });
 });
 router.get('/', function(req, res) {
@@ -304,13 +297,13 @@ router.get('/sign-up/recruiter', function(req, res) {
 });
 
 router.get('/recruiter/email/verify/:token', function(req, res) {
-    req.email_token = req.params.token;
+    req.body.email_token = req.params.token;
     helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/verify/email/token', function(_response) {
         var is_email_verified = false;
         if(!_response.error && _response.data) {
             is_email_verified = _response.data.is_email_verified;
         }
-        res.render('login', {
+        res.render('recruiter_profile', {
             is_email_verified:is_email_verified
         });
     });
@@ -352,6 +345,11 @@ router.get('/recruiter', verify.isRecruiterLoggedIn, function(req, res) {
             helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
                 callback(null, _res);
             });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/country-code', function(_res) {
+                callback(null, _res);
+            });
         }
     ], function(err, results) {
         var _companies = [];
@@ -359,12 +357,13 @@ router.get('/recruiter', verify.isRecruiterLoggedIn, function(req, res) {
             _companies = results[0].data.companies;
         }
         res.render('recruiter_profile', {
-            companies :_companies,
-            user      :!results[0].error ? results[0].data : [],
-            data      :!results[1].error ? results[1].data : [],
-            industries:!results[2].error ? results[2].data : [],
-            benefits  :!results[3].error ? results[3].data : [],
-            user_id   :req.cookies.pixljob_user_id
+            companies   :_companies,
+            user        :!results[0].error ? results[0].data : [],
+            data        :!results[1].error ? results[1].data : [],
+            industries  :!results[2].error ? results[2].data : [],
+            benefits    :!results[3].error ? results[3].data : [],
+            country_code:!results[4].error ? results[4].data : [],
+            user_id     :req.cookies.pixljob_user_id
         });
     });
 });
@@ -704,6 +703,51 @@ router.get('/recruiter/change-email', function(req, res) {
             user   :!results[0].error ? results[0].data : null,
             data   :!results[1].error ? results[1].data : null,
             user_id:req.cookies.pixljob_user_id
+        });
+    });
+});
+
+router.get('/applicant/:applicant_id/:application_id', verify.isRecruiterLoggedIn, function(req, res) {
+    async.parallel([
+        function(callback) {
+            req.body.user_id = req.cookies.pixljob_user_id;
+            req.body.token   = req.cookies.pixljob_user_token;
+            helper_utils.makeApiRequest(req, 'POST', '/auth/user', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/applicant/' + req.params.applicant_id,
+                function(_res) {
+                    callback(null, _res);
+                });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/country-code', function(_res) {
+                callback(null, _res);
+            });
+        },
+        function(callback) {
+            req.body.status = 'viewed';
+            helper_utils.makeApiRequest(req,
+                'PUT',
+                '/job-applications/' + req.params.application_id,
+                function(_res) {
+                    callback(null, _res);
+                });
+        }
+    ], function(err, results) {
+        let is_experience = false;
+        if(results[0] && results[0].data && (results[0].data.exp_year > 0 || results[0].data.exp_month > 0)) {
+            is_experience = true;
+        }
+        res.render('applicant_details', {
+            user          :!results[0].error ? results[0].data : [],
+            data          :!results[1].error ? results[1].data : [],
+            country_code  :!results[2].error ? results[2].data : [],
+            applications  :!results[3].error ? results[3].data : [],
+            exp           :is_experience,
+            application_id:req.params.application_id
         });
     });
 });

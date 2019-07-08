@@ -15,8 +15,8 @@ function JobInfoHandler() {
             };
             var callback = function(resData) {
                 if(!resData.error) {
-                    $('.js_apply_job').addClass('hide');
-                    $('.js_applied').removeClass('hide');
+                    $('.js_apply_cta_wrap').addClass('hide');
+                    window.location.reload();
                 } else {
                     alert(resData.message || 'something went wrong!');
                 }

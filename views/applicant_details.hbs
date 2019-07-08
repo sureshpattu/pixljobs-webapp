@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Applicant Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    {{>header_assets select2=true}}
+</head>
+<body class="profile_pg">
+{{>header user=user}}
+<section class="common_main_sec">
+    {{>common_hero_sec}}
+    <div class="container">
+        <!--{{>applicant_tab_link active='applicant_account'}}-->
+        {{>recruiter_tab_link active="applications"}}
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="common_form_sec">
+                    <form class="form_wrap" id="jsApplicantEditForm">
+                        <div class="name_info_sec">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="profile_img_wrap">
+                                        {{#if data.photo}}
+                                            <img src="/api/applicant/photo/{{data.photo}}"
+                                                 class="img_sec js_img_pre_holder">
+                                        {{else}}
+                                            <img src="/img/user_icon.svg"
+                                                 class="img_sec js_img_pre_holder">
+                                        {{/if}}
+                                        <input type="file" class="js_input_profile_file" accept="image/*" disabled>
+                                        <input type="hidden" class="js_existing_profile_photo" accept="image/*"
+                                               value="{{data.photo}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="name_txt">
+                                        {{data.name}}
+                                    </div>
+                                    <div class="designation">
+                                        {{#if data.designation}}
+                                            {{data.designation}},
+                                            {{data.exp_year}}.{{data.exp_month}}yrs Exp
+                                        {{else}}
+                                            {{data.qualification}}
+                                            {{data.institution}}
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="cta_wrap">
+                                        {{#ifCond applications.status '===' 'shortlisted'}}
+                                            <a class="btn btn-success js_shortlist" data-type="shortlisted">Shortlisted</a>
+                                            {{else}}
+                                            <a class="btn btn_blue js_shortlist" data-type="shortlisted">Shortlist</a>
+                                            <input type="hidden" class="js_application_id" value="{{application_id}}">
+                                            <a class="btn js_reject" data-type="rejected">Reject</a>
+                                        {{/ifCond}}
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="detail_sec">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label label_new">Full Name</label>
+                                        <div class="label_value">{{data.name}}</div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label label_new">Experience</label>
+                                        <div class="row">
+                                            <div class="col-md-4 col-xs-6">
+                                                <div class="label_value">{{data.exp_year}}
+                                                    Years
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8 col-xs-6">
+                                                <div class="label_value">{{data.exp_month}}
+                                                    Months
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 js_fresh_detail_sec {{#if data.qualification}}{{else}}hide{{/if}}">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label label_new">Qualification</label>
+                                        <div class="label_value">{{data.qualification}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 js_exp_detail_sec {{#if data.designation}}{{else}}hide{{/if}} ">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label label_new">Designation</label>
+                                        <div class="label_value">{{data.designation}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 js_exp_detail_sec {{#if data.company}}{{else}}hide{{/if}}">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label label_new">Company Name</label>
+                                        <div class="label_value">{{data.company}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 js_exp_detail_sec {{#if data.current_salary}}{{else}}hide{{/if}}">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label label_new">Current Annual Salary</label>
+                                        <div class="label_value">{{data.current_salary}}<span
+                                                class="currancy_txt">INR</span></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group {{#if
+                                            data.expected_salary}}{{else}}hide{{/if}}">
+                                        <label class="control-label label_new">Expected Annual Salary</label>
+                                        <div class="label_value">{{data.expected_salary}}<span
+                                                class="currancy_txt">INR</span></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 js_fresh_detail_sec {{#if data.institution}}{{else}}hide{{/if}}">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label label_new">Institution</label>
+                                        <div class="label_value">{{data.institution}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label label_new">Gender</label>
+                                        <div class="label_value">{{data.gender}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label label_new">Contact No.</label><a href=""
+                                                                                                     class="verify_link">VERIFY</a>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="label_value">
+                                                    {{#each country_code}}
+
+                                                    {{/each}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="label_value">{{data.mobile}}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label label_new">Email ID</label>
+                                        {{#if data.is_email_verified}}
+                                            <div class="verified_wrap">
+                                                <div class="verified_email">
+                                                    <img src="/img/icons/tick-green.svg" alt="">
+                                                </div>
+                                                <span class="verified_txt">Verified</span>
+                                            </div>
+                                        {{else}}
+                                            <a class="verify_link js_verify_email">VERIFY</a>
+                                        {{/if}}
+                                        <div class="label_value">{{data.email}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{>footer select2=true}}
+</body>
+<script type="application/javascript">
+    $(function() {
+        RecruiterApplicatiobsHandler.init();
+    });
+</script>
+</html>

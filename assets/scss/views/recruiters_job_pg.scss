@@ -1,4 +1,4 @@
-.job_recruiter_pg {
+.recruiters_job_pg {
 
     .hero_sec {
         background-size: cover;
@@ -88,6 +88,7 @@
         .btn_mark{
             margin: -9px 0 0 10px;
         }
+
     }
 
     .profile_img_wrap {
@@ -141,26 +142,6 @@
             padding: 0;
         }
 
-        .select_all_check_box{
-            margin-left: 10px;
-            margin-bottom: 20px;
-            display: inline-block;
-            position: relative;
-            padding-left: 30px;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            font-size: 13px;
-            color: #637282;
-            opacity: 0.8;
-            font-weight: 400;
-        }
-        .btn_mark_read{
-            margin-left: 20px;
-        }
-
 
         .check_notifications {
             margin-left: 10px;
@@ -182,16 +163,6 @@
         .notification_wrap{
             position: relative;
 
-            .select{
-                position: absolute;
-                top: 25px;
-                margin-left: 10px;
-            }
-        }
-
-        .select_wrap{
-            position: relative;
-
             .notifications{
                 position: absolute;
                 top: 25px;
@@ -210,7 +181,7 @@
 
         .panel-body {
             border: none !important;
-            padding: 20px 0 10px 40px;
+            padding: 0;
 
             &.company_sec {
                 padding: 0 15px 40px;
@@ -314,6 +285,8 @@
             padding: 10px 0 0;
         }
 
+
+
         .reopen_btn_link {
             background-color: rgba(211, 218, 224, 0.37);;
             color: #b1bdca;
@@ -340,9 +313,6 @@
             .c_user_wrap {
                 position: relative;
                 padding: 20px 20px 20px 95px;
-                display: block;
-                text-decoration: none;
-                cursor: pointer;
             }
 
             .u_img_wrap {
@@ -496,6 +466,28 @@
         }
     }
 
+    .cta_wrap {
+        text-align: right !important;
+        margin-top: 34px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+
+        .btn_big {
+            margin-left: 14px;
+        }
+    }
+
+    .cta_wrap_big {
+        text-align: center;
+        margin-top: 34px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+
+        .btn_big {
+            margin-left: 14px;
+        }
+    }
+
 
     .check_box_wrap {
         padding: 33px 0 0;
@@ -504,5 +496,300 @@
 
     .common_load_more_wrap{
         padding: 50px 0;
+    }
+
+    .desc_title {
+        font-size: 22px;
+        font-weight: 600;
+        color: #2e3d4e;
+    }
+
+    .job_card {
+        border-radius: 4px;
+        box-shadow: none;
+        background-color: #ffffff;
+
+        .job_sec {
+            padding: 22px 0 0 46px;
+            position: relative;
+
+            .job_card_title {
+                font-size: 34px;
+                font-weight: 600;
+                color: #2e3d4e;
+                padding: 10px 0 0 0;
+                display: inline-block;
+            }
+            .job_tags {
+                padding: 30px 0 30px 0;
+
+                .tags_wrap {
+                    .tags {
+                        font-size: 17px;
+                        color: #637282;
+                        display: inline-block;
+                        padding: 0 34px 0 0;
+
+                        .dollar_icons {
+                            width: 12px;
+                            height: 19px;
+                            margin: 0 2px 5px 0;
+                        }
+
+                        .cal_icons {
+                            width: 12px;
+                            height: 13px;
+                            border-radius: 1px;
+                            margin: 0 3px 5px 0;
+                        }
+
+                        .loc_icons {
+                            width: 9px;
+                            height: 14px;
+                            color: #d3dae0;
+                            margin: 0 2px 3px;
+                        }
+
+                        .place_icons {
+                            width: 17px;
+                            height: 14px;
+                            color: #d3dae0;
+                            margin: 0 2px 4px;
+                        }
+
+                    }
+
+                    .btn_wrap {
+                        text-align: left;
+                        .post_tag {
+                            font-size: 11px;
+                            border-radius: 3px;
+                            font-weight: normal;
+                            background-color: #5b8fe9;
+                            color: #fff;
+                            padding: 6px 5px 6px 7px;
+                            text-transform: uppercase;
+                            margin: 0 0 0 20px;
+                            letter-spacing: 0.7px;
+                        }
+                    }
+                }
+
+                .spl_wrap {
+                    padding: 5px 0 0;
+                }
+
+            }
+        }
+
+        .work_sec {
+            .row_c {
+                margin: 0;
+
+            }
+
+            .col_bordered {
+                border-right: solid 2px #eaedf0;
+                border-top: solid 2px #eaedf0;
+                border-bottom: solid 2px #eaedf0;
+                text-align: center;
+                padding: 20px 0 20px 46px;
+            }
+
+            .col_bordered:last-child {
+                border-right: none;
+            }
+
+            .option {
+                font-size: 12px;
+                font-weight: 600;
+                color: #637282;
+                text-align: left;
+            }
+
+            .option_val {
+                font-size: 16px;
+                font-weight: 900;
+                color: #637282;
+                padding-left: 8px;
+
+            }
+        }
+
+        .job_desc {
+            padding: 20px;
+
+            .about_sec {
+                padding: 28px 48px 30px 26px;
+            }
+
+            .requirement_sec {
+                padding: 20px 64px 30px 25px;
+            }
+
+
+            .desc {
+                padding-top: 15px;
+                font-size: 18px;
+                font-weight: 300;
+                color: #637282;
+            }
+
+            .requirement_list {
+                padding-left: 30px;
+
+                .requirement_line {
+                    padding-bottom: 7px;
+                }
+            }
+        }
+
+        .tech_details {
+            border-top: 2px solid #eaedf0;
+
+            .tech_sec {
+                padding: 45px 46px 53px 47px;
+
+                .desc_title {
+                    font-size: 27px;
+                    font-weight: 600;
+                    color: #2e3d4e;
+                }
+
+                .desc {
+                    padding-top: 16px;
+                    font-size: 17px;
+                    font-weight: 600;
+                    color: #2e3d4e;
+                    text-transform: uppercase;
+
+                    .css_wrap {
+                        margin: 0 0 0 30px;
+                    }
+
+                    .tech_name {
+                        display: inline-block;
+                        padding: 0 0 25px 0;
+                    }
+
+                    .filled_bar {
+                        width: 23px;
+                        height: 9px;
+                        border-radius: 4.5px;
+                        background-color: #fc7968;
+                        display: inline-block;
+                        padding-left: 20px;
+                    }
+
+                    .empty_bar {
+                        width: 23px;
+                        height: 9px;
+                        border-radius: 4.5px;
+                        background-color: #e2e6ea;
+                        display: inline-block;
+                        padding-left: 20px;
+                    }
+                }
+
+            }
+
+        }
+
+
+    }
+
+    .about_company_card {
+        margin-top: 8px;
+        border-radius: 4px;
+        box-shadow: none;
+        background-color: #ffffff;
+
+        .company_desc {
+            padding: 20px;
+
+            .about_sec {
+                padding: 20px 46px 30px 26px;
+
+                .desc_title {
+                    padding: 0;
+                }
+            }
+
+
+            .desc {
+                padding-top: 15px;
+                font-size: 18px;
+                font-weight: 300;
+                color: #637282;
+
+
+                .circle_wrap {
+                    display: inline-block;
+                    position: relative;
+
+                    .circle_tick {
+                        background-color: #fc7968;
+                        border-radius: 100%;
+                        width: 22px;
+                        height: 22px;
+                        text-align: center;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+
+                        .tick {
+                            padding-bottom: 5px;
+                        }
+                    }
+
+                    .title {
+                        margin: 0 0 37px 45px;
+                    }
+                }
+
+                .spl_wrap {
+                    padding-left: 43px;
+                }
+            }
+
+            .benefits_desc {
+                padding-top: 37px;
+            }
+        }
+
+        .about_work_sec {
+
+            .row_c {
+                margin: 0;
+            }
+
+            .col_bordered {
+                border-right: solid 2px #eaedf0;
+                border-top: solid 2px #eaedf0;
+                border-bottom: solid 2px #eaedf0;
+                text-align: center;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            .col_bordered:last-child {
+                border-right: none;
+            }
+
+            .option {
+                font-size: 12px;
+                font-weight: 600;
+                color: #637282;
+                text-align: left;
+                padding-left: 31px;
+            }
+
+            .option_val {
+                font-size: 16px;
+                font-weight: 900;
+                color: #637282;
+                padding-left: 5px;
+            }
+        }
     }
 }

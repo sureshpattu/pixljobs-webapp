@@ -149,7 +149,7 @@ Handlebars.registerHelper('countDateTime', function(dateString) {
     }
 });
 
-Handlebars.registerHelper('ifDateDiff', function(date1, _diff,options) {
+Handlebars.registerHelper('ifDateDiff', function(date1, _diff, options) {
     if(date1) {
         var a = moment(date1);
         var b = moment(new Date());
@@ -159,7 +159,7 @@ Handlebars.registerHelper('ifDateDiff', function(date1, _diff,options) {
     }
 });
 
-exports.checkArrayOfObjectVal = function(_id, arr, options) {
+Handlebars.registerHelper('checkArrayOfObjectVal', function(_id, arr, options) {
     if(_id && arr && arr.length) {
         var isPresent = false;
         for(var i = 0; i < arr.length; i++) {
@@ -173,18 +173,18 @@ exports.checkArrayOfObjectVal = function(_id, arr, options) {
     } else {
         return options.inverse(this);
     }
-};
+});
 
-exports.getFileExtension = function(filename) {
+Handlebars.registerHelper('getFileExtension', function(filename) {
     if(filename) {
         var _split = filename.split('.');
         return _split[1];
     } else {
         return '';
     }
-};
+});
 
-exports.truncateTextSpace = function(text, max) {
+Handlebars.registerHelper('truncateTextSpace', function(text, max) {
     if(text) {
         text = text.replace(/\s/g, '');
         max  = Number(max);
@@ -195,9 +195,9 @@ exports.truncateTextSpace = function(text, max) {
     } else {
         return '';
     }
-};
+});
 
-exports.truncateMsgTitle = function(text, max) {
+Handlebars.registerHelper('truncateMsgTitle', function(text, max) {
     if(text) {
         var regex_1    = /- PUBLISHED/i;
         var regex_2    = /- UNPUBLISHED/i;
@@ -224,4 +224,23 @@ exports.truncateMsgTitle = function(text, max) {
     } else {
         return '';
     }
-};
+});
+
+Handlebars.registerHelper('counter', function(start, end, block) {
+    var accum = '';
+    var i;
+
+    for(i = start; i <= end; i++) {
+        accum = accum + block.fn(i);
+    }
+
+    return accum;
+});
+
+Handlebars.registerHelper('formatCurrency', function(amount) {
+    if(amount) {
+        return (amount).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    } else {
+        return '0';
+    }
+});

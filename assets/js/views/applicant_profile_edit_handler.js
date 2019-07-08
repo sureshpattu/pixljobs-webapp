@@ -125,6 +125,22 @@ function ApplicantSignUpHandler() {
         }
     }
 
+    function verifyEmail() {
+        var _obj = {
+            email:$('.js_email').val()
+        };
+        ApiUtil.makeAjaxRequest('/api/applicant-auth/verify/email', '', 'POST', '', _obj, function(_res) {
+            if(!_res.error) {
+                alert(_res.message);
+                //window.location.href = '/applicant-account';
+            } else {
+                alert(_res.message || 'Something went wrong!');
+            }
+        });
+
+    }
+
+
     function bindCommonClickEvents() {
         $('.js_select2').select2({});
 
@@ -190,6 +206,10 @@ function ApplicantSignUpHandler() {
 
         $('.js_input_profile_file').change(function() {
             readURL(this);
+        });
+
+        $('.js_verify_email').click(function() {
+            verifyEmail(this);
         });
 
         $('.js_resume_file').change(function() {
