@@ -34,9 +34,9 @@
                                                 <label class="control-label">Work Week <span
                                                         class="fade_txt">(hours)</span></label>
                                                 <div class="box_sec">
-                                                    <input type="text" class="form-control js_work_week required isNumber"
+                                                    <input type="text" class="form-control js_work_week required"
                                                            placeholder="Type in Numbers Eg: 40 Hrs"
-                                                           value="{{job_data.work_week}}">
+                                                           value="{{job_data.work_week}}" pattern="^[0-9]*$" onkeyup="isNumber(this)">
                                                 </div>
                                             </div>
                                         </div>
@@ -45,9 +45,9 @@
                                                 <label class="control-label">Holidays <span
                                                         class="fade_txt">(days - per year)</span></label>
                                                 <div class="box_sec">
-                                                    <input type="text" class="form-control js_holidays required isNumber"
+                                                    <input type="text" class="form-control js_holidays required"
                                                            placeholder="Type in Numbers Eg: 20 days"
-                                                           value="{{job_data.holidays}}">
+                                                           value="{{job_data.holidays}}" onkeyup="isNumber(this)">
                                                 </div>
                                             </div>
                                         </div>
@@ -99,5 +99,9 @@
     $(function() {
         PostJobHandler.initWorkInfo();
     });
+
+    var isNumber = function(box) {
+        box.value = box.value.replace(/[^0-9]/g, '');
+    };
 </script>
 </html>
