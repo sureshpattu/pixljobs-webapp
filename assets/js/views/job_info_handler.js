@@ -16,6 +16,7 @@ function JobInfoHandler() {
             var callback = function(resData) {
                 if(!resData.error) {
                     $('.js_apply_cta_wrap').addClass('hide');
+                    window.location.reload();
                 } else {
                     alert(resData.message || 'something went wrong!');
                 }

@@ -41,6 +41,18 @@ router.post('/applicant-auth/forgot/password/token', function(req, res, next) {
     });
 });
 
+router.post('/applicant-auth/verify/email', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/verify/email', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/applicant-auth/verify/email/token', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant-auth/verify/email/token', function(_response) {
+        res.json(_response);
+    });
+});
+
 router.post('/applicant', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/applicant/' + req.cookies.pixljob_user_id, function(_response) {
         res.json(_response);
