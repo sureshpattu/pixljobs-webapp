@@ -109,6 +109,17 @@
                 }
             }
 
+            .com_icon {
+                margin: 5px 3px 0 0;
+                vertical-align: top;
+                width: 12px;
+                display: inline-block;
+                color: rgb(189, 194, 201);
+            }
+            .com_name{
+                text-transform: capitalize;
+            }
+
         }
 
         .bottom_cta_wrap {
@@ -196,6 +207,7 @@
         .job_details_wrap {
             text-align: right;
             padding: 15px 0 0;
+            display: block;
         }
 
         .info_sec {
