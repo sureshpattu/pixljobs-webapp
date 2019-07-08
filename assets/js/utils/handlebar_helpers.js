@@ -236,3 +236,11 @@ Handlebars.registerHelper('counter', function(start, end, block) {
 
     return accum;
 });
+
+Handlebars.registerHelper('formatCurrency', function(amount) {
+    if(amount) {
+        return (amount).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    } else {
+        return '0';
+    }
+});

@@ -36,7 +36,7 @@
                             {{#ifCond  salary_min '===' '0'}}
                                 {{salary_max}}
                             {{else}}
-                                {{salary_min}} - {{salary_max}}
+                                {{#formatCurrency salary_min}}{{/formatCurrency}} - {{#formatCurrency salary_max}}{{/formatCurrency}}
                             {{/ifCond}}
                         </span>
                     </div>
