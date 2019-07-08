@@ -39,11 +39,11 @@
                     <div class="swiper-wrapper">
                         {{#each job_applications}}
                             <div class="swiper-slide">
-                                <div class="card_sec">
-                                    <div class="c_user_wrap">
-                                        <a class="u_img_wrap">
+                                <div class="card_sec js_match_height">
+                                    <a class="c_user_wrap" href="/applicant/{{applicant_id}}/{{id}}">
+                                        <div class="u_img_wrap">
                                             <img src="/img/user_icon.svg" class="img_sec">
-                                        </a>
+                                        </div>
                                         <div class="u_name">{{applicant.name}}</div>
                                         <div class="designation">
                                             {{#if applicant.designation}}
@@ -51,21 +51,21 @@
                                             {{/if}}
                                         </div>
                                         <div class="ex_cta_wrap">
-                                            {{#if applicant.exp_year}}
-                                                <a class="cta_link">
+                                            {{#ifCond applicant.exp_year '!==' '0'}}
+                                                <span class="cta_link">
                                                     {{applicant.exp_year}}.{{applicant.exp_month}} years
-                                                </a>
+                                                </span>
                                             {{else}}
-                                                {{#if applicant.exp_month}}
-                                                    <a class="cta_link">
+                                                {{#ifCond applicant.exp_month '!==' '0'}}
+                                                    <span class="cta_link">
                                                         {{applicant.exp_year}}.{{applicant.exp_month}} years
-                                                    </a>
+                                                    </span>
                                                 {{else}}
-                                                    <a class="cta_link fresher">Fresher</a>
-                                                {{/if}}
-                                            {{/if}}
+                                                    <span class="cta_link fresher">Fresher</span>
+                                                {{/ifCond}}
+                                            {{/ifCond}}
                                         </div>
-                                    </div>
+                                    </a>
                                     <div class="basic_cont_sec">
                                         <div class="row">
                                             <div class="col-md-6">
