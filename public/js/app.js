@@ -1088,8 +1088,7 @@ function JobSearchHandler() {
         } else {
             delete _query.job_type;
         }
-        _query.page = 0;
-        console.log(_query);
+        _query.page  = 0;
         var callback = function(resData) {
             if(!resData.error) {
                 var _length = resData.data.result.length;
@@ -1175,8 +1174,25 @@ function JobSearchHandler() {
             searchJobs();
         });
 
+        $('.js_remote_loc').click(function() {
+            var _this = $(this);
+            if(_this.prop('checked')) {
+                _query.location_type = true;
+            } else {
+                delete _query.location_type;
+            }
+            searchJobs();
+        });
+
         $('.js_load_more_btn').click(function() {
             loadMoreJobs();
+        });
+
+        $('.js_input_location').on('keyup', function(e) {
+            if(e.keyCode === 13) {
+                _query.city = $(this).val();
+                searchJobs();
+            }
         });
 
         $('.js_reset_category').click(function() {
@@ -1186,8 +1202,11 @@ function JobSearchHandler() {
         });
 
         $('.js_reset_location').click(function() {
-            $('.js_location').val('');
+            $('.js_input_location').val('');
             $('.js_remote_loc').prop('checked', false);
+            delete _query.city;
+            delete _query.location_type;
+            searchJobs();
         });
 
         $('.js_reset_jobType').click(function() {
@@ -1195,6 +1214,7 @@ function JobSearchHandler() {
             _jobTypeArr = [];
             searchJobs();
         });
+
     }
 
     function salaryMinMaxTimeOut(from, to) {
