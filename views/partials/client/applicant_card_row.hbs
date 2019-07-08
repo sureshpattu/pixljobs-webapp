@@ -40,10 +40,10 @@
                         {{#each job_applications}}
                             <div class="swiper-slide">
                                 <div class="card_sec js_match_height">
-                                    <div class="c_user_wrap">
-                                        <a class="u_img_wrap">
+                                    <a class="c_user_wrap" href="/applicant/{{applicant_id}}/{{id}}">
+                                        <div class="u_img_wrap">
                                             <img src="/img/user_icon.svg" class="img_sec">
-                                        </a>
+                                        </div>
                                         <div class="u_name">{{applicant.name}}</div>
                                         <div class="designation">
                                             {{#if applicant.designation}}
@@ -52,20 +52,20 @@
                                         </div>
                                         <div class="ex_cta_wrap">
                                             {{#ifCond applicant.exp_year '!==' '0'}}
-                                                <a class="cta_link">
+                                                <span class="cta_link">
                                                     {{applicant.exp_year}}.{{applicant.exp_month}} years
-                                                </a>
+                                                </span>
                                             {{else}}
                                                 {{#ifCond applicant.exp_month '!==' '0'}}
-                                                    <a class="cta_link">
+                                                    <span class="cta_link">
                                                         {{applicant.exp_year}}.{{applicant.exp_month}} years
-                                                    </a>
+                                                    </span>
                                                 {{else}}
-                                                    <a class="cta_link fresher">Fresher</a>
+                                                    <span class="cta_link fresher">Fresher</span>
                                                 {{/ifCond}}
                                             {{/ifCond}}
                                         </div>
-                                    </div>
+                                    </a>
                                     <div class="basic_cont_sec">
                                         <div class="row">
                                             <div class="col-md-6">
