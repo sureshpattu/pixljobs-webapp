@@ -22,7 +22,7 @@
             width: 100%;
             font-weight: 400;
             height: 64px;
-            border-radius: 13px;
+            border-radius: 6px;
             box-shadow: 0 18px 42px -10px rgba(0, 0, 0, 0.09);
             border: solid 1px rgba(151, 151, 151, 0.28);
             background-color: #ffffff;
@@ -93,7 +93,6 @@
             .c_logo {
                 width: 36px;
                 position: absolute;
-                top: 40px;
                 left: 30px;
             }
 
@@ -214,21 +213,26 @@
             }
 
             .icon_sec {
-                color: #6c7786;
-                font-size: 12px;
-                margin: -4px 1px 0 0;
+                margin: 4px 3px 0 0;
+                vertical-align: top;
+                width: 12px;
+                opacity: 0.55;
+                display: inline-block;
             }
 
             .icon_dollar_sec {
-                color: #6c7786;
-                margin: -2px 8px 0 2px;
-                width: 8px;
+                margin: 1px 3px 0 0;
+                vertical-align: top;
+                width: 9px;
+                opacity: 0.55;
+                display: inline-block;
             }
 
             .icon_marker_sec {
-                width: 10.9px;
-                height: 15.6px;
+                height: 12px;
                 opacity: 0.44;
+                margin: 2px 2px 0 0;
+                vertical-align: top;
             }
         }
 
@@ -346,6 +350,10 @@
     .irs--flat .irs-handle > i:first-child {
         background-color: rgb(102, 223, 141);
     }
+
+    .city_txt {
+        text-transform: capitalize;
+    }
 }
 
 @media all and (max-width: 767px) {
@@ -367,8 +375,8 @@
 
                 .c_logo {
                     width: 30px;
-                    top: 20px;
                     left: 15px;
+                    top: 13px;
                 }
             }
 

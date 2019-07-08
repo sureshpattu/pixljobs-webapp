@@ -31,14 +31,18 @@
                         <span class="txt_sec">{{#countDateTime created_at}}{{/countDateTime}}</span>
                     </div>
                     <div class="info_sec">
+                        <img src="/img/icons/dollar-grey.svg" class="icon_dollar_sec">
                         <span class="txt_sec">
-                            {{salary_min}} — {{salary_max}}
-                            <img src="/img/icons/dollar-grey.svg" class="icon_dollar_sec">
+                            {{#ifCond  salary_min '===' '0'}}
+                                {{salary_max}}
+                            {{else}}
+                                {{salary_min}} - {{salary_max}}
+                            {{/ifCond}}
                         </span>
                     </div>
-                    <div class="info_sec">
-                        <img src="/img/icons/location-dark.svg" alt="" class="icon_sec">
-                        <span class="txt_sec">{{company.city}}</span>
+                    <div class="info_sec {{#if company.city}}{{else}}hide{{/if}}">
+                        <img src="/img/icons/location-dark.svg" alt="" class="icon_marker_sec">
+                        <span class="txt_sec city_txt">{{company.city}}</span>
                     </div>
                 </div>
             </div>
