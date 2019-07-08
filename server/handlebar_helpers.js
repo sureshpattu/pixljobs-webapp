@@ -64,7 +64,7 @@ exports.formatDate = function(dateString, format) {
 
 exports.formatCurrency = function(amount) {
     if(amount) {
-        return (amount).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+        return Number(amount.toFixed(0)).toLocaleString();
     } else {
         return '0';
     }
