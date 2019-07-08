@@ -1,14 +1,14 @@
-var ApiUtil = require('../utils/apiUtil');
+var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
-var utils = require('../utils/common');
-var async = require('async');
+var utils         = require('../utils/common');
+var async         = require('async');
 
 function ApplicantSignUpHandler() {
     var _img_pre_holder = $('.js_img_pre_holder');
 
     function readURL(input) {
         if(input.files && input.files[0]) {
-            var reader = new FileReader();
+            var reader    = new FileReader();
             reader.onload = function(e) {
                 _img_pre_holder.attr('src', e.target.result);
                 _img_pre_holder.removeClass('hide');
@@ -20,7 +20,7 @@ function ApplicantSignUpHandler() {
 
     function bindApplicantSignUpEvent() {
         var _form_name = '#jsSignUpApplicantForm';
-        var _form = $(_form_name);
+        var _form      = $(_form_name);
         _form.unbind().submit(function(e) {
             e.preventDefault();
             if(FormValidator.validateForm(_form_name)) {
@@ -38,8 +38,7 @@ function ApplicantSignUpHandler() {
                     password       :_form.find('.js_password').val(),
                     gender         :_form.find('.js_gender').val(),
                     exp_month      :_form.find('.js_exp_month').val(),
-                    exp_year       :_form.find('.js_exp_year').val(),
-                    resume         :_form.find('.js_resume_file').val()
+                    exp_year       :_form.find('.js_exp_year').val()
                 };
                 ApiUtil.makeAjaxRequest('/api/applicant-auth/register', '', 'POST', '', _obj, function(_res) {
                     if(!_res.error) {
@@ -73,7 +72,7 @@ function ApplicantSignUpHandler() {
                 }
             },
             function(callback) {
-                var _input_file = _form.find('.js_resume_file');
+                var _input_file = _form.find('.js_input_resume_file');
                 if(_input_file.val()) {
                     var formData = new FormData();
                     formData.append('photo', _input_file[0].files[0]);
@@ -161,15 +160,21 @@ function ApplicantSignUpHandler() {
             readURL(this);
         });
 
-        $('.js_resume_file').change(function() {
-            var _this = $(this);
-            var _parent = _this.closest('.upload_sec');
+        $('.js_input_resume_file').change(function() {
+            var _this      = $(this);
+            var _parent    = _this.closest('.upload_sec');
             var _file_name = _this.val().replace(/.*[\/\\]/, '');
 
             if(_this.val()) {
                 _parent.addClass('preview');
                 _parent.find('.file_name').html(_file_name);
             }
+        });
+
+        $('.js_remove_file').click(function() {
+            var _this   = $(this);
+            var _parent = _this.closest('.upload_sec');
+            _parent.removeClass('preview');
         });
 
     }

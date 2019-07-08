@@ -5,10 +5,14 @@
         <a class="upload_txt">Upload file</a>
     </div>
     <div class="file_preview_txt_wrap">
-        <img src="/img/icons/doc_file.svg" class="icon_sec">
-        <div class="file_name">{{#truncateTextSpace data.name 10}}{{/truncateTextSpace}}.{{#getFileExtension data.resume}}{{/getFileExtension}}</div>
+        <a {{#if data.resume}}href="/api/applicant/resume/{{data.resume}}" target="_blank"{{/if}}>
+            <img src="/img/icons/doc_file.svg" class="icon_sec">
+        </a>
+        <div class="file_name">{{#truncateTextSpace data.name 10}}{{/truncateTextSpace}}.{{#getFileExtension
+                data.resume}}{{/getFileExtension}}</div>
     </div>
-    <input type="file" class="input_file js_resume_file"
+    <input type="file" class="input_file js_input_resume_file"
            accept=".doc, .docx,.pdf">
+    <input type="hidden" class="js_existing_resume_file" value="{{data.resume}}">
     <span class="fa fa-times close_icon js_remove_file"></span>
 </div>
