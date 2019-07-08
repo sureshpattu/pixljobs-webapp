@@ -725,7 +725,7 @@ router.get('/applicant/:applicant_id/:application_id', verify.isRecruiterLoggedI
             req.body.status = 'viewed';
             helper_utils.makeApiRequest(req,
                 'PUT',
-                '/job-applications/' + req.params.applicant_id + '/' + req.params.application_id,
+                '/job-applications/'  + req.params.application_id,
                 function(_res) {
                     callback(null, _res);
                 });
@@ -739,7 +739,9 @@ router.get('/applicant/:applicant_id/:application_id', verify.isRecruiterLoggedI
             user        :!results[0].error ? results[0].data : [],
             data        :!results[1].error ? results[1].data : [],
             country_code:!results[2].error ? results[2].data : [],
-            exp         :is_experience
+            applications:!results[3].error ? results[3].data : [],
+            exp         :is_experience,
+            application_id:req.params.application_id
         });
     });
 });

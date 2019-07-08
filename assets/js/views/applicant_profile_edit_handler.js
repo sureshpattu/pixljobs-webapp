@@ -140,6 +140,7 @@ function ApplicantSignUpHandler() {
 
     }
 
+
     function bindCommonClickEvents() {
         $('.js_select2').select2({});
 

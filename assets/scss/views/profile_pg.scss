@@ -168,6 +168,13 @@
             }
         }
 
+        .label_new{
+            font-size: 16px;
+        }
+        .label_value{
+            font-size: 24px;
+        }
+
         .cta_wrap {
             text-align: center;
             margin-top: 34px;
@@ -184,6 +191,12 @@
             color: #637282;
             font-size: 12px;
             z-index: 0;
+        }
+
+        .currancy_txt {
+            color: #637282;
+            font-size: 12px;
+            padding-left: 10px;
         }
 
         .upload_resume {
