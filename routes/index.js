@@ -725,7 +725,7 @@ router.get('/applicant/:applicant_id/:application_id', verify.isRecruiterLoggedI
             req.body.status = 'viewed';
             helper_utils.makeApiRequest(req,
                 'PUT',
-                '/job-applications/' + req.params.applicant_id + '/' + req.params.application_id,
+                '/job-applications/' + req.params.application_id,
                 function(_res) {
                     callback(null, _res);
                 });

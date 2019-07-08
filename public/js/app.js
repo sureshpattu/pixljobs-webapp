@@ -624,8 +624,7 @@ function ApplicantSignUpHandler() {
                     password       :_form.find('.js_password').val(),
                     gender         :_form.find('.js_gender').val(),
                     exp_month      :_form.find('.js_exp_month').val(),
-                    exp_year       :_form.find('.js_exp_year').val(),
-                    resume         :_form.find('.js_resume_file').val()
+                    exp_year       :_form.find('.js_exp_year').val()
                 };
                 ApiUtil.makeAjaxRequest('/api/applicant-auth/register', '', 'POST', '', _obj, function(_res) {
                     if(!_res.error) {
@@ -659,7 +658,7 @@ function ApplicantSignUpHandler() {
                 }
             },
             function(callback) {
-                var _input_file = _form.find('.js_resume_file');
+                var _input_file = _form.find('.js_input_resume_file');
                 if(_input_file.val()) {
                     var formData = new FormData();
                     formData.append('photo', _input_file[0].files[0]);
@@ -747,7 +746,7 @@ function ApplicantSignUpHandler() {
             readURL(this);
         });
 
-        $('.js_resume_file').change(function() {
+        $('.js_input_resume_file').change(function() {
             var _this      = $(this);
             var _parent    = _this.closest('.upload_sec');
             var _file_name = _this.val().replace(/.*[\/\\]/, '');
@@ -756,6 +755,12 @@ function ApplicantSignUpHandler() {
                 _parent.addClass('preview');
                 _parent.find('.file_name').html(_file_name);
             }
+        });
+
+        $('.js_remove_file').click(function() {
+            var _this   = $(this);
+            var _parent = _this.closest('.upload_sec');
+            _parent.removeClass('preview');
         });
 
     }
@@ -987,7 +992,7 @@ function ApplicantSignUpHandler() {
             verifyEmail(this);
         });
 
-        $('.js_resume_file').change(function() {
+        $('.js_input_resume_file').change(function() {
             var _this      = $(this);
             var _parent    = _this.closest('.upload_sec');
             var _file_name = _this.val().replace(/.*[\/\\]/, '');
@@ -996,6 +1001,12 @@ function ApplicantSignUpHandler() {
                 _parent.addClass('preview');
                 _parent.find('.file_name').html(_file_name);
             }
+        });
+
+        $('.js_remove_file').click(function() {
+            var _this   = $(this);
+            var _parent = _this.closest('.upload_sec');
+            _parent.removeClass('preview');
         });
     }
 
@@ -1951,6 +1962,12 @@ function PostJobHandler() {
             }
             readURL(this);
         });
+
+        $('.js_remove_file').click(function() {
+            var _this   = $(this);
+            var _parent = _this.closest('.upload_sec');
+            _parent.removeClass('preview');
+        });
     }
 
     function readURL(input) {
@@ -2326,6 +2343,12 @@ function RecruiterCompanyHandler() {
                 _parent.find('.file_name').html(_file_name);
             }
             readURL(this);
+        });
+
+        $('.js_remove_file').click(function() {
+            var _this   = $(this);
+            var _parent = _this.closest('.upload_sec');
+            _parent.removeClass('preview');
         });
     }
 
