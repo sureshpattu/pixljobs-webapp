@@ -116,7 +116,8 @@
                 display: inline-block;
                 color: rgb(189, 194, 201);
             }
-            .com_name{
+
+            .com_name {
                 text-transform: capitalize;
             }
 
@@ -182,6 +183,17 @@
                 &:last-child {
                     margin: 0;
                 }
+            }
+
+            .more {
+                display: inline-block;
+                font-size: 14px;
+                font-weight: 400;
+                background-color: transparent;
+                text-transform: lowercase;
+                color: #5b8fe9;
+                padding: 2px;
+                width: 60px;
             }
         }
 
