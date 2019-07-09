@@ -48,7 +48,17 @@
                     </div>
                     <div class="form_wrap">
                         <div class="cards_wrap js_applications_wrap">
-                            {{>client/job_application data=applications.result}}
+                            <div class="applications_list_wrap">
+                                {{>client/job_application data=applications.result}}
+                                <input type="hidden" class="js_data_id" value="{{user.id}}">
+                            </div>
+                            <div class="bottom_cta_wrap">
+                                <a class="cta_load_more_link js_load_more_btn {{#ifCond applications.pages '>' '1'}}
+                                {{else}}hide{{/ifCond}}">
+                                    Show more applications
+                                    <img src="/img/icons/arrow-down.svg" class="fa" alt="">
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,8 +71,10 @@
 <script type="application/javascript">
     $(function() {
 
+        ApplicantApplicatiobsHandler.init();
+
         $('.js_close_btn_link').click(function() {
-            var _this = $(this);
+            var _this   = $(this);
             var _parent = $(this).closest('.js_card_sec');
             _parent.find('.js_panel_title').trigger('click');
             if(_this.hasClass('collapsed')) {
@@ -72,7 +84,7 @@
             }
         });
         $('.js_panel_title').click(function() {
-            var _this = $(this);
+            var _this   = $(this);
             var _parent = $(this).closest('.js_card_sec');
             if(!_this.hasClass('collapsed')) {
                 _parent.find('.js_close_btn_link').addClass('hide');

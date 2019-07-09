@@ -11,12 +11,14 @@ function NotificationHandler() {
             page :0,
             limit:10
         },
-        _notifyTypeArr    = []
+        _notifyTypeArr    = [];
+
     function loadMoreNotifications() {
         if(_notifyTypeArr.length) {
             _query.job_type = _notifyTypeArr;
         }
         _query.page = _query.page + 1;
+        _query.recruiter_id = $('.js_data_id').val();
 
         var callback = function(resData) {
             if(!resData.error) {
