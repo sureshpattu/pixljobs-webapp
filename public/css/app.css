@@ -1891,6 +1891,7 @@ body.popup-visible {
   display: block;
   text-decoration: none;
   cursor: pointer;
+  transition: 0.2s;
 }
 .search_pg .main_cont_sec .card_sec .new_sec {
   position: absolute;
@@ -3768,8 +3769,11 @@ body.popup-visible {
   height: 2px;
   background-color: #fc7968;
 }
+.job_recruiter_pg .cards_wrap .cat_wrap {
+  text-align: right;
+}
 .job_recruiter_pg .cards_wrap .c_cta_btn {
-  width: 95px;
+  width: 70px;
   height: 34px;
   border-radius: 3px;
   background-color: #fbf2f1;
@@ -3777,10 +3781,10 @@ body.popup-visible {
   font-weight: bold;
   text-align: center;
   color: #fc7968;
-  display: block;
+  display: inline-block;
   cursor: pointer;
   text-decoration: none;
-  margin: 17px 15px 10px auto;
+  margin: 17px auto 10px auto;
   padding: 10px 0 0;
 }
 .job_recruiter_pg .cards_wrap .reopen_btn_link {
@@ -3789,7 +3793,7 @@ body.popup-visible {
 }
 .job_recruiter_pg .cards_wrap .more_btn_link .icon_arrow_down {
   position: relative;
-  right: -12px;
+  right: -6px;
   top: 5px;
   font-size: 15px;
   vertical-align: top;

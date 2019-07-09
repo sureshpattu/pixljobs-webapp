@@ -131,9 +131,7 @@ function JobSearchHandler() {
         });
 
         $('.js_reset_category').click(function() {
-           // $('.js_category').children()[0].attr('selected','selected');
-            delete _query.category_id;
-            searchJobs();
+            $('.js_category').val('').trigger('change');
         });
 
         $('.js_reset_location').click(function() {

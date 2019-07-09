@@ -1221,9 +1221,7 @@ function JobSearchHandler() {
         });
 
         $('.js_reset_category').click(function() {
-           // $('.js_category').children()[0].attr('selected','selected');
-            delete _query.category_id;
-            searchJobs();
+            $('.js_category').val('').trigger('change');
         });
 
         $('.js_reset_location').click(function() {
@@ -2254,16 +2252,17 @@ function RecruiterAppHandler() {
             var _this   = $(this);
             var _parent = $(this).closest('.js_main_card_sec');
 
-            if(!_this.hasClass('collapsed')) {
-                _parent.find('.js_more_btn_link').addClass('hide');
-                _parent.find('.js_reopen_card').removeClass('hide');
-                _parent.find('.js_total_application_txt').removeClass('application');
-            } else {
-                _parent.find('.js_more_btn_link').removeClass('hide');
-                _parent.find('.js_open_card').addClass('hide');
-                _parent.find('.js_reopen_card').addClass('hide');
-                _parent.find('.js_total_application_txt').addClass('application');
-            }
+            //if(!_this.hasClass('collapsed')) {
+            //    _parent.find('.js_more_btn_link').addClass('hide');
+            //    _parent.find('.js_reopen_card').removeClass('hide');
+            //    _parent.find('.js_total_application_txt').removeClass('application');
+            //} else {
+            //    _parent.find('.js_more_btn_link').removeClass('hide');
+            //    _parent.find('.js_open_card').addClass('hide');
+            //    _parent.find('.js_reopen_card').addClass('hide');
+            //    _parent.find('.js_total_application_txt').addClass('application');
+            //}
+
             $('.js_match_height').matchHeight({ remove: true });
             $('.js_match_height').matchHeight({byRow:true});
             $.fn.matchHeight._update();
