@@ -112,7 +112,7 @@ function JobSearchHandler() {
         $('.js_remote_loc').click(function() {
             var _this = $(this);
             if(_this.prop('checked')) {
-                _query.location_type = true;
+                _query.location_type = 'remote';
             } else {
                 delete _query.location_type;
             }

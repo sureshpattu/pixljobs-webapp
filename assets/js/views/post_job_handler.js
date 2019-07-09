@@ -93,10 +93,10 @@ function PostJobHandler() {
 
                 var _location_type = '';
                 if(locationType1.attr('checked')) {
-                    _location_type = locationType1.val();
+                    _location_type = 'office';
                 }
                 if(locationType2.attr('checked')) {
-                    _location_type = locationType2.val();
+                    _location_type = 'remote';
                 }
 
                 var _obj = {
