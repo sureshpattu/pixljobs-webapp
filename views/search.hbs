@@ -18,7 +18,7 @@
             <img src="/img/icons/search.svg" alt="" class="fa-search">
         </div>
         <div class="job_found_txt">
-            {{data.total}} job offers found
+            <span class="js_total_jobs_txt">{{data.total}}</span> job offers found
         </div>
     </div>
 </section>
@@ -42,6 +42,7 @@
                     <div class="filter_sec">
                         <label class="box_label">
                             Job category
+                            <span class="fa fa-refresh refresh_icon_sec js_reset_category"></span>
                         </label>
                         <div class="box_sec">
                             <select class="form-control js_select2 js_category">
@@ -57,26 +58,28 @@
                             <div class="col-xs-6">
                                 <label class="box_label">
                                     Location
+                                    <span class="fa fa-refresh refresh_icon_sec js_reset_location"></span>
                                 </label>
                             </div>
                             <div class="col-xs-6 text-right">
                                 <label class="check_box right">
                                     Remote
-                                    <input type="checkbox">
+                                    <input type="checkbox" class="js_remote_loc">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
                         </div>
                         <div class="box_sec">
-                            <input type="text" class="form-control" placeholder="City, Country, Street">
+                            <input type="text" class="form-control js_input_location" placeholder="City, Country, Street">
                             <div class="icon_wrap">
-                                <img src="/img/icons/location-dark.svg" alt="" class="icon_marker_sec">
+                                <img src="/img/icons/location-dark.svg" class="icon_marker_sec">
                             </div>
                         </div>
                     </div>
                     <div class="filter_sec">
                         <label class="box_label">
                             Job Type
+                            <span class="fa fa-refresh refresh_icon_sec js_reset_jobType"></span>
                         </label>
                         <div class="box_sec">
                             <ul class="list_sec">
