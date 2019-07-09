@@ -28,29 +28,35 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <form class="form_sec" id="jsJobInfoForm">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Work Week <span
-                                                class="fade_txt">(hours)</span></label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control js_work_week required"
-                                                   placeholder="Type in Numbers Eg: 40 Hrs"
-                                                   value="{{job_data.work_week}}">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Work Week <span
+                                                        class="fade_txt">(hours)</span></label>
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control js_work_week required"
+                                                           placeholder="Type in Numbers Eg: 40 Hrs"
+                                                           value="{{job_data.work_week}}" pattern="^[0-9]*$" onkeyup="isNumber(this)">
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Holidays <span
-                                                class="fade_txt">(days - per year)</span></label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control js_holidays required"
-                                                   placeholder="Type in Numbers Eg: 20 days"
-                                                   value="{{job_data.holidays}}">
+                                        <div class="col-md-6">
+                                            <div class="form-group pixl_form_group">
+                                                <label class="control-label">Holidays <span
+                                                        class="fade_txt">(days - per year)</span></label>
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control js_holidays required"
+                                                           placeholder="Type in Numbers Eg: 20 days"
+                                                           value="{{job_data.holidays}}" onkeyup="isNumber(this)">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Description <span>(max 320 chars)</span></label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control js_desc required" placeholder="Type here"
-                                                   value="{{job_data.desc}}">
+                                            <textarea class="form-control js_desc required input_desc" cols="30" rows="10"
+                                                      placeholder="Type here">{{job_data.desc}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
@@ -93,5 +99,9 @@
     $(function() {
         PostJobHandler.initWorkInfo();
     });
+
+    var isNumber = function(box) {
+        box.value = box.value.replace(/[^0-9]/g, '');
+    };
 </script>
 </html>
