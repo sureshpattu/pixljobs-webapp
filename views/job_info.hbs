@@ -28,7 +28,8 @@
                                             <div class="tags_wrap spl_wrap">
                                                 <div class="tags">
                                                     <img src="/img/icons/dollar.svg" class="dollar_icons">
-                                                    {{#formatCurrency data.salary_min}}{{/formatCurrency}} - {{#formatCurrency data.salary_max}}{{/formatCurrency}}
+                                                    {{#formatCurrency data.salary_min}}{{/formatCurrency}}
+                                                    - {{#formatCurrency data.salary_max}}{{/formatCurrency}}
                                                 </div>
                                                 <div class="tags">
                                                     <img src="/img/icons/calendar.svg" class="cal_icons">
@@ -52,7 +53,9 @@
                                             <div class="tags_wrap">
                                                 <div class=" tags btn_wrap">
                                                     <a href="#" class="post_tag">
-                                                        Frontend
+                                                        {{#if data.job_categories}}
+                                                            <div class="btn btn_blue">{{job_categories.0.category.name}}</div>
+                                                        {{/if}}
                                                     </a>
                                                 </div>
                                             </div>
@@ -246,10 +249,11 @@
                             </div>
                         </div>
                         <div class="tags_sec">
-                            <a href="#" class="tech_tg">Web development</a>
-                            <a href="#" class="tech_tg">Angular</a>
+                            {{#each data.job_technologies}}
+                                <a href="#" class="tech_tg">{{technology.name}}</a>
+                            {{/each}}
                         </div>
-                        <a href="#">
+                        <a href="#" class="hide">
                             <div class="views_sec">
                                 Pageviews: 49
                             </div>
