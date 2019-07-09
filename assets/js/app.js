@@ -14,3 +14,4 @@ window.ResetAppPasswordHandler      = require('./views/reset_applicant_handler')
 window.ResetRecPasswordHandler      = require('./views/reset_recruiter_handler');
 window.RecruiterAppHandler          = require('./views/recruiter_app_handler');
 window.RecruiterApplicatiobsHandler = require('./views/recruiter_applications_handler');
+window.ApplicantApplicatiobsHandler = require('./views/applicant_app_handler');

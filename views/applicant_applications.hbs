@@ -48,7 +48,7 @@
                     </div>
                     <div class="form_wrap">
                         <div class="cards_wrap js_applications_wrap">
-                            <div class="applications_wrap">
+                            <div class="applications_list_wrap">
                                 {{>client/job_application data=applications.result}}
                                 <input type="hidden" class="js_data_id" value="{{user.id}}">
                             </div>
@@ -70,6 +70,8 @@
 </body>
 <script type="application/javascript">
     $(function() {
+
+        ApplicantApplicatiobsHandler.init();
 
         $('.js_close_btn_link').click(function() {
             var _this   = $(this);
