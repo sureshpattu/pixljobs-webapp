@@ -100,15 +100,19 @@ function PostJobHandler() {
                 }
 
                 var _obj = {
-                    name         :_form.find('.js_title').val(),
-                    recruiter_id :_recruiter_id,
-                    job_type     :_form.find('.js_job_type').val(),
-                    salary_min   :_form.find('.js-input-from').val(),
-                    salary_max   :_form.find('.js-input-to').val(),
-                    exp_year     :_form.find('.js_exp_year').val(),
-                    exp_month    :_form.find('.js_exp_month').val(),
-                    status       :'inProgress',
-                    location_type:_location_type
+                    name           :_form.find('.js_title').val(),
+                    recruiter_id   :_recruiter_id,
+                    job_type       :_form.find('.js_job_type').val(),
+                    salary_min     :_form.find('.js-input-from').val(),
+                    salary_max     :_form.find('.js-input-to').val(),
+                    exp_year       :_form.find('.js_exp_year').val(),
+                    exp_month      :_form.find('.js_exp_month').val(),
+                    position_count :_form.find('.js_position_count').val(),
+                    end_date       :_form.find('.js_end_date').val(),
+                    education_level:_form.find('.js_edu_level').val(),
+                    urgent_status  :_form.find('.js_urgent_status').val(),
+                    status         :'inProgress',
+                    location_type  :_location_type
                 };
 
                 ApiUtil.makeAjaxRequest('/api/qa-jobs', '', 'POST', '', _obj, function(_qaJobRes) {
