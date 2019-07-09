@@ -396,25 +396,25 @@ Handlebars.registerPartial("job_search_card", Handlebars.template({"1":function(
     + "\" href=\"/job-info/"
     + alias4(alias3((depth0 != null ? depth0.id : depth0), depth0))
     + "\">\n        <div class=\"new_sec\">\n            <span class=\"fa fa-certificate\"></span>\n            <span class=\"new_txt\">NEW</span>\n        </div>\n"
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.company : depth0)) != null ? stack1.logo : stack1),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.company : depth0)) != null ? stack1.logo : stack1),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.program(6, data, 0),"data":data})) != null ? stack1 : "")
     + "        <div class=\"row\">\n            <div class=\"col-md-6\">\n                <div>\n                    <span class=\"title\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</span>\n                </div>\n                <div>\n                    <div class=\"info_sec "
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.company : depth0)) != null ? stack1.city : stack1),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.program(8, data, 0),"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.company : depth0)) != null ? stack1.city : stack1),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.program(10, data, 0),"data":data})) != null ? stack1 : "")
     + "\">\n                        <i class=\"fa fa-building com_icon\"></i>\n                        <span class=\"sub_title com_name\">"
     + alias4(alias3(((stack1 = (depth0 != null ? depth0.company : depth0)) != null ? stack1.name : stack1), depth0))
     + "</span>\n                    </div>\n                    <div class=\"info_sec "
-    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.company : depth0)) != null ? stack1.city : stack1),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.program(8, data, 0),"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,((stack1 = (depth0 != null ? depth0.company : depth0)) != null ? stack1.city : stack1),{"name":"if","hash":{},"fn":container.program(8, data, 0),"inverse":container.program(10, data, 0),"data":data})) != null ? stack1 : "")
     + "\">\n                        <img src=\"/img/icons/location-dark.svg\" alt=\"\" class=\"icon_marker_sec\">\n                        <span class=\"txt_sec city_txt\">"
     + alias4(alias3(((stack1 = (depth0 != null ? depth0.company : depth0)) != null ? stack1.city : stack1), depth0))
     + "</span>\n                    </div>\n                </div>\n                <div class=\"tags_wrap\">\n"
-    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.job_technologies : depth0),{"name":"each","hash":{},"fn":container.program(10, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.job_technologies : depth0),{"name":"each","hash":{},"fn":container.program(12, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "                </div>\n            </div>\n            <div class=\"col-md-6\">\n                <div class=\"cta_wrap\">\n"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.job_categories : depth0),{"name":"if","hash":{},"fn":container.program(12, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.job_categories : depth0),{"name":"if","hash":{},"fn":container.program(14, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "                </div>\n                <div class=\"job_details_wrap\">\n                    <div class=\"info_sec\">\n                        <img src=\"/img/icons/dollar-grey.svg\" class=\"icon_dollar_sec\">\n                        <span class=\"txt_sec\">\n"
-    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,(depth0 != null ? depth0.salary_min : depth0),"===","0",{"name":"ifCond","hash":{},"fn":container.program(14, data, 0),"inverse":container.program(16, data, 0),"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,(depth0 != null ? depth0.salary_min : depth0),"===","0",{"name":"ifCond","hash":{},"fn":container.program(16, data, 0),"inverse":container.program(18, data, 0),"data":data})) != null ? stack1 : "")
     + "                        </span>\n                    </div>\n                    <div class=\"info_sec\">\n                        <img src=\"/img/icons/clock.svg\" alt=\"\" class=\"icon_sec\">\n                        <span class=\"txt_sec\">"
-    + ((stack1 = (helpers.countDateTime || (depth0 && depth0.countDateTime) || alias2).call(alias1,(depth0 != null ? depth0.created_at : depth0),{"name":"countDateTime","hash":{},"fn":container.program(6, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.countDateTime || (depth0 && depth0.countDateTime) || alias2).call(alias1,(depth0 != null ? depth0.created_at : depth0),{"name":"countDateTime","hash":{},"fn":container.program(8, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</span>\n                    </div>\n                </div>\n                <div class=\"job_details_wrap\">\n\n                </div>\n            </div>\n        </div>\n    </a>\n";
 },"2":function(container,depth0,helpers,partials,data) {
     return "new_card";
@@ -425,41 +425,43 @@ Handlebars.registerPartial("job_search_card", Handlebars.template({"1":function(
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.company : depth0)) != null ? stack1.logo : stack1), depth0))
     + "\" class=\"c_logo\">\n";
 },"6":function(container,depth0,helpers,partials,data) {
-    return "";
+    return "            <img src=\"/img/company-temp-logo.png\" class=\"c_logo\">\n";
 },"8":function(container,depth0,helpers,partials,data) {
-    return "hide";
+    return "";
 },"10":function(container,depth0,helpers,partials,data) {
+    return "hide";
+},"12":function(container,depth0,helpers,partials,data) {
     var stack1;
 
   return "                        <span>"
     + container.escapeExpression(container.lambda(((stack1 = (depth0 != null ? depth0.technology : depth0)) != null ? stack1.name : stack1), depth0))
     + "</span>\n";
-},"12":function(container,depth0,helpers,partials,data) {
+},"14":function(container,depth0,helpers,partials,data) {
     var stack1;
 
   return "                        <div class=\"btn btn_blue\">"
     + container.escapeExpression(container.lambda(((stack1 = ((stack1 = ((stack1 = (depth0 != null ? depth0.job_categories : depth0)) != null ? stack1["0"] : stack1)) != null ? stack1.category : stack1)) != null ? stack1.name : stack1), depth0))
     + "</div>\n";
-},"14":function(container,depth0,helpers,partials,data) {
+},"16":function(container,depth0,helpers,partials,data) {
     var stack1;
 
   return "                                "
-    + ((stack1 = (helpers.formatCurrency || (depth0 && depth0.formatCurrency) || helpers.helperMissing).call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.salary_max : depth0),{"name":"formatCurrency","hash":{},"fn":container.program(6, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.formatCurrency || (depth0 && depth0.formatCurrency) || helpers.helperMissing).call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.salary_max : depth0),{"name":"formatCurrency","hash":{},"fn":container.program(8, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\n";
-},"16":function(container,depth0,helpers,partials,data) {
+},"18":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing;
 
   return "                                "
-    + ((stack1 = (helpers.formatCurrency || (depth0 && depth0.formatCurrency) || alias2).call(alias1,(depth0 != null ? depth0.salary_min : depth0),{"name":"formatCurrency","hash":{},"fn":container.program(6, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.formatCurrency || (depth0 && depth0.formatCurrency) || alias2).call(alias1,(depth0 != null ? depth0.salary_min : depth0),{"name":"formatCurrency","hash":{},"fn":container.program(8, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + " - "
-    + ((stack1 = (helpers.formatCurrency || (depth0 && depth0.formatCurrency) || alias2).call(alias1,(depth0 != null ? depth0.salary_max : depth0),{"name":"formatCurrency","hash":{},"fn":container.program(6, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.formatCurrency || (depth0 && depth0.formatCurrency) || alias2).call(alias1,(depth0 != null ? depth0.salary_max : depth0),{"name":"formatCurrency","hash":{},"fn":container.program(8, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\n";
-},"18":function(container,depth0,helpers,partials,data) {
+},"20":function(container,depth0,helpers,partials,data) {
     return "    <h4 class=\"text-center text-capitalize\">NO DATA FOUND!</h4>\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
-  return ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.data : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(18, data, 0),"data":data})) != null ? stack1 : "");
+  return ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.data : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(20, data, 0),"data":data})) != null ? stack1 : "");
 },"useData":true}));
 
 Handlebars.registerPartial("notification_card_row", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {

@@ -6,6 +6,8 @@
         </div>
         {{#if company.logo}}
             <img src="/api/companies/photo/{{company.logo}}" class="c_logo">
+        {{else}}
+            <img src="/img/company-temp-logo.png" class="c_logo">
         {{/if}}
         <div class="row">
             <div class="col-md-6">
