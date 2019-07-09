@@ -26,8 +26,17 @@
                 </div>
                 <div class="tags_wrap">
                     {{#each job_technologies}}
-                        <span>{{technology.name}}</span>
+                        {{#ifCond @index '<' 3}}
+                            <span>{{technology.name}}</span>
+                        {{/ifCond}}
                     {{/each}}
+                    {{#ifCond job_technologies.length '>' 3}}
+                        <span class="more"
+                              title="" data-toggle="popover" data-trigger="hover"
+                              data-content="{{#each job_technologies}}{{#ifCond @index '>' 2}}{{#if @last}}{{technology.name}}.{{else}}{{technology.name}}, {{/if}}{{/ifCond}}{{/each}}">
+                            + more
+                        </span>
+                    {{/ifCond}}
                 </div>
             </div>
             <div class="col-md-6">
