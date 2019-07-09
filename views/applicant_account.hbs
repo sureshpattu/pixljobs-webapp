@@ -75,7 +75,11 @@
                                                     <select id="selectExpYear"
                                                             class="form-control js_select2 js_exp_year">
                                                         {{#counter 0 50}}
-                                                            <option value="{{this}}">{{this}} Years</option>
+                                                            <option value="{{this}}"
+                                                                {{#ifCond data.exp_year '===' this}}
+                                                                    selected
+                                                                {{/ifCond}}>{{this}} Years
+                                                            </option>
                                                         {{/counter}}
                                                     </select>
                                                 </div>
@@ -277,7 +281,6 @@
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Contact No.</label><a href=""
                                                                                            class="verify_link">VERIFY</a>
-
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="box_sec">
