@@ -67,9 +67,10 @@ router.post('/applicant/reset-password/:id', function(req, res, next) {
 });
 
 router.post('/applicant/change-email/:id', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'POST', '/applicant/change-email/' + req.cookies.pixljob_user_id, function(_response) {
-        res.json(_response);
-    });
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/change-email/' + req.cookies.pixljob_user_id,
+        function(_response) {
+            res.json(_response);
+        });
 });
 
 router.put('/applicant', function(req, res, next) {
@@ -143,9 +144,10 @@ router.post('/recruiter/reset-password/:id', function(req, res, next) {
 });
 
 router.post('/recruiter/change-email/:id', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'POST', '/recruiter/change-email/' + req.cookies.pixljob_user_id, function(_response) {
-        res.json(_response);
-    });
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter/change-email/' + req.cookies.pixljob_user_id,
+        function(_response) {
+            res.json(_response);
+        });
 });
 
 router.post('/recruiter', function(req, res, next) {
@@ -359,7 +361,7 @@ router.post('/recruiter/reset-password/:id', function(req, res, next) {
 });
 
 router.put('/job-applications/:id', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'PUT', '/job-applications/'+ req.params.id, function(_response) {
+    helper_utils.makeApiRequest(req, 'PUT', '/job-applications/' + req.params.id, function(_response) {
         res.json(_response);
     });
 });
@@ -368,6 +370,13 @@ router.post('/job-applications/search', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/job-applications/search', function(_response) {
         res.json(_response);
     });
+});
+
+router.post('/recruiter/job/action/:qa_job_id/:job_id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter/job/action/' + req.params.qa_job_id + '/' + req.params.job_id,
+        function(_response) {
+            res.json(_response);
+        });
 });
 
 module.exports = router;

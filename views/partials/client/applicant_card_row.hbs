@@ -1,5 +1,5 @@
 {{#each data}}
-    <div class="panel main_card_sec js_main_card_sec">
+    <div class="panel main_card_sec js_main_card_sec" data-qa_job_id="{{qa_job_id}}" data-job_id="{{id}}">
         <div class="panel-heading">
             <div class="row">
                 <div class="col-md-8">
@@ -22,15 +22,30 @@
                 </div>
                 <div class="col-md-4">
                     <div class="cat_wrap">
-                        <a class="c_cta_btn open_btn_link js_open_card">
-                            <span>OPEN</span>
-                        </a>
-                        <a class="c_cta_btn more_btn_link js_more_btn_link">
-                            <span>MORE</span>
-                            <img src="/img/icons/arrow-down-orange.svg" alt="" class="icon_arrow_down">
-                        </a>
-                    </div>
+                        {{#ifCond action '===' 'open'}}
+                            <a class="c_cta_btn open_btn_link open js_open_close_status">
+                                <span>OPEN</span>
+                            </a>
+                        {{else}}
+                            <a class="c_cta_btn open_btn_link js_open_close_status">
+                                <span>CLOSED</span>
+                            </a>
+                        {{/ifCond}}
+                        <div class="dropdown">
+                            <button class="btn  dropdown-toggle c_cta_btn more_btn_link js_more_btn_link"
+                                    type="button" data-toggle="dropdown">
+                                <span>MORE</span>
+                                <img src="/img/icons/arrow-down-orange.svg" alt="" class="icon_arrow_down">
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="js_close_job_btn {{#ifCond action '==='
+                                                                         'closed'}}hide{{/ifCond}}">CLOSE</a></li>
+                                <li><a class="js_reopen_job_btn {{#ifCond action '==='
+                                                                          'open'}}hide{{/ifCond}}">REOPEN</a></li>
 
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

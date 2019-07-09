@@ -302,6 +302,21 @@
 
         .cat_wrap {
             text-align: right;
+
+            .dropdown {
+                display: inline-block;
+                vertical-align: bottom;
+
+                .dropdown-menu {
+                    border: none;
+                    min-width: 80px;
+
+                    a {
+                        padding: 8px 15px;
+                        font-size: 11px;
+                    }
+                }
+            }
         }
 
         .c_cta_btn {
@@ -318,6 +333,25 @@
             text-decoration: none;
             margin: 17px auto 10px auto;
             padding: 10px 0 0;
+            border: none;
+
+            &:focus, &:hover {
+                outline: none;
+                border: none;
+                background-color: #fbf2f1;
+                color: #fc7968;
+                box-shadow: none;
+            }
+
+            &.btn{
+                padding: 0;
+            }
+
+            &.open{
+                background-color: #ebfff7eb;
+                color: #408c6dfa;
+            }
+
         }
 
 
