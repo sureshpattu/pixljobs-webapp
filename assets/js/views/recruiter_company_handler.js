@@ -143,6 +143,12 @@ function RecruiterCompanyHandler() {
             }
             readURL(this);
         });
+
+        $('.js_remove_file').click(function() {
+            var _this   = $(this);
+            var _parent = _this.closest('.upload_sec');
+            _parent.removeClass('preview');
+        });
     }
 
     function readURL(input) {

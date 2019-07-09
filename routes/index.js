@@ -287,11 +287,17 @@ router.get('/sign-up/recruiter', function(req, res) {
             helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
                 callback(null, _res);
             });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/country-code', function(_res) {
+                callback(null, _res);
+            });
         }
     ], function(err, results) {
         res.render('sign_up_recruiter', {
-            industries:!results[0].error ? results[0].data : [],
-            benefits  :!results[1].error ? results[1].data : []
+            industries  :!results[0].error ? results[0].data : [],
+            benefits    :!results[1].error ? results[1].data : [],
+            country_code:!results[2].error ? results[2].data : []
         });
     });
 });
@@ -345,6 +351,11 @@ router.get('/recruiter', verify.isRecruiterLoggedIn, function(req, res) {
             helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
                 callback(null, _res);
             });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/country-code', function(_res) {
+                callback(null, _res);
+            });
         }
     ], function(err, results) {
         var _companies = [];
@@ -352,12 +363,13 @@ router.get('/recruiter', verify.isRecruiterLoggedIn, function(req, res) {
             _companies = results[0].data.companies;
         }
         res.render('recruiter_profile', {
-            companies :_companies,
-            user      :!results[0].error ? results[0].data : [],
-            data      :!results[1].error ? results[1].data : [],
-            industries:!results[2].error ? results[2].data : [],
-            benefits  :!results[3].error ? results[3].data : [],
-            user_id   :req.cookies.pixljob_user_id
+            companies   :_companies,
+            user        :!results[0].error ? results[0].data : [],
+            data        :!results[1].error ? results[1].data : [],
+            industries  :!results[2].error ? results[2].data : [],
+            benefits    :!results[3].error ? results[3].data : [],
+            country_code:!results[4].error ? results[4].data : [],
+            user_id     :req.cookies.pixljob_user_id
         });
     });
 });
@@ -725,7 +737,7 @@ router.get('/applicant/:applicant_id/:application_id', verify.isRecruiterLoggedI
             req.body.status = 'viewed';
             helper_utils.makeApiRequest(req,
                 'PUT',
-                '/job-applications/' + req.params.applicant_id + '/' + req.params.application_id,
+                '/job-applications/' + req.params.application_id,
                 function(_res) {
                     callback(null, _res);
                 });
@@ -736,10 +748,12 @@ router.get('/applicant/:applicant_id/:application_id', verify.isRecruiterLoggedI
             is_experience = true;
         }
         res.render('applicant_details', {
-            user        :!results[0].error ? results[0].data : [],
-            data        :!results[1].error ? results[1].data : [],
-            country_code:!results[2].error ? results[2].data : [],
-            exp         :is_experience
+            user          :!results[0].error ? results[0].data : [],
+            data          :!results[1].error ? results[1].data : [],
+            country_code  :!results[2].error ? results[2].data : [],
+            applications  :!results[3].error ? results[3].data : [],
+            exp           :is_experience,
+            application_id:req.params.application_id
         });
     });
 });

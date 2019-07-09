@@ -36,7 +36,7 @@
                                     <div class="tags_wrap spl_wrap">
                                         <div class="tags">
                                             <img src="/img/icons/dollar.svg" class="dollar_icons">
-                                            {{salary_min}} - {{salary_max}}
+                                            {{#formatCurrency salary_min}}{{/formatCurrency}} - {{#formatCurrency salary_max}}{{/formatCurrency}}
                                         </div>
                                         <div class="tags">
                                             <img src="/img/icons/calendar.svg" class="cal_icons">

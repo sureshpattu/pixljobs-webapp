@@ -85,10 +85,10 @@
             margin-top: 110px;
             position: absolute;
         }
-        .btn_mark{
+
+        .btn_mark {
             margin: -9px 0 0 10px;
         }
-
     }
 
     .profile_img_wrap {
@@ -142,6 +142,27 @@
             padding: 0;
         }
 
+        .select_all_check_box {
+            margin-left: 10px;
+            margin-bottom: 20px;
+            display: inline-block;
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            font-size: 13px;
+            color: #637282;
+            opacity: 0.8;
+            font-weight: 400;
+        }
+
+        .btn_mark_read {
+            margin-left: 20px;
+        }
+
 
         .check_notifications {
             margin-left: 10px;
@@ -160,10 +181,20 @@
             font-weight: 400;
         }
 
-        .notification_wrap{
+        .select_wrap {
             position: relative;
 
-            .notifications{
+            .select {
+                position: absolute;
+                top: 25px;
+                margin-left: 10px;
+            }
+        }
+
+        .notification_wrap {
+            position: relative;
+
+            .notifications {
                 position: absolute;
                 top: 25px;
                 margin-left: 10px;
@@ -299,7 +330,8 @@
                 vertical-align: top;
             }
         }
-        .admin_txt{
+
+        .admin_txt {
             padding-top: 30px;
         }
 
@@ -473,7 +505,7 @@
         text-align: right;
     }
 
-    .common_load_more_wrap{
+    .common_load_more_wrap {
         padding: 50px 0;
     }
 }

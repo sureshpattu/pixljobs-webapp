@@ -41,9 +41,9 @@
                         <img src="/img/icons/dollar-grey.svg" class="icon_dollar_sec">
                         <span class="txt_sec">
                             {{#ifCond  salary_min '===' '0'}}
-                                {{salary_max}}
+                                {{#formatCurrency salary_max}}{{/formatCurrency}}
                             {{else}}
-                                {{salary_min}} - {{salary_max}}
+                                {{#formatCurrency salary_min}}{{/formatCurrency}} - {{#formatCurrency salary_max}}{{/formatCurrency}}
                             {{/ifCond}}
                         </span>
                     </div>

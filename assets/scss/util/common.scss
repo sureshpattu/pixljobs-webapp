@@ -962,7 +962,7 @@ input.form-control, select.form-control, textarea.form-control {
                 display: none;
             }
 
-            .file_preview_txt_wrap,.close_icon {
+            .file_preview_txt_wrap, .close_icon {
                 display: block;
             }
 
@@ -979,6 +979,10 @@ input.form-control, select.form-control, textarea.form-control {
                 font-size: 14px;
                 color: #333;
                 font-weight: 500;
+            }
+
+            .input_file {
+                display: none;
             }
         }
     }
@@ -1295,14 +1299,14 @@ a.btn {
     }
 }
 
-.notification_count{
+.notification_count {
     margin-left: 10px;
-    background-color:red;
+    background-color: red;
 }
 
-.notification_head_count{
+.notification_head_count {
     margin-left: 10px;
-    background-color:red;
+    background-color: red;
     position: absolute;
     left: 17px;
     top: 4px;
@@ -1320,7 +1324,8 @@ a.btn {
         }
 
     }
-    &.select2-container--open{
+
+    &.select2-container--open {
         .select2-selection--single .select2-selection__arrow {
             transform: rotate(180deg);
 

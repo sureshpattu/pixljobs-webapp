@@ -74,45 +74,9 @@
                                                 <div class="box_sec">
                                                     <select id="selectExpYear"
                                                             class="form-control js_select2 js_exp_year">
-                                                        <option value="0"
-                                                            {{#ifCond data.exp_year '===' '0'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            0 Years
-                                                        </option>
-                                                        <option value="1"
-                                                            {{#ifCond data.exp_year '===' '1'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            1 Years
-                                                        </option>
-                                                        <option value="2"{{#ifCond data.exp_year '===' '2'}}
-                                                                selected{{/ifCond}}>2 Years
-                                                        </option>
-                                                        <option value="3"
-                                                            {{#ifCond data.exp_year '===' '3'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            3 Years
-                                                        </option>
-                                                        <option value="4"
-                                                            {{#ifCond data.exp_year '===' '4'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            4 Years
-                                                        </option>
-                                                        <option value="5"
-                                                            {{#ifCond data.exp_year '===' '5'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            5 Years
-                                                        </option>
-                                                        <option value="6"
-                                                            {{#ifCond data.exp_year '===' '6'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            6 Years
-                                                        </option>
+                                                        {{#counter 0 50}}
+                                                            <option value="{{this}}">{{this}} Years</option>
+                                                        {{/counter}}
                                                     </select>
                                                 </div>
                                             </div>
@@ -243,7 +207,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12 js_fresh_detail_sec {{#if data.institution}}{{else}}hide{{/if}}">
+                                <div class="col-md-6 js_fresh_detail_sec {{#if data.institution}}{{else}}hide{{/if}}">
                                     <div class="form-group pixl_form_group">
                                         <label class="control-label">Institution</label>
                                         <div class="box_sec">
@@ -251,6 +215,43 @@
                                                    autocomplete="nope"
                                                    placeholder="Last academic institution attended"
                                                    value="{{data.institution}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 js_fresh_detail_sec">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Institution City</label>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control js_institution_city"
+                                                   autocomplete="nope"
+                                                   placeholder="Institution City"
+                                                   value="{{data.institution_city}}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Current Living City</label>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control js_current_city"
+                                                   autocomplete="nope"
+                                                   placeholder="Current City"
+                                                   value="{{data.current_city}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label"> </label>
+                                        <div class="check_box_wrap">
+                                            <label class="check_box">
+                                                <input type="checkbox" class="js_relocation_checkbox"
+                                                       {{#if data.relocation}}checked{{/if}}>
+                                                <span class="checkmark"></span>
+                                                Relocate
+                                            </label>
                                         </div>
                                     </div>
                                 </div>

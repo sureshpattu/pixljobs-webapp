@@ -62,6 +62,15 @@ exports.formatDate = function(dateString, format) {
     }
 };
 
+exports.formatCurrency = function(amount) {
+    if(amount) {
+        amount = parseFloat(amount);
+        return Number(amount.toFixed(0)).toLocaleString();
+    } else {
+        return '0';
+    }
+};
+
 exports.formatCommentDate = function(d) {
     let hour24 = d.getHours() % 12;
     let hour   = (hour24 === 0) ? 12 : hour24;

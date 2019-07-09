@@ -140,6 +140,7 @@ function ApplicantSignUpHandler() {
 
     }
 
+
     function bindCommonClickEvents() {
         $('.js_select2').select2({});
 
@@ -211,7 +212,7 @@ function ApplicantSignUpHandler() {
             verifyEmail(this);
         });
 
-        $('.js_resume_file').change(function() {
+        $('.js_input_resume_file').change(function() {
             var _this      = $(this);
             var _parent    = _this.closest('.upload_sec');
             var _file_name = _this.val().replace(/.*[\/\\]/, '');
@@ -220,6 +221,12 @@ function ApplicantSignUpHandler() {
                 _parent.addClass('preview');
                 _parent.find('.file_name').html(_file_name);
             }
+        });
+
+        $('.js_remove_file').click(function() {
+            var _this   = $(this);
+            var _parent = _this.closest('.upload_sec');
+            _parent.removeClass('preview');
         });
     }
 
