@@ -26,12 +26,17 @@
                                 {{else}}
                                     <img src="/img/user_icon.svg" class="user_img">
                                 {{/if}}
-                                {{#ifCond user.total_notifications ">" 0}}
-                                    <span class="badge notification_head_count">
-                                        {{user.total_notifications}}
-                                    </span>
-                                {{/ifCond}}
-                                <span class="caret"></span></a>
+                                <span class="caret"></span>
+                                <div class="notification_link">
+                                    <a href="/recruiter/notification">
+                                        {{#ifCond user.total_notifications ">" 0}}
+                                            <span class="badge notification_head_count">
+                                                {{user.total_notifications}}
+                                            </span>
+                                        {{/ifCond}}
+                                    </a>
+                                </div>
+                            </a>
                             <ul class="dropdown-menu">
                                 {{#if user.is_recruiter}}
                                     <li><a href="/recruiter">Profile</a></li>
@@ -49,6 +54,7 @@
                                 <li><a href="/logout" title="PixlJobs Login Page">Log out</a></li>
                             </ul>
                         </li>
+
                     {{else}}
                         <li><a href="/login" title="PixlJobs Login Page">Log in</a></li>
                         <li><a href="/post-job" title="PixlJobs Post a Job Page" class="btn">Post a job</a></li>

@@ -76,38 +76,9 @@
                                                 <div class="box_sec">
                                                     <select id="selectExpYear"
                                                             class="form-control js_select2 js_exp_year">
-                                                        <option value="0"
-                                                                {{#ifCond data.exp_year '===' '0'}}selected{{/ifCond}}>
-                                                            0 Years
-                                                        </option>
-                                                        <option value="1"
-                                                                {{#ifCond data.exp_year '===' '1'}}selected{{/ifCond}}>
-                                                            1 Years
-                                                        </option>
-                                                        <option value="2"
-                                                                {{#ifCond data.exp_year '===' '2'}}selected{{/ifCond}}>
-                                                            2 Years
-                                                        </option>
-                                                        <option value="3"
-                                                                {{#ifCond data.exp_year '===' '3'}}selected{{/ifCond}}>
-                                                            3 Years
-                                                        </option>
-                                                        <option value="4"
-                                                                {{#ifCond data.exp_year '===' '4'}}selected{{/ifCond}}>
-                                                            4 Years
-                                                        </option>
-                                                        <option value="5"
-                                                                {{#ifCond data.exp_year '===' '5'}}selected{{/ifCond}}>
-                                                            5 Years
-                                                        </option>
-                                                        <option value="6"
-                                                                {{#ifCond data.exp_year '===' '6'}}selected{{/ifCond}}>
-                                                            6 Years
-                                                        </option>
-                                                        <option value="6+"
-                                                                {{#ifCond data.exp_year '===' '6+'}}selected{{/ifCond}}>
-                                                            6+ Years
-                                                        </option>
+                                                        {{#counter 0 50}}
+                                                            <option value="{{this}}" {{#ifCond ../data.exp_year '==' this}}selected{{/ifCond}}>{{this}} Years</option>
+                                                        {{/counter}}
                                                     </select>
                                                 </div>
                                             </div>
@@ -115,149 +86,9 @@
                                                 <div class="box_sec">
                                                     <select id="selectExpMonth"
                                                             class="form-control js_exp_month js_select2">
-                                                        <option value="0"
-                                                                {{#ifCond data.exp_month '===' '0'}}selected{{/ifCond}}>
-                                                            0 Months
-                                                        </option>
-                                                        <option value="1"
-                                                                {{#ifCond data.exp_month '===' '1'}}selected{{/ifCond}}>
-                                                            1 Months
-                                                        </option>
-                                                        <option value="2"
-                                                                {{#ifCond data.exp_month '===' '2'}}selected{{/ifCond}}>
-                                                            2 Months
-                                                        </option>
-                                                        <option value="3"
-                                                                {{#ifCond data.exp_month '===' '3'}}selected{{/ifCond}}>
-                                                            3 Months
-                                                        </option>
-                                                        <option value="4"
-                                                                {{#ifCond data.exp_month '===' '4'}}selected{{/ifCond}}>
-                                                            4 Months
-                                                        </option>
-                                                        <option value="5"
-                                                                {{#ifCond data.exp_month '===' '5'}}selected{{/ifCond}}>
-                                                            5 Months
-                                                        </option>
-                                                        <option value="6"
-                                                                {{#ifCond data.exp_month '===' '6'}}selected{{/ifCond}}>
-                                                            6 Months
-                                                        </option>
-                                                        <option value="7"
-                                                                {{#ifCond data.exp_month '===' '7'}}selected{{/ifCond}}>
-                                                            7 Months
-                                                        </option>
-                                                        <option value="8"
-                                                                {{#ifCond data.exp_month '===' '8'}}selected{{/ifCond}}>
-                                                            8 Months
-                                                        </option>
-                                                        <option value="9"
-                                                                {{#ifCond data.exp_month '===' '9'}}selected{{/ifCond}}>
-                                                            9 Months
-                                                        </option>
-                                                        <option value="10"
-                                                                {{#ifCond data.exp_month '==='
-                                                                          '10'}}selected{{/ifCond}}>
-                                                            10 Months
-                                                        </option>
-                                                        <option value="11"
-                                                                {{#ifCond data.exp_month '==='
-                                                                          '11'}}selected{{/ifCond}}>
-                                                            11 Months
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">How many position open?</label>
-                                                <div class="box_sec">
-                                                    <input type="text" class="form-control required js_position_count"
-                                                           value="{{data.position_count}}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Set an end date (optional)</label>
-                                                <div class="box_sec">
-                                                    <input type="text" class="form-control  js_end_date"
-                                                           value="{{data.end_date}}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Education Level</label>
-                                                <div class="box_sec">
-                                                    <select class="form-control js_edu_level js_select2">
-                                                        <option value="Secondary"
-                                                            {{#ifCond data.education_level '===' 'Secondary'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            Secondary(10th Pass)
-                                                        </option>
-                                                        <option value="Higher Secondary"
-                                                            {{#ifCond data.education_level '===' 'Higher Secondary'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            Higher Secondary(12th Pass)
-                                                        </option>
-                                                        <option value="Diploma"
-                                                            {{#ifCond data.education_level '===' 'Diploma'}}
-                                                                selected
-                                                            {{/ifCond}}>Diploma
-                                                        </option>
-                                                        <option value="Bachelors"
-                                                            {{#ifCond data.education_level '===' 'Bachelors'}}
-                                                                selected
-                                                            {{/ifCond}}>Bachelor's
-                                                        </option>
-                                                        <option value="Masters"
-                                                            {{#ifCond data.education_level '===' 'Masters'}}
-                                                                selected
-                                                            {{/ifCond}}>Master's
-                                                        </option>
-                                                        <option value="Doctorate"
-                                                            {{#ifCond data.education_level '===' 'Doctorate'}}
-                                                                selected
-                                                            {{/ifCond}}>Doctorate
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Urgent</label>
-                                                <div class="box_sec">
-                                                    <select class="form-control js_urgent_status js_select2">
-                                                        <option value="none">None</option>
-                                                        <option value="days"
-                                                            {{#ifCond data.urgent_status '===' 'days'}}
-                                                                selected
-                                                            {{/ifCond}}>2-3 days
-                                                        </option>
-                                                        <option value="week"
-                                                            {{#ifCond data.urgent_status '===' 'week'}}
-                                                                selected
-                                                            {{/ifCond}}>In a week
-                                                        </option>
-                                                        <option value="weeks"
-                                                            {{#ifCond data.urgent_status '===' 'weeks'}}
-                                                                selected
-                                                            {{/ifCond}}>Two Weeks
-                                                        </option>
-                                                        <option value="month"
-                                                            {{#ifCond data.urgent_status '===' 'month'}}
-                                                                selected
-                                                            {{/ifCond}}>In a month
-                                                        </option>
+                                                        {{#counter 0 11}}
+                                                            <option value="{{this}}" {{#ifCond ../data.exp_month '==' this}}selected{{/ifCond}}>{{this}} Months</option>
+                                                        {{/counter}}
                                                     </select>
                                                 </div>
                                             </div>
@@ -324,12 +155,27 @@
                                                 <div class="range-slider">
                                                     <input type="text" class="js-range-slider" value=""/>
                                                 </div>
-                                                <div class="extra-controls form-inline">
-                                                    <div class="form-group">
-                                                        <input type="hidden" class="js-input-from form-control"
-                                                               value="0"/>
-                                                        <input type="hidden" class="js-input-to form-control"
-                                                               value="0"/>
+                                                <div class="extra-controls form-inline salary_box">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group pixl_form_group">
+                                                                <label class="control-label">Min Salary</label>
+                                                                <div class="box_sec">
+                                                                    <input type="text"
+                                                                           class="js-input-from form-control"
+                                                                           value="{{data.salary_min}}"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group pixl_form_group">
+                                                                <label class="control-label">Max Salary</label>
+                                                                <div class="box_sec">
+                                                                    <input type="text" class="js-input-to form-control"
+                                                                           value="{{data.salary_max}}"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
