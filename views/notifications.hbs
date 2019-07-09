@@ -31,6 +31,7 @@
                             </div>
                             <div class="notify_list_wrap">
                                 {{>client/notification_card_row data=data.result}}
+                                <input type="hidden" class="js_data_id" value="{{user.id}}">
                             </div>
                             <div class="bottom_cta_wrap">
                                 <a class="cta_load_more_link js_load_more_btn {{#ifCond data.pages '>' '1'}}
