@@ -14,7 +14,7 @@
         background-color: #ffffff;
 
         .job_sec {
-            padding: 22px 0 0 46px;
+            padding: 22px 46px 0;
             position: relative;
 
             .job_card_title {
@@ -27,11 +27,9 @@
 
             .company_logo {
                 display: inline-block;
-                position: absolute;
-                top: 45px;
-                right: 44px;
                 font-size: 21px;
                 color: #637282;
+                padding: 18px 0 0;
             }
 
             .job_tags {
@@ -73,18 +71,22 @@
 
                     }
 
-                    .btn_wrap {
-                        .post_tag {
-                            font-size: 11px;
-                            border-radius: 3px;
-                            font-weight: normal;
-                            background-color: #5b8fe9;
-                            color: #fff;
-                            padding: 6px 5px 6px 7px;
-                            text-transform: uppercase;
-                            margin: 0 0 0 42px;
-                            letter-spacing: 0.7px;
-                        }
+                }
+
+                .category_wrap {
+                    text-align: right;
+
+                    .category_link {
+                        font-size: 11px;
+                        border-radius: 3px;
+                        font-weight: normal;
+                        background-color: #5b8fe9;
+                        display: inline-block;
+                        text-align: center;
+                        color: #fff;
+                        padding: 6px 5px 6px 7px;
+                        text-transform: uppercase;
+                        letter-spacing: 0.7px;
                     }
                 }
 
@@ -323,10 +325,9 @@
 
         }
 
-        .btn-apply.applied{
+        .btn-apply.applied {
             background-image: linear-gradient(to left, #25de8c, #25de8c);
         }
-
 
 
         .link_txt {
@@ -445,7 +446,8 @@
             .profile_img_wrap {
                 padding-top: 18px;
             }
-            .img_sec{
+
+            .img_sec {
                 width: 45px;
             }
 
@@ -464,8 +466,8 @@
             }
 
             .place {
-                font-size: 18px;
-                font-weight: 600;
+                font-size: 14px;
+                font-weight: 300;
                 color: #89929e;
                 padding: 0 0 0 16px;
             }

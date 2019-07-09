@@ -107,6 +107,7 @@ function PostJobHandler() {
                     salary_max   :_form.find('.js-input-to').val(),
                     exp_year     :_form.find('.js_exp_year').val(),
                     exp_month    :_form.find('.js_exp_month').val(),
+                    status       :'inProgress',
                     location_type:_location_type
                 };
 
@@ -280,7 +281,8 @@ function PostJobHandler() {
         var _job_id = $('.js_job_id').val();
 
         var _obj = {
-            company_id:_company_id
+            company_id:_company_id,
+            status    :'pending'
         };
         ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
             if(!_res.error && _res.data) {

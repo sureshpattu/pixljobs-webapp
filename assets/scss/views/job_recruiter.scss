@@ -300,8 +300,12 @@
 
         }
 
+        .cat_wrap {
+            text-align: right;
+        }
+
         .c_cta_btn {
-            width: 95px;
+            width: 70px;
             height: 34px;
             border-radius: 3px;
             background-color: #fbf2f1;
@@ -309,12 +313,13 @@
             font-weight: bold;
             text-align: center;
             color: #fc7968;
-            display: block;
+            display: inline-block;
             cursor: pointer;
             text-decoration: none;
-            margin: 17px 15px 10px auto;
+            margin: 17px auto 10px auto;
             padding: 10px 0 0;
         }
+
 
         .reopen_btn_link {
             background-color: rgba(211, 218, 224, 0.37);;
@@ -324,7 +329,7 @@
         .more_btn_link {
             .icon_arrow_down {
                 position: relative;
-                right: -12px;
+                right: -6px;
                 top: 5px;
                 font-size: 15px;
                 vertical-align: top;
