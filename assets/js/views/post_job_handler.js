@@ -78,6 +78,17 @@ function PostJobHandler() {
             tags           :true,
             tokenSeparators:[',']
         });
+
+        var _date = new Pikaday({
+            field   :document.getElementById('jsEndDate'),
+            format  :'MM/DD/YYYY',
+            toString:function(date, format) {
+                var day = date.getDate();
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
+                return month + '-' + day + '-' + year;
+            }
+        });
     }
 
     function bindPostJobEvent() {
