@@ -18,17 +18,25 @@
                     <div class="common_form_sec">
                         <div class="job_card">
                             <div class="job_sec">
-                                <div class="job_card_title">{{data.name}}</div>
-                                <div class="company_logo">
-                                    {{data.company.name}}
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="job_card_title">{{data.name}}</div>
+                                    </div>
+                                    <div class="col-md-4 text-right">
+                                        <div class="company_logo">
+                                            {{data.company.name}}
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div class="job_tags">
                                     <div class="row">
                                         <div class="col-md-9 col-xs-12">
                                             <div class="tags_wrap spl_wrap">
                                                 <div class="tags">
                                                     <img src="/img/icons/dollar.svg" class="dollar_icons">
-                                                    {{#formatCurrency data.salary_min}}{{/formatCurrency}} - {{#formatCurrency data.salary_max}}{{/formatCurrency}}
+                                                    {{#formatCurrency data.salary_min}}{{/formatCurrency}}
+                                                    - {{#formatCurrency data.salary_max}}{{/formatCurrency}}
                                                 </div>
                                                 <div class="tags">
                                                     <img src="/img/icons/calendar.svg" class="cal_icons">
@@ -49,12 +57,10 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3 col-xs-12">
-                                            <div class="tags_wrap">
-                                                <div class=" tags btn_wrap">
-                                                    <a href="#" class="post_tag">
-                                                        Frontend
-                                                    </a>
-                                                </div>
+                                            <div class="category_wrap">
+                                                <a class="category_link">
+                                                    {{data.job_categories.0.category.name}}
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -246,10 +252,11 @@
                             </div>
                         </div>
                         <div class="tags_sec">
-                            <a href="#" class="tech_tg">Web development</a>
-                            <a href="#" class="tech_tg">Angular</a>
+                            {{#each data.job_technologies}}
+                                <a href="#" class="tech_tg">{{technology.name}}</a>
+                            {{/each}}
                         </div>
-                        <a href="#">
+                        <a href="#" class="hide">
                             <div class="views_sec">
                                 Pageviews: 49
                             </div>
@@ -275,10 +282,11 @@
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-xs-9">
-                                        <div class="post_title">{{name}}</div>
-                                        <div class="company">{{company.name}}</div>
-                                        <div class="place"><img src="/img/icons/location.svg"
-                                                                class="icons"> {{company.city}}, {{company.state}}
+                                        <div class="post_title">{{#truncateText name 15}}{{/truncateText}}</div>
+                                        <div class="company">{{#truncateText company.name 16}}{{/truncateText}}</div>
+                                        <div class="place">
+                                            <img src="/img/icons/location.svg" class="icons">
+                                            {{company.city}}, {{company.state}}
                                         </div>
                                     </div>
                                 </div>

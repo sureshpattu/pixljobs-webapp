@@ -364,4 +364,10 @@ router.put('/job-applications/:id', function(req, res, next) {
     });
 });
 
+router.post('/job-applications/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/job-applications/search', function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;

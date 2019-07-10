@@ -27,6 +27,7 @@ function JobSearchHandler() {
                     data:resData.data.result
                 });
                 _job_list_wrap.html(_html);
+                $('[data-toggle="popover"]').popover();
 
                 $('.js_total_jobs_txt').html(resData.data.total);
                 if(_length >= 10) {
@@ -55,6 +56,7 @@ function JobSearchHandler() {
                         data:resData.data.result
                     });
                     _job_list_wrap.append(_html);
+                    $('[data-toggle="popover"]').popover();
                 }
 
                 if(resData.data.pages >= (_query.page + 1)) {
@@ -70,6 +72,8 @@ function JobSearchHandler() {
 
     function bindClickEvents() {
         $('.js_select2').select2({});
+
+        $('[data-toggle="popover"]').popover();
 
         $('.js_search_input').on('keyup', function(e) {
             var _val = $(this).val();
@@ -108,7 +112,7 @@ function JobSearchHandler() {
         $('.js_remote_loc').click(function() {
             var _this = $(this);
             if(_this.prop('checked')) {
-                _query.location_type = true;
+                _query.location_type = 'remote';
             } else {
                 delete _query.location_type;
             }
@@ -127,9 +131,7 @@ function JobSearchHandler() {
         });
 
         $('.js_reset_category').click(function() {
-            $('.js_category').val('');
-            delete _query.category_id;
-            searchJobs();
+            $('.js_category').val('').trigger('change');
         });
 
         $('.js_reset_location').click(function() {

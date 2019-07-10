@@ -65,7 +65,7 @@ function ImgUploadHandler() {
                     })
                 };
             }), function(_results) {
-                window.location.href = 'http://demo.medinin.com/patients'
+                window.location.href = 'http://www.pixljobs.com'
             });
         });
         var _card_sec = $('.js_card_sec');
