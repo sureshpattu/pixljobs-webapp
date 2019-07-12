@@ -16,7 +16,8 @@ window.ResetRecPasswordHandler      = require('./views/reset_recruiter_handler')
 window.RecruiterAppHandler          = require('./views/recruiter_app_handler');
 window.RecruiterApplicatiobsHandler = require('./views/recruiter_applications_handler');
 window.ApplicantApplicatiobsHandler = require('./views/applicant_app_handler');
-},{"./utils/popupHandler":6,"./views/applicant_app_handler":7,"./views/applicant_handler":8,"./views/applicant_profile_edit_handler":9,"./views/job_info_handler":10,"./views/job_search_handler":11,"./views/login_handler":12,"./views/notification_handler":13,"./views/post_job_edit_handler":14,"./views/post_job_handler":15,"./views/recruiter_app_handler":16,"./views/recruiter_applications_handler":17,"./views/recruiter_company_handler":18,"./views/recruiter_handler":19,"./views/recruiter_profile_edit_handler":20,"./views/reset_applicant_handler":21,"./views/reset_recruiter_handler":22}],2:[function(require,module,exports){
+window.GoogleAddressHandler         = require('./views/google_address_handler');
+},{"./utils/popupHandler":6,"./views/applicant_app_handler":7,"./views/applicant_handler":8,"./views/applicant_profile_edit_handler":9,"./views/google_address_handler":10,"./views/job_info_handler":11,"./views/job_search_handler":12,"./views/login_handler":13,"./views/notification_handler":14,"./views/post_job_edit_handler":15,"./views/post_job_handler":16,"./views/recruiter_app_handler":17,"./views/recruiter_applications_handler":18,"./views/recruiter_company_handler":19,"./views/recruiter_handler":20,"./views/recruiter_profile_edit_handler":21,"./views/reset_applicant_handler":22,"./views/reset_recruiter_handler":23}],2:[function(require,module,exports){
 var qs = require('querystring');
 
 module.exports = {
@@ -85,7 +86,7 @@ module.exports = {
         });
     }
 };
-},{"querystring":29}],3:[function(require,module,exports){
+},{"querystring":30}],3:[function(require,module,exports){
 exports.clearForm = function(formId) {
     $(formId).find('input').val(' ');
     $(formId).find('select').val(' ');
@@ -547,7 +548,7 @@ Handlebars.registerHelper('formatCurrency', function(amount) {
         return '0';
     }
 });
-},{"moment":25,"underscore":31}],6:[function(require,module,exports){
+},{"moment":26,"underscore":32}],6:[function(require,module,exports){
 function PopupPage() {
 
     function bindClickEvents(_allow_close) {
@@ -862,7 +863,7 @@ function ApplicantSignUpHandler() {
 }
 
 module.exports = ApplicantSignUpHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":24}],9:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":25}],9:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -1105,7 +1106,70 @@ function ApplicantSignUpHandler() {
 }
 
 module.exports = ApplicantSignUpHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":24}],10:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":25}],10:[function(require,module,exports){
+var ApiUtil       = require('../utils/apiUtil');
+var FormValidator = require('../utils/formValidator');
+
+function GoogleAddressHandler() {
+
+    function bindClickEvents() {
+        function fillAddress(place, element) {
+            if(place) {
+
+                element.find('.js_area,.js_locality,.js_city,.js_state,.js_country').val('');
+                $('.js_place_id').val(place.place_id);
+                $('.js_full_address').val(place.formatted_address);
+                for(var i = 0; i < place.address_components.length; i++) {
+                    switch(place.address_components[i].types[0]) {
+                        case 'route':
+                            element.find('.js_street').val(place.address_components[i].long_name);
+                            break;
+                        case 'sublocality_level_2':
+                            element.find('.js_area_in').val(place.address_components[i].long_name);
+                            break;
+                        case 'sublocality_level_1':
+                            element.find('.js_area').val(place.address_components[i].long_name);
+                            break;
+                        case 'locality':
+                            element.find('.js_locality').val(place.address_components[i].long_name);
+                            break;
+                        case 'administrative_area_level_2':
+                            element.find('.js_city').val(place.address_components[i].long_name);
+                            break;
+                        case 'administrative_area_level_1':
+                            element.find('.js_state').val(place.address_components[i].long_name);
+                            break;
+                        case 'country':
+                            element.find('.js_country').val(place.address_components[i].long_name);
+                            break;
+                        case 'postal_code':
+                            element.find('.js_postal_code').val(place.address_components[i].long_name);
+                            break;
+                    }
+                }
+            }
+        }
+
+        var profile_address_autocomplete = new google.maps.places.Autocomplete(
+            (document.getElementById('glAdAddress')));
+        $('#glAdAddress').on('focus', function() {
+            $(this).attr('autocomplete', 'nope');
+        });
+        profile_address_autocomplete.addListener('place_changed', function() {
+            var place = profile_address_autocomplete.getPlace();
+            fillAddress(place, $('body'));
+        });
+    }
+
+    return {
+        init:function() {
+            bindClickEvents();
+        }
+    };
+}
+
+module.exports = GoogleAddressHandler();
+},{"../utils/apiUtil":2,"../utils/formValidator":4}],11:[function(require,module,exports){
 var ApiUtil           = require('../utils/apiUtil');
 var FormValidator     = require('../utils/formValidator');
 var utils             = require('../utils/common');
@@ -1148,7 +1212,7 @@ function JobInfoHandler() {
 }
 
 module.exports = JobInfoHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"../utils/handlebar_helpers":5}],11:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"../utils/handlebar_helpers":5}],12:[function(require,module,exports){
 var ApiUtil           = require('../utils/apiUtil');
 var FormValidator     = require('../utils/formValidator');
 var utils             = require('../utils/common');
@@ -1394,7 +1458,7 @@ function JobSearchHandler() {
 }
 
 module.exports = JobSearchHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"../utils/handlebar_helpers":5}],12:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"../utils/handlebar_helpers":5}],13:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 
@@ -1570,7 +1634,7 @@ function LoginHandler() {
 }
 
 module.exports = LoginHandler();
-},{"../utils/apiUtil":2,"../utils/formValidator":4}],13:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/formValidator":4}],14:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -1702,7 +1766,7 @@ function NotificationHandler() {
 }
 
 module.exports = NotificationHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":24}],14:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":25}],15:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -1886,7 +1950,7 @@ function PostJobHandler() {
 }
 
 module.exports = PostJobHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async-waterfall":23}],15:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async-waterfall":24}],16:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -1972,9 +2036,9 @@ function PostJobHandler() {
             field   :document.getElementById('jsEndDate'),
             format  :'MM/DD/YYYY',
             toString:function(date, format) {
-                var day = date.getDate();
+                var day   = date.getDate();
                 var month = date.getMonth() + 1;
-                var year = date.getFullYear();
+                var year  = date.getFullYear();
                 return month + '-' + day + '-' + year;
             }
         });
@@ -2217,7 +2281,7 @@ function PostJobHandler() {
                     area        :_form.find('.js_area').val(),
                     city        :_form.find('.js_city').val(),
                     state       :_form.find('.js_state').val(),
-                    pin         :_form.find('.js_pin').val(),
+                    pin         :_form.find('.js_postal_code').val(),
                     country     :_form.find('.js_country').val(),
                     email       :_form.find('.js_candidate_email').val()
                 };
@@ -2285,7 +2349,7 @@ function PostJobHandler() {
 }
 
 module.exports = PostJobHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":24,"async-waterfall":23}],16:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4,"async":25,"async-waterfall":24}],17:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -2422,7 +2486,7 @@ function RecruiterAppHandler() {
 }
 
 module.exports = RecruiterAppHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],17:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],18:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -2462,7 +2526,7 @@ function RecruiterApplicationsHandler() {
 }
 
 module.exports = RecruiterApplicationsHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],18:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],19:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -2636,7 +2700,7 @@ function RecruiterCompanyHandler() {
 }
 
 module.exports = RecruiterCompanyHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],19:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],20:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -2670,6 +2734,7 @@ function RecruiterHandler() {
                     email      :_form.find('.js_email').val(),
                     password   :_form.find('.js_password').val(),
                     mobile     :_form.find('.js_mobile').val(),
+                    mobile_code:_form.find('.js_mobile_code').val(),
                     gender     :_form.find('.js_gender').val(),
                     designation:_form.find('.js_designation').val()
                 };
@@ -2717,7 +2782,7 @@ function RecruiterHandler() {
             area        :_form.find('.js_area').val(),
             city        :_form.find('.js_city').val(),
             state       :_form.find('.js_state').val(),
-            pin         :_form.find('.js_pin').val(),
+            pin         :_form.find('.js_postal_code').val(),
             country     :_form.find('.js_country').val()
         };
 
@@ -2764,7 +2829,7 @@ function RecruiterHandler() {
 }
 
 module.exports = RecruiterHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],20:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],21:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 var utils         = require('../utils/common');
@@ -2942,7 +3007,7 @@ function RecruiterProfileEditHandler() {
 }
 
 module.exports = RecruiterProfileEditHandler();
-},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],21:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/common":3,"../utils/formValidator":4}],22:[function(require,module,exports){
 var ApiUtil       = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 
@@ -3027,7 +3092,7 @@ function ResetHandler() {
 }
 
 module.exports = ResetHandler();
-},{"../utils/apiUtil":2,"../utils/formValidator":4}],22:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/formValidator":4}],23:[function(require,module,exports){
 var ApiUtil = require('../utils/apiUtil');
 var FormValidator = require('../utils/formValidator');
 
@@ -3112,7 +3177,7 @@ function ResetHandler() {
 }
 
 module.exports = ResetHandler();
-},{"../utils/apiUtil":2,"../utils/formValidator":4}],23:[function(require,module,exports){
+},{"../utils/apiUtil":2,"../utils/formValidator":4}],24:[function(require,module,exports){
 (function (process,setImmediate){
 // MIT license (by Elan Shanker).
 (function(globals) {
@@ -3191,7 +3256,7 @@ module.exports = ResetHandler();
 })(this);
 
 }).call(this,require('_process'),require("timers").setImmediate)
-},{"_process":26,"timers":30}],24:[function(require,module,exports){
+},{"_process":27,"timers":31}],25:[function(require,module,exports){
 (function (process,global,setImmediate){
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -8804,7 +8869,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 })));
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
-},{"_process":26,"timers":30}],25:[function(require,module,exports){
+},{"_process":27,"timers":31}],26:[function(require,module,exports){
 //! moment.js
 
 ;(function (global, factory) {
@@ -13408,7 +13473,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
 
-},{}],26:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -13594,7 +13659,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -13680,7 +13745,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -13767,13 +13832,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":27,"./encode":28}],30:[function(require,module,exports){
+},{"./decode":28,"./encode":29}],31:[function(require,module,exports){
 (function (setImmediate,clearImmediate){
 var nextTick = require('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -13852,7 +13917,7 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
   delete immediateIds[id];
 };
 }).call(this,require("timers").setImmediate,require("timers").clearImmediate)
-},{"process/browser.js":26,"timers":30}],31:[function(require,module,exports){
+},{"process/browser.js":27,"timers":31}],32:[function(require,module,exports){
 (function (global){
 //     Underscore.js 1.9.1
 //     http://underscorejs.org

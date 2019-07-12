@@ -79,7 +79,7 @@ function RecruiterHandler() {
             area        :_form.find('.js_area').val(),
             city        :_form.find('.js_city').val(),
             state       :_form.find('.js_state').val(),
-            pin         :_form.find('.js_pin').val(),
+            pin         :_form.find('.js_postal_code').val(),
             country     :_form.find('.js_country').val()
         };
 
