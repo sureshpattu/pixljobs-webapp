@@ -60,7 +60,7 @@ router.get('/applicant/forgot/password/:token', function(req, res) {
         if(_response.error) {
             res.render('login');
         } else {
-            res.render('reset_password', {user_id:_response.data.id});
+            res.render('applicant_reset_password', {user_id:_response.data.id});
         }
     });
 });
@@ -321,7 +321,7 @@ router.get('/recruiter/forgot/password/:token', function(req, res) {
         if(_response.error) {
             res.render('login');
         } else {
-            res.render('reset_password', {user_id:_response.data.id});
+            res.render('recruiter_reset_password', {user_id:_response.data.id});
         }
 
     });

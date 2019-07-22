@@ -60,7 +60,7 @@ router.post('/applicant', function(req, res, next) {
 });
 
 router.post('/applicant/reset-password/:id', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'POST', '/applicant/reset-password/' + req.cookies.pixljob_user_id,
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/reset-password/' + req.params.id,
         function(_response) {
             res.json(_response);
         });
@@ -137,13 +137,13 @@ router.post('/recruiter-auth/forgot/password/token', function(req, res, next) {
 });
 
 router.post('/recruiter/reset-password/:id', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'POST', '/recruiter/reset-password/' + req.cookies.pixljob_user_id,
+    helper_utils.makeApiRequest(req, 'POST', '/recruiter/reset-password/' + req.params.id,
         function(_response) {
             res.json(_response);
         });
 });
 
-router.post('/recruiter/change-email/:id', function(req, res, next) {
+router.post('/recruiter/change-email', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/recruiter/change-email/' + req.cookies.pixljob_user_id,
         function(_response) {
             res.json(_response);
