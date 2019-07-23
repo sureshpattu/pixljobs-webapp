@@ -34,7 +34,7 @@
                                         <div class="col-md-9 col-xs-12">
                                             <div class="tags_wrap spl_wrap">
                                                 <div class="tags">
-                                                    <img src="/img/icons/dollar.svg" class="dollar_icons">
+                                                    <i class="fa fa-inr dollar_icons" aria-hidden="true"></i>
                                                     {{#formatCurrency data.salary_min}}{{/formatCurrency}}
                                                     - {{#formatCurrency data.salary_max}}{{/formatCurrency}}
                                                 </div>
@@ -223,6 +223,7 @@
                                         <div class="link_txt">
                                             or <br/>
                                             copy and apply by email
+                                            support@pixljobs.com
                                         </div>
                                         <div class="link_sec">
                                             <a class="link" href="">{{data.company.email}}</a>
@@ -278,7 +279,11 @@
                                 <div class="row">
                                     <div class="col-md-3 col-xs-3">
                                         <div class="profile_img_wrap">
-                                            <img src="/img/user_icon.svg" class="img_sec">
+                                            {{#if company.logo}}
+                                                <img src="/api/companies/photo/{{company.logo}}" class="c_logo">
+                                            {{else}}
+                                                <img src="/img/company-temp-logo.png" class="c_logo">
+                                            {{/if}}
                                         </div>
                                     </div>
                                     <div class="col-md-9 col-xs-9">
