@@ -19,19 +19,31 @@
                         <div class="job_card">
                             <div class="job_sec">
                                 <div class="row">
-                                    <div class="col-md-8">
+                                    <div class="col-md-12">
                                         <div class="job_card_title">{{data.name}}</div>
                                     </div>
-                                    <div class="col-md-4 text-right">
-                                        <div class="company_logo">
-                                            {{data.company.name}}
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="company_logo">
+                                                    {{data.company.name}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 text-right">
+                                                <div class="category_wrap">
+                                                    <a class="category_link">
+                                                        {{data.job_categories.0.category.name}}
+                                                    </a>
+                                                </div>
+                                            </div>
                                         </div>
+
+
                                     </div>
                                 </div>
-
                                 <div class="job_tags">
                                     <div class="row">
-                                        <div class="col-md-9 col-xs-12">
+                                        <div class="col-md-12 col-xs-12">
                                             <div class="tags_wrap spl_wrap">
                                                 <div class="tags">
                                                     <i class="fa fa-inr dollar_icons" aria-hidden="true"></i>
@@ -42,10 +54,12 @@
                                                     <img src="/img/icons/calendar.svg" class="cal_icons">
                                                     {{#countDateTime data.created_at}}{{/countDateTime}}
                                                 </div>
-                                                <div class="tags ">
-                                                    <img src="/img/icons/location.svg" class="loc_icons">
-                                                    {{data.company.city}}
-                                                </div>
+                                                {{#if data.company.city}}
+                                                    <div class="tags">
+                                                        <img src="/img/icons/location.svg" class="loc_icons">
+                                                        {{data.company.city}}
+                                                    </div>
+                                                {{/if}}
                                                 <div class="tags">
                                                     <img src="/img/icons/place.svg" class="place_icons">
                                                     {{#ifCond data.location_type '===' 'office'}}
@@ -54,13 +68,6 @@
                                                         Remote
                                                     {{/ifCond}}
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3 col-xs-12">
-                                            <div class="category_wrap">
-                                                <a class="category_link">
-                                                    {{data.job_categories.0.category.name}}
-                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -259,7 +266,7 @@
                         </div>
                         <a href="#" class="hide">
                             <div class="views_sec">
-                                Pageviews: 49
+                                Page Views: 49
                             </div>
                         </a>
                     </div>
