@@ -3,7 +3,7 @@
 
 
     .desc_title {
-        font-size: 27px;
+        font-size: 24px;
         font-weight: 600;
         color: #2e3d4e;
     }
@@ -446,6 +446,10 @@
 
             .profile_img_wrap {
                 padding-top: 18px;
+
+                .c_logo {
+                    width: 43px;
+                }
             }
 
             .img_sec {
@@ -453,14 +457,14 @@
             }
 
             .post_title {
-                font-size: 20px;
+                font-size: 16px;
                 font-weight: 600;
                 color: #2e3d4e;
                 padding: 0 0 6px 16px;
             }
 
             .company {
-                font-size: 18px;
+                font-size: 14px;
                 font-weight: 600;
                 color: #c7d0d8;
                 padding: 0 0 6px 16px;

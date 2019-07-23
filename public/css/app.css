@@ -4005,7 +4005,7 @@ body.popup-visible {
   background-color: #f8f8f9;
 }
 .job_info_pg .desc_title {
-  font-size: 27px;
+  font-size: 24px;
   font-weight: 600;
   color: #2e3d4e;
 }
@@ -4358,17 +4358,20 @@ body.popup-visible {
 .job_info_pg .similar_sec .similar_post_card .profile_img_wrap {
   padding-top: 18px;
 }
+.job_info_pg .similar_sec .similar_post_card .profile_img_wrap .c_logo {
+  width: 43px;
+}
 .job_info_pg .similar_sec .similar_post_card .img_sec {
   width: 45px;
 }
 .job_info_pg .similar_sec .similar_post_card .post_title {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
   color: #2e3d4e;
   padding: 0 0 6px 16px;
 }
 .job_info_pg .similar_sec .similar_post_card .company {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
   color: #c7d0d8;
   padding: 0 0 6px 16px;
