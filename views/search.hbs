@@ -70,7 +70,9 @@
                             </div>
                         </div>
                         <div class="box_sec">
-                            <input type="text" class="form-control js_input_location" placeholder="City, Country, Street">
+                            <input type="text" class="form-control js_input_location"
+                                   id="glAdAddress"
+                                   placeholder="City, Country, Street">
                             <div class="icon_wrap">
                                 <img src="/img/icons/location-dark.svg" class="icon_marker_sec">
                             </div>
@@ -193,12 +195,23 @@
             </div>
         </div>
     </div>
+    <input type="hidden" class="js_street">
+    <input type="hidden" class="js_area_in">
+    <input type="hidden" class="js_area">
+    <input type="hidden" class="js_locality">
+    <input type="hidden" class="js_city">
+    <input type="hidden" class="js_state">
+    <input type="hidden" class="js_country">
+    <input type="hidden" class="js_postal_code">
+    <input type="hidden" class="js_place_id">
+    <input type="hidden" class="js_full_address">
 </section>
-{{>footer bottom_form=true  select2=true ranger=true}}
+{{>footer bottom_form=true  select2=true ranger=true googlePlaces=true}}
 </body>
 <script type="application/javascript">
     $(function() {
         JobSearchHandler.init();
+        GoogleAddressHandler.init();
     });
 </script>
 </html>

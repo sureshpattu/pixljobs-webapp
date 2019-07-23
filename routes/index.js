@@ -434,13 +434,44 @@ router.get('/post-job-edit/:id', verify.isRecruiterLoggedIn, function(req, res) 
             });
         }
     ], function(err, results) {
+        let _addressStr = '';
+        let _data       = [];
+        if(results[2] && !results[2].error) {
+            _data = results[2].data;
+            if(_data.street) {
+                _addressStr += _data.street + ', '
+            }
+            if(_data.area_in) {
+                _addressStr += _data.area_in + ', '
+            }
+            if(_data.area) {
+                _addressStr += _data.area + ', '
+            }
+            if(_data.locality) {
+                _addressStr += _data.locality + ', '
+            }
+            if(_data.city) {
+                _addressStr += _data.city + ', '
+            }
+            if(_data.state) {
+                _addressStr += _data.state + ', '
+            }
+            if(_data.country) {
+                _addressStr += _data.country + ', '
+            }
+            if(_data.country) {
+                _addressStr += _data.pin
+            }
+            _addressStr = _addressStr.replace(/,\s*$/, ''); //remove last comma
+        }
         res.render('post_job_work_edit', {
-            user        :!results[0].error ? results[0].data : [],
-            categories  :!results[1].error ? results[1].data : [],
-            data        :!results[2].error ? results[2].data : [],
-            requirements:!results[3].error ? results[3].data : [],
-            recruiter_id:req.cookies.pixljob_user_id,
-            job_id      :req.params.id
+            user          :!results[0].error ? results[0].data : [],
+            categories    :!results[1].error ? results[1].data : [],
+            data          :_data,
+            requirements  :!results[3].error ? results[3].data : [],
+            recruiter_id  :req.cookies.pixljob_user_id,
+            job_id        :req.params.id,
+            job_addressStr:_addressStr
         });
     });
 });
@@ -587,13 +618,19 @@ router.get('/recruiter/companies', verify.isRecruiterLoggedIn, function(req, res
             helper_utils.makeApiRequest(req, 'GET', '/benefits', function(_res) {
                 callback(null, _res);
             });
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/country-code', function(_res) {
+                callback(null, _res);
+            });
         }
     ], function(err, results) {
         res.render('companies', {
-            user      :!results[0].error ? results[0].data : [],
-            data      :!results[1].error ? results[1].data : [],
-            industries:!results[2].error ? results[2].data : [],
-            benefits  :!results[3].error ? results[3].data : []
+            user        :!results[0].error ? results[0].data : [],
+            data        :!results[1].error ? results[1].data : [],
+            industries  :!results[2].error ? results[2].data : [],
+            benefits    :!results[3].error ? results[3].data : [],
+            country_code:!results[4].error ? results[4].data : []
         });
     });
 });

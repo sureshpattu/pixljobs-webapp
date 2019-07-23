@@ -64,6 +64,13 @@
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
+                                        <label class="control-label"> Address</label>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required" id="glAdAddress"
+                                                   autocomplete="nope" placeholder="Enter address">
+                                        </div>
+                                    </div>
+                                    <div class="form-group pixl_form_group">
                                         <label class="control-label">Experience</label>
                                         <div class="row">
                                             <div class="col-md-6 col-xs-6">
@@ -104,7 +111,7 @@
                                                 <div class="box_sec">
                                                     <input type="text" class="form-control  js_end_date"
                                                            id="jsEndDate"
-                                                    autocomplete="off">
+                                                           autocomplete="off">
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +154,7 @@
                                             <div class="form-group pixl_form_group">
                                                 <label class="control-label">Category</label>
                                                 <div class="box_sec">
-                                                    <select class="form-control js_select2 js_category">
+                                                    <select class="form-control required js_select2 js_category">
                                                         <option value="0">Select Job Category</option>
                                                         {{#each categories}}
                                                             <option value="{{this.id}}">{{this.name}}</option>
@@ -223,6 +230,16 @@
                                         </button>
                                         <input type="hidden" value="{{recruiter_id}}" class="js_recruiter_id">
                                     </div>
+                                    <input type="hidden" class="js_street">
+                                    <input type="hidden" class="js_area_in">
+                                    <input type="hidden" class="js_area">
+                                    <input type="hidden" class="js_locality">
+                                    <input type="hidden" class="js_city">
+                                    <input type="hidden" class="js_state">
+                                    <input type="hidden" class="js_country">
+                                    <input type="hidden" class="js_postal_code">
+                                    <input type="hidden" class="js_place_id">
+                                    <input type="hidden" class="js_full_address">
                                 </form>
                             </div>
                         </div>
@@ -232,11 +249,12 @@
         </div>
     </div>
 </section>
-{{>footer swiper=true select2=true ranger=true}}
+{{>footer swiper=true select2=true ranger=true googlePlaces=true}}
 </body>
 <script type="text/javascript">
     $(function() {
         PostJobHandler.init();
+        GoogleAddressHandler.init();
     });
 </script>
 </html>

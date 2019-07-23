@@ -1332,11 +1332,34 @@ function JobSearchHandler() {
             loadMoreJobs();
         });
 
-        $('.js_input_location').on('keyup', function(e) {
-            if(e.keyCode === 13) {
-                _query.city = $(this).val();
+        $('.js_input_location').on('keyup change blur', function(e) {
+            var _val = $(this).val();
+            if(_val) {
+                _query.street   = $('.js_street').val();
+                _query.area_in  = $('.js_area_in').val();
+                _query.area     = $('.js_area').val();
+                _query.locality = $('.js_locality').val();
+                _query.city     = $('.js_city').val();
+                _query.state    = $('.js_state').val();
+                _query.country  = $('.country').val();
+                _query.pin      = $('.js_postal_code').val();
+                if(_query.street || _query.area_in || _query.area || _query.locality || _query.city || _query.state ||
+                    _query.country || _query.pin) {
+                    searchJobs();
+                }
+            } else {
+                delete _query.street;
+                delete _query.area_in;
+                delete _query.area;
+                delete _query.locality;
+                delete _query.city;
+                delete _query.state;
+                delete _query.country;
+                delete _query.pin;
                 searchJobs();
+                clearGoogleAddress();
             }
+
         });
 
         $('.js_reset_category').click(function() {
@@ -1357,6 +1380,19 @@ function JobSearchHandler() {
             searchJobs();
         });
 
+    }
+
+    function clearGoogleAddress() {
+        $('.js_street').val('');
+        $('.js_area_in').val('');
+        $('.js_area').val('');
+        $('.js_locality').val('');
+        $('.js_city').val('');
+        $('.js_state').val('');
+        $('.country').val('');
+        $('.js_postal_code').val('');
+        $('.js_full_address').val('');
+        $('.js_place_id').val('');
     }
 
     function salaryMinMaxTimeOut(from, to) {
@@ -1830,9 +1866,9 @@ function PostJobHandler() {
             field   :document.getElementById('jsEndDate'),
             format  :'MM/DD/YYYY',
             toString:function(date, format) {
-                var day = date.getDate();
+                var day   = date.getDate();
                 var month = date.getMonth() + 1;
-                var year = date.getFullYear();
+                var year  = date.getFullYear();
                 return month + '-' + day + '-' + year;
             }
         });
@@ -1916,7 +1952,15 @@ function PostJobHandler() {
                     end_date       :_form.find('.js_end_date').val(),
                     education_level:_form.find('.js_edu_level').val(),
                     urgent_status  :_form.find('.js_urgent_status').val(),
-                    location_type  :_location_type
+                    location_type  :_location_type,
+                    street         :_form.find('.js_street').val(),
+                    area_in        :_form.find('.js_area_in').val(),
+                    area           :_form.find('.js_area').val(),
+                    locality       :_form.find('.js_locality').val(),
+                    city           :_form.find('.js_city').val(),
+                    state          :_form.find('.js_state').val(),
+                    pin            :_form.find('.js_postal_code').val(),
+                    country        :_form.find('.js_country').val()
                 };
 
                 ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_qaJobRes) {
@@ -2100,7 +2144,15 @@ function PostJobHandler() {
                     education_level:_form.find('.js_edu_level').val(),
                     urgent_status  :_form.find('.js_urgent_status').val(),
                     status         :'inProgress',
-                    location_type  :_location_type
+                    location_type  :_location_type,
+                    street         :_form.find('.js_street').val(),
+                    area_in        :_form.find('.js_area_in').val(),
+                    area           :_form.find('.js_area').val(),
+                    locality       :_form.find('.js_locality').val(),
+                    city           :_form.find('.js_city').val(),
+                    state          :_form.find('.js_state').val(),
+                    pin            :_form.find('.js_postal_code').val(),
+                    country        :_form.find('.js_country').val()
                 };
 
                 ApiUtil.makeAjaxRequest('/api/qa-jobs', '', 'POST', '', _obj, function(_qaJobRes) {
@@ -2567,19 +2619,23 @@ function RecruiterCompanyHandler() {
 
             if(FormValidator.validateForm(_form_name)) {
                 var _company_obj = {
-                    recruiter_id:$('.js_recruiter_id').val(),
-                    name        :_form.find('.js_company_name').val() || '0',
-                    industry_id :_form.find('.js_industry').val(),
-                    size        :_form.find('.js_company_size').val(),
-                    url         :_form.find('.js_company_url').val(),
-                    about       :_form.find('.js_about_company').val(),
-                    street      :_form.find('.js_street').val(),
-                    area        :_form.find('.js_area').val(),
-                    city        :_form.find('.js_city').val(),
-                    state       :_form.find('.js_state').val(),
-                    pin         :_form.find('.js_pin').val(),
-                    email       :_form.find('.js_email').val(),
-                    country     :_form.find('.js_country').val()
+                    recruiter_id :$('.js_recruiter_id').val(),
+                    name         :_form.find('.js_company_name').val() || '0',
+                    industry_id  :_form.find('.js_industry').val(),
+                    size         :_form.find('.js_company_size').val(),
+                    url          :_form.find('.js_company_url').val(),
+                    about        :_form.find('.js_about_company').val(),
+                    street       :_form.find('.js_street').val(),
+                    area         :_form.find('.js_area').val(),
+                    city         :_form.find('.js_city').val(),
+                    state        :_form.find('.js_state').val(),
+                    pin          :_form.find('.js_pin').val(),
+                    email        :_form.find('.js_email').val(),
+                    country      :_form.find('.js_country').val(),
+                    mobile_code  :_form.find('.js_com_mobile_code').val(),
+                    mobile_number:_form.find('.js_com_mobile').val(),
+                    phone_code   :_form.find('.js_com_phone_code').val(),
+                    phone_number :_form.find('.js_com_phone_number').val()
                 };
 
                 ApiUtil.makeAjaxRequest('/api/companies/' + _company_id, '', 'PUT', '', _company_obj, function(_res) {
@@ -2624,6 +2680,8 @@ function RecruiterCompanyHandler() {
             } else {
                 postPhoto(_form, _company_id);
             }
+        } else {
+            alert('Company details updated successfully!');
         }
     }
 
@@ -2796,18 +2854,23 @@ function RecruiterHandler() {
 
     function postCompanyDetails(user_id, _form) {
         var _company_obj = {
-            recruiter_id:user_id,
-            name        :_form.find('.js_company_name').val() || '0',
-            industry_id :_form.find('.js_industry').val(),
-            size        :_form.find('.js_company_size').val(),
-            url         :_form.find('.js_company_url').val(),
-            about       :_form.find('.js_about_company').val(),
-            street      :_form.find('.js_street').val(),
-            area        :_form.find('.js_area').val(),
-            city        :_form.find('.js_city').val(),
-            state       :_form.find('.js_state').val(),
-            pin         :_form.find('.js_postal_code').val(),
-            country     :_form.find('.js_country').val()
+            recruiter_id :user_id,
+            name         :_form.find('.js_company_name').val() || '0',
+            industry_id  :_form.find('.js_industry').val(),
+            size         :_form.find('.js_company_size').val(),
+            url          :_form.find('.js_company_url').val(),
+            about        :_form.find('.js_about_company').val(),
+            street       :_form.find('.js_street').val(),
+            area         :_form.find('.js_area').val(),
+            city         :_form.find('.js_city').val(),
+            state        :_form.find('.js_state').val(),
+            pin          :_form.find('.js_postal_code').val(),
+            country      :_form.find('.js_country').val(),
+            email        :_form.find('.js_com_email').val(),
+            mobile_code  :_form.find('.js_com_mobile_code').val(),
+            mobile_number:_form.find('.js_com_mobile').val(),
+            phone_code   :_form.find('.js_com_phone_code').val(),
+            phone_number :_form.find('.js_com_phone_number').val()
         };
 
         ApiUtil.makeAjaxRequest('/api/companies', '', 'POST', '', _company_obj, function(_res) {

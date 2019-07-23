@@ -130,6 +130,58 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group pixl_form_group">
+                                <label class="control-label">Mobile</label>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="box_sec">
+                                            <select class="form-control required js_select2 js_com_mobile_code">
+                                                <option value="">Select</option>
+                                                {{#each ../country_code}}
+                                                    <option value="{{code}}"
+                                                        {{#ifCond ../mobile_code '===' code}}
+                                                            selected
+                                                        {{/ifCond}}>
+                                                        {{name}} {{code}}
+                                                    </option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required js_com_mobile"
+                                                   value="{{mobile_number}}"
+                                                   autocomplete="nope" placeholder="Your 10 digit mobile No.">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group pixl_form_group">
+                                <label class="control-label">Land Line</label>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required js_com_phone_code"
+                                                   value="{{phone_code}}" style="padding: 0 15px;"
+                                                   autocomplete="nope" placeholder="Code">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required js_com_phone_number"
+                                                   value="{{phone_number}}"
+                                                   autocomplete="nope" placeholder="Land Line Number">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-4">
                             <div class="form-group pixl_form_group">
                                 <label class="control-label">Street</label>

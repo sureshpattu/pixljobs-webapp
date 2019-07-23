@@ -37,9 +37,9 @@ function PostJobHandler() {
             field   :document.getElementById('jsEndDate'),
             format  :'MM/DD/YYYY',
             toString:function(date, format) {
-                var day = date.getDate();
+                var day   = date.getDate();
                 var month = date.getMonth() + 1;
-                var year = date.getFullYear();
+                var year  = date.getFullYear();
                 return month + '-' + day + '-' + year;
             }
         });
@@ -123,7 +123,15 @@ function PostJobHandler() {
                     end_date       :_form.find('.js_end_date').val(),
                     education_level:_form.find('.js_edu_level').val(),
                     urgent_status  :_form.find('.js_urgent_status').val(),
-                    location_type  :_location_type
+                    location_type  :_location_type,
+                    street         :_form.find('.js_street').val(),
+                    area_in        :_form.find('.js_area_in').val(),
+                    area           :_form.find('.js_area').val(),
+                    locality       :_form.find('.js_locality').val(),
+                    city           :_form.find('.js_city').val(),
+                    state          :_form.find('.js_state').val(),
+                    pin            :_form.find('.js_postal_code').val(),
+                    country        :_form.find('.js_country').val()
                 };
 
                 ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_qaJobRes) {

@@ -123,11 +123,34 @@ function JobSearchHandler() {
             loadMoreJobs();
         });
 
-        $('.js_input_location').on('keyup', function(e) {
-            if(e.keyCode === 13) {
-                _query.city = $(this).val();
+        $('.js_input_location').on('keyup change blur', function(e) {
+            var _val = $(this).val();
+            if(_val) {
+                _query.street   = $('.js_street').val();
+                _query.area_in  = $('.js_area_in').val();
+                _query.area     = $('.js_area').val();
+                _query.locality = $('.js_locality').val();
+                _query.city     = $('.js_city').val();
+                _query.state    = $('.js_state').val();
+                _query.country  = $('.country').val();
+                _query.pin      = $('.js_postal_code').val();
+                if(_query.street || _query.area_in || _query.area || _query.locality || _query.city || _query.state ||
+                    _query.country || _query.pin) {
+                    searchJobs();
+                }
+            } else {
+                delete _query.street;
+                delete _query.area_in;
+                delete _query.area;
+                delete _query.locality;
+                delete _query.city;
+                delete _query.state;
+                delete _query.country;
+                delete _query.pin;
                 searchJobs();
+                clearGoogleAddress();
             }
+
         });
 
         $('.js_reset_category').click(function() {
@@ -148,6 +171,19 @@ function JobSearchHandler() {
             searchJobs();
         });
 
+    }
+
+    function clearGoogleAddress() {
+        $('.js_street').val('');
+        $('.js_area_in').val('');
+        $('.js_area').val('');
+        $('.js_locality').val('');
+        $('.js_city').val('');
+        $('.js_state').val('');
+        $('.country').val('');
+        $('.js_postal_code').val('');
+        $('.js_full_address').val('');
+        $('.js_place_id').val('');
     }
 
     function salaryMinMaxTimeOut(from, to) {

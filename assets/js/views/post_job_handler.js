@@ -123,7 +123,15 @@ function PostJobHandler() {
                     education_level:_form.find('.js_edu_level').val(),
                     urgent_status  :_form.find('.js_urgent_status').val(),
                     status         :'inProgress',
-                    location_type  :_location_type
+                    location_type  :_location_type,
+                    street         :_form.find('.js_street').val(),
+                    area_in        :_form.find('.js_area_in').val(),
+                    area           :_form.find('.js_area').val(),
+                    locality       :_form.find('.js_locality').val(),
+                    city           :_form.find('.js_city').val(),
+                    state          :_form.find('.js_state').val(),
+                    pin            :_form.find('.js_postal_code').val(),
+                    country        :_form.find('.js_country').val()
                 };
 
                 ApiUtil.makeAjaxRequest('/api/qa-jobs', '', 'POST', '', _obj, function(_qaJobRes) {
