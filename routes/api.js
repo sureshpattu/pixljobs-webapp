@@ -379,4 +379,10 @@ router.post('/recruiter/job/action/:qa_job_id/:job_id', function(req, res, next)
         });
 });
 
+router.post('/subscribers', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/subscribers', function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;

@@ -23,7 +23,8 @@
                                 <div class="col-md-3">
                                     <div class="profile_img_wrap">
                                         {{#if data.photo}}
-                                            <img src="/api/recruiter/photo/{{data.photo}}" class="img_sec js_img_pre_holder">
+                                            <img src="/api/recruiter/photo/{{data.photo}}"
+                                                 class="img_sec js_img_pre_holder">
                                         {{else}}
                                             <img src="/img/user_icon.svg" class="img_sec js_img_pre_holder">
                                         {{/if}}
@@ -141,7 +142,7 @@
 {{>footer swiper=true select2=true cropper=true}}
 </body>
 <script type="application/javascript">
-    $(function () {
+    $(function() {
         RecruiterProfileEditHandler.initEdit();
     });
 </script>

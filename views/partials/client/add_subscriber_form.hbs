@@ -1,0 +1,97 @@
+<form class="card js_subscribe_form">
+    <div class="box">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group pixl_form_group">
+                        <label class="control-label">Name</label>
+                        <div class="box_sec">
+                            <input type="text" class="form-control required js_name"
+                                   placeholder="name"
+                                   value="{{name}}">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group pixl_form_group">
+                        <label class="control-label">Email</label>
+                        <div class="box_sec">
+                            <input type="text" class="form-control required js_name"
+                                   placeholder="email"
+                                   value="{{name}}">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group pixl_form_group">
+                        <label class="control-label">Mobile</label>
+                        <div class="box_sec">
+                            <input type="text" class="form-control required js_applied_tenure" placeholder="Mobile"
+                                   value="{{data.applied_tenure}}">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group pixl_form_group">
+                        <label class="control-label">Remaining Amount</label>
+                        <div class="box_sec">
+                            <input type="text" class="form-control required js_remaining_amount"
+                                   placeholder="Remaining Amount"
+                                   value="{{data.remaining_amount}}">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group pixl_form_group">
+                        <label class="control-label">Payment Mode</label>
+                        <div class="box_sec">
+                            <input type="text" class="form-control required js_payment_mode"
+                                   placeholder="Payment Mode"
+                                   value="{{data.payment_mode}}">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group pixl_form_group">
+                        <label class="control-label">Monthly Deductions</label>
+                        <div class="box_sec">
+                            <input type="text" class="form-control required js_monthly_deductions"
+                                   placeholder="Monthly Deductions"
+                                   value="{{data.monthly_deductions}}">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group pixl_form_group">
+                        <label class="control-label">Reason of Taking Advance</label>
+                        <div class="pos_rel">
+                            <div class="box_sec">
+                             <textarea rows="5" class="form-control js_reason"
+                                       placeholder="Here can be your reason of takinmg advance">{{data.reason}}</textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center {{#ifCond status '===' 'View'}}hide{{/ifCond}}">
+            <button type="submit" class="btn btn_big btn_blue">
+                {{#ifCond status '===' 'Edit'}}
+                    Update
+                {{else}}
+                    Submit
+                {{/ifCond}}
+            </button>
+            <input type="hidden" value="{{data.id}}" class="js_data_id">
+        </div>
+
+    </div>
+
+</form>
