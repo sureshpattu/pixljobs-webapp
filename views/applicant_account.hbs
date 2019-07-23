@@ -74,13 +74,12 @@
                                                 <div class="box_sec">
                                                     <select id="selectExpYear"
                                                             class="form-control js_select2 js_exp_year">
-                                                        {{#counter 0 50}}
+                                                        {{#each exp_year_arr}}
                                                             <option value="{{this}}"
-                                                                {{#ifCond data.exp_year '===' this}}
-                                                                    selected
-                                                                {{/ifCond}}>{{this}} Years
+                                                                    {{#ifCond ../data.exp_year '=='
+                                                                              this}}selected{{/ifCond}}>{{this}} Years
                                                             </option>
-                                                        {{/counter}}
+                                                        {{/each}}
                                                     </select>
                                                 </div>
                                             </div>
@@ -240,6 +239,7 @@
                                         <label class="control-label">Current Living City</label>
                                         <div class="box_sec">
                                             <input type="text" class="form-control js_current_city"
+                                                   id="glAdAddress"
                                                    autocomplete="nope"
                                                    placeholder="Current City"
                                                    value="{{data.current_city}}">
@@ -254,7 +254,7 @@
                                                 <input type="checkbox" class="js_relocation_checkbox"
                                                        {{#if data.relocation}}checked{{/if}}>
                                                 <span class="checkmark"></span>
-                                                Relocate
+                                                Are you willing to relocate?
                                             </label>
                                         </div>
                                     </div>
@@ -356,17 +356,28 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" class="js_street">
+                        <input type="hidden" class="js_area_in">
+                        <input type="hidden" class="js_area">
+                        <input type="hidden" class="js_locality">
+                        <input type="hidden" class="js_city">
+                        <input type="hidden" class="js_state">
+                        <input type="hidden" class="js_country">
+                        <input type="hidden" class="js_postal_code">
+                        <input type="hidden" class="js_place_id">
+                        <input type="hidden" class="js_full_address">
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
-{{>footer select2=true}}
+{{>footer select2=true googlePlaces=true}}
 </body>
 <script type="application/javascript">
     $(function() {
         ApplicantEditHandler.init();
+        GoogleAddressHandler.init();
     });
 </script>
 </html>

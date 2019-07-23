@@ -130,11 +130,17 @@ router.get('/applicant-account', verify.isApplicantLoggedIn, function(req, res) 
         if(results[0] && results[0].data && (results[0].data.exp_year > 0 || results[0].data.exp_month > 0)) {
             is_experience = true;
         }
+        let exp_year_arr = [];
+        for(let i = 0; i <= 50; i++) {
+            exp_year_arr[i] = i.toString();
+
+        }
         res.render('applicant_account', {
             user        :!results[0].error ? results[0].data : [],
             data        :!results[1].error ? results[1].data : [],
             country_code:!results[2].error ? results[2].data : [],
-            exp         :is_experience
+            exp         :is_experience,
+            exp_year_arr:exp_year_arr
         });
     });
 });

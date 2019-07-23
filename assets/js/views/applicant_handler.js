@@ -40,7 +40,7 @@ function ApplicantSignUpHandler() {
                     exp_month       :_form.find('.js_exp_month').val(),
                     exp_year        :_form.find('.js_exp_year').val(),
                     institution_city:_form.find('.js_institution_city').val(),
-                    current_city    :_form.find('.js_current_city').val(),
+                    current_city    :_form.find('.js_city').val(),
                     relocation      :_form.find('.js_relocation_checkbox').prop('checked')
                 };
                 ApiUtil.makeAjaxRequest('/api/applicant-auth/register', '', 'POST', '', _obj, function(_res) {
@@ -65,9 +65,6 @@ function ApplicantSignUpHandler() {
                     ApiUtil.makeFileUploadRequest('/api/applicant/photo/upload/' + applicant_id, '', 'POST', '',
                         formData,
                         function(_res_path) {
-                            if(_res_path.error) {
-                                alert(_res.message || 'Something went wrong!');
-                            }
                             callback(null, null);
                         });
                 } else {
@@ -82,9 +79,6 @@ function ApplicantSignUpHandler() {
                     ApiUtil.makeFileUploadRequest('/api/applicant/resume/upload/' + applicant_id, '', 'POST', '',
                         formData,
                         function(_res_path) {
-                            if(_res_path.error) {
-                                alert(_res.message || 'Something went wrong!');
-                            }
                             callback(null, null);
                         });
                 } else {

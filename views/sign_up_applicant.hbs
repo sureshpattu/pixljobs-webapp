@@ -169,6 +169,7 @@
                                         <label class="control-label">Current Living City</label>
                                         <div class="box_sec">
                                             <input type="text" class="form-control js_current_city"
+                                                   id="glAdAddress"
                                                    autocomplete="nope"
                                                    placeholder="Current City">
                                         </div>
@@ -181,7 +182,7 @@
                                             <label class="check_box">
                                                 <input type="checkbox" class="js_relocation_checkbox">
                                                 <span class="checkmark"></span>
-                                                Relocate
+                                                Are you willing to relocate?
                                             </label>
                                         </div>
                                     </div>
@@ -256,6 +257,16 @@
                                     <img src="/img/icons/full-arrow-blue.svg" alt="" class="right_icon">
                                 </button>
                             </div>
+                            <input type="hidden" class="js_street">
+                            <input type="hidden" class="js_area_in">
+                            <input type="hidden" class="js_area">
+                            <input type="hidden" class="js_locality">
+                            <input type="hidden" class="js_city">
+                            <input type="hidden" class="js_state">
+                            <input type="hidden" class="js_country">
+                            <input type="hidden" class="js_postal_code">
+                            <input type="hidden" class="js_place_id">
+                            <input type="hidden" class="js_full_address">
                         </form>
                     </div>
                 </div>
@@ -264,11 +275,12 @@
     </div>
 </section>
 <!--{{>popup/profile_photo_upload}}-->
-{{>footer swiper=true select2=true cropper=true}}
+{{>footer swiper=true select2=true cropper=true googlePlaces=true}}
 </body>
 <script type="application/javascript">
     $(function() {
         ApplicantSignUpHandler.init();
+        GoogleAddressHandler.init();
     });
 </script>
 </html>

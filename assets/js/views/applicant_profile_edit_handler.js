@@ -37,7 +37,8 @@ function ApplicantSignUpHandler() {
                     password       :_form.find('.js_password').val(),
                     gender         :_form.find('.js_gender').val(),
                     exp_month      :_form.find('.js_exp_month').val(),
-                    exp_year       :_form.find('.js_exp_year').val()
+                    exp_year       :_form.find('.js_exp_year').val(),
+                    current_city   :_form.find('.js_city').val()
                 };
 
                 var callback = function(_res) {
@@ -139,7 +140,6 @@ function ApplicantSignUpHandler() {
         });
 
     }
-
 
     function bindCommonClickEvents() {
         $('.js_select2').select2({});
