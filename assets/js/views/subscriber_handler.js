@@ -59,27 +59,7 @@ function SubscriberHandler() {
             $('.js_add_subscriber').click(function() {
                 openFormPopup({status:'Add'});
             });
-
-            $('.js_edit_advance').click(function() {
-                fetchAdvanceDetails($(this), function(_res) {
-                    openFormPopup({
-                        status:'Edit',
-                        data  :_res.data
-                    });
-                });
-            });
-            $('.js_view_advance').click(function() {
-                fetchAdvanceDetails($(this), function(_res) {
-                    openFormPopup({
-                        data  :_res.data,
-                        status:'View'
-                    });
-
-                });
-            });
-            $('.js_delete_advance').click(function() {
-                deleteAdvance($(this));
-            });
+           
         }
     }
 }

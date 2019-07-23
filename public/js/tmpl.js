@@ -1,34 +1,34 @@
-Handlebars.registerPartial("add_subscriber_form", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    return "hide";
-},"3":function(container,depth0,helpers,partials,data) {
-    return "                    Update\n";
-},"5":function(container,depth0,helpers,partials,data) {
-    return "                    Submit\n";
-},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
+Handlebars.registerPartial("add_subscriber_form", Handlebars.template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
+    var alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "<form class=\"card js_subscribe_form\">\n    <div class=\"box\">\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col-md-6\">\n                    <div class=\"form-group pixl_form_group\">\n                        <label class=\"control-label\">Name</label>\n                        <div class=\"box_sec\">\n                            <input type=\"text\" class=\"form-control required js_name\"\n                                   placeholder=\"name\"\n                                   value=\""
-    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "\">\n                        </div>\n\n                    </div>\n                </div>\n                <div class=\"col-md-6\">\n                    <div class=\"form-group pixl_form_group\">\n                        <label class=\"control-label\">Email</label>\n                        <div class=\"box_sec\">\n                            <input type=\"text\" class=\"form-control required js_name\"\n                                   placeholder=\"email\"\n                                   value=\""
-    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "\">\n                        </div>\n\n                    </div>\n                </div>\n                <div class=\"col-md-6\">\n                    <div class=\"form-group pixl_form_group\">\n                        <label class=\"control-label\">Mobile</label>\n                        <div class=\"box_sec\">\n                            <input type=\"text\" class=\"form-control required js_applied_tenure\" placeholder=\"Mobile\"\n                                   value=\""
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.applied_tenure : stack1), depth0))
-    + "\">\n                        </div>\n\n                    </div>\n                </div>\n                <div class=\"col-md-6\">\n                    <div class=\"form-group pixl_form_group\">\n                        <label class=\"control-label\">Remaining Amount</label>\n                        <div class=\"box_sec\">\n                            <input type=\"text\" class=\"form-control required js_remaining_amount\"\n                                   placeholder=\"Remaining Amount\"\n                                   value=\""
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.remaining_amount : stack1), depth0))
-    + "\">\n                        </div>\n\n                    </div>\n                </div>\n                <div class=\"col-md-6\">\n                    <div class=\"form-group pixl_form_group\">\n                        <label class=\"control-label\">Payment Mode</label>\n                        <div class=\"box_sec\">\n                            <input type=\"text\" class=\"form-control required js_payment_mode\"\n                                   placeholder=\"Payment Mode\"\n                                   value=\""
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.payment_mode : stack1), depth0))
-    + "\">\n                        </div>\n\n                    </div>\n                </div>\n                <div class=\"col-md-6\">\n                    <div class=\"form-group pixl_form_group\">\n                        <label class=\"control-label\">Monthly Deductions</label>\n                        <div class=\"box_sec\">\n                            <input type=\"text\" class=\"form-control required js_monthly_deductions\"\n                                   placeholder=\"Monthly Deductions\"\n                                   value=\""
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.monthly_deductions : stack1), depth0))
-    + "\">\n                        </div>\n\n                    </div>\n                </div>\n                <div class=\"col-md-12\">\n                    <div class=\"form-group pixl_form_group\">\n                        <label class=\"control-label\">Reason of Taking Advance</label>\n                        <div class=\"pos_rel\">\n                            <div class=\"box_sec\">\n                             <textarea rows=\"5\" class=\"form-control js_reason\"\n                                       placeholder=\"Here can be your reason of takinmg advance\">"
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.reason : stack1), depth0))
-    + "</textarea>\n                            </div>\n\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"card-footer text-center "
-    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,(depth0 != null ? depth0.status : depth0),"===","View",{"name":"ifCond","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+  return "                                        <option value=\""
+    + alias2(alias1((depths[1] != null ? depths[1].code : depths[1]), depth0))
+    + "\">"
+    + alias2(alias1((depths[1] != null ? depths[1].name : depths[1]), depth0))
+    + " "
+    + alias2(alias1((depths[1] != null ? depths[1].code : depths[1]), depth0))
+    + "</option>\n";
+},"3":function(container,depth0,helpers,partials,data) {
+    return "hide";
+},"5":function(container,depth0,helpers,partials,data) {
+    return "                    Update\n";
+},"7":function(container,depth0,helpers,partials,data) {
+    return "                    Submit\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data,blockParams,depths) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3=container.escapeExpression;
+
+  return "<form class=\"card js_subscribe_form\">\n    <div class=\"box\">\n        <div class=\"row\">\n            <div class=\"col-md-12\">\n                <div class=\"form-group pixl_form_group\">\n                    <label class=\"control-label\">Name</label>\n                    <div class=\"box_sec\">\n                        <input type=\"text\" class=\"form-control required js_name\"\n                               placeholder=\"name\">\n                    </div>\n\n                </div>\n            </div>\n            <div class=\"col-md-12\">\n                <div class=\"form-group pixl_form_group\">\n                    <label class=\"control-label\">Email</label>\n                    <div class=\"box_sec\">\n                        <input type=\"text\" class=\"form-control required js_name\"\n                               placeholder=\"email\">\n                    </div>\n\n                </div>\n            </div>\n            <div class=\"col-md-12\">\n                <div class=\"form-group pixl_form_group\">\n                    <label class=\"control-label\">Mobile</label>\n                    <div class=\"row\">\n                        <div class=\"col-md-4\">\n                            <div class=\"box_sec\">\n                                <select class=\"form-control js_mobile_code required js_select2\">\n                                    <option value=\"\">Select</option>\n"
+    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.country_code : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0, blockParams, depths),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "                                </select>\n                            </div>\n                        </div>\n                        <div class=\"col-md-8\">\n                            <div class=\"box_sec\">\n                                <input type=\"text\" class=\"form-control required js_mobile\"\n                                       autocomplete=\"nope\" placeholder=\"Your 10 digit mobile No.\">\n                            </div>\n                        </div>\n                    </div>\n\n                </div>\n            </div>\n            <div class=\"col-md-12\">\n                <div class=\"form-group pixl_form_group\">\n                    <label class=\"control-label\">Url</label>\n                    <div class=\"box_sec\">\n                        <input type=\"text\" class=\"form-control required js_remaining_amount\"\n                               placeholder=\"Url\"\n                               value=\""
+    + alias3(((helper = (helper = helpers.url || (depth0 != null ? depth0.url : depth0)) != null ? helper : alias2),(typeof helper === "function" ? helper.call(alias1,{"name":"url","hash":{},"data":data}) : helper)))
+    + "\">\n                    </div>\n                </div>\n            </div>\n        </div>\n        <div class=\"card-footer text-center "
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,(depth0 != null ? depth0.status : depth0),"===","View",{"name":"ifCond","hash":{},"fn":container.program(3, data, 0, blockParams, depths),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\">\n            <button type=\"submit\" class=\"btn btn_big btn_blue\">\n"
-    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,(depth0 != null ? depth0.status : depth0),"===","Edit",{"name":"ifCond","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias2).call(alias1,(depth0 != null ? depth0.status : depth0),"===","Edit",{"name":"ifCond","hash":{},"fn":container.program(5, data, 0, blockParams, depths),"inverse":container.program(7, data, 0, blockParams, depths),"data":data})) != null ? stack1 : "")
     + "            </button>\n            <input type=\"hidden\" value=\""
-    + alias4(alias5(((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.id : stack1), depth0))
+    + alias3(container.lambda(((stack1 = (depth0 != null ? depth0.data : depth0)) != null ? stack1.id : stack1), depth0))
     + "\" class=\"js_data_id\">\n        </div>\n\n    </div>\n\n</form>";
-},"useData":true}));
+},"useData":true,"useDepths":true}));
 
 Handlebars.registerPartial("applicant_card_row", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
