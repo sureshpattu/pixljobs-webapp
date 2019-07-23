@@ -47,7 +47,7 @@
             }
 
             &.active {
-                font-weight: 600;
+                font-weight: 500;
 
                 &:before {
                     display: block;
@@ -65,7 +65,7 @@
 
         .name {
             font-size: 19px;
-            font-weight: 600;
+            font-weight: 500;
             color: #4e5862;
         }
 
@@ -146,7 +146,7 @@
 
             .highlights {
                 font-size: 18px;
-                font-weight: 600;
+                font-weight: 500;
             }
 
             .small_txt {
@@ -227,7 +227,7 @@
                 .c_name {
                     opacity: 0.5;
                     font-size: 12px;
-                    font-weight: 600;
+                    font-weight: 500;
                     line-height: 2.08;
                     color: #637282;
                     display: inline-block;

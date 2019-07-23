@@ -46,7 +46,7 @@
             }
 
             &.active {
-                font-weight: 600;
+                font-weight: 500;
 
                 &:before {
                     display: block;
@@ -68,7 +68,7 @@
 
         .name {
             font-size: 19px;
-            font-weight: 600;
+            font-weight: 500;
             color: #4e5862;
         }
 
@@ -234,7 +234,7 @@
 
             .highlights {
                 font-size: 18px;
-                font-weight: 600;
+                font-weight: 500;
             }
 
             .small_txt {
@@ -450,7 +450,7 @@
 
             .label_val {
                 font-size: 15px;
-                font-weight: 600;
+                font-weight: 500;
                 line-height: 1.67;
                 color: #637282;
                 padding: 0 0 21px;
@@ -468,7 +468,7 @@
                     cursor: pointer;
                     text-decoration: none;
                     font-size: 15px;
-                    font-weight: 600;
+                    font-weight: 500;
                     line-height: 1.67;
                     text-align: center;
                     color: #4a58ff;
