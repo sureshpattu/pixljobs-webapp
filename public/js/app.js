@@ -1833,6 +1833,8 @@ var utils         = require('../utils/common');
 var waterfall     = require('async-waterfall');
 
 function PostJobHandler() {
+    var _editor_quill;
+    var _job_desc = '';
 
     function bindCommonClickEvents() {
         $('.js_select2').select2({});
@@ -1917,6 +1919,12 @@ function PostJobHandler() {
             tags           :true,
             tokenSeparators:[',']
         });
+
+        _editor_quill = new Quill('#descEditor', {
+            placeholder:'Description...',
+            theme      :'snow'
+        });
+        _editor_quill.root.innerHTML=_job_desc;
     }
 
     function bindPostJobEvent() {
@@ -1963,20 +1971,26 @@ function PostJobHandler() {
                     country        :_form.find('.js_country').val()
                 };
 
-                ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_qaJobRes) {
-                    if(!_qaJobRes.error && _qaJobRes.data) {
-                        var _adminObj = {
-                            recruiter_id:_recruiter_id,
-                            qa_job_id   :_qaJobRes.data.id,
-                            msg         :'Job details updated'
-                        };
-                        ApiUtil.makeAjaxRequest('/api/admin-notifications', '', 'POST', '', _adminObj, function(_res) {
-                            postJobCategory(_qaJobRes.data.id, _form);
-                        });
-                    } else {
-                        alert(_qaJobRes.message || 'Something went wrong!');
-                    }
-                });
+                if(_editor_quill.getText().length) {
+                    _obj.desc = _editor_quill.root.innerHTML;
+                    ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_qaJobRes) {
+                        if(!_qaJobRes.error && _qaJobRes.data) {
+                            var _adminObj = {
+                                recruiter_id:_recruiter_id,
+                                qa_job_id   :_qaJobRes.data.id,
+                                msg         :'Job details updated'
+                            };
+                            ApiUtil.makeAjaxRequest('/api/admin-notifications', '', 'POST', '', _adminObj,
+                                function(_res) {
+                                    postJobCategory(_qaJobRes.data.id, _form);
+                                });
+                        } else {
+                            alert(_qaJobRes.message || 'Something went wrong!');
+                        }
+                    });
+                } else {
+                    $($('#descEditor').parent()).addClass('error-field')
+                }
             }
         });
     }
@@ -2010,7 +2024,8 @@ function PostJobHandler() {
     }
 
     return {
-        init:function() {
+        init:function(_desc) {
+            _job_desc = _desc;
             bindCommonClickEvents();
             bindPostJobEvent();
         }
@@ -2026,6 +2041,7 @@ var waterfall     = require('async-waterfall');
 var async         = require('async');
 
 function PostJobHandler() {
+    var _editor_quill;
 
     function bindCommonClickEvents() {
         $('.js_select2').select2({});
@@ -2110,6 +2126,11 @@ function PostJobHandler() {
                 return month + '-' + day + '-' + year;
             }
         });
+
+        _editor_quill = new Quill('#descEditor', {
+            placeholder:'Description...',
+            theme      :'snow'
+        });
     }
 
     function bindPostJobEvent() {
@@ -2155,20 +2176,27 @@ function PostJobHandler() {
                     country        :_form.find('.js_country').val()
                 };
 
-                ApiUtil.makeAjaxRequest('/api/qa-jobs', '', 'POST', '', _obj, function(_qaJobRes) {
-                    if(!_qaJobRes.error && _qaJobRes.data) {
-                        var _adminObj = {
-                            recruiter_id:_recruiter_id,
-                            qa_job_id   :_qaJobRes.data.id,
-                            msg         :'New job posted'
-                        };
-                        ApiUtil.makeAjaxRequest('/api/admin-notifications', '', 'POST', '', _adminObj, function(_res) {
-                            postJobCategory(_qaJobRes.data.id, _form);
-                        });
-                    } else {
-                        alert(_qaJobRes.message || 'Something went wrong!');
-                    }
-                });
+                if(_editor_quill.getText().length) {
+                    _obj.desc = _editor_quill.root.innerHTML;
+
+                    ApiUtil.makeAjaxRequest('/api/qa-jobs', '', 'POST', '', _obj, function(_qaJobRes) {
+                        if(!_qaJobRes.error && _qaJobRes.data) {
+                            var _adminObj = {
+                                recruiter_id:_recruiter_id,
+                                qa_job_id   :_qaJobRes.data.id,
+                                msg         :'New job posted'
+                            };
+                            ApiUtil.makeAjaxRequest('/api/admin-notifications', '', 'POST', '', _adminObj,
+                                function(_res) {
+                                    postJobCategory(_qaJobRes.data.id, _form);
+                                });
+                        } else {
+                            alert(_qaJobRes.message || 'Something went wrong!');
+                        }
+                    });
+                } else {
+                    $($('#descEditor').parent()).addClass('error-field')
+                }
             }
         });
     }
@@ -2212,8 +2240,7 @@ function PostJobHandler() {
 
                 var _obj = {
                     work_week:_form.find('.js_work_week').val(),
-                    holidays :_form.find('.js_holidays').val(),
-                    desc     :_form.find('.js_desc').val()
+                    holidays :_form.find('.js_holidays').val()
                 };
 
                 ApiUtil.makeAjaxRequest('/api/qa-jobs/' + _job_id, '', 'PUT', '', _obj, function(_res) {
