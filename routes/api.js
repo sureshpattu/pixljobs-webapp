@@ -379,4 +379,16 @@ router.post('/recruiter/job/action/:qa_job_id/:job_id', function(req, res, next)
         });
 });
 
+router.get('/technologies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'GET', '/technologies', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/technologies/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/technologies/search', function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;

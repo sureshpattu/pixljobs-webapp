@@ -1925,6 +1925,22 @@ function PostJobHandler() {
             theme      :'snow'
         });
         _editor_quill.root.innerHTML = _job_desc;
+
+
+        var _salary_inputs = $('.js_fixed_salary, .js-input-from, .js-input-to');
+        $('.js_fixed_salary').on('keyup', function() {
+            var _this = $(this);
+            $('.js-input-from, .js-input-to').val(_this.val());
+        });
+        $('.js_salary_not_decided').on('click', function() {
+            var _this = $(this);
+            if(_this.prop('checked')) {
+                _salary_inputs.val('');
+                _salary_inputs.attr('disabled', 'disabled');
+            } else {
+                _salary_inputs.removeAttr('disabled');
+            }
+        });
     }
 
     function bindPostJobEvent() {
@@ -1951,8 +1967,6 @@ function PostJobHandler() {
                 var _obj = {
                     name          :_form.find('.js_title').val(),
                     recruiter_id  :_recruiter_id,
-                    salary_min    :_form.find('.js-input-from').val(),
-                    salary_max    :_form.find('.js-input-to').val(),
                     exp_year      :_form.find('.js_exp_year').val(),
                     exp_month     :_form.find('.js_exp_month').val(),
                     position_count:_form.find('.js_position_count').val(),
@@ -1967,6 +1981,13 @@ function PostJobHandler() {
                     pin           :_form.find('.js_postal_code').val(),
                     country       :_form.find('.js_country').val()
                 };
+
+                if($('.js_salary_not_decided').prop('checked')) {
+                    _obj.is_salary = false;
+                } else {
+                    _obj.salary_min = _form.find('.js-input-from').val();
+                    _obj.salary_max = _form.find('.js-input-to').val();
+                }
 
                 if(_editor_quill.getText().length) {
                     _obj.desc = _editor_quill.root.innerHTML;
@@ -2114,6 +2135,21 @@ function PostJobHandler() {
             placeholder:'Description...',
             theme      :'snow'
         });
+
+        var _salary_inputs = $('.js_fixed_salary, .js-input-from, .js-input-to');
+        $('.js_fixed_salary').on('keyup', function() {
+            var _this = $(this);
+            $('.js-input-from, .js-input-to').val(_this.val());
+        });
+        $('.js_salary_not_decided').on('click', function() {
+            var _this = $(this);
+            if(_this.prop('checked')) {
+                _salary_inputs.val('');
+                _salary_inputs.attr('disabled', 'disabled');
+            } else {
+                _salary_inputs.removeAttr('disabled');
+            }
+        });
     }
 
     function bindPostJobEvent() {
@@ -2138,8 +2174,6 @@ function PostJobHandler() {
                 var _obj = {
                     name          :_form.find('.js_title').val(),
                     recruiter_id  :_recruiter_id,
-                    salary_min    :_form.find('.js-input-from').val(),
-                    salary_max    :_form.find('.js-input-to').val(),
                     exp_year      :_form.find('.js_exp_year').val(),
                     exp_month     :_form.find('.js_exp_month').val(),
                     position_count:_form.find('.js_position_count').val(),
@@ -2155,6 +2189,13 @@ function PostJobHandler() {
                     pin           :_form.find('.js_postal_code').val(),
                     country       :_form.find('.js_country').val()
                 };
+
+                if($('.js_salary_not_decided').prop('checked')) {
+                    _obj.is_salary = false;
+                } else {
+                    _obj.salary_min = _form.find('.js-input-from').val();
+                    _obj.salary_max = _form.find('.js-input-to').val();
+                }
 
                 if(_editor_quill.getText().length) {
                     _obj.desc = _editor_quill.root.innerHTML;
@@ -2224,6 +2265,76 @@ function PostJobHandler() {
         });
     }
 
+    function highlightInputStrings(_search_val, _parent) {
+        if(_search_val.length !== 0) {
+            var search_value  = '',
+                search_regexp = '';
+
+            _parent.find('.js_gl_search_dropdown_list ul li a').each(function() {
+                search_value  = _search_val.toUpperCase();
+                search_regexp = new RegExp(search_value, 'i');
+                $(this).html(
+                    $(this)
+                        .html()
+                        .replace(search_regexp, '<span style=\'font-weight: 800\'>' + search_value + '</span>'));
+            });
+        }
+        $('.js_tech_search_item').off('click').on('click', function() {
+            var _this              = $(this);
+            var _search_input_tech = _this.closest('.js_technology_row').find('.js_search_tech');
+            _search_input_tech.val(_this.text());
+            _search_input_tech.data('tid', _this.data('tid'));
+        });
+    }
+
+    function searchTechnologies(_ele) {
+        var _search_val = _ele.val();
+        var _query      = {
+            query:_search_val,
+            page :0,
+            limit:10
+        };
+        ApiUtil.makeAjaxRequest('/api/technologies/search', '', 'POST', '', _query, function(_res) {
+            if(!_res.error) {
+                var _html = Handlebars.partials['technology_search_list']({
+                    data:_res.data.result
+                });
+                _ele.parent().find('.js_tech_search_dropdown_list').html(_html);
+                highlightInputStrings(_search_val, _ele.parent());
+            } else {
+                alert(_res.message || 'Something went wrong!');
+            }
+        });
+    }
+
+    function bindTechnologyClickEvents() {
+        $('.js_tech_level').select2({});
+
+        $('.js_add_technology').off('click').on('click', function() {
+            var _html = Handlebars.partials['technology_row']();
+            $('.js_technologies_wrap').append(_html);
+            bindTechnologyClickEvents();
+        });
+
+        $('.js_remove_technology').off('click').on('click', function() {
+            $(this).closest('.js_technology_row').remove();
+        });
+
+        var _search_tech = $('.js_search_tech');
+        _search_tech.off('keyup').on('keyup', function() {
+            var _this = $(this);
+            if(_this.val().length > 0) {
+                searchTechnologies(_this);
+            } else {
+                _this.val('');
+                _search_tech.parent().find('.js_tech_search_dropdown_list').html('');
+            }
+        });
+        _search_tech.off('focus').on('focus', function() {
+            $(this).parent().find('.js_tech_search_dropdown_list').removeClass('hide');
+        });
+    }
+
     function postJobCategory(_job_id, _form) {
         var _obj = {
             qa_job_id  :_job_id,
@@ -2239,8 +2350,21 @@ function PostJobHandler() {
     }
 
     function postJobTechnologies(_job_id, _form) {
-        var _technologies = _form.find('.js_technologies').val();
-        if(_technologies && _technologies.length) {
+        var _technologies_wrap = _form.find('.js_technologies_wrap');
+        var _technologies      = [];
+
+        if(_technologies_wrap.children().length) {
+            $('.js_technology_row').each(function(i, ele) {
+                var _this       = $(this);
+                var _tech_input = _this.find('.js_search_tech');
+                var _tech_level = _this.find('.js_tech_level');
+
+                _technologies.push({
+                    id   :_tech_input.data('tid'),
+                    name :_tech_input.val(),
+                    level:_tech_level.val()
+                })
+            });
             var _obj = {
                 qa_job_id   :_job_id,
                 technologies:_technologies
@@ -2420,11 +2544,19 @@ function PostJobHandler() {
         },
         initWorkInfo:function() {
             bindPostJobWorkInfoEvent();
+            bindTechnologyClickEvents();
             $('.js_select2').select2({});
             $('.js_technologies').select2({
                 tags           :true,
                 tokenSeparators:[',']
             });
+
+            $(document).click(function(e) {
+                if(!$(e.target).hasClass('search_enabled')) {
+                    $('.js_tech_search_dropdown_list').addClass('hide');
+                }
+            });
+
         },
         initCompany :function() {
             bindPostJobCompanyEvent();

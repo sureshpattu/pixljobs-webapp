@@ -152,7 +152,18 @@
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Salary - Annual INR</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="control-label">Salary - Annual INR</label>
+                                            </div>
+                                            <div class="col-md-6 text-right">
+                                                <label class="check_box js_company_check_box_wrap">
+                                                    <input type="checkbox" class="js_salary_not_decided">
+                                                    <span class="checkmark"></span>
+                                                    Not decided
+                                                </label>
+                                            </div>
+                                        </div>
                                         <div class="box_sec">
                                             <div class="wrapper" style="padding:20px;">
                                                 <div class="range-slider">
@@ -176,6 +187,15 @@
                                                                 <div class="box_sec">
                                                                     <input type="text" class="js-input-to form-control"
                                                                            value="{{data.salary_max}}"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group pixl_form_group">
+                                                                <label class="control-label">Fixed Salary</label>
+                                                                <div class="box_sec">
+                                                                    <input type="text"
+                                                                           class="form-control js_fixed_salary"/>
                                                                 </div>
                                                             </div>
                                                         </div>

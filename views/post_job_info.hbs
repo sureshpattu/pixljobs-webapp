@@ -66,12 +66,13 @@
                                                             Secondary(10th Pass)
                                                         </option>
                                                         <option value="Higher Secondary"
-                                                            {{#ifCond job_data.education_level '===' 'Secondary'}}
+                                                            {{#ifCond job_data.education_level '==='
+                                                                      'Higher Secondary'}}
                                                                 selected
                                                             {{/ifCond}}>
                                                             Higher Secondary(12th Pass)
                                                         </option>
-                                                        <option value="Diploma">
+                                                        <option value="Diploma"
                                                             {{#ifCond job_data.education_level '===' 'Diploma'}}
                                                                 selected
                                                             {{/ifCond}}>
@@ -173,20 +174,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label demo">Technologies<span class="gl_input_text">separated by comma ( , )</span></label>
-                                        <div class="box_sec">
-                                            <select multiple="multiple"
-                                                    class="form-control required js_technologies">
-                                                {{#each technologies}}
-                                                    {{#checkArrayOfObjectVal id ../job_data.qa_job_technologies}}
-                                                        <option value="{{id}}" selected>{{name}}</option>
-                                                    {{else}}
-                                                        <option value="{{id}}">{{name}}</option>
-                                                    {{/checkArrayOfObjectVal}}
-                                                {{/each}}
-                                            </select>
+                                    <div class="technologies_wrap">
+                                        <h4>Technologies</h4>
+                                        <hr>
+                                        <div class="js_technologies_wrap">
+                                            {{#each job_data.qa_job_technologies}}
+                                                {{>client/technology_row}}
+                                            {{else}}
+                                                {{>client/technology_row}}
+                                            {{/each}}
                                         </div>
+                                        <div class="add_technology_cta_wrap">
+                                            <a class="btn btn_blue js_add_technology">Add Technology</a>
+                                        </div>
+                                        <hr>
                                     </div>
                                     <div class="cta_wrap">
                                         <a class="btn btn_big second_btn" href="/post-job-edit/{{job_id}}">

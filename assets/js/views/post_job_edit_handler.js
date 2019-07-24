@@ -96,6 +96,22 @@ function PostJobHandler() {
             theme      :'snow'
         });
         _editor_quill.root.innerHTML = _job_desc;
+
+
+        var _salary_inputs = $('.js_fixed_salary, .js-input-from, .js-input-to');
+        $('.js_fixed_salary').on('keyup', function() {
+            var _this = $(this);
+            $('.js-input-from, .js-input-to').val(_this.val());
+        });
+        $('.js_salary_not_decided').on('click', function() {
+            var _this = $(this);
+            if(_this.prop('checked')) {
+                _salary_inputs.val('');
+                _salary_inputs.attr('disabled', 'disabled');
+            } else {
+                _salary_inputs.removeAttr('disabled');
+            }
+        });
     }
 
     function bindPostJobEvent() {
@@ -122,8 +138,6 @@ function PostJobHandler() {
                 var _obj = {
                     name          :_form.find('.js_title').val(),
                     recruiter_id  :_recruiter_id,
-                    salary_min    :_form.find('.js-input-from').val(),
-                    salary_max    :_form.find('.js-input-to').val(),
                     exp_year      :_form.find('.js_exp_year').val(),
                     exp_month     :_form.find('.js_exp_month').val(),
                     position_count:_form.find('.js_position_count').val(),
@@ -138,6 +152,13 @@ function PostJobHandler() {
                     pin           :_form.find('.js_postal_code').val(),
                     country       :_form.find('.js_country').val()
                 };
+
+                if($('.js_salary_not_decided').prop('checked')) {
+                    _obj.is_salary = false;
+                } else {
+                    _obj.salary_min = _form.find('.js-input-from').val();
+                    _obj.salary_max = _form.find('.js-input-to').val();
+                }
 
                 if(_editor_quill.getText().length) {
                     _obj.desc = _editor_quill.root.innerHTML;
