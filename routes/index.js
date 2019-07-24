@@ -494,13 +494,19 @@ router.get('/post-job/info/:id', verify.isRecruiterLoggedIn, function(req, res) 
             helper_utils.makeApiRequest(req, 'GET', '/qa-jobs/' + req.params.id, function(_res) {
                 callback(null, _res);
             });
-        }
+        },
+        function(callback) {
+            helper_utils.makeApiRequest(req, 'GET', '/categories', function(_res) {
+                callback(null, _res);
+            });
+        },
     ], function(err, results) {
         res.render('post_job_info', {
             user        :!results[0].error ? results[0].data : [],
             technologies:!results[1].error ? results[1].data : [],
             job_data    :!results[2].error ? results[2].data : [],
-            job_id      :req.params.id
+            job_id      :req.params.id,
+            categories    :!results[3].error ? results[3].data : [],
         });
     });
 });
