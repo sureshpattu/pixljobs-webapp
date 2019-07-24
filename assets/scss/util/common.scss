@@ -594,7 +594,7 @@ textarea.form-control.input_new {
 
     .title {
         font-size: 60px;
-        font-weight: 900;
+        font-weight: 600;
         text-align: center;
         color: #fff;
         padding: 300px 0 0;
@@ -829,7 +829,7 @@ input.form-control, select.form-control, textarea.form-control {
     border: solid 1px #cecece;
     padding: 24px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     box-shadow: none;
 
     &:focus {
@@ -892,7 +892,7 @@ input.form-control, select.form-control, textarea.form-control {
         z-index: 0;
 
         .upload_txt {
-            font-weight: 600;
+            font-weight: 500;
             color: #637282;
             text-decoration: underline;
         }
@@ -1058,7 +1058,7 @@ select.select {
     .control-label {
         font-size: 14px;
         color: #637282;
-        font-weight: 600;
+        font-weight: 500;
         margin: 0;
         padding: 0 0 7px;
     }
@@ -1130,7 +1130,7 @@ select.select {
         }
 
         &.active {
-            font-weight: 600;
+            font-weight: 500;
 
             &:before {
                 display: block;
@@ -1192,7 +1192,7 @@ select.select {
         border-radius: 5px;
         width: 201px;
         height: 81px;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 14px;
     }
 
