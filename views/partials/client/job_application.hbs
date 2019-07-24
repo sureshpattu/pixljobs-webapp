@@ -6,8 +6,8 @@
                     <a data-toggle="collapse" class="panel-title collapsed js_panel_title"
                        data-parent="#accordion"
                        href="#collapse_{{@index}}">
-                        <span class="highlights">{{job.name}}</span>
-                        <span class="small_txt">– {{job.company.name}}</span>
+                        <span class="highlights">{{#truncateText job.name 25}}{{/truncateText}}</span>
+                        <span class="small_txt">– {{#truncateText job.company.name 25}}{{/truncateText}}</span>
                         <img src="/img/icons/arrow-right.svg" class="arrow_icon">
                     </a>
                 </div>
