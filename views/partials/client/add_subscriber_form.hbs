@@ -29,8 +29,8 @@
                             <div class="box_sec">
                                 <select class="form-control js_mobile_code required js_select2">
                                     <option value="">Select</option>
-                                    {{#each country_code}}
-                                        <option value="{{../code}}">{{../name}} {{../code}}</option>
+                                    {{#each data}}
+                                        <option value="{{code}}">{{name}} {{code}}</option>
                                     {{/each}}
                                 </select>
                             </div>

@@ -4,6 +4,16 @@ var utils         = require('../utils/common');
 
 function SubscriberHandler() {
 
+    function fetchMobileCode(_ele, _cb) {
+        ApiUtil.makeAjaxRequest('/api/country-code', '', 'GET', '', '', function(_res) {
+            if(!_res.error) {
+                _cb(_res);
+            } else {
+                alert('Something went wrong!');
+            }
+        });
+    }
+
     function bindSubscriberFormEvent() {
         $('.js_select2').select2({});
         $('.js_subscribe_form').submit(function(e) {
@@ -16,8 +26,8 @@ function SubscriberHandler() {
                     mobile     :_form.find('.js_mobile').val(),
                     mobile_code:_form.find('.js_mobile_code').val(),
                     email      :_form.find('.js_email').val(),
-                    url        :_form.find('.js_url').val(),
-                    user_id    :_form.find('.js_user_id').val()
+                    user_id    :_form.find('.js_user_id').val(),
+                    url:window.location.href,
                 };
 
 
@@ -55,11 +65,14 @@ function SubscriberHandler() {
     return {
         init:function() {
             bindCommonClickEvents();
-
             $('.js_add_subscriber').click(function() {
-                openFormPopup({status:'Add'});
+                fetchMobileCode($(this), function(_res) {
+                    openFormPopup({
+                        data  :_res.data,
+                    });
+
+                });
             });
-           
         }
     }
 }

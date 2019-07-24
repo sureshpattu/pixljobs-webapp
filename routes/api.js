@@ -379,8 +379,14 @@ router.post('/recruiter/job/action/:qa_job_id/:job_id', function(req, res, next)
         });
 });
 
-router.post('/subscribers', function(req, res, next) {
-    helper_utils.makeApiRequest(req, 'POST', '/subscribers', function(_response) {
+router.post('/subscriber', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/subscriber', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.get('/country-code', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'GET', '/country-code', function(_response) {
         res.json(_response);
     });
 });
