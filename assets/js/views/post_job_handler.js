@@ -230,7 +230,7 @@ function PostJobHandler() {
             var search_value  = '',
                 search_regexp = '';
 
-            _parent.find('.js_gl_search_dropdown_list ul li a').each(function() {
+            _parent.find('.js_tech_search_dropdown_list ul li a').each(function() {
                 search_value  = _search_val.toUpperCase();
                 search_regexp = new RegExp(search_value, 'i');
                 $(this).html(
@@ -242,7 +242,7 @@ function PostJobHandler() {
         $('.js_tech_search_item').off('click').on('click', function() {
             var _this              = $(this);
             var _search_input_tech = _this.closest('.js_technology_row').find('.js_search_tech');
-            _search_input_tech.val(_this.text());
+            _search_input_tech.val(_this.data('name'));
             _search_input_tech.data('tid', _this.data('tid'));
         });
     }

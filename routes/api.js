@@ -111,6 +111,18 @@ router.get('/applicant/resume/:file', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE', '/applicant/resume/' + req.params.file, '', res);
 });
 
+router.post('/applicant/technologies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/technologies', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/applicant/languages', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/languages', function(_response) {
+        res.json(_response);
+    });
+});
+
 //Recruiters APIs-----------------------------------------------------------------------------------------------------
 router.post('/recruiter-auth/register', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/register', function(_response) {
@@ -387,6 +399,12 @@ router.get('/technologies', function(req, res, next) {
 
 router.post('/technologies/search', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/technologies/search', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/languages/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/languages/search', function(_response) {
         res.json(_response);
     });
 });

@@ -529,6 +529,42 @@ Handlebars.registerPartial("job_search_card", Handlebars.template({"1":function(
   return ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.data : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(26, data, 0),"data":data})) != null ? stack1 : "");
 },"useData":true}));
 
+Handlebars.registerPartial("language_row", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    return "                            selected\n                        ";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression, alias3=depth0 != null ? depth0 : (container.nullContext || {}), alias4=helpers.helperMissing;
+
+  return "<div class=\"row js_language_row\">\n    <div class=\"col-md-6\">\n        <div class=\"form-group pixl_form_group\">\n            <label class=\"control-label\">Language</label>\n            <div class=\"box_sec\">\n                <div class=\"gl_search_box\">\n                    <input type=\"text\" class=\"form-control search_input search_enabled js_search_language\"\n                           placeholder=\"Search Language\"\n                           value=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.language : depth0)) != null ? stack1.name : stack1), depth0))
+    + "\"\n                           data-tid=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.language : depth0)) != null ? stack1.id : stack1), depth0))
+    + "\"\n                           autocomplete=\"off\">\n                    <span class=\"fa fa-search icon_sec search_enabled\"></span>\n                    <div class=\"gl_search_dropdown_list js_language_search_dropdown_list search_enabled hide\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-md-4\">\n        <div class=\"form-group pixl_form_group\">\n            <label class=\"control-label\">Skill Level</label>\n            <div class=\"box_sec\">\n                <select class=\"form-control js_language_level\"\n                        required>\n                    <option value=\"Basic\"\n"
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias4).call(alias3,(depth0 != null ? depth0.level : depth0),"===","Basic",{"name":"ifCond","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ">\n                        Basic\n                    </option>\n                    <option value=\"Proficient\"\n"
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias4).call(alias3,(depth0 != null ? depth0.level : depth0),"===","Proficient",{"name":"ifCond","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ">\n                        Proficient\n                    </option>\n                    <option value=\"Expert\"\n"
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias4).call(alias3,(depth0 != null ? depth0.level : depth0),"===","Expert",{"name":"ifCond","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ">\n                        Expert\n                    </option>\n                </select>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-md-2\">\n        <a class=\"btn btn_red remove_btn js_remove_language\">Remove</a>\n    </div>\n</div>";
+},"useData":true}));
+
+Handlebars.registerPartial("language_search_list", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "        <li>\n            <a data-tid=\""
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\" data-name=\""
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "\" class=\"js_language_search_item\">"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</a>\n        </li>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<ul class=\"search_enabled\">\n"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.data : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</ul>";
+},"useData":true}));
+
 Handlebars.registerPartial("notification_card_row", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
@@ -594,30 +630,20 @@ Handlebars.registerPartial("popup", Handlebars.template({"compiler":[7,">= 4.0.0
 },"useData":true}));
 
 Handlebars.registerPartial("technology_row", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    var alias1=container.lambda, alias2=container.escapeExpression;
-
-  return "                        <option value=\""
-    + alias2(alias1((depth0 != null ? depth0.id : depth0), depth0))
-    + "\">"
-    + alias2(alias1((depth0 != null ? depth0.name : depth0), depth0))
-    + "</option>\n";
-},"3":function(container,depth0,helpers,partials,data) {
     return "                            selected\n                        ";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.lambda, alias3=container.escapeExpression, alias4=helpers.helperMissing;
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression, alias3=depth0 != null ? depth0 : (container.nullContext || {}), alias4=helpers.helperMissing;
 
-  return "<div class=\"row js_technology_row\">\n    <div class=\"col-md-6\">\n        <div class=\"form-group pixl_form_group\">\n            <label class=\"control-label\">Technology</label>\n            <div class=\"box_sec\">\n                <select class=\"form-control js_technology hide\"\n                        required=\"required\">\n                    <option value=\"0\">Select Job Category</option>\n"
-    + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.technologies : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "                </select>\n                <div class=\"gl_search_box\">\n                    <input type=\"text\" class=\"form-control search_input search_enabled js_search_tech\"\n                           placeholder=\"Search Technology\"\n                           value=\""
-    + alias3(alias2(((stack1 = (depth0 != null ? depth0.technology : depth0)) != null ? stack1.name : stack1), depth0))
+  return "<div class=\"row js_technology_row\">\n    <div class=\"col-md-6\">\n        <div class=\"form-group pixl_form_group\">\n            <label class=\"control-label\">Technology</label>\n            <div class=\"box_sec\">\n                <div class=\"gl_search_box\">\n                    <input type=\"text\" class=\"form-control search_input search_enabled js_search_tech\"\n                           placeholder=\"Search Technology\"\n                           value=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.technology : depth0)) != null ? stack1.name : stack1), depth0))
     + "\"\n                           data-tid=\""
-    + alias3(alias2(((stack1 = (depth0 != null ? depth0.technology : depth0)) != null ? stack1.id : stack1), depth0))
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.technology : depth0)) != null ? stack1.id : stack1), depth0))
     + "\"\n                           autocomplete=\"off\">\n                    <span class=\"fa fa-search icon_sec search_enabled\"></span>\n                    <div class=\"gl_search_dropdown_list js_tech_search_dropdown_list search_enabled hide\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-md-4\">\n        <div class=\"form-group pixl_form_group\">\n            <label class=\"control-label\">Skill Level</label>\n            <div class=\"box_sec\">\n                <select class=\"form-control js_tech_level\"\n                        required>\n                    <option value=\"Basic\"\n"
-    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias4).call(alias1,(depth0 != null ? depth0.level : depth0),"===","Basic",{"name":"ifCond","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias4).call(alias3,(depth0 != null ? depth0.level : depth0),"===","Basic",{"name":"ifCond","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ">\n                        Basic\n                    </option>\n                    <option value=\"Proficient\"\n"
-    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias4).call(alias1,(depth0 != null ? depth0.level : depth0),"===","Proficient",{"name":"ifCond","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias4).call(alias3,(depth0 != null ? depth0.level : depth0),"===","Proficient",{"name":"ifCond","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ">\n                        Proficient\n                    </option>\n                    <option value=\"Expert\"\n"
-    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias4).call(alias1,(depth0 != null ? depth0.level : depth0),"===","Expert",{"name":"ifCond","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ((stack1 = (helpers.ifCond || (depth0 && depth0.ifCond) || alias4).call(alias3,(depth0 != null ? depth0.level : depth0),"===","Expert",{"name":"ifCond","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + ">\n                        Expert\n                    </option>\n                </select>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-md-2\">\n        <a class=\"btn btn_red remove_btn js_remove_technology\">Remove</a>\n    </div>\n</div>";
 },"useData":true}));
 
@@ -626,6 +652,8 @@ Handlebars.registerPartial("technology_search_list", Handlebars.template({"1":fu
 
   return "        <li>\n            <a data-tid=\""
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\" data-name=\""
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "\" class=\"js_tech_search_item\">"
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "</a>\n        </li>\n";

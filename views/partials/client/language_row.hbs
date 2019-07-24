@@ -1,16 +1,16 @@
-<div class="row js_technology_row">
+<div class="row js_language_row">
     <div class="col-md-6">
         <div class="form-group pixl_form_group">
-            <label class="control-label">Technology</label>
+            <label class="control-label">Language</label>
             <div class="box_sec">
                 <div class="gl_search_box">
-                    <input type="text" class="form-control search_input search_enabled js_search_tech"
-                           placeholder="Search Technology"
-                           value="{{technology.name}}"
-                           data-tid="{{technology.id}}"
+                    <input type="text" class="form-control search_input search_enabled js_search_language"
+                           placeholder="Search Language"
+                           value="{{language.name}}"
+                           data-tid="{{language.id}}"
                            autocomplete="off">
                     <span class="fa fa-search icon_sec search_enabled"></span>
-                    <div class="gl_search_dropdown_list js_tech_search_dropdown_list search_enabled hide"></div>
+                    <div class="gl_search_dropdown_list js_language_search_dropdown_list search_enabled hide"></div>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
         <div class="form-group pixl_form_group">
             <label class="control-label">Skill Level</label>
             <div class="box_sec">
-                <select class="form-control js_tech_level"
+                <select class="form-control js_language_level"
                         required>
                     <option value="Basic"
                         {{#ifCond level '===' 'Basic'}}
@@ -44,6 +44,6 @@
         </div>
     </div>
     <div class="col-md-2">
-        <a class="btn btn_red remove_btn js_remove_technology">Remove</a>
+        <a class="btn btn_red remove_btn js_remove_language">Remove</a>
     </div>
 </div>
