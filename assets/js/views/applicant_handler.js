@@ -272,6 +272,10 @@ function ApplicantSignUpHandler() {
                 });
                 _ele.parent().find('.js_tech_search_dropdown_list').html(_html);
                 highlightInputStrings(_search_val, _ele.parent());
+                if(_res.data.result.length) {
+                    _ele.data('tid', '');
+                    _ele.data('name', '');
+                }
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
@@ -342,6 +346,10 @@ function ApplicantSignUpHandler() {
                 });
                 _ele.parent().find('.js_language_search_dropdown_list').html(_html);
                 highlightLanguageInputStrings(_search_val, _ele.parent());
+                if(_res.data.result.length) {
+                    _ele.data('tid', '');
+                    _ele.data('name', '');
+                }
             } else {
                 alert(_res.message || 'Something went wrong!');
             }
