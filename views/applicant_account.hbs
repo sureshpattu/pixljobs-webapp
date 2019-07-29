@@ -74,13 +74,12 @@
                                                 <div class="box_sec">
                                                     <select id="selectExpYear"
                                                             class="form-control js_select2 js_exp_year">
-                                                        {{#counter 0 50}}
+                                                        {{#each exp_year_arr}}
                                                             <option value="{{this}}"
-                                                                {{#ifCond data.exp_year '===' this}}
-                                                                    selected
-                                                                {{/ifCond}}>{{this}} Years
+                                                                    {{#ifCond ../data.exp_year '=='
+                                                                              this}}selected{{/ifCond}}>{{this}} Years
                                                             </option>
-                                                        {{/counter}}
+                                                        {{/each}}
                                                     </select>
                                                 </div>
                                             </div>
@@ -151,6 +150,44 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Date Of Birth</label>
+                                        <div class="box_sec">
+                                            <input type="text" id="jsDOB" class="form-control js_dob required"
+                                                   value="{{data.dob}}"
+                                                   autocomplete="nope"
+                                                   placeholder="Date Of Birth">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Gender</label>
+                                        <div class="box_sec">
+                                            <select class="form-control js_gender js_select2">
+                                                <option value="male"
+                                                    {{#ifCond data.gender '===' 'male'}}
+                                                        selected
+                                                    {{/ifCond}}>
+                                                    Male
+                                                </option>
+                                                <option value="female"
+                                                    {{#ifCond data.gender '===' 'female'}}
+                                                        selected
+                                                    {{/ifCond}}>
+                                                    Female
+                                                </option>
+                                                <option value="other"
+                                                    {{#ifCond data.gender '===' 'other'}}
+                                                        selected
+                                                    {{/ifCond}}>
+                                                    Other
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -240,6 +277,7 @@
                                         <label class="control-label">Current Living City</label>
                                         <div class="box_sec">
                                             <input type="text" class="form-control js_current_city"
+                                                   id="glAdAddress"
                                                    autocomplete="nope"
                                                    placeholder="Current City"
                                                    value="{{data.current_city}}">
@@ -254,7 +292,7 @@
                                                 <input type="checkbox" class="js_relocation_checkbox"
                                                        {{#if data.relocation}}checked{{/if}}>
                                                 <span class="checkmark"></span>
-                                                Relocate
+                                                Are you willing to relocate?
                                             </label>
                                         </div>
                                     </div>
@@ -263,17 +301,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Gender</label>
+                                        <label class="control-label">Home City</label>
                                         <div class="box_sec">
-                                            <select class="form-control js_gender required js_select2">
-                                                <option value="male"
-                                                        {{#ifCond data.gender '===' 'male'}}selected{{/ifCond}}>Male
-                                                </option>
-                                                <option value="female"
-                                                        {{#ifCond data.gender '===' 'female'}}selected{{/ifCond}}>
-                                                    Female
-                                                </option>
-                                            </select>
+                                            <input type="text" class="form-control"
+                                                   id="homeAdAddress"
+                                                   value="{{data.home_city}}"
+                                                   autocomplete="nope"
+                                                   placeholder="Home City">
                                         </div>
                                     </div>
                                 </div>
@@ -328,6 +362,51 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="technologies_wrap">
+                                <h4>Preferred Cities</h4>
+                                <hr>
+                                <div class="js_cities_wrap">
+                                    {{#each data.applicant_cities}}
+                                        {{>client/city_row}}
+                                    {{else}}
+                                        {{>client/city_row}}
+                                    {{/each}}
+                                </div>
+                                <div class="add_technology_cta_wrap">
+                                    <a class="btn btn_blue js_add_city">Add City</a>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="technologies_wrap">
+                                <h4>Languages</h4>
+                                <hr>
+                                <div class="js_languages_wrap">
+                                    {{#each data.applicant_languages}}
+                                        {{>client/language_row}}
+                                    {{else}}
+                                        {{>client/language_row}}
+                                    {{/each}}
+                                </div>
+                                <div class="add_technology_cta_wrap">
+                                    <a class="btn btn_blue js_add_language">Add Language</a>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="technologies_wrap">
+                                <h4>Technologies</h4>
+                                <hr>
+                                <div class="js_technologies_wrap">
+                                    {{#each data.applicant_technologies}}
+                                        {{>client/technology_row}}
+                                    {{else}}
+                                        {{>client/technology_row}}
+                                    {{/each}}
+                                </div>
+                                <div class="add_technology_cta_wrap">
+                                    <a class="btn btn_blue js_add_technology">Add Technology</a>
+                                </div>
+                                <hr>
+                            </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group pixl_form_group">
@@ -356,17 +435,39 @@
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" class="js_street">
+                        <input type="hidden" class="js_area_in">
+                        <input type="hidden" class="js_area">
+                        <input type="hidden" class="js_locality">
+                        <input type="hidden" class="js_city">
+                        <input type="hidden" class="js_state">
+                        <input type="hidden" class="js_country">
+                        <input type="hidden" class="js_postal_code">
+                        <input type="hidden" class="js_place_id">
+                        <input type="hidden" class="js_full_address">
+                        <!--Home Address-->
+                        <input type="hidden" class="js_home_street">
+                        <input type="hidden" class="js_home_area_in">
+                        <input type="hidden" class="js_home_area">
+                        <input type="hidden" class="js_home_locality">
+                        <input type="hidden" class="js_home_city">
+                        <input type="hidden" class="js_home_state">
+                        <input type="hidden" class="js_home_country">
+                        <input type="hidden" class="js_home_postal_code">
+                        <input type="hidden" class="js_home_place_id">
+                        <input type="hidden" class="js_home_full_address">
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
-{{>footer select2=true}}
+{{>footer select2=true googlePlaces=true}}
 </body>
 <script type="application/javascript">
     $(function() {
         ApplicantEditHandler.init();
+        GoogleAddressHandler.init();
     });
 </script>
 </html>

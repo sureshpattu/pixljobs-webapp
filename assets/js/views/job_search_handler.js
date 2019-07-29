@@ -70,6 +70,35 @@ function JobSearchHandler() {
         ApiUtil.makeAjaxRequest('/api/jobs/search', '', 'POST', '', _query, callback);
     }
 
+    function searchByLocation() {
+        var _val = $('.js_input_location').val();
+        if(_val) {
+            _query.street   = $('.js_street').val();
+            _query.area_in  = $('.js_area_in').val();
+            _query.area     = $('.js_area').val();
+            _query.locality = $('.js_locality').val();
+            _query.city     = $('.js_city').val();
+            _query.state    = $('.js_state').val();
+            _query.country  = $('.country').val();
+            _query.pin      = $('.js_postal_code').val();
+            if(_query.street || _query.area_in || _query.area || _query.locality || _query.city || _query.state ||
+                _query.country || _query.pin) {
+                searchJobs();
+            }
+        } else {
+            delete _query.street;
+            delete _query.area_in;
+            delete _query.area;
+            delete _query.locality;
+            delete _query.city;
+            delete _query.state;
+            delete _query.country;
+            delete _query.pin;
+            searchJobs();
+            clearGoogleAddress();
+        }
+    }
+
     function bindClickEvents() {
         $('.js_select2').select2({});
 
@@ -124,10 +153,20 @@ function JobSearchHandler() {
         });
 
         $('.js_input_location').on('keyup', function(e) {
-            if(e.keyCode === 13) {
-                _query.city = $(this).val();
+            var _val = $(this).val();
+            if(!_val) {
+                delete _query.street;
+                delete _query.area_in;
+                delete _query.area;
+                delete _query.locality;
+                delete _query.city;
+                delete _query.state;
+                delete _query.country;
+                delete _query.pin;
                 searchJobs();
+                clearGoogleAddress();
             }
+
         });
 
         $('.js_reset_category').click(function() {
@@ -148,6 +187,19 @@ function JobSearchHandler() {
             searchJobs();
         });
 
+    }
+
+    function clearGoogleAddress() {
+        $('.js_street').val('');
+        $('.js_area_in').val('');
+        $('.js_area').val('');
+        $('.js_locality').val('');
+        $('.js_city').val('');
+        $('.js_state').val('');
+        $('.country').val('');
+        $('.js_postal_code').val('');
+        $('.js_full_address').val('');
+        $('.js_place_id').val('');
     }
 
     function salaryMinMaxTimeOut(from, to) {
@@ -234,10 +286,60 @@ function JobSearchHandler() {
         });
     }
 
+    function bindGooglePlaceSeacrhClickEvents() {
+        function fillAddress(place, element) {
+            if(place) {
+                element.find('.js_area,.js_locality,.js_city,.js_state,.js_country').val('');
+                $('.js_place_id').val(place.place_id);
+                $('.js_full_address').val(place.formatted_address);
+                for(var i = 0; i < place.address_components.length; i++) {
+                    switch(place.address_components[i].types[0]) {
+                        case 'route':
+                            element.find('.js_street').val(place.address_components[i].long_name);
+                            break;
+                        case 'sublocality_level_2':
+                            element.find('.js_area_in').val(place.address_components[i].long_name);
+                            break;
+                        case 'sublocality_level_1':
+                            element.find('.js_area').val(place.address_components[i].long_name);
+                            break;
+                        case 'locality':
+                            element.find('.js_locality').val(place.address_components[i].long_name);
+                            break;
+                        case 'administrative_area_level_2':
+                            element.find('.js_city').val(place.address_components[i].long_name);
+                            break;
+                        case 'administrative_area_level_1':
+                            element.find('.js_state').val(place.address_components[i].long_name);
+                            break;
+                        case 'country':
+                            element.find('.js_country').val(place.address_components[i].long_name);
+                            break;
+                        case 'postal_code':
+                            element.find('.js_postal_code').val(place.address_components[i].long_name);
+                            break;
+                    }
+                }
+                searchByLocation();
+            }
+        }
+
+        var profile_address_autocomplete = new google.maps.places.Autocomplete(
+            (document.getElementById('glAdAddress')));
+        $('#glAdAddress').on('focus', function() {
+            $(this).attr('autocomplete', 'nope');
+        });
+        profile_address_autocomplete.addListener('place_changed', function() {
+            var place = profile_address_autocomplete.getPlace();
+            fillAddress(place, $('body'));
+        });
+    }
+
     return {
         init:function() {
             bindRangeSlider();
             bindClickEvents();
+            bindGooglePlaceSeacrhClickEvents();
         }
     }
 }

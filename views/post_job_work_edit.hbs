@@ -4,7 +4,7 @@
     <title>Pixlcoders - About Work</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{>header_assets swiper=true  select2=true ranger=true}}
+    {{>header_assets swiper=true  select2=true ranger=true editor=true}}
 </head>
 <body class="postjob_work">
 {{>header}}
@@ -70,6 +70,14 @@
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
+                                        <label class="control-label"> Address</label>
+                                        <div class="box_sec">
+                                            <input type="text" class="form-control required" id="glAdAddress"
+                                                   autocomplete="nope" placeholder="Enter address"
+                                                   value="{{job_addressStr}}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group pixl_form_group">
                                         <label class="control-label">Experience</label>
                                         <div class="row">
                                             <div class="col-md-6 col-xs-6">
@@ -121,124 +129,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Minimum Education Level</label>
-                                                <div class="box_sec">
-                                                    <select class="form-control js_edu_level js_select2">
-                                                        <option value="Secondary"
-                                                            {{#ifCond data.education_level '===' 'Secondary'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            Secondary(10th Pass)
-                                                        </option>
-                                                        <option value="Higher Secondary"
-                                                            {{#ifCond data.education_level '===' 'Secondary'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            Higher Secondary(12th Pass)
-                                                        </option>
-                                                        <option value="Diploma">
-                                                            {{#ifCond data.education_level '===' 'Diploma'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            Diploma
-                                                        </option>
-                                                        <option value="Bachelors"
-                                                            {{#ifCond data.education_level '===' 'Bachelors'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            Bachelor's
-                                                        </option>
-                                                        <option value="Masters"
-                                                            {{#ifCond data.education_level '===' 'Masters'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            Master's
-                                                        </option>
-                                                        <option value="Doctorate"
-                                                            {{#ifCond data.education_level '===' 'Doctorate'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            Doctorate
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-xs-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Urgency Level</label>
-                                                <div class="box_sec">
-                                                    <select class="form-control js_urgent_status js_select2">
-                                                        <option value="none">None</option>
-                                                        <option value="days"
-                                                            {{#ifCond data.urgent_status '===' 'days'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            2-3 days
-                                                        </option>
-                                                        <option value="week"
-                                                            {{#ifCond data.urgent_status '===' 'week'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            In a week
-                                                        </option>
-                                                        <option value="weeks"
-                                                            {{#ifCond data.urgent_status '===' 'weeks'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            Two Weeks
-                                                        </option>
-                                                        <option value="month"
-                                                            {{#ifCond data.urgent_status '===' 'month'}}
-                                                                selected
-                                                            {{/ifCond}}>
-                                                            In a month
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Category</label>
-                                                <div class="box_sec">
-                                                    <select class="form-control js_select2 js_category"
-                                                            required="required">
-                                                        <option value="0">Select Job Category</option>
-                                                        {{#each categories}}
-                                                            {{#ifCond ../data.qa_job_categories.0.category.id '==='
-                                                                      this.id}}
-                                                                <option value="{{this.id}}"
-                                                                        selected>{{this.name}}</option>
-                                                            {{else}}
-                                                                <option value="{{this.id}}">{{this.name}}</option>
-                                                            {{/ifCond}}
-                                                        {{/each}}
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group pixl_form_group">
-                                                <label class="control-label">Type</label>
-                                                <div class="box_sec">
-                                                    <select class="form-control js_select2 js_job_type" required>
-                                                        <option value="{{data.job_type}}">{{data.job_type}}</option>
-                                                        <option value="">select</option>
-                                                        <option value="FullTime">Full Time</option>
-                                                        <option value="PartTime">Part Time</option>
-                                                        <option value="Internship">Internship</option>
-                                                        <option value="Contract">Contract</option>
-                                                        <option value="Volunteer">Volunteer</option>
-                                                        <option value="Temporary">Temporary</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Description <span
+                                                class="hide">(max 320 chars)</span></label>
+                                        <div class="box_sec">
+                                            <div class="common_editor" id="descEditor"></div>
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
@@ -257,7 +152,18 @@
                                         </div>
                                     </div>
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Salary - Annual INR</label>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="control-label">Salary - Annual INR</label>
+                                            </div>
+                                            <div class="col-md-6 text-right">
+                                                <label class="check_box js_company_check_box_wrap">
+                                                    <input type="checkbox" class="js_salary_not_decided">
+                                                    <span class="checkmark"></span>
+                                                    Not decided
+                                                </label>
+                                            </div>
+                                        </div>
                                         <div class="box_sec">
                                             <div class="wrapper" style="padding:20px;">
                                                 <div class="range-slider">
@@ -284,6 +190,15 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group pixl_form_group">
+                                                                <label class="control-label">Fixed Salary</label>
+                                                                <div class="box_sec">
+                                                                    <input type="text"
+                                                                           class="form-control js_fixed_salary"/>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -296,6 +211,16 @@
                                         <input type="hidden" value="{{recruiter_id}}" class="js_recruiter_id">
                                         <input type="hidden" class="js_job_id" value="{{job_id}}">
                                     </div>
+                                    <input type="hidden" class="js_street" value="{{data.street}}">
+                                    <input type="hidden" class="js_area_in" value="{{data.area_in}}">
+                                    <input type="hidden" class="js_area" value="{{data.area}}">
+                                    <input type="hidden" class="js_locality" value="{{data.locality}}">
+                                    <input type="hidden" class="js_city" value="{{data.city}}">
+                                    <input type="hidden" class="js_state" value="{{data.state}}">
+                                    <input type="hidden" class="js_country" value="{{data.country}}">
+                                    <input type="hidden" class="js_postal_code" value="{{data.pin}}">
+                                    <input type="hidden" class="js_place_id">
+                                    <input type="hidden" class="js_full_address">
                                 </form>
                             </div>
                         </div>
@@ -305,11 +230,13 @@
         </div>
     </div>
 </section>
-{{>footer swiper=true select2=true ranger=true}}
+{{>footer swiper=true select2=true ranger=true googlePlaces=true editor=true}}
 </body>
 <script type="text/javascript">
     $(function() {
-        PostJobEditHandler.init();
+        //var _desc = ('{{{data.desc}}}').toString();
+        PostJobEditHandler.init('');
+        GoogleAddressHandler.init();
     });
 </script>
 </html>

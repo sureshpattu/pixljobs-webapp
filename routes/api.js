@@ -111,6 +111,24 @@ router.get('/applicant/resume/:file', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE', '/applicant/resume/' + req.params.file, '', res);
 });
 
+router.post('/applicant/technologies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/technologies', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/applicant/languages', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/languages', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/applicant/cities', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/cities', function(_response) {
+        res.json(_response);
+    });
+});
+
 //Recruiters APIs-----------------------------------------------------------------------------------------------------
 router.post('/recruiter-auth/register', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/register', function(_response) {
@@ -377,6 +395,30 @@ router.post('/recruiter/job/action/:qa_job_id/:job_id', function(req, res, next)
         function(_response) {
             res.json(_response);
         });
+});
+
+router.get('/technologies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'GET', '/technologies', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/technologies/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/technologies/search', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/languages/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/languages/search', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/cities/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/cities/search', function(_response) {
+        res.json(_response);
+    });
 });
 
 router.post('/subscriber', function(req, res, next) {
