@@ -123,6 +123,12 @@ router.post('/applicant/languages', function(req, res, next) {
     });
 });
 
+router.post('/applicant/cities', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/cities', function(_response) {
+        res.json(_response);
+    });
+});
+
 //Recruiters APIs-----------------------------------------------------------------------------------------------------
 router.post('/recruiter-auth/register', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/register', function(_response) {
@@ -405,6 +411,12 @@ router.post('/technologies/search', function(req, res, next) {
 
 router.post('/languages/search', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/languages/search', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/cities/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/cities/search', function(_response) {
         res.json(_response);
     });
 });

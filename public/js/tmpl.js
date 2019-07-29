@@ -94,6 +94,34 @@ Handlebars.registerPartial("applicant_card_row", Handlebars.template({"1":functi
   return ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.data : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "");
 },"useData":true}));
 
+Handlebars.registerPartial("city_row", Handlebars.template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, alias1=container.lambda, alias2=container.escapeExpression;
+
+  return "<div class=\"row js_city_row\">\n    <div class=\"col-md-10\">\n        <div class=\"form-group pixl_form_group\">\n            <label class=\"control-label\">City</label>\n            <div class=\"box_sec\">\n                <div class=\"gl_search_box\">\n                    <input type=\"text\" class=\"form-control search_input search_enabled js_search_city\"\n                           placeholder=\"Search City\"\n                           value=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.city : depth0)) != null ? stack1.city : stack1), depth0))
+    + "\"\n                           data-tid=\""
+    + alias2(alias1(((stack1 = (depth0 != null ? depth0.city : depth0)) != null ? stack1.id : stack1), depth0))
+    + "\"\n                           autocomplete=\"off\">\n                    <span class=\"fa fa-search icon_sec search_enabled\"></span>\n                    <div class=\"gl_search_dropdown_list js_city_search_dropdown_list search_enabled hide\"></div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <div class=\"col-md-2\">\n        <a class=\"btn btn_red remove_btn js_remove_city\">Remove</a>\n    </div>\n</div>";
+},"useData":true}));
+
+Handlebars.registerPartial("city_search_list", Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "        <li>\n            <a data-tid=\""
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\" data-name=\""
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "\" class=\"js_city_search_item\">"
+    + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
+    + "</a>\n        </li>\n";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1;
+
+  return "<ul class=\"search_enabled\">\n"
+    + ((stack1 = helpers.each.call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.data : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "</ul>";
+},"useData":true}));
+
 Handlebars.registerPartial("company_form_two", Handlebars.template({"1":function(container,depth0,helpers,partials,data,blockParams,depths) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
 

@@ -91,6 +91,27 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Date Of Birth</label>
+                                        <div class="box_sec">
+                                            <input type="text" id="jsDOB" class="form-control js_dob required"
+                                                   autocomplete="nope" placeholder="Date Of Birth">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group pixl_form_group">
+                                        <label class="control-label">Gender</label>
+                                        <div class="box_sec">
+                                            <select class="form-control js_gender js_select2">
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 js_fresh_detail_sec">
@@ -191,13 +212,12 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Gender</label>
+                                        <label class="control-label">Home City</label>
                                         <div class="box_sec">
-                                            <select class="form-control js_gender required js_select2">
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                                <option value="other">Others</option>
-                                            </select>
+                                            <input type="text" class="form-control"
+                                                   id="homeAdAddress"
+                                                   autocomplete="nope"
+                                                   placeholder="Home City">
                                         </div>
                                     </div>
                                 </div>
@@ -242,6 +262,17 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="technologies_wrap">
+                                <h4>Preferred Cities</h4>
+                                <hr>
+                                <div class="js_cities_wrap">
+                                    {{>client/city_row}}
+                                </div>
+                                <div class="add_technology_cta_wrap">
+                                    <a class="btn btn_blue js_add_city">Add City</a>
+                                </div>
+                                <hr>
                             </div>
                             <div class="technologies_wrap">
                                 <h4>Languages</h4>
@@ -289,6 +320,17 @@
                             <input type="hidden" class="js_postal_code">
                             <input type="hidden" class="js_place_id">
                             <input type="hidden" class="js_full_address">
+                            <!--Home Address-->
+                            <input type="hidden" class="js_home_street">
+                            <input type="hidden" class="js_home_area_in">
+                            <input type="hidden" class="js_home_area">
+                            <input type="hidden" class="js_home_locality">
+                            <input type="hidden" class="js_home_city">
+                            <input type="hidden" class="js_home_state">
+                            <input type="hidden" class="js_home_country">
+                            <input type="hidden" class="js_home_postal_code">
+                            <input type="hidden" class="js_home_place_id">
+                            <input type="hidden" class="js_home_full_address">
                         </form>
                     </div>
                 </div>
