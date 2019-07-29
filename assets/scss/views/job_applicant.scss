@@ -328,13 +328,13 @@
             }
 
             &.downloaded {
-                .downloaded_sec {
+                .downloaded_sec, .viewed_sec {
                     @extend %active-shared;
                 }
             }
 
             &.shortlisted {
-                .shortlisted_sec {
+                .shortlisted_sec, .downloaded_sec, .viewed_sec {
                     @extend %active-shared;
                 }
             }

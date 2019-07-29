@@ -499,14 +499,14 @@ router.get('/post-job/info/:id', verify.isRecruiterLoggedIn, function(req, res) 
             helper_utils.makeApiRequest(req, 'GET', '/categories', function(_res) {
                 callback(null, _res);
             });
-        },
+        }
     ], function(err, results) {
         res.render('post_job_info', {
             user        :!results[0].error ? results[0].data : [],
             technologies:!results[1].error ? results[1].data : [],
             job_data    :!results[2].error ? results[2].data : [],
             job_id      :req.params.id,
-            categories    :!results[3].error ? results[3].data : [],
+            categories  :!results[3].error ? results[3].data : []
         });
     });
 });
@@ -784,9 +784,7 @@ router.get('/applicant/:applicant_id/:application_id', verify.isRecruiterLoggedI
         },
         function(callback) {
             req.body.status = 'viewed';
-            helper_utils.makeApiRequest(req,
-                'PUT',
-                '/job-applications/' + req.params.application_id,
+            helper_utils.makeApiRequest(req, 'POST', '/job-applications/status/' + req.params.application_id,
                 function(_res) {
                     callback(null, _res);
                 });
