@@ -14,19 +14,23 @@ function RecruiterCompanyHandler() {
 
             if(FormValidator.validateForm(_form_name)) {
                 var _company_obj = {
-                    recruiter_id:$('.js_recruiter_id').val(),
-                    name        :_form.find('.js_company_name').val() || '0',
-                    industry_id :_form.find('.js_industry').val(),
-                    size        :_form.find('.js_company_size').val(),
-                    url         :_form.find('.js_company_url').val(),
-                    about       :_form.find('.js_about_company').val(),
-                    street      :_form.find('.js_street').val(),
-                    area        :_form.find('.js_area').val(),
-                    city        :_form.find('.js_city').val(),
-                    state       :_form.find('.js_state').val(),
-                    pin         :_form.find('.js_pin').val(),
-                    email       :_form.find('.js_email').val(),
-                    country     :_form.find('.js_country').val()
+                    recruiter_id :$('.js_recruiter_id').val(),
+                    name         :_form.find('.js_company_name').val() || '0',
+                    industry_id  :_form.find('.js_industry').val(),
+                    size         :_form.find('.js_company_size').val(),
+                    url          :_form.find('.js_company_url').val(),
+                    about        :_form.find('.js_about_company').val(),
+                    street       :_form.find('.js_street').val(),
+                    area         :_form.find('.js_area').val(),
+                    city         :_form.find('.js_city').val(),
+                    state        :_form.find('.js_state').val(),
+                    pin          :_form.find('.js_pin').val(),
+                    email        :_form.find('.js_email').val(),
+                    country      :_form.find('.js_country').val(),
+                    mobile_code  :_form.find('.js_com_mobile_code').val(),
+                    mobile_number:_form.find('.js_com_mobile').val(),
+                    phone_code   :_form.find('.js_com_phone_code').val(),
+                    phone_number :_form.find('.js_com_phone_number').val()
                 };
 
                 ApiUtil.makeAjaxRequest('/api/companies/' + _company_id, '', 'PUT', '', _company_obj, function(_res) {
@@ -71,6 +75,8 @@ function RecruiterCompanyHandler() {
             } else {
                 postPhoto(_form, _company_id);
             }
+        } else {
+            alert('Company details updated successfully!');
         }
     }
 

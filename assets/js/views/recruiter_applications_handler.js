@@ -10,8 +10,8 @@ function RecruiterApplicationsHandler() {
             status:'shortlisted'
         };
         ApiUtil.makeAjaxRequest(
-            '/api/job-applications/' + application_id, '',
-            'PUT', '', _obj, function(_res) {
+            '/api/job-applications/status/' + application_id, '',
+            'POST', '', _obj, function(_res) {
                 if(!_res.error) {
                     alert(_res.message);
                 } else {

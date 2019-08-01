@@ -1196,6 +1196,11 @@ select.select {
         color: #ffffff;
     }
 
+    &.btn_red {
+        background-color: #be5008;
+        color: #ffffff;
+    }
+
     &:hover {
         box-shadow: 0 5px 14px 0 rgba(0, 0, 0, 0.25);
     }
@@ -1331,6 +1336,71 @@ a.btn {
 
             b {
                 display: none;
+            }
+        }
+    }
+}
+
+.common_editor {
+    height: 250px;
+}
+
+.technologies_wrap {
+    .remove_btn {
+        margin: 40px 0 0;
+    }
+}
+
+.gl_search_box {
+    position: relative;
+
+    .search_input {
+        position: relative;
+        z-index: 1;
+    }
+
+    .icon_sec {
+        position: absolute;
+        right: 13px;
+        top: 24px;
+        color: #cccccc;
+        font-size: 18px;
+        z-index: 0;
+    }
+
+    .gl_search_dropdown_list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 10;
+
+        ul {
+            background-color: #ffffff;
+            border-radius: 3px;
+            overflow: hidden;
+            max-height: 300px;
+            box-shadow: 0 2px 4px 0 rgba(213, 213, 214, .8);
+            padding: 9px 0;
+            margin: 1px 0 0;
+
+            li {
+                list-style: none;
+
+                a {
+                    display: block;
+                    cursor: pointer;
+                    text-decoration: none;
+                    padding: 6px 20px;
+                    font-weight: 400;
+                    font-size: 14px;
+                    color: #637282;
+                    text-transform: uppercase;
+
+                    &:hover {
+                        background-color: rgba(0, 0, 0, 0.04);
+                    }
+                }
             }
         }
     }

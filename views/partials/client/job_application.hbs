@@ -5,9 +5,9 @@
                 <div class="col-md-9">
                     <a data-toggle="collapse" class="panel-title collapsed js_panel_title"
                        data-parent="#accordion"
-                       href="#collapse_{{@index}}">
-                        <span class="highlights">{{#truncateText job.name 25}}{{/truncateText}}</span>
-                        <span class="small_txt">– {{#truncateText job.company.name 25}}{{/truncateText}}</span>
+                       href="#collapse_{{job.id}}">
+                        <span class="highlights">{{job.name}}</span>
+                        <span class="small_txt">– {{job.company.name}}</span>
                         <img src="/img/icons/arrow-right.svg" class="arrow_icon">
                     </a>
                 </div>
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-        <div id="collapse_{{@index}}" class="panel-collapse collapse">
+        <div id="collapse_{{job.id}}" class="panel-collapse collapse">
             <div class="panel-body">
                 <div class="card_status_two_wrap {{status}}">
                     <div class="viewed_sec card_cell">

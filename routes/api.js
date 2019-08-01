@@ -111,6 +111,24 @@ router.get('/applicant/resume/:file', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'IMAGE', '/applicant/resume/' + req.params.file, '', res);
 });
 
+router.post('/applicant/technologies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/technologies', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/applicant/languages', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/languages', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/applicant/cities', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/applicant/cities', function(_response) {
+        res.json(_response);
+    });
+});
+
 //Recruiters APIs-----------------------------------------------------------------------------------------------------
 router.post('/recruiter-auth/register', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/recruiter-auth/register', function(_response) {
@@ -366,6 +384,12 @@ router.put('/job-applications/:id', function(req, res, next) {
     });
 });
 
+router.post('/job-applications/status/:id', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/job-applications/status/' + req.params.id, function(_response) {
+        res.json(_response);
+    });
+});
+
 router.post('/job-applications/search', function(req, res, next) {
     helper_utils.makeApiRequest(req, 'POST', '/job-applications/search', function(_response) {
         res.json(_response);
@@ -377,6 +401,30 @@ router.post('/recruiter/job/action/:qa_job_id/:job_id', function(req, res, next)
         function(_response) {
             res.json(_response);
         });
+});
+
+router.get('/technologies', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'GET', '/technologies', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/technologies/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/technologies/search', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/languages/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/languages/search', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.post('/cities/search', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/cities/search', function(_response) {
+        res.json(_response);
+    });
 });
 
 module.exports = router;
