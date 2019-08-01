@@ -46,7 +46,7 @@
             }
 
             &.active {
-                font-weight: 600;
+                font-weight: 500;
 
                 &:before {
                     display: block;
@@ -68,7 +68,7 @@
 
         .name {
             font-size: 19px;
-            font-weight: 600;
+            font-weight: 500;
             color: #4e5862;
         }
 
@@ -234,7 +234,7 @@
 
             .highlights {
                 font-size: 18px;
-                font-weight: 600;
+                font-weight: 500;
             }
 
             .small_txt {
@@ -302,6 +302,21 @@
 
         .cat_wrap {
             text-align: right;
+
+            .dropdown {
+                display: inline-block;
+                vertical-align: bottom;
+
+                .dropdown-menu {
+                    border: none;
+                    min-width: 80px;
+
+                    a {
+                        padding: 8px 15px;
+                        font-size: 11px;
+                    }
+                }
+            }
         }
 
         .c_cta_btn {
@@ -318,6 +333,25 @@
             text-decoration: none;
             margin: 17px auto 10px auto;
             padding: 10px 0 0;
+            border: none;
+
+            &:focus, &:hover {
+                outline: none;
+                border: none;
+                background-color: #fbf2f1;
+                color: #fc7968;
+                box-shadow: none;
+            }
+
+            &.btn{
+                padding: 0;
+            }
+
+            &.open{
+                background-color: #ebfff7eb;
+                color: #408c6dfa;
+            }
+
         }
 
 
@@ -416,7 +450,7 @@
 
             .label_val {
                 font-size: 15px;
-                font-weight: 600;
+                font-weight: 500;
                 line-height: 1.67;
                 color: #637282;
                 padding: 0 0 21px;
@@ -434,7 +468,7 @@
                     cursor: pointer;
                     text-decoration: none;
                     font-size: 15px;
-                    font-weight: 600;
+                    font-weight: 500;
                     line-height: 1.67;
                     text-align: center;
                     color: #4a58ff;

@@ -40,47 +40,69 @@ function RecruiterAppHandler() {
 
         $('.js_match_height').matchHeight({byRow:true});
 
-        $('.js_more_btn_link').click(function() {
-            var _this   = $(this);
-            var _parent = $(this).closest('.js_main_card_sec');
-            _parent.find('.js_panel_title').trigger('click');
-            if(_this.hasClass('collapsed')) {
-                _this.removeClass('hide');
-            } else {
-                _this.addClass('hide');
-            }
+        $('.js_close_job_btn').click(function() {
+            var _this              = $(this);
+            var _parent            = _this.closest('.js_main_card_sec');
+            var _reopen_job_btn    = _parent.find('.js_reopen_job_btn');
+            var _open_close_status = _parent.find('.js_open_close_status');
+            var _obj               = {
+                action:'closed'
+            };
+
+            ApiUtil.makeAjaxRequest(
+                '/api/recruiter/job/action/' + _parent.data('qa_job_id') + '/' + _parent.data('job_id'),
+                '',
+                'POST',
+                '', _obj,
+                function(_res) {
+                    if(!_res.error) {
+                        _this.addClass('hide');
+                        _reopen_job_btn.removeClass('hide');
+
+                        _open_close_status.removeClass('open');
+                        _open_close_status.find('span').html('CLOSED');
+                    } else {
+                        alert(_res.error || 'something went wrong!');
+                    }
+                });
+
+        });
+
+        $('.js_reopen_job_btn').click(function() {
+            var _this              = $(this);
+            var _parent            = _this.closest('.js_main_card_sec');
+            var _close_job_btn     = _parent.find('.js_close_job_btn');
+            var _open_close_status = _parent.find('.js_open_close_status');
+
+            var _obj = {
+                action:'open'
+            };
+
+            ApiUtil.makeAjaxRequest(
+                '/api/recruiter/job/action/' + _parent.data('qa_job_id') + '/' + _parent.data('job_id'),
+                '',
+                'POST',
+                '', _obj,
+                function(_res) {
+                    if(!_res.error) {
+                        _this.addClass('hide');
+                        _close_job_btn.removeClass('hide');
+
+                        _open_close_status.addClass('open');
+                        _open_close_status.find('span').html('OPEN');
+                    } else {
+                        alert(_res.error || 'something went wrong!');
+                    }
+                });
         });
 
         $('.js_panel_title').click(function() {
             var _this   = $(this);
             var _parent = $(this).closest('.js_main_card_sec');
 
-            //if(!_this.hasClass('collapsed')) {
-            //    _parent.find('.js_more_btn_link').addClass('hide');
-            //    _parent.find('.js_reopen_card').removeClass('hide');
-            //    _parent.find('.js_total_application_txt').removeClass('application');
-            //} else {
-            //    _parent.find('.js_more_btn_link').removeClass('hide');
-            //    _parent.find('.js_open_card').addClass('hide');
-            //    _parent.find('.js_reopen_card').addClass('hide');
-            //    _parent.find('.js_total_application_txt').addClass('application');
-            //}
-
-            $('.js_match_height').matchHeight({ remove: true });
+            $('.js_match_height').matchHeight({remove:true});
             $('.js_match_height').matchHeight({byRow:true});
             $.fn.matchHeight._update();
-        });
-
-        $('.js_open_card').click(function() {
-            var _this   = $(this);
-            var _parent = $(this).closest('.js_main_card_sec');
-            _parent.find('.js_panel_title').trigger('click');
-        });
-
-        $('.js_reopen_card').click(function() {
-            var _this   = $(this);
-            var _parent = $(this).closest('.js_main_card_sec');
-            _parent.find('.js_panel_title').trigger('click');
         });
 
         $('.js_main_card_sec').each(function(i) {

@@ -133,6 +133,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
@@ -183,59 +184,63 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-12">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Street</label>
+                                        <label class="control-label">Company Email</label>
                                         <div class="box_sec">
-                                            <input type="text" class="form-control required js_street"
-                                                   autocomplete="nope" placeholder="Enter street">
+                                            <input type="text" class="form-control required js_com_email"
+                                                   autocomplete="nope" placeholder="Comany Email">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">Area</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control required js_area"
-                                                   autocomplete="nope" placeholder="Enter area">
+                                        <label class="control-label">Mobile</label>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="box_sec">
+                                                    <select class="form-control required js_select2 js_com_mobile_code">
+                                                        <option value="">Select</option>
+                                                        {{#each country_code}}
+                                                            <option value="{{code}}">{{name}} {{code}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control required js_com_mobile"
+                                                           autocomplete="nope" placeholder="Your 10 digit mobile No.">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group pixl_form_group">
-                                        <label class="control-label">City</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control required js_city"
-                                                   autocomplete="nope" placeholder="Enter city">
+                                        <label class="control-label">Land Line</label>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control required js_com_phone_code"
+                                                           autocomplete="nope" placeholder="Code">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="box_sec">
+                                                    <input type="text" class="form-control required js_com_phone_number"
+                                                           autocomplete="nope" placeholder="Your Landline number">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">State</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control required js_state"
-                                                   autocomplete="nope" placeholder="Enter state">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Country</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control required js_country"
-                                                   autocomplete="nope" placeholder="Enter country">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group pixl_form_group">
-                                        <label class="control-label">Pin Code</label>
-                                        <div class="box_sec">
-                                            <input type="text" class="form-control required js_pin"
-                                                   autocomplete="nope" placeholder="Enter pin">
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="form-group pixl_form_group">
+                                <label class="control-label">Company Address</label>
+                                <div class="box_sec">
+                                    <input type="text" class="form-control required" id="glAdAddress"
+                                           autocomplete="nope" placeholder="Enter address">
                                 </div>
                             </div>
                             <div class="row">
@@ -272,6 +277,16 @@
                                     <img src="/img/icons/full-arrow-blue.svg" alt="" class="right_icon">
                                 </button>
                             </div>
+                            <input type="hidden" class="js_street">
+                            <input type="hidden" class="js_area_in">
+                            <input type="hidden" class="js_area">
+                            <input type="hidden" class="js_locality">
+                            <input type="hidden" class="js_city">
+                            <input type="hidden" class="js_state">
+                            <input type="hidden" class="js_country">
+                            <input type="hidden" class="js_postal_code">
+                            <input type="hidden" class="js_place_id">
+                            <input type="hidden" class="js_full_address">
                         </form>
                     </div>
                 </div>
@@ -279,11 +294,12 @@
         </div>
     </div>
 </section>
-{{>footer swiper=true select2=true}}
+{{>footer swiper=true select2=true googlePlaces=true}}
 </body>
 <script type="text/javascript">
     $(function() {
         RecruiterHandler.init();
+        GoogleAddressHandler.init();
     });
 </script>
 </html>
