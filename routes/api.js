@@ -427,4 +427,16 @@ router.post('/cities/search', function(req, res, next) {
     });
 });
 
+router.post('/subscriber', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'POST', '/subscriber', function(_response) {
+        res.json(_response);
+    });
+});
+
+router.get('/country-code', function(req, res, next) {
+    helper_utils.makeApiRequest(req, 'GET', '/country-code', function(_response) {
+        res.json(_response);
+    });
+});
+
 module.exports = router;

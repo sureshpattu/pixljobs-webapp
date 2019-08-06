@@ -11,6 +11,9 @@ body {
 .text_black {
     color: #000;
 }
+.box {
+    padding: 20px;
+}
 
 .text_white {
     color: white;
@@ -537,6 +540,7 @@ textarea.form-control.input_new {
     color: #444;
     font-size: 13px;
     text-shadow: none;
+    background-color: #eee;
 }
 
 .select2-container--default .select2-selection--single {
@@ -693,8 +697,8 @@ textarea.form-control.input_new {
 }
 
 .select2-results__option {
-    font-size: 11px;
-    line-height: 1.13;
+    font-size: 14px;
+    line-height: 1.5;
     color: rgba(40, 47, 63, 0.9);
     padding: 8px 20px;
     font-weight: 500;
@@ -720,8 +724,8 @@ textarea.form-control.input_new {
 
     .select2-results__option--highlighted[aria-selected] {
         background-color: transparent;
-        font-size: 11px;
-        line-height: 1.13;
+        font-size: 14px;
+        line-height: 1.5;
         color: rgba(40, 47, 63, 0.9);
         padding: 8px 20px;
         font-weight: 500;
@@ -747,7 +751,7 @@ textarea.form-control.input_new {
 
 .select2-container--open .select2-dropdown--below, .select2-container--open .select2-dropdown--above {
     border-radius: 5px;
-    box-shadow: 0 2px 4px 1px #e0e7ee;
+    box-shadow: 0 7px 9px 2px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
     padding: 0;
     min-width: 200px !important;
@@ -770,8 +774,9 @@ textarea.form-control.input_new {
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
     padding-top: 22px;
-    font-size: 14px;
-    color: #637282;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
 }
 
 .select2-container--default {
@@ -790,7 +795,7 @@ textarea.form-control.input_new {
         min-height: 95px;
 
         .select2-selection__choice {
-            background-color: #ffffff;
+            background-color: #eee;
             cursor: default;
             float: left;
             margin-right: 5px;
@@ -844,9 +849,9 @@ input.form-control, select.form-control, textarea.form-control {
         height: 64px;
         border: none;
         position: relative;
-        font-size: 14px;
-        color: #637282;
-        font-weight: 200;
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
         z-index: 1;
         padding-right: 40px;
     }
@@ -1041,10 +1046,10 @@ select.select {
         height: 64px;
         border: none;
         position: relative;
-        font-weight: 400;
+        font-weight: 600;
         z-index: 1;
-        font-size: 14px;
-        color: #637282;
+        font-size: 16px;
+        color: #333;
         padding-right: 40px;
         box-shadow: 0 2px 4px 0 rgba(213, 213, 214, 0.8);
         //  background-color: #ffffff;

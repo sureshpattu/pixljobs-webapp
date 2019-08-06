@@ -16,3 +16,4 @@ window.RecruiterAppHandler          = require('./views/recruiter_app_handler');
 window.RecruiterApplicatiobsHandler = require('./views/recruiter_applications_handler');
 window.ApplicantApplicatiobsHandler = require('./views/applicant_app_handler');
 window.GoogleAddressHandler         = require('./views/google_address_handler');
+window.SubscriberHandler         = require('./views/subscriber_handler');
