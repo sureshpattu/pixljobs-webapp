@@ -33,7 +33,8 @@
                     {{#ifCond job_technologies.length '>' 3}}
                         <span class="more"
                               title="" data-toggle="popover" data-trigger="hover"
-                              data-content="{{#each job_technologies}}{{#ifCond @index '>' 2}}{{#if @last}}{{technology.name}}.{{else}}{{technology.name}}, {{/if}}{{/ifCond}}{{/each}}">
+                              data-content="{{#each job_technologies}}{{#ifCond @index '>' 2}}{{#if
+                                      @last}}{{technology.name}}.{{else}}{{technology.name}}, {{/if}}{{/ifCond}}{{/each}}">
                             + more
                         </span>
                     {{/ifCond}}
@@ -49,8 +50,11 @@
                     <div class="info_sec">
                         <i class="fa fa-inr icon_dollar_sec" aria-hidden="true"></i>
                         <span class="txt_sec">
-                            {{#ifCond  salary_min '===' '0'}}
-                                {{#formatCurrency salary_max}}{{/formatCurrency}}
+                            {{#ifCond  salary_min '===' 0}}
+                                {{#ifCond  salary_max '===' 0}}
+                                {{else}}
+                                    {{#formatCurrency salary_max}}{{/formatCurrency}}
+                                {{/ifCond}}
                             {{else}}
                                 {{#formatCurrency salary_min}}{{/formatCurrency}} - {{#formatCurrency
                                     salary_max}}{{/formatCurrency}}
