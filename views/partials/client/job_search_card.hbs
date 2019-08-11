@@ -47,18 +47,13 @@
                     {{/if}}
                 </div>
                 <div class="job_details_wrap">
-                    <div class="info_sec">
+                    <div class="info_sec {{#if  is_salary}}{{else}}hide{{/if}}">
                         <i class="fa fa-inr icon_dollar_sec" aria-hidden="true"></i>
                         <span class="txt_sec">
-                            {{#ifCond  salary_min '==' '0'}}
-                                {{#ifCond  salary_max '==' '0'}}
-                                {{else}}
-                                    {{#formatCurrency salary_max}}{{/formatCurrency}}
-                                {{/ifCond}}
-                            {{else}}
+                            {{#if  is_salary}}
                                 {{#formatCurrency salary_min}}{{/formatCurrency}} - {{#formatCurrency
                                     salary_max}}{{/formatCurrency}}
-                            {{/ifCond}}
+                            {{/if}}
                         </span>
                     </div>
                     <div class="info_sec">
