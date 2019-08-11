@@ -37,15 +37,13 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
                                 <div class="job_tags">
                                     <div class="row">
                                         <div class="col-md-12 col-xs-12">
                                             <div class="tags_wrap spl_wrap">
-                                                <div class="tags">
+                                                <div class="tags {{#if  data.is_salary}}{{else}}hide{{/if}}">
                                                     <i class="fa fa-inr dollar_icons" aria-hidden="true"></i>
                                                     {{#formatCurrency data.salary_min}}{{/formatCurrency}}
                                                     - {{#formatCurrency data.salary_max}}{{/formatCurrency}}
