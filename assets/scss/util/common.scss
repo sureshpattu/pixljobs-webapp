@@ -776,7 +776,7 @@ textarea.form-control.input_new {
     padding-top: 22px;
     font-size: 16px;
     color: #333;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .select2-container--default {
@@ -1046,19 +1046,18 @@ select.select {
         height: 64px;
         border: none;
         position: relative;
-        font-weight: 600;
+        font-weight: 500;
         z-index: 1;
         font-size: 16px;
-        color: #333;
+        color: #666666;
         padding-right: 40px;
         box-shadow: 0 2px 4px 0 rgba(213, 213, 214, 0.8);
-        //  background-color: #ffffff;
     }
 
     .control-label {
         font-size: 14px;
-        color: #637282;
-        font-weight: 500;
+        color: rgba(99, 114, 130, 0.73);
+        font-weight: 400;
         margin: 0;
         padding: 0 0 7px;
     }
