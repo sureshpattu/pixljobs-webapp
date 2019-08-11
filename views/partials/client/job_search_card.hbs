@@ -50,8 +50,8 @@
                     <div class="info_sec">
                         <i class="fa fa-inr icon_dollar_sec" aria-hidden="true"></i>
                         <span class="txt_sec">
-                            {{#ifCond  salary_min '===' 0}}
-                                {{#ifCond  salary_max '===' 0}}
+                            {{#ifCond  salary_min '==' '0'}}
+                                {{#ifCond  salary_max '==' '0'}}
                                 {{else}}
                                     {{#formatCurrency salary_max}}{{/formatCurrency}}
                                 {{/ifCond}}
